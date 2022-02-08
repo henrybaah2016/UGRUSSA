@@ -1,0 +1,57 @@
+name: ugrussa
+description: University of Ghana Russia Student Association App
+
+# The following line prevents the package from being accidentally published to
+# pub.dev using `flutter pub publish`. This is preferred for private packages.
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+# The following defines the version and build number for your application.
+# A version number is three numbers separated by dots, like 1.2.43
+# followed by an optional build number separated by a +.
+# Both the version and the builder number may be overridden in flutter
+# build by specifying --build-name and --build-number, respectively.
+# In Android, build-name is used as versionName while build-number used as versionCode.
+# Read more about Android versioning at https://developer.android.com/studio/publish/versioning
+# In iOS, build-name is used as CFBundleShortVersionString while build-number used as CFBundleVersion.
+# Read more about iOS versioning at
+# https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.12.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.2
+  flutter_onboard: ^1.0.3
+  carousel_slider: ^4.0.0
+  flutter_rating_bar: ^4.0.0
+  getwidget: ^2.0.4
+  video_player: ^2.0.2
+  flick_video_player:
+  provider: ^5.0.0
+  wakelock: ^0.5.0+2
+  universal_html: ^2.0.8
+  visibility_detector: ^0.2.0
+
+#  galleryimage: ^1.1.0
+
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
+
+  uses-material-design: true
+
+  assets:
+    - assets/images/
+
+  fonts:
+    - family: SanFrancisco
+      fonts:
+        - asset: assets/fonts/SanFrancisco/San-Francisco-Display-Regular.ttf
+        - asset: assets/fonts/SanFrancisco/San-Francisco-Display-Bold.ttf
