@@ -53,7 +53,7 @@ class _LoginPageState extends State<LoginPage> {
                   child: Padding(
                     padding: EdgeInsets.only(left: 5, right: 5),
                     child: TextField(
-                      keyboardType: TextInputType.emailAddress,
+                      keyboardType: TextInputType.phone,
                       decoration: InputDecoration(
 
                           enabledBorder: OutlineInputBorder(
@@ -65,10 +65,10 @@ class _LoginPageState extends State<LoginPage> {
                           border: OutlineInputBorder(
                             borderSide: BorderSide(color:Color(0xffB3B3B3)),
                           ),
-                          labelText: 'Email Address',
+                          labelText: 'Phone Number',
                           labelStyle: TextStyle(color: Color(0xff000000),fontSize: 12, fontWeight: FontWeight.w600),
                           contentPadding: EdgeInsets.only(bottom: 0,left:10),
-                          hintText: 'Email Address', hintStyle: TextStyle(color: Color(0xff000000),fontSize: 16, fontWeight: FontWeight.w600)
+                          hintText: 'Phone Number', hintStyle: TextStyle(color: Color(0xff000000),fontSize: 16, fontWeight: FontWeight.w600)
                       ),
                     ),
                   ),

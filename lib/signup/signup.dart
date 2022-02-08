@@ -124,7 +124,7 @@ class _SignupPageState extends State<SignupPage> {
                               border: OutlineInputBorder(
                                 borderSide: BorderSide(color:Color(0xffB3B3B3)),
                               ),
-                              labelText: 'Phone Number (Optional)',
+                              labelText: 'Phone Number',
                               labelStyle: TextStyle(color: Color(0xff000000),fontSize: 12, fontWeight: FontWeight.w600),
                               contentPadding: EdgeInsets.only(bottom: 0,left:10),
                               hintText: 'Phone Number', hintStyle: TextStyle(color: Color(0xff000000),fontSize: 16, fontWeight: FontWeight.w600)
