@@ -2,6 +2,8 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:ugrussa/splash/splash.dart';
 
+import '../student/list.dart';
+
 
 
 class HomePage extends StatefulWidget {
@@ -17,46 +19,60 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: Color (0xfff8f8fa),
+        appBar: AppBar(
+          backgroundColor: Color(0xffffffff),
+          elevation: 0,
+          leading: Builder(
+            builder: (BuildContext context) {
+              return Container(
+                height:45,
+                width:45,
+                child: Padding(
+                  padding:  EdgeInsets.all(10),
+                  child: Image.asset('assets/images/logo.png'),
+
+                ),
+              );
+            },
+          ),
+          title: const Text('UGRUSSA',style: TextStyle(color: Color(0xff072e79), fontSize: 20, fontWeight: FontWeight.w600,),),
+
+          actions: <Widget>[
+            PopupMenuButton(
+              onSelected: (result) async {
+                if(result == 0){
+                  Navigator.of(context).pop();
+                }
+
+              },
+
+              icon:const Icon(
+
+                Icons.search,
+                color: Color(0xff072e79),
+                size: 30.0,
+
+
+              ),
+              offset: Offset(0, kToolbarHeight),
+
+              itemBuilder: (BuildContext context) => <PopupMenuEntry>[
+                const PopupMenuItem(
+                  child:Padding(
+                    padding: EdgeInsets.only(left:8.0,right: 25),
+                    child: Text('search',style: TextStyle(color: Color(0xff3e3956), fontSize: 20,fontWeight: FontWeight.w400),),
+                  ),
+                  value: 0,
+                ),
+
+              ],
+            ),
+          ],
+        ),
 
       body:SingleChildScrollView(
         child: Column(
           children: <Widget>[
-
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Row(
-                  children: [
-                    Container(
-                      padding: const EdgeInsets.all(8.0),
-                      height:60,
-                      width:60,
-                      child:Image.asset('assets/images/logo.png'),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Text('UGRUSSA',style: TextStyle(color: Color(0xff072e79), fontSize: 20, fontWeight: FontWeight.w600,),
-                      ),),
-
-                  ],
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Container(
-                    margin: EdgeInsets.only(top: 0, right: 5,left: 5),
-                    alignment: Alignment.topRight,
-                    child: Icon(
-                      Icons.search,
-                      color: Color(0xff072e79),
-                      size: 30.0,
-                      semanticLabel: 'search',
-                    ),
-                  ),
-                ),
-
-
-              ],
-            ),
 
             Container(
               margin:EdgeInsets.only(top:10),
@@ -84,7 +100,7 @@ class _HomePageState extends State<HomePage> {
                               onTap: () {
                                 Navigator.push(
                                   context,
-                                  MaterialPageRoute(builder: (context) => Splash()),
+                                  MaterialPageRoute(builder: (context) => ListPage()),
                                 );
                               },
                                 child: Container(

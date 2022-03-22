@@ -15,8 +15,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: ' University of Ghana Russia Student Association App',
       theme: ThemeData(
-        //fontFamily: 'SanFrancisco',
-
+        // fontFamily: 'SanFrancisco',
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       home: Splash(),
