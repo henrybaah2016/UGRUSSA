@@ -2,7 +2,7 @@ import "package:flutter/material.dart";
 import 'package:ugrussa/login/login.dart';
 
 class Splash extends StatefulWidget {
-  const Splash({ Key? key}) : super(key: key);
+  const Splash({Key? key}) : super(key: key);
 
   @override
   _SplashState createState() => _SplashState();
@@ -10,21 +10,22 @@ class Splash extends StatefulWidget {
 
 class _SplashState extends State<Splash> {
   @override
-  void initState(){
+  void initState() {
     super.initState();
 
     _navigatetohome();
   }
 
-  _navigatetohome()async{
-    await Future.delayed(Duration(milliseconds: 3000), (){});
-    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>LoginPage()));
+  _navigatetohome() async {
+    await Future.delayed(Duration(milliseconds: 3000), () {});
+    Navigator.pushReplacement(
+        context, MaterialPageRoute(builder: (context) => LoginPage()));
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color (0xffffffff),
+      backgroundColor: Color(0xffffffff),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
