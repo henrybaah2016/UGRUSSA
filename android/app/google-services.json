@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "383465667281",
+    "project_id": "ugrussa-43804",
+    "storage_bucket": "ugrussa-43804.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:383465667281:android:c32ca878052cbe4fa863f0",
+        "android_client_info": {
+          "package_name": "com.example.ugrussa"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "383465667281-0m7l5eu13ftjq2r2foi6jjgf8albeda5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBQEvycKbO4fMFrP6J-lyutmrgO8ULrJt4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "383465667281-0m7l5eu13ftjq2r2foi6jjgf8albeda5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
