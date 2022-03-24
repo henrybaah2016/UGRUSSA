@@ -34,6 +34,7 @@ class MyApp extends StatelessWidget {
         DetailsPage.routeName: (ctx) => DetailsPage(),
         JoinPage.routeName: (ctx) => JoinPage(),
         ListPage.routeName: (ctx) => ListPage(),
+        Splash.routeName: (ctx) => Splash(),
       },
     );
   }

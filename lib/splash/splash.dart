@@ -8,6 +8,8 @@ import 'package:ugrussa/utils/utils.dart';
 class Splash extends StatefulWidget {
   const Splash({Key? key}) : super(key: key);
 
+  static const routeName = "/splash";
+
   @override
   _SplashState createState() => _SplashState();
 }

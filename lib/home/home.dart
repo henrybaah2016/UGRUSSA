@@ -1,6 +1,9 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:ugrussa/login/login.dart';
 import 'package:ugrussa/splash/splash.dart';
+import 'package:ugrussa/utils/utils.dart';
+import 'package:ugrussa/widgets/progress_dialog.dart';
 
 import '../student/list.dart';
 
@@ -45,7 +48,14 @@ class _HomePageState extends State<HomePage> {
             PopupMenuButton(
               onSelected: (result) async {
                 if (result == 0) {
-                  Navigator.of(context).pop();
+                  showDialog(
+                    context: context,
+                    builder: (BuildContext ctx) =>
+                        ProgressDialog(message: "Signing Out"),
+                  );
+                  firebaseAuth.signOut();
+                  Navigator.of(context)
+                      .pushReplacementNamed(LoginPage.routeName);
                 }
               },
               icon: const Icon(
