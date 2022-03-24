@@ -1,5 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:ugrussa/dues/summary.dart';
 import 'package:ugrussa/splash/splash.dart';
 
 import '../student/list.dart';
@@ -48,7 +49,7 @@ class _HomePageState extends State<HomePage> {
 
               icon:const Icon(
 
-                Icons.search,
+                Icons.more_vert_outlined,
                 color: Color(0xff072e79),
                 size: 30.0,
 
@@ -60,7 +61,7 @@ class _HomePageState extends State<HomePage> {
                 const PopupMenuItem(
                   child:Padding(
                     padding: EdgeInsets.only(left:8.0,right: 25),
-                    child: Text('search',style: TextStyle(color: Color(0xff3e3956), fontSize: 20,fontWeight: FontWeight.w400),),
+                    child: Text('Logout',style: TextStyle(color: Color(0xff3e3956), fontSize: 20,fontWeight: FontWeight.w400),),
                   ),
                   value: 0,
                 ),
@@ -230,7 +231,7 @@ class _HomePageState extends State<HomePage> {
                         onTap: () {
                           Navigator.push(
                             context,
-                            MaterialPageRoute(builder: (context) => Splash()),
+                            MaterialPageRoute(builder: (context) => SummaryPage()),
                           );
                         },
                         child: Container(

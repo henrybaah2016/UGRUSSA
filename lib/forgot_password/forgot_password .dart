@@ -4,17 +4,16 @@ import 'package:ugrussa/home/home.dart';
 import 'package:ugrussa/signup/signup.dart';
 import 'package:ugrussa/splash/splash.dart';
 
-import '../forgot_password/forgot_password .dart';
 import '../main.dart';
 
-class LoginPage extends StatefulWidget {
-  LoginPage({Key? key}) : super(key: key);
+class ForgotPasswordPage extends StatefulWidget {
+  ForgotPasswordPage({Key? key}) : super(key: key);
 
   @override
-  _LoginPageState createState() => _LoginPageState();
+  _ForgotPasswordPageState createState() => _ForgotPasswordPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
   bool _showPassword = false;
 
   @override
@@ -50,26 +49,55 @@ class _LoginPageState extends State<LoginPage> {
                 ),
 
                 Container(
-                  margin: const EdgeInsets.only(bottom: 40),
+                  margin: EdgeInsets.only(top: 15, bottom: 15),
+                  child: Row(
+
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: <Widget>[
+                      Text(
+                        "Reset password by entering the new password",
+                        style: TextStyle(color: Color(0xffB3B3B3), fontSize: 12,fontWeight: FontWeight.w700),
+                      ),
+
+                    ],
+                  ),
+                ),
+
+
+                Container(
+                  margin: const EdgeInsets.only(bottom: 20),
                   child: Padding(
                     padding: EdgeInsets.only(left: 5, right: 5),
                     child: TextField(
-                      keyboardType: TextInputType.phone,
+                      keyboardType: TextInputType.number,
                       decoration: InputDecoration(
+                        enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: Color(0xffB3B3B3)),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color:Color(0xff000000)),
+                        ),
+                        border: OutlineInputBorder(
+                          borderSide: BorderSide(color:Color(0xffB3B3B3)),
 
-                          enabledBorder: OutlineInputBorder(
-                            borderSide: BorderSide(color: Color(0xffB3B3B3)),
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                            borderSide: BorderSide(color:Color(0xff000000)),
-                          ),
-                          border: OutlineInputBorder(
-                            borderSide: BorderSide(color:Color(0xffB3B3B3)),
-                          ),
-                          labelText: 'Phone Number',
-                          labelStyle: TextStyle(color: Color(0xff000000),fontSize: 12, fontWeight: FontWeight.w600),
-                          contentPadding: EdgeInsets.only(bottom: 0,left:10),
-                          hintText: 'Phone Number', hintStyle: TextStyle(color: Color(0xff000000),fontSize: 16, fontWeight: FontWeight.w600)
+                        ),
+                        labelText: 'New Password',
+                        labelStyle: TextStyle(color: Color(0xff000000),fontSize: 12, fontWeight: FontWeight.w600),
+                        contentPadding: EdgeInsets.only(bottom: 0,left:10),
+                        hintText: 'New Password', hintStyle: TextStyle(color: Color(0xff000000),fontSize: 16, fontWeight: FontWeight.w600),
+
+                        suffixIcon: IconButton(
+                          icon: Icon(
+                            Icons.remove_red_eye,
+                            color: this._showPassword ? Color(0xffff4A4A) : Color(0xffC6C6C6),
+                            size: 20.0,
+
+                          ), onPressed: () {
+                          setState(() => this._showPassword = !this._showPassword);
+
+                        },
+                        ),
                       ),
                     ),
                   ),
@@ -91,10 +119,10 @@ class _LoginPageState extends State<LoginPage> {
                           borderSide: BorderSide(color:Color(0xffB3B3B3)),
 
                         ),
-                        labelText: 'Password',
+                        labelText: 'Confirm Password',
                         labelStyle: TextStyle(color: Color(0xff000000),fontSize: 12, fontWeight: FontWeight.w600),
                         contentPadding: EdgeInsets.only(bottom: 0,left:10),
-                        hintText: 'Password', hintStyle: TextStyle(color: Color(0xff000000),fontSize: 16, fontWeight: FontWeight.w600),
+                        hintText: 'Confirm Password', hintStyle: TextStyle(color: Color(0xff000000),fontSize: 16, fontWeight: FontWeight.w600),
 
                         suffixIcon: IconButton(
                           icon: Icon(
@@ -111,32 +139,7 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                   ),
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  children: <Widget>[
 
-                    Container(
-                      margin: EdgeInsets.only(top: 10),
-                      child: new Row(
-                        children: <Widget>[
-
-                          new GestureDetector(
-                            onTap: () {
-                             Navigator.push(
-                               context,
-                               MaterialPageRoute(builder: (context) => ForgotPasswordPage()),
-                             );
-                            },
-                            child: new Text("Forgot Password",  style: new TextStyle(color: Color(0xff072e79),fontSize: 12, fontWeight: FontWeight.w600)),
-                          )
-
-                        ],
-                      ),
-                    ),
-
-                  ],
-                ),
 
                 Container(
                   margin: EdgeInsets.only(top: 60,left:5,right:5),
@@ -155,35 +158,7 @@ class _LoginPageState extends State<LoginPage> {
                         MaterialPageRoute(builder: (context) => HomePage()),
                       );
                     },
-                    child: Text('Sign in',style: TextStyle(color: Color(0xffffffff), fontSize: 14, fontWeight: FontWeight.w700,),),
-                  ),
-                ),
-                Container(
-                  margin: EdgeInsets.only(top: 15, bottom: 15),
-                  child: Row(
-
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: <Widget>[
-                      Text(
-                        "Don't have an account?",
-                        style: TextStyle(color: Color(0xffB3B3B3), fontSize: 12,fontWeight: FontWeight.w700),
-                      ),
-
-                      new GestureDetector(
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(builder: (context) => SignupPage()),
-                            );
-                          },
-                          child:Text(
-                            " Sign up",
-                            style: TextStyle(color: Color(0xff072e79), fontSize: 12,fontWeight: FontWeight.w700),
-                          )
-                      )
-
-                    ],
+                    child: Text('Reset',style: TextStyle(color: Color(0xffffffff), fontSize: 14, fontWeight: FontWeight.w700,),),
                   ),
                 ),
               ],
