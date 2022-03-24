@@ -2,10 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:ugrussa/splash/splash.dart';
 
-void main(){
+void main() {
   runApp(MyApp());
-  SystemChrome.setEnabledSystemUIOverlays([]);
-
+  SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: []);
 }
 
 class MyApp extends StatelessWidget {
