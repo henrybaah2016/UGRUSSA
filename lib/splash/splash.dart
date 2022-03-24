@@ -1,5 +1,9 @@
+import 'dart:async';
+
 import "package:flutter/material.dart";
+import 'package:ugrussa/home/home.dart';
 import 'package:ugrussa/login/login.dart';
+import 'package:ugrussa/utils/utils.dart';
 
 class Splash extends StatefulWidget {
   const Splash({Key? key}) : super(key: key);
@@ -17,9 +21,16 @@ class _SplashState extends State<Splash> {
   }
 
   _navigatetohome() async {
-    await Future.delayed(Duration(milliseconds: 3000), () {});
-    Navigator.pushReplacement(
-        context, MaterialPageRoute(builder: (context) => LoginPage()));
+    Timer(const Duration(seconds: 3), () {
+      final currentUser = firebaseAuth.currentUser;
+
+      if (currentUser != null) {
+        currentFirebaseUser = firebaseAuth.currentUser;
+        Navigator.pushReplacementNamed(context, HomePage.routeName);
+      } else {
+        Navigator.of(context).pushReplacementNamed(LoginPage.routeName);
+      }
+    });
   }
 
   @override

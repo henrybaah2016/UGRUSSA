@@ -7,6 +7,8 @@ import 'package:multi_wizard/multi_wizard.dart';
 class JoinPage extends StatefulWidget {
   JoinPage({Key? key}) : super(key: key);
 
+  static const routeName = '/join';
+
   @override
   _JoinPageState createState() => _JoinPageState();
 }
