@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter_rating_bar/flutter_rating_bar.dart';
-import 'package:getwidget/getwidget.dart';
+import 'package:dotted_border/dotted_border.dart';
 
-
-import '../main.dart';
+import '../student/details.dart';
 
 
 class SummaryPage extends StatefulWidget {
@@ -85,26 +82,28 @@ class _SummaryPageState extends State<SummaryPage> with SingleTickerProviderStat
               children: <Widget>[
                 new Container(
                   alignment:Alignment.topLeft,
-                  height: 200,
-                  width: double.infinity,
+                  height: 240,
+                    width: double.infinity,
                   color: Color(0xff072e79),
-
-                    child: Row(
-                      children: [
-                        Container(
-                          width:40,
-                          height:40,
-                          margin:EdgeInsets.only(left:10),
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Image.asset('assets/images/balance_icon.png'),
+                    child: Container(
+                      margin:EdgeInsets.only(top:10),
+                      child: Row(
+                        children: [
+                          Container(
+                            width:40,
+                            height:40,
+                            margin:EdgeInsets.only(left:10),
+                            child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Image.asset('assets/images/balance_icon.png'),
+                            ),
                           ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Text('GH1245.00',style: TextStyle(color: Color(0xffffffff), fontSize: 22, fontWeight: FontWeight.normal),),
-                        ),
-                      ],
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text('GH1245.00',style: TextStyle(color: Color(0xffffffff), fontSize: 22, fontWeight: FontWeight.normal),),
+                          ),
+                        ],
+                      ),
                     )
 
 
@@ -117,484 +116,400 @@ class _SummaryPageState extends State<SummaryPage> with SingleTickerProviderStat
                       children: [
 
                         Container(
-                          margin: EdgeInsets.only(top:120,bottom: 2,left:10,right:10),
+                          margin: EdgeInsets.only(top:50,bottom: 2,left:20,right:10),
                           child:Column(
                             children: [
                               Container(
-                                margin: EdgeInsets.only(bottom:10),
+                                margin: EdgeInsets.only(left:10),
                                 alignment: Alignment.topLeft,
-                                child: Text('STORYLINE',style: TextStyle(color: Color(0xff000000), fontSize: 18, fontWeight: FontWeight.w700),),
+                                child: Text('Active Card',style: TextStyle(color: Color(0xff3c4043), fontSize: 18, fontWeight: FontWeight.w600),),
 
 
                               ),
-                              buildText("In 1967 The people of the North had,In 1967 "
-                                  "The people of the North had,In 1967 "
-                                  "The people of the North had"
-                                  "In 1967 The people of the North had"
-                                  "In 1967 The people of the North had"
-                                  "In 1967 The people of the North had"
-                                  "In 1967 The people of the North had"
-                                  "In 1967 The people of the North had"
-                                  "In 1967 The people of the North had"
-                                  "In 1967 The people of the North had ",style: TextStyle(fontSize: 16,color:Color(0xffffffff)),),
-                              ElevatedButton(
-                                style: ElevatedButton.styleFrom(
-                                  primary: Color(0xffffffff),
-                                  elevation: 0,
-                                  shape: new RoundedRectangleBorder(
-                                    borderRadius: new BorderRadius.circular(0.0),
-                                    side: BorderSide(color: Color(0xffffffff)),
-                                  ),
-                                ),
-                                onPressed: (){
-
-                                  setState(() {
-                                    // toggle the bool variable true or false
-                                    isReadmore = !isReadmore;
-                                  });
-                                }, child: Container(
-                                  alignment: Alignment.topRight,
-                                  child: Icon(
-                                    Icons.keyboard_arrow_down,
-                                    color:Color(0xff339af0),
-                                    size:30,
-                                  )
-
-                              ),
-                              )
-                            ],
-                          ),
-
-
-                        ),
-
-
-
-
-                        Container(
-                          margin: EdgeInsets.only(top:5,bottom: 20),
-                          child: new TabBar(
-                            controller: _controller,
-                            indicatorWeight: 3,
-                            indicatorPadding: EdgeInsets.symmetric(horizontal: 50,vertical: 10),
-                            indicatorColor: Color(0xffff4A4A),
-                            labelColor:Color(0xffff4A4A),
-                            unselectedLabelColor: Color(0xff000000),
-                            labelStyle: TextStyle( fontSize: 18, fontWeight: FontWeight.w700,),
-                            unselectedLabelStyle: TextStyle(color: Color(0xff000000), fontSize: 18, fontWeight: FontWeight.w700,),
-
-                            tabs: [
-                              new Tab(
-
-                                text: 'CAST',
-                              ),
-                              new Tab(
-                                text: 'PHOTOS',
-                              ),
-                              new Tab(
-                                text: 'REVIEWS',
-                              ),
-                            ],
-                          ),
-                        ),
-                        Container(
-                          height: 200.0,
-                          child: new TabBarView(
-                            controller: _controller,
-
-                            children: <Widget>[
                               Container(
-                                height: 270,
-                                margin:EdgeInsets.only(right:2),
-
-                                child: ListView(
-                                  scrollDirection: Axis.horizontal,
-                                  children: <Widget>[
+                                child:Row(
+                                  children: [
                                     Container(
-                                      width: 120,
-                                      margin:EdgeInsets.only(left:10,top:5),
-
-                                      child: Column(
-                                        children: [
-                                          new GestureDetector(
-                                            onTap: () {
-
-                                            },
-                                            child:ClipRRect(
-                                              borderRadius: BorderRadius.all(Radius.circular(10)),
-                                              child: Container(
-                                                  child: Image.asset('assets/images/comedy.png')
-                                              ),
-                                            ),),
-
-                                          Container(
-                                              alignment: Alignment.topLeft,
-                                              margin:EdgeInsets.only(left:0,top:5),
-                                              child: Padding(
-                                                padding: const EdgeInsets.all(1),
-                                                child: Text('Planners',style: TextStyle(color: Color(0xffffffff), fontSize: 16, fontWeight: FontWeight.normal),),
-
-                                              )
-
-                                          ),
-                                        ],
+                                      width:70,
+                                      height:70,
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Image.asset('assets/images/mtn-icon.png'),
                                       ),
+                                    ),
 
-
+                                    Container(
+                                      width:70,
+                                      height:70,
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Image.asset('assets/images/visa-icon.png'),
+                                      ),
                                     ),
                                     Container(
-                                      width: 120,
-                                      margin:EdgeInsets.only(left:10,top:5),
-
-                                      child: Column(
-                                        children: [
-                                          new GestureDetector(
-                                            onTap: () {
-                                            },
-                                            child:ClipRRect(
-                                              borderRadius: BorderRadius.all(Radius.circular(10)),
-                                              child: Container(
-                                                  child: Image.asset('assets/images/inspring.png')
-                                              ),
-                                            ),),
-
-                                          Container(
-                                              alignment: Alignment.topLeft,
-                                              margin:EdgeInsets.only(left:0,top:5),
-                                              child: Padding(
-                                                padding: const EdgeInsets.all(1),
-                                                child: Text('The Waves',style: TextStyle(color: Color(0xffffffff), fontSize: 16, fontWeight: FontWeight.normal),),
-
-                                              )
-
+                                      margin: const EdgeInsets.only(left:8.0),
+                                      child: DottedBorder(
+                                        color: Colors.black,
+                                        strokeWidth: 1,
+                                        child:  Container(
+                                          // decoration: BoxDecoration(
+                                          //     border: Border.all(
+                                          //       color: Color(0xff000000),
+                                          //     ),
+                                          //     borderRadius: BorderRadius.all(Radius.circular(5))
+                                          // ),
+                                          child: Padding(
+                                            padding: const EdgeInsets.only(left:15,right:15,top:7,bottom:5),
+                                            child: Icon(
+                                              Icons.add_outlined,
+                                              size:24,
+                                            ),
                                           ),
-                                        ],
+                                        ),
                                       ),
+                                    )
 
-
-                                    ),
-                                    Container(
-                                      width: 120,
-                                      margin:EdgeInsets.only(left:10,top:5),
-
-                                      child: Column(
-                                        children: [
-                                          new GestureDetector(
-                                            onTap: () {
-
-                                            },
-                                            child:ClipRRect(
-                                              borderRadius: BorderRadius.all(Radius.circular(10)),
-                                              child: Container(
-                                                  child: Image.asset('assets/images/history.png')
-                                              ),
-                                            ),),
-
-                                          Container(
-                                              alignment: Alignment.topLeft,
-                                              margin:EdgeInsets.only(left:0,top:5),
-                                              child: Padding(
-                                                padding: const EdgeInsets.all(1),
-                                                child: Text('Ancestry',style: TextStyle(color: Color(0xffffffff), fontSize: 16, fontWeight: FontWeight.normal),),
-
-                                              )
-
-                                          ),
-                                        ],
-                                      ),
-
-
-                                    ),
                                   ],
                                 ),
                               ),
+
+                            ],
+                          ),
+
+
+                        ),
+
+                        Container(
+                          margin: EdgeInsets.only(top:10,bottom: 2,left:20,right:10),
+                          child:Column(
+                            children: [
                               Container(
+                                margin: EdgeInsets.only(left:10),
+                                alignment: Alignment.topLeft,
+                                child: Text('Dues Payment History',style: TextStyle(color: Color(0xff3c4043), fontSize: 18, fontWeight: FontWeight.w600),),
+                              ),
+                              Container(
+                                margin: EdgeInsets.only(left: 10),
+                                child: Column(
+                                  children: [
+                                    Column(
+                                      children: [
+                                        Row(
+                                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            new GestureDetector(
+                                              onTap: () {
+                                                Navigator.push(
+                                                  context,
+                                                  MaterialPageRoute(
+                                                      builder: (context) => DetailsPage()),
+                                                );
+                                              },
+                                              child: Row(
+                                                children: [
+                                                  Container(
+                                                    margin:
+                                                    EdgeInsets.only(top: 10, bottom: 5, left: 5),
+                                                    child: ClipRRect(
+                                                      borderRadius:
+                                                      BorderRadius.all(Radius.circular(100)),
+                                                      child: Container(
+                                                          height: 45,
+                                                          width: 45,
+                                                          child: Image.asset(
+                                                              'assets/images/use_profile.png')),
+                                                    ),
+                                                  ),
+                                                  Container(
+                                                    margin: EdgeInsets.only(top: 5, left: 5),
+                                                    child: Column(
+                                                      mainAxisAlignment: MainAxisAlignment.start,
+                                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                                      children: [
+                                                        Padding(
+                                                          padding: const EdgeInsets.all(1),
+                                                          child: Text(
+                                                            'Kaha Mane',
+                                                            style: TextStyle(
+                                                                color: Color(0xff575858),
+                                                                fontSize: 16,
+                                                                fontWeight: FontWeight.w600),
+                                                          ),
+                                                        ),
+                                                        Row(
+                                                          children: [
+                                                            Padding(
+                                                              padding: const EdgeInsets.all(1),
+                                                              child: Text(
+                                                                'GH50.00  ',
+                                                                style: TextStyle(
+                                                                    color: Color(0xffc8cbcd),
+                                                                    fontSize: 12,
+                                                                    fontWeight: FontWeight.w500),
+                                                              ),
+                                                            ),
 
-                                child: GridView.count(
-                                    crossAxisCount: 2,
-                                    childAspectRatio: 1.0,
-                                    padding: const EdgeInsets.all(10.0),
-                                    mainAxisSpacing: 10.0,
-                                    crossAxisSpacing: 10.0,
-                                    children: <String>[
-                                      'assets/images/history.png',
-                                      'assets/images/twins.png',
-                                      'assets/images/history.png',
-                                    ].map((String url) {
-                                      return GridTile(
-                                          child:ClipRRect(
-                                              borderRadius: BorderRadius.all(Radius.circular(5)),
-                                              child: Image.asset(url, fit: BoxFit.cover))
-
-                                      );
-                                    }).toList()),
+                                                            Padding(
+                                                              padding: const EdgeInsets.all(1),
+                                                              child: Text(
+                                                                '21/Oct/2022',
+                                                                style: TextStyle(
+                                                                    color: Color(0xffc8cbcd),
+                                                                    fontSize: 12,
+                                                                    fontWeight: FontWeight.w500),
+                                                              ),
+                                                            ),
+                                                          ],
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                            PopupMenuButton(
+                                              icon: Icon(
+                                                Icons.check_circle,
+                                                size: 24,
+                                                color: Color(0xff59b101),
+                                              ),
+                                              itemBuilder: (BuildContext context) =>
+                                              <PopupMenuEntry>[
+                                                const PopupMenuItem(
+                                                  child: ListTile(
+                                                    title: Text('Paid'),
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ],
+                                        ),
+                                      ],
+                                    ),
+                                    Divider(
+                                      color: Color(0xffe3e6e8),
+                                    )
+                                  ],
+                                ),
                               ),
 
                               Container(
-
-                                  child:ListView(
-
-                                    scrollDirection: Axis.vertical,
-
-                                    children: [
-
-                                      Container(
-                                        color:Color(0xffffffff),
-                                        child: Column(
+                                margin: EdgeInsets.only(left: 10),
+                                child: Column(
+                                  children: [
+                                    Column(
+                                      children: [
+                                        Row(
+                                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                           children: [
-                                            Row(
-                                              mainAxisAlignment: MainAxisAlignment.start,
-
-                                              children: [
-                                                Container(
-                                                  child: Column(
-                                                    children: [
-                                                      Container(
-                                                        margin: EdgeInsets.only(left: 10,top: 15),
-                                                        alignment:Alignment.center,
-//
-                                                        child:ClipRRect(
-                                                          borderRadius: BorderRadius.all(Radius.circular(100)),
-                                                          child: Container(
-                                                              width:50,
-                                                              child: Image.asset('assets/images/use_profile.png')
-                                                          ),
-                                                        ),
-                                                      ),
-
-
-                                                    ],
+                                            new GestureDetector(
+                                              onTap: () {
+                                                Navigator.push(
+                                                  context,
+                                                  MaterialPageRoute(
+                                                      builder: (context) => DetailsPage()),
+                                                );
+                                              },
+                                              child: Row(
+                                                children: [
+                                                  Container(
+                                                    margin:
+                                                    EdgeInsets.only(top: 10, bottom: 5, left: 5),
+                                                    child: ClipRRect(
+                                                      borderRadius:
+                                                      BorderRadius.all(Radius.circular(100)),
+                                                      child: Container(
+                                                          height: 45,
+                                                          width: 45,
+                                                          child: Image.asset(
+                                                              'assets/images/use_profile.png')),
+                                                    ),
                                                   ),
-
-                                                ),
-                                                Container(
-                                                  child: Padding(
-                                                    padding: const EdgeInsets.only(top: 20,bottom: 5, left: 8, right: 8),
+                                                  Container(
+                                                    margin: EdgeInsets.only(top: 5, left: 5),
                                                     child: Column(
+                                                      mainAxisAlignment: MainAxisAlignment.start,
                                                       crossAxisAlignment: CrossAxisAlignment.start,
                                                       children: [
-
-                                                        Column(
+                                                        Padding(
+                                                          padding: const EdgeInsets.all(1),
+                                                          child: Text(
+                                                            'Kaha Mane',
+                                                            style: TextStyle(
+                                                                color: Color(0xff575858),
+                                                                fontSize: 16,
+                                                                fontWeight: FontWeight.w600),
+                                                          ),
+                                                        ),
+                                                        Row(
                                                           children: [
-                                                            Row(
-                                                              children: [
+                                                            Padding(
+                                                              padding: const EdgeInsets.all(1),
+                                                              child: Text(
+                                                                'GH50.00  ',
+                                                                style: TextStyle(
+                                                                    color: Color(0xffc8cbcd),
+                                                                    fontSize: 12,
+                                                                    fontWeight: FontWeight.w500),
+                                                              ),
+                                                            ),
 
-                                                                Padding(
-                                                                  padding: const EdgeInsets.only(right:5),
-                                                                  child: Text('Allen',style: TextStyle(color: Color(0xff000000), fontSize: 16, fontWeight: FontWeight.w500,), textAlign: TextAlign.left,),
-                                                                ),
-                                                                Padding(
-                                                                  padding: const EdgeInsets.all(0),
-                                                                  child: Text('10:40',style: TextStyle(color: Color(0xffB3B3B3), fontSize: 16, fontWeight: FontWeight.w600,), textAlign: TextAlign.left,),
-                                                                )
-                                                              ],
-                                                            )
+                                                            Padding(
+                                                              padding: const EdgeInsets.all(1),
+                                                              child: Text(
+                                                                '21/Oct/2022',
+                                                                style: TextStyle(
+                                                                    color: Color(0xffc8cbcd),
+                                                                    fontSize: 12,
+                                                                    fontWeight: FontWeight.w500),
+                                                              ),
+                                                            ),
                                                           ],
                                                         ),
-                                                        Container(
-                                                          margin: EdgeInsets.only(top:5),
-                                                          child: Text('This movie is very historic for me',style: TextStyle(color: Color(0xff000000), fontSize: 16, fontWeight: FontWeight.w800,),),
-                                                        ),
-
                                                       ],
                                                     ),
-
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                            PopupMenuButton(
+                                              icon: Icon(
+                                                Icons.check_circle,
+                                                size: 24,
+                                                color: Color(0xff59b101),
+                                              ),
+                                              itemBuilder: (BuildContext context) =>
+                                              <PopupMenuEntry>[
+                                                const PopupMenuItem(
+                                                  child: ListTile(
+                                                    title: Text('Paid'),
                                                   ),
                                                 ),
-
                                               ],
                                             ),
                                           ],
                                         ),
-                                      ),
-                                      Container(
-                                        color:Color(0xffffffff),
-                                        child: Column(
+                                      ],
+                                    ),
+                                    Divider(
+                                      color: Color(0xffe3e6e8),
+                                    )
+                                  ],
+                                ),
+                              ),
+
+
+                              Container(
+                                margin: EdgeInsets.only(left: 10),
+                                child: Column(
+                                  children: [
+                                    Column(
+                                      children: [
+                                        Row(
+                                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                           children: [
-                                            Row(
-                                              mainAxisAlignment: MainAxisAlignment.start,
-
-                                              children: [
-                                                Container(
-                                                  child: Column(
-                                                    children: [
-                                                      Container(
-                                                        margin: EdgeInsets.only(left: 10,top: 15),
-                                                        alignment:Alignment.center,
-//
-                                                        child:ClipRRect(
-                                                          borderRadius: BorderRadius.all(Radius.circular(100)),
-                                                          child: Container(
-                                                              width:50,
-                                                              child: Image.asset('assets/images/use_profile.png')
-                                                          ),
-                                                        ),
-                                                      ),
-
-
-                                                    ],
+                                            new GestureDetector(
+                                              onTap: () {
+                                                Navigator.push(
+                                                  context,
+                                                  MaterialPageRoute(
+                                                      builder: (context) => DetailsPage()),
+                                                );
+                                              },
+                                              child: Row(
+                                                children: [
+                                                  Container(
+                                                    margin:
+                                                    EdgeInsets.only(top: 10, bottom: 5, left: 5),
+                                                    child: ClipRRect(
+                                                      borderRadius:
+                                                      BorderRadius.all(Radius.circular(100)),
+                                                      child: Container(
+                                                          height: 45,
+                                                          width: 45,
+                                                          child: Image.asset(
+                                                              'assets/images/use_profile.png')),
+                                                    ),
                                                   ),
-
-                                                ),
-                                                Container(
-                                                  child: Padding(
-                                                    padding: const EdgeInsets.only(top: 20,bottom: 5, left: 8, right: 8),
+                                                  Container(
+                                                    margin: EdgeInsets.only(top: 5, left: 5),
                                                     child: Column(
+                                                      mainAxisAlignment: MainAxisAlignment.start,
                                                       crossAxisAlignment: CrossAxisAlignment.start,
                                                       children: [
-
-                                                        Column(
+                                                        Padding(
+                                                          padding: const EdgeInsets.all(1),
+                                                          child: Text(
+                                                            'Kaha Mane',
+                                                            style: TextStyle(
+                                                                color: Color(0xff575858),
+                                                                fontSize: 16,
+                                                                fontWeight: FontWeight.w600),
+                                                          ),
+                                                        ),
+                                                        Row(
                                                           children: [
-                                                            Row(
-                                                              children: [
+                                                            Padding(
+                                                              padding: const EdgeInsets.all(1),
+                                                              child: Text(
+                                                                'GH50.00  ',
+                                                                style: TextStyle(
+                                                                    color: Color(0xffc8cbcd),
+                                                                    fontSize: 12,
+                                                                    fontWeight: FontWeight.w500),
+                                                              ),
+                                                            ),
 
-                                                                Padding(
-                                                                  padding: const EdgeInsets.only(right:5),
-                                                                  child: Text('Allen',style: TextStyle(color: Color(0xff000000), fontSize: 16, fontWeight: FontWeight.w500,), textAlign: TextAlign.left,),
-                                                                ),
-                                                                Padding(
-                                                                  padding: const EdgeInsets.all(0),
-                                                                  child: Text('10:40',style: TextStyle(color: Color(0xffB3B3B3), fontSize: 16, fontWeight: FontWeight.w600,), textAlign: TextAlign.left,),
-                                                                )
-                                                              ],
-                                                            )
+                                                            Padding(
+                                                              padding: const EdgeInsets.all(1),
+                                                              child: Text(
+                                                                '21/Oct/2022',
+                                                                style: TextStyle(
+                                                                    color: Color(0xffc8cbcd),
+                                                                    fontSize: 12,
+                                                                    fontWeight: FontWeight.w500),
+                                                              ),
+                                                            ),
                                                           ],
                                                         ),
-                                                        Container(
-                                                          margin: EdgeInsets.only(top:5),
-                                                          child: Text('This movie is very historic for me',style: TextStyle(color: Color(0xff000000), fontSize: 16, fontWeight: FontWeight.w800,),),
-                                                        ),
-
                                                       ],
                                                     ),
-
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                            PopupMenuButton(
+                                              icon: Icon(
+                                                Icons.check_circle,
+                                                size: 24,
+                                                color: Color(0xff59b101),
+                                              ),
+                                              itemBuilder: (BuildContext context) =>
+                                              <PopupMenuEntry>[
+                                                const PopupMenuItem(
+                                                  child: ListTile(
+                                                    title: Text('Paid'),
                                                   ),
                                                 ),
-
                                               ],
                                             ),
                                           ],
                                         ),
-                                      ),
-                                      Container(
-                                        color:Color(0xffffffff),
-                                        child: Column(
-                                          children: [
-                                            Row(
-                                              mainAxisAlignment: MainAxisAlignment.start,
-
-                                              children: [
-                                                Container(
-                                                  child: Column(
-                                                    children: [
-                                                      Container(
-                                                        margin: EdgeInsets.only(left: 10,top: 15),
-                                                        alignment:Alignment.center,
-//
-                                                        child:ClipRRect(
-                                                          borderRadius: BorderRadius.all(Radius.circular(100)),
-                                                          child: Container(
-                                                              width:50,
-                                                              child: Image.asset('assets/images/use_profile.png')
-                                                          ),
-                                                        ),
-                                                      ),
+                                      ],
+                                    ),
+                                    Divider(
+                                      color: Color(0xffe3e6e8),
+                                    )
+                                  ],
+                                ),
+                              ),
 
 
-                                                    ],
-                                                  ),
-
-                                                ),
-                                                Container(
-                                                  child: Padding(
-                                                    padding: const EdgeInsets.only(top: 20,bottom: 5, left: 8, right: 8),
-                                                    child: Column(
-                                                      crossAxisAlignment: CrossAxisAlignment.start,
-                                                      children: [
-
-                                                        Column(
-                                                          children: [
-                                                            Row(
-                                                              children: [
-
-                                                                Padding(
-                                                                  padding: const EdgeInsets.only(right:5),
-                                                                  child: Text('Allen',style: TextStyle(color: Color(0xff000000), fontSize: 16, fontWeight: FontWeight.w500,), textAlign: TextAlign.left,),
-                                                                ),
-                                                                Padding(
-                                                                  padding: const EdgeInsets.all(0),
-                                                                  child: Text('10:40',style: TextStyle(color: Color(0xffB3B3B3), fontSize: 16, fontWeight: FontWeight.w600,), textAlign: TextAlign.left,),
-                                                                )
-                                                              ],
-                                                            )
-                                                          ],
-                                                        ),
-                                                        Container(
-                                                          margin: EdgeInsets.only(top:5),
-                                                          child: Text('This movie is very historic for me',style: TextStyle(color: Color(0xff000000), fontSize: 16, fontWeight: FontWeight.w800,),),
-                                                        ),
-
-                                                      ],
-                                                    ),
-
-                                                  ),
-                                                ),
-
-                                              ],
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-
-                                    ],
-                                  )
-                              )
                             ],
                           ),
+
+
                         ),
-
-
-                        Container(
-                            margin: EdgeInsets.only(top:10),
-
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children:[
-                                Container(
-                                  margin: EdgeInsets.only(bottom:10,left:10),
-                                  alignment: Alignment.topLeft,
-                                  child: Text('\$6.8',style: TextStyle(color: Color(0xff000000), fontSize: 30, fontWeight: FontWeight.w700),),
-
-
-                                ),
-
-
-                                Container(
-                                  margin: EdgeInsets.only(bottom:10),
-                                  alignment: Alignment.topLeft,
-                                  child:ElevatedButton(
-                                    style: ElevatedButton.styleFrom(
-                                      minimumSize: Size(100, 60),
-                                      primary: Color(0xffff4A4A),
-                                      shape: new RoundedRectangleBorder(
-                                        borderRadius: new BorderRadius.circular(0.0),
-                                        side: BorderSide(color: Color(0xffff4A4A)),
-                                      ),
-                                    ),
-                                    onPressed: () {
-
-                                    },
-                                    child: Text('BUY NOW',style: TextStyle(color: Color(0xffffffff), fontSize: 20, fontWeight: FontWeight.w600,),),
-                                  ),
-
-                                ),
-
-
-
-                              ],
-                            )
-                        )
-
 
                       ],
                     )
@@ -604,47 +519,142 @@ class _SummaryPageState extends State<SummaryPage> with SingleTickerProviderStat
 
               ],
             ),
-      Card(
-        elevation:10,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(10.0),
-        ),
-          child: Container(
+
+            new Container(
               alignment: Alignment.topLeft,
               padding: new EdgeInsets.only(
-                  top: MediaQuery.of(context).size.height * .13,
+                  top: MediaQuery.of(context).size.height * .11,
                   right: 10.0,
-                  // Container(
-                  //     alignment:Alignment.topLeft,
-                  //     height: 150,
-                  //     width: double.infinity,
-                  //     color: Color(0xffffffff),
-                  //     child:Container()
-                  // )
+                  left: 10.0),
+              child: new Card(
+                child:Container(
+                    alignment:Alignment.topLeft,
+                    height: 200,
+                    width: double.infinity,
+                    color: Color(0xffffffff),
+                    child:Column(
+
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+
+                      children: [
+                        Container(
+                          child:Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Container(
+                                width:70,
+                                height:70,
+                                margin:EdgeInsets.only(left:10),
+                                child: Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Image.asset('assets/images/chip-icon.png'),
+                                ),
+                              ),
+
+                              Container(
+                                width:70,
+                                height:70,
+                                margin:EdgeInsets.only(left:10,right:10),
+                                child: Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Image.asset('assets/images/visa-icon.png'),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Container(
+                          margin:EdgeInsets.only(top:15),
+                          child:Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Container(
+                                margin:EdgeInsets.only(left:10),
+                                child: Padding(
+                                  padding: const EdgeInsets.only(right:8.0,bottom:4,left:8),
+                                  child: Text('CARD NUMBER',style: TextStyle(color: Color(0xffbdb9b9), fontSize: 12, fontWeight: FontWeight.w600),),
+                                ),
+                              ),
+
+                              Container(
+                                margin:EdgeInsets.only(left:10,right:10),
+                                child: Padding(
+                                  padding: const EdgeInsets.only(left:8.0),
+                                  child: Text('5434 - 4344 - 3433 - 8787',style: TextStyle(color: Color(0xff3c4043), fontSize: 18, fontWeight: FontWeight.w600),),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Container(
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+
+                            children: [
+                              Container(
+                                margin:EdgeInsets.only(top:20),
+                                child:Column(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Container(
+                                      margin:EdgeInsets.only(left:10),
+                                      child: Padding(
+                                        padding: const EdgeInsets.only(right:8.0,bottom:4,left:8),
+                                        child: Text('CARD NAME',style: TextStyle(color: Color(0xffbdb9b9), fontSize: 12, fontWeight: FontWeight.w600),),
+                                      ),
+                                    ),
+
+                                    Container(
+                                      margin:EdgeInsets.only(left:10,right:10),
+                                      child: Padding(
+                                        padding: const EdgeInsets.only(left:8.0),
+                                        child: Text('Mark Gyan',style: TextStyle(color: Color(0xff3c4043), fontSize: 18, fontWeight: FontWeight.w600),),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+
+                              Container(
+                                margin:EdgeInsets.only(top:20),
+                                child:Column(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Container(
+                                      margin:EdgeInsets.only(left:10,right:10),
+                                      child: Padding(
+                                        padding: const EdgeInsets.only(right:8.0,bottom:4,left:8),
+                                        child: Text('CARD EXPIRY',style: TextStyle(color: Color(0xffbdb9b9), fontSize: 12, fontWeight: FontWeight.w600),),
+                                      ),
+                                    ),
+
+                                    Container(
+                                      margin:EdgeInsets.only(left:10,right:10),
+                                      child: Padding(
+                                        padding: const EdgeInsets.only(left:8.0),
+                                        child: Text('31/Dec',style: TextStyle(color: Color(0xff3c4043), fontSize: 18, fontWeight: FontWeight.w600),),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+
+                            ],
+                          ),
+                        ),
+                      ],
+                    )
+                ),
               )
-          )
-
-
-      ),
-            
+            )
           ],
         ),
 
       ),
-    );
-  }
-
-  Widget buildText(String text, {TextStyle, style}){
-
-    // if read more is false then show only 3 lines from text
-    // else show full text
-    final lines = isReadmore ? null : 3;
-    return Text(
-      text,
-      maxLines: lines,
-      // overflow properties is used to show 3 dot in text widget
-      // so that user can understand there are few more line to read.
-      overflow: isReadmore ? TextOverflow.visible: TextOverflow.ellipsis,
     );
   }
 }
