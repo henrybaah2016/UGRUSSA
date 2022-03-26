@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:dotted_border/dotted_border.dart';
+import 'package:ugrussa/dues/pay.dart';
 
 import '../student/details.dart';
 
@@ -129,14 +130,6 @@ class _SummaryPageState extends State<SummaryPage> with SingleTickerProviderStat
                               Container(
                                 child:Row(
                                   children: [
-                                    Container(
-                                      width:70,
-                                      height:70,
-                                      child: Padding(
-                                        padding: const EdgeInsets.all(8.0),
-                                        child: Image.asset('assets/images/mtn-icon.png'),
-                                      ),
-                                    ),
 
                                     Container(
                                       width:70,
@@ -159,7 +152,7 @@ class _SummaryPageState extends State<SummaryPage> with SingleTickerProviderStat
                                           //     borderRadius: BorderRadius.all(Radius.circular(5))
                                           // ),
                                           child: Padding(
-                                            padding: const EdgeInsets.only(left:15,right:15,top:7,bottom:5),
+                                            padding: const EdgeInsets.only(left:13,right:13,top:3,bottom:3),
                                             child: Icon(
                                               Icons.add_outlined,
                                               size:24,
@@ -180,13 +173,40 @@ class _SummaryPageState extends State<SummaryPage> with SingleTickerProviderStat
                         ),
 
                         Container(
-                          margin: EdgeInsets.only(top:10,bottom: 2,left:20,right:10),
+                          margin: EdgeInsets.only(top:1,bottom: 2,left:20,right:10),
                           child:Column(
                             children: [
                               Container(
-                                margin: EdgeInsets.only(left:10),
-                                alignment: Alignment.topLeft,
-                                child: Text('Dues Payment History',style: TextStyle(color: Color(0xff3c4043), fontSize: 18, fontWeight: FontWeight.w600),),
+                                margin: EdgeInsets.only(bottom:10),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+
+                                  children: [
+                                    Container(
+                                      margin: EdgeInsets.only(left:10),
+                                      alignment: Alignment.topLeft,
+                                      child: Text('Dues History',style: TextStyle(color: Color(0xff3c4043), fontSize: 18, fontWeight: FontWeight.w600),),
+                                    ),
+                                    GestureDetector(
+                                      onTap: () {
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(builder: (context) => PayPage()),
+                                        );
+                                      },
+                                      child: Container(
+                                        margin: EdgeInsets.only(left:10,right:13),
+                                        alignment: Alignment.topLeft,
+                                        child:Icon(
+                                          Icons.add_circle_outline,
+                                          size: 22,
+                                          color: Color(0xff59b101),
+                                        ),
+                                      ),
+                                    ),
+
+                                  ],
+                                ),
                               ),
                               Container(
                                 margin: EdgeInsets.only(left: 10),
@@ -533,10 +553,8 @@ class _SummaryPageState extends State<SummaryPage> with SingleTickerProviderStat
                     width: double.infinity,
                     color: Color(0xffffffff),
                     child:Column(
-
                       mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.start,
-
                       children: [
                         Container(
                           child:Row(
