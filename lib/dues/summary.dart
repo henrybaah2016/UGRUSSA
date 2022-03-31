@@ -123,7 +123,7 @@ class _SummaryPageState extends State<SummaryPage> with SingleTickerProviderStat
                               Container(
                                 margin: EdgeInsets.only(left:10),
                                 alignment: Alignment.topLeft,
-                                child: Text('Active Card',style: TextStyle(color: Color(0xff3c4043), fontSize: 18, fontWeight: FontWeight.w600),),
+                                child: Text('Payment Method',style: TextStyle(color: Color(0xff3c4043), fontSize: 18, fontWeight: FontWeight.w600),),
 
 
                               ),
@@ -139,28 +139,34 @@ class _SummaryPageState extends State<SummaryPage> with SingleTickerProviderStat
                                         child: Image.asset('assets/images/visa-icon.png'),
                                       ),
                                     ),
-                                    Container(
-                                      margin: const EdgeInsets.only(left:8.0),
-                                      child: DottedBorder(
-                                        color: Colors.black,
-                                        strokeWidth: 1,
-                                        child:  Container(
-                                          // decoration: BoxDecoration(
-                                          //     border: Border.all(
-                                          //       color: Color(0xff000000),
-                                          //     ),
-                                          //     borderRadius: BorderRadius.all(Radius.circular(5))
-                                          // ),
-                                          child: Padding(
-                                            padding: const EdgeInsets.only(left:13,right:13,top:3,bottom:3),
-                                            child: Icon(
-                                              Icons.add_outlined,
-                                              size:24,
-                                            ),
+
+                                GestureDetector(
+                                  onTap: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => PayPage()),
+                                    );
+                                  },
+                                  child:Container(
+                                    margin: const EdgeInsets.only(left:8.0),
+                                    child: DottedBorder(
+                                      color: Colors.black,
+                                      strokeWidth: 1,
+                                      child:  Container(
+
+                                        child: Padding(
+                                          padding: const EdgeInsets.only(left:13,right:13,top:3,bottom:3),
+                                          child: Icon(
+                                            Icons.add_outlined,
+                                            size:24,
                                           ),
                                         ),
                                       ),
-                                    )
+                                    ),
+                                  )
+
+                                )
 
                                   ],
                                 ),
