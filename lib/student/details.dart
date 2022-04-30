@@ -2,6 +2,8 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:ugrussa/splash/splash.dart';
 
+import '../chat/chat.dart';
+
 class DetailsPage extends StatefulWidget {
   DetailsPage({Key? key}) : super(key: key);
 
@@ -134,17 +136,25 @@ class _DetailsPageState extends State<DetailsPage> {
                                   shape: BoxShape.circle,
                                   color: Color(0x31808080)),
                             )),
-                        Container(
-                            margin: EdgeInsets.all(10),
-                            child: Container(
-                              width: 55,
-                              height: 55,
-                              child: Icon(Icons.mark_chat_unread_sharp,
-                                  size: 20, color: Color(0xffffffff)),
-                              decoration: BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  color: Color(0x31808080)),
-                            )),
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => Chat()),
+                            );
+                          },
+                          child: Container(
+                              margin: EdgeInsets.all(10),
+                              child: Container(
+                                width: 55,
+                                height: 55,
+                                child: Icon(Icons.mark_chat_unread_sharp,
+                                    size: 20, color: Color(0xffffffff)),
+                                decoration: BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    color: Color(0x31808080)),
+                              )),
+                        ),
                         Container(
                             margin: EdgeInsets.all(10),
                             child: Container(

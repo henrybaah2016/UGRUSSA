@@ -1,10 +1,13 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:ugrussa/document_upload/all_files.dart';
+import 'package:ugrussa/document_upload/upload.dart';
 import 'package:ugrussa/dues/summary.dart';
 import 'package:ugrussa/login/login.dart';
 import 'package:ugrussa/splash/splash.dart';
 import 'package:ugrussa/utils/utils.dart';
 import 'package:ugrussa/widgets/progress_dialog.dart';
+import '../chat/chat.dart';
 import '../student/list.dart';
 
 class HomePage extends StatefulWidget {
@@ -40,6 +43,20 @@ class _HomePageState extends State<HomePage> {
         title: const Text('UGRUSSA',style: TextStyle(color: Color(0xff072e79), fontSize: 20, fontWeight: FontWeight.w600,),),
 
         actions: <Widget>[
+          GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => Chat()),
+              );
+            },
+            child:Icon(
+              Icons.chat,
+              color: Color(0xff072e79),
+              size: 25.0,
+            ),
+          ),
+
           PopupMenuButton(
             onSelected: (result) async {
               if(result == 0){
@@ -69,6 +86,7 @@ class _HomePageState extends State<HomePage> {
 
             ],
           ),
+
         ],
       ),
 
@@ -264,7 +282,7 @@ class _HomePageState extends State<HomePage> {
                           onTap: () {
                             Navigator.push(
                               context,
-                              MaterialPageRoute(builder: (context) => Splash()),
+                              MaterialPageRoute(builder: (context) => AllFiles()),
                             );
                           },
                           child: Container(
@@ -915,7 +933,17 @@ class _HomePageState extends State<HomePage> {
 
             ]
             )
-        )
+        ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => Upload()),
+          );
+        },
+        backgroundColor: Color(0xfffbbc07),
+        child: const Icon(Icons.attach_file_rounded),
+      ),
     );
   }
 }
