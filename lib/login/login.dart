@@ -277,20 +277,6 @@ class _LoginPageState extends State<LoginPage> {
                         ],
                       ),
                     ),
-
-                    new GestureDetector(
-                      onTap: () {
-//                              Navigator.push(
-//                                context,
-//                                MaterialPageRoute(builder: (context) => ForgotPasswordPage()),
-//                              );
-                      },
-                      child: new Text("Forgot Password",
-                          style: new TextStyle(
-                              color: Color(0xff072e79),
-                              fontSize: 12,
-                              fontWeight: FontWeight.w600)),
-                    )
                   ],
                 ),
               ),

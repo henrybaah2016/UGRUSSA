@@ -47,7 +47,7 @@ class _HomePageState extends State<HomePage> {
             onTap: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => Chat()),
+                MaterialPageRoute(builder: (context) => ChatList()),
               );
             },
             child:Icon(
@@ -66,7 +66,6 @@ class _HomePageState extends State<HomePage> {
             },
 
             icon:const Icon(
-
               Icons.more_vert_outlined,
               color: Color(0xff072e79),
               size: 30.0,

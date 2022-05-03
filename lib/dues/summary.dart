@@ -53,7 +53,6 @@ class _SummaryPageState extends State<SummaryPage> with SingleTickerProviderStat
             },
 
             icon:const Icon(
-
               Icons.more_vert_rounded,
               color: Color(0xffffffff),
               size: 30.0,

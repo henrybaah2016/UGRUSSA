@@ -88,12 +88,22 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
           ),
           Container(
             margin: EdgeInsets.only(top: 15, bottom: 15),
-            child: Row(
+            child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 Text(
-                  "Enter your email address below and we will send you a link to reset your password",
+                  "Enter your email address below and ",
+                  textAlign: TextAlign.right,
+                  style: TextStyle(
+                      color: Color(0xffB3B3B3),
+                      fontSize: 12,
+                      fontWeight: FontWeight.w700,
+                  ),
+
+                ),
+                Text(
+                  "we will send you a link to reset your password",
                   style: TextStyle(
                       color: Color(0xffB3B3B3),
                       fontSize: 12,
