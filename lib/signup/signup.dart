@@ -1,11 +1,19 @@
+import 'dart:async';
+import 'dart:io';
+import 'dart:math' as math;
+import 'package:path/path.dart' as path;
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:ugrussa/home/home.dart';
 import 'package:ugrussa/login/login.dart';
 import 'package:ugrussa/utils/utils.dart';
+import 'package:ugrussa/widgets/custom_alert_dialog.dart';
 import 'package:ugrussa/widgets/progress_dialog.dart';
 
 class SignupPage extends StatefulWidget {
@@ -29,6 +37,133 @@ class _SignupPageState extends State<SignupPage> {
   final _residenceController = TextEditingController();
   final _passwordController = TextEditingController();
   final _confirmPasswordController = TextEditingController();
+
+  final ImagePicker _picker = ImagePicker();
+  XFile? _imageFile;
+  var profilePhotoUrl = "";
+
+  Future<void> _showChoiceDialog(BuildContext context, StateSetter setState) {
+    return showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: const Text(
+              "Upload Image",
+              style: TextStyle(color: Color(0xff3e3e3e)),
+            ),
+            content: SingleChildScrollView(
+              child: ListBody(
+                children: [
+                  // const Divider(
+                  //   height: 0,
+                  //   color: Color(0xff3e3e3e),
+                  // ),
+                  ListTile(
+                    onTap: () {
+                      _openGallery(context, setState);
+                    },
+                    title: const Text(
+                      "Device",
+                    ),
+                    leading: const Icon(
+                      Icons.file_upload_outlined,
+                      color: Color(0xfffdcb03),
+                    ),
+                  ),
+                  ListTile(
+                    onTap: () {
+                      _openCamera(context, setState);
+                    },
+                    title: const Text("Camera"),
+                    leading: const Icon(
+                      Icons.camera,
+                      color: Color(0xfffdcb03),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          );
+        });
+  }
+
+  void _openCamera(BuildContext context, StateSetter setState) async {
+    final XFile? pickedFile = (await _picker.pickImage(
+        source: ImageSource.camera,
+        imageQuality: 50,
+        maxHeight: 500,
+        maxWidth: 500));
+
+    setState(() {
+      if (pickedFile != null) {
+        _imageFile = pickedFile;
+      }
+    });
+
+    // final File? file = File(pickedFile!.path);
+    // _imageFileData = file;
+
+    Navigator.pop(context);
+  }
+
+  void _openGallery(BuildContext context, StateSetter setState) async {
+    final XFile? pickedFile = (await _picker.pickImage(
+        source: ImageSource.gallery,
+        imageQuality: 50,
+        maxHeight: 500,
+        maxWidth: 500));
+
+    setState(() {
+      if (pickedFile != null) {
+        _imageFile = pickedFile;
+      }
+    });
+
+    // final File? file = File(pickedFile!.path);
+    // _imageFileData = file;
+    // print(pickedFile);
+
+    Navigator.pop(context);
+  }
+
+  Future<void> _uploadImage() async {
+    showDialog(
+      context: context,
+      // barrierDismissible: false,
+      builder: (ctx) => ProgressDialog(
+        message: "Authenticating user",
+      ),
+    );
+
+    if (_imageFile == null) {
+      Navigator.of(context).pop();
+      showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return CustomAlertDialog(
+              alertTitle: "Profile Picture Upload",
+              alertMessage:
+                  "Select a profile picture to continue with the sign up process",
+            );
+          });
+    }
+
+    String fileName = path.basename(_imageFile!.path);
+    Reference firebaseStorageRef =
+        FirebaseStorage.instance.ref().child('uploads/$fileName');
+    var uploadTask = firebaseStorageRef.putFile(File(_imageFile!.path));
+    var taskSnapshot = await uploadTask.then((taskSnapshot) {
+      taskSnapshot.ref.getDownloadURL().then(
+        (photoUrl) {
+          print("Done: $photoUrl");
+          profilePhotoUrl = photoUrl;
+          _signup(photoUrl: profilePhotoUrl);
+          // Navigator.pop(context);
+        },
+      );
+      //Navigator.pop(context);
+    });
+  }
 
   validateForm(BuildContext context) {
     if (_nameController.text.length < 3) {
@@ -133,11 +268,11 @@ class _SignupPageState extends State<SignupPage> {
       );
       return;
     } else {
-      _signup();
+      _uploadImage();
     }
   }
 
-  void _signup() async {
+  void _signup({String? photoUrl}) async {
     showDialog(
       context: context,
       // barrierDismissible: false,
@@ -176,6 +311,7 @@ class _SignupPageState extends State<SignupPage> {
         "student ID": _studentIdController.text,
         "level": _levelController.text,
         "residence": _residenceController.text,
+        "profilePhotoUrl": photoUrl
       };
 
       // DatabaseReference driversRef =
@@ -235,14 +371,15 @@ class _SignupPageState extends State<SignupPage> {
           child: Column(
             children: <Widget>[
               Center(
-                  child: Container(
-                margin: const EdgeInsets.only(top: 80, left: 5, bottom: 5),
-                height: 70,
-                width: 70,
-                child: Image.asset('assets/images/logo.png'),
-              )),
+                child: Container(
+                  margin: const EdgeInsets.only(top: 80, left: 5, bottom: 5),
+                  height: 70,
+                  width: 70,
+                  child: Image.asset('assets/images/logo.png'),
+                ),
+              ),
               Container(
-                margin: const EdgeInsets.only(top: 0, left: 5, bottom: 40),
+                margin: const EdgeInsets.only(top: 0, left: 5, bottom: 20),
                 child: Padding(
                   padding: const EdgeInsets.only(right: 0),
                   child: Text(
@@ -255,6 +392,28 @@ class _SignupPageState extends State<SignupPage> {
                   ),
                 ),
               ),
+              Container(
+                child: GestureDetector(
+                  onTap: () => _showChoiceDialog(context, setState),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.all(Radius.circular(100)),
+                    child: _imageFile != null
+                        ? Image.file(
+                            File(_imageFile!.path),
+                            width: 100,
+                            height: 100,
+                            fit: BoxFit.cover,
+                          )
+                        : Image.asset(
+                            "assets/images/use_profile.png",
+                            width: 100,
+                            height: 100,
+                            fit: BoxFit.cover,
+                          ),
+                  ),
+                ),
+              ),
+              SizedBox(height: 20),
               Container(
                 margin: const EdgeInsets.only(bottom: 25),
                 child: Padding(
