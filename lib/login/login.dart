@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
@@ -51,15 +52,6 @@ class _LoginPageState extends State<LoginPage> {
       return;
     } else {
       _loginUser();
-      // ScaffoldMessenger.of(context).showSnackBar(
-      // const SnackBar(
-      // content: Text(
-      // 'All correct',
-      // textAlign: TextAlign.center,
-      // ),
-      // duration: Duration(seconds: 3),
-      // ),
-      // );
     }
   }
 
@@ -94,41 +86,26 @@ class _LoginPageState extends State<LoginPage> {
 
     if (firebaseUser != null) {
       currentFirebaseUser = firebaseUser;
-
-      DatabaseReference usersRef =
-          FirebaseDatabase.instance.ref().child("users");
-
-      usersRef.child(firebaseUser.uid).once().then((userKey) {
-        final snap = userKey.snapshot;
-        if (snap.value != null) {
-          currentFirebaseUser = firebaseUser;
-
-          ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(
-              content: Text(
-                "User Logged In Successfully",
-                textAlign: TextAlign.center,
-              ),
-              duration: Duration(seconds: 3),
-            ),
-          );
-          Navigator.of(context).pop();
-          Navigator.of(context).pushNamed(Splash.routeName);
-        } else {
-          ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(
-              content: Text(
-                "No records exists with this email",
-                textAlign: TextAlign.center,
-              ),
-              duration: Duration(seconds: 5),
-            ),
-          );
-          firebaseAuth.signOut();
-          Navigator.of(context).pop();
-          Navigator.of(context).pushNamed(Splash.routeName);
-        }
+      FirebaseFirestore.instance
+          .collection("users")
+          .doc(currentFirebaseUser!.uid)
+          .set({
+        "userUID": currentFirebaseUser!.uid,
+        "email": _emailController.text.trim(),
+        "password": _passwordController.text,
       });
+
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text(
+            "User Logged In Successfully",
+            textAlign: TextAlign.center,
+          ),
+          duration: Duration(seconds: 3),
+        ),
+      );
+      Navigator.of(context).pop();
+      Navigator.of(context).pushNamed(Splash.routeName);
     } else {
       Navigator.of(context).pop();
       ScaffoldMessenger.of(context).showSnackBar(
@@ -141,6 +118,56 @@ class _LoginPageState extends State<LoginPage> {
         ),
       );
     }
+
+    // if (firebaseUser != null) {
+    // currentFirebaseUser = firebaseUser;
+
+    // DatabaseReference usersRef =
+    // FirebaseDatabase.instance.ref().child("users");
+
+    // usersRef.child(firebaseUser.uid).once().then((userKey) {
+    // final snap = userKey.snapshot;
+    // if (snap.value != null) {
+    // currentFirebaseUser = firebaseUser;
+
+    // ScaffoldMessenger.of(context).showSnackBar(
+    // const SnackBar(
+    // content: Text(
+    // "User Logged In Successfully",
+    // textAlign: TextAlign.center,
+    // ),
+    // duration: Duration(seconds: 3),
+    // ),
+    // );
+    // Navigator.of(context).pop();
+    // Navigator.of(context).pushNamed(Splash.routeName);
+    // } else {
+    // ScaffoldMessenger.of(context).showSnackBar(
+    // const SnackBar(
+    // content: Text(
+    // "No records exists with this email",
+    // textAlign: TextAlign.center,
+    // ),
+    // duration: Duration(seconds: 5),
+    // ),
+    // );
+    // firebaseAuth.signOut();
+    // Navigator.of(context).pop();
+    // Navigator.of(context).pushNamed(Splash.routeName);
+    // }
+    // });
+    // } else {
+    // Navigator.of(context).pop();
+    // ScaffoldMessenger.of(context).showSnackBar(
+    // const SnackBar(
+    // content: Text(
+    // "Something went wrong when trying to log in",
+    // textAlign: TextAlign.center,
+    // ),
+    // duration: Duration(seconds: 3),
+    // ),
+    // );
+    // }
   }
 
   @override
@@ -263,17 +290,20 @@ class _LoginPageState extends State<LoginPage> {
                       margin: EdgeInsets.only(top: 10),
                       child: new Row(
                         children: <Widget>[
-
                           new GestureDetector(
                             onTap: () {
-                             Navigator.push(
-                               context,
-                               MaterialPageRoute(builder: (context) => ForgotPasswordPage()),
-                             );
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => ForgotPasswordPage()),
+                              );
                             },
-                            child: new Text("Forgot Password",  style: new TextStyle(color: Color(0xff072e79),fontSize: 12, fontWeight: FontWeight.w600)),
+                            child: new Text("Forgot Password",
+                                style: new TextStyle(
+                                    color: Color(0xff072e79),
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.w600)),
                           )
-
                         ],
                       ),
                     ),

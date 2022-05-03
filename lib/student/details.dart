@@ -24,10 +24,13 @@ class _DetailsPageState extends State<DetailsPage> {
           leading: Builder(
             builder: (BuildContext context) {
               return Container(
-                child: Icon(
-                  Icons.arrow_back_ios_rounded,
-                  color: Color(0xffffffff),
-                  size: 24.0,
+                child: GestureDetector(
+                  onTap: () => Navigator.of(context).pop(),
+                  child: Icon(
+                    Icons.arrow_back_ios_rounded,
+                    color: Color(0xffffffff),
+                    size: 24.0,
+                  ),
                 ),
               );
             },
