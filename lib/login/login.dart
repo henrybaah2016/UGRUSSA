@@ -86,14 +86,14 @@ class _LoginPageState extends State<LoginPage> {
 
     if (firebaseUser != null) {
       currentFirebaseUser = firebaseUser;
-      FirebaseFirestore.instance
-          .collection("users")
-          .doc(currentFirebaseUser!.uid)
-          .set({
-        "userUID": currentFirebaseUser!.uid,
-        "email": _emailController.text.trim(),
-        "password": _passwordController.text,
-      });
+      // FirebaseFirestore.instance
+      // .collection("users")
+      // .doc(currentFirebaseUser!.uid)
+      // .set({
+      // "userUID": currentFirebaseUser!.uid,
+      // "email": _emailController.text.trim(),
+      // "password": _passwordController.text,
+      // });
 
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
