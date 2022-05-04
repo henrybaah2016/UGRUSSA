@@ -166,7 +166,7 @@ class _SignupPageState extends State<SignupPage> {
     });
   }
 
-  validateForm(BuildContext context) {
+  _validateForm(BuildContext context) {
     if (_nameController.text.length < 3) {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
@@ -711,7 +711,7 @@ class _SignupPageState extends State<SignupPage> {
                     ),
                   ),
                   onPressed: () {
-                    validateForm(context);
+                    _validateForm(context);
                   },
                   child: Text('Sign up',
                       style: TextStyle(
