@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:ugrussa/home/home.dart';
 import 'package:ugrussa/signup/signup.dart';
 import 'package:ugrussa/splash/splash.dart';
@@ -86,15 +87,6 @@ class _LoginPageState extends State<LoginPage> {
 
     if (firebaseUser != null) {
       currentFirebaseUser = firebaseUser;
-      // FirebaseFirestore.instance
-      // .collection("users")
-      // .doc(currentFirebaseUser!.uid)
-      // .set({
-      // "userUID": currentFirebaseUser!.uid,
-      // "email": _emailController.text.trim(),
-      // "password": _passwordController.text,
-      // });
-
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
           content: Text(
@@ -104,8 +96,7 @@ class _LoginPageState extends State<LoginPage> {
           duration: Duration(seconds: 3),
         ),
       );
-      Navigator.of(context).pop();
-      Navigator.of(context).pushNamed(Splash.routeName);
+      _fetchDataFromFirestore(currentFirebaseUser);
     } else {
       Navigator.of(context).pop();
       ScaffoldMessenger.of(context).showSnackBar(
@@ -118,56 +109,34 @@ class _LoginPageState extends State<LoginPage> {
         ),
       );
     }
+  }
 
-    // if (firebaseUser != null) {
-    // currentFirebaseUser = firebaseUser;
-
-    // DatabaseReference usersRef =
-    // FirebaseDatabase.instance.ref().child("users");
-
-    // usersRef.child(firebaseUser.uid).once().then((userKey) {
-    // final snap = userKey.snapshot;
-    // if (snap.value != null) {
-    // currentFirebaseUser = firebaseUser;
-
-    // ScaffoldMessenger.of(context).showSnackBar(
-    // const SnackBar(
-    // content: Text(
-    // "User Logged In Successfully",
-    // textAlign: TextAlign.center,
-    // ),
-    // duration: Duration(seconds: 3),
-    // ),
-    // );
-    // Navigator.of(context).pop();
-    // Navigator.of(context).pushNamed(Splash.routeName);
-    // } else {
-    // ScaffoldMessenger.of(context).showSnackBar(
-    // const SnackBar(
-    // content: Text(
-    // "No records exists with this email",
-    // textAlign: TextAlign.center,
-    // ),
-    // duration: Duration(seconds: 5),
-    // ),
-    // );
-    // firebaseAuth.signOut();
-    // Navigator.of(context).pop();
-    // Navigator.of(context).pushNamed(Splash.routeName);
-    // }
-    // });
-    // } else {
-    // Navigator.of(context).pop();
-    // ScaffoldMessenger.of(context).showSnackBar(
-    // const SnackBar(
-    // content: Text(
-    // "Something went wrong when trying to log in",
-    // textAlign: TextAlign.center,
-    // ),
-    // duration: Duration(seconds: 3),
-    // ),
-    // );
-    // }
+  Future<void> _fetchDataFromFirestore(User? currentUser) async {
+    FirebaseFirestore.instance
+        .collection("users")
+        .doc(currentUser!.uid)
+        .get()
+        .then((snapshot) async {
+      if (snapshot.exists) {
+        print("DATA SNAPSHOT $snapshot");
+        print("DATA SNAPSHOT ${snapshot.data()!['email']}");
+        //save data locally
+        sharedPreferences = await SharedPreferences.getInstance();
+        await sharedPreferences!.setString("userUID", currentUser.uid);
+        await sharedPreferences!.setString("email", snapshot.data()!['email']);
+        await sharedPreferences!.setString("name", snapshot.data()!["name"]);
+        await sharedPreferences!.setString("phone", snapshot.data()!["phone"]);
+        await sharedPreferences!
+            .setString("studentID", snapshot.data()!["student ID"]);
+        await sharedPreferences!.setString("level", snapshot.data()!["level"]);
+        await sharedPreferences!
+            .setString("residence", snapshot.data()!["residence"]);
+        await sharedPreferences!
+            .setString("profilePhotoUrl", snapshot.data()!["profilePhotoUrl"]);
+        Navigator.pop(context);
+        Navigator.of(context).pushNamed(Splash.routeName);
+      }
+    });
   }
 
   @override

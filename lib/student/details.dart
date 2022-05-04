@@ -1,6 +1,8 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:ugrussa/splash/splash.dart';
+import 'package:ugrussa/utils/utils.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../chat/chat.dart';
 
@@ -35,9 +37,9 @@ class _DetailsPageState extends State<DetailsPage> {
               );
             },
           ),
-          title: const Text(
-            'Kaha Mane',
-            style: TextStyle(
+          title: Text(
+            "${sharedPreferences!.getString("name")}",
+            style: const TextStyle(
               color: Color(0xffffffff),
               fontSize: 20,
               fontWeight: FontWeight.normal,
@@ -86,9 +88,28 @@ class _DetailsPageState extends State<DetailsPage> {
                     child: ClipRRect(
                       borderRadius: BorderRadius.all(Radius.circular(100)),
                       child: Container(
-                          height: 90,
-                          width: 90,
-                          child: Image.asset('assets/images/use_profile.png')),
+                        height: 90,
+                        width: 90,
+                        child:
+                            sharedPreferences!.getString("profilePhotoUrl") !=
+                                    null
+                                ? ClipRRect(
+                                    borderRadius: BorderRadius.circular(100),
+                                    child: Image.network(
+                                      sharedPreferences!
+                                          .getString("profilePhotoUrl")!,
+                                      fit: BoxFit.cover,
+                                    ),
+                                  )
+                                : ClipRRect(
+                                    borderRadius: BorderRadius.circular(100),
+                                    child: Image.network(
+                                      sharedPreferences!
+                                          .getString("profilePhotoUrl")!,
+                                      fit: BoxFit.cover,
+                                    ),
+                                  ),
+                      ),
                     ),
                   ),
                   Container(
@@ -111,7 +132,7 @@ class _DetailsPageState extends State<DetailsPage> {
                         Padding(
                           padding: const EdgeInsets.only(top: 4.0),
                           child: Text(
-                            'First Year',
+                            'Level  ${sharedPreferences!.getString("level")}',
                             textAlign: TextAlign.center,
                             style: TextStyle(
                               color: Color(0xffc8cbcd),
@@ -133,8 +154,17 @@ class _DetailsPageState extends State<DetailsPage> {
                             child: Container(
                               width: 55,
                               height: 55,
-                              child: Icon(Icons.call,
-                                  size: 20, color: Color(0xffffffff)),
+                              child: GestureDetector(
+                                onTap: () {
+                                  launchUrl(
+                                    Uri.parse(
+                                      "tel:// ${sharedPreferences!.getString("phone")}",
+                                    ),
+                                  );
+                                },
+                                child: Icon(Icons.call,
+                                    size: 20, color: Color(0xffffffff)),
+                              ),
                               decoration: BoxDecoration(
                                   shape: BoxShape.circle,
                                   color: Color(0x31808080)),

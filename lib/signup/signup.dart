@@ -10,6 +10,7 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:ugrussa/home/home.dart';
 import 'package:ugrussa/login/login.dart';
 import 'package:ugrussa/utils/utils.dart';
@@ -48,7 +49,7 @@ class _SignupPageState extends State<SignupPage> {
         builder: (BuildContext context) {
           return AlertDialog(
             title: const Text(
-              "Upload Image",
+              "Upload Profile Picture",
               style: TextStyle(color: Color(0xff3e3e3e)),
             ),
             content: SingleChildScrollView(
@@ -324,6 +325,19 @@ class _SignupPageState extends State<SignupPage> {
           .collection("users")
           .doc(currentFirebaseUser!.uid)
           .set(userMap);
+
+      //save data locally
+      sharedPreferences = await SharedPreferences.getInstance();
+      await sharedPreferences!.setString("userUID", currentFirebaseUser!.uid);
+      await sharedPreferences!.setString("email", _emailController.text.trim());
+      await sharedPreferences!.setString("name", _nameController.text.trim());
+      await sharedPreferences!.setString("phone", _phoneController.text.trim());
+      await sharedPreferences!
+          .setString("studentID", _studentIdController.text.trim());
+      await sharedPreferences!.setString("level", _levelController.text.trim());
+      await sharedPreferences!
+          .setString("residence", _residenceController.text.trim());
+      await sharedPreferences!.setString("profilePhotoUrl", photoUrl!);
 
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
