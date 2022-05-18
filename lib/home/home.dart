@@ -916,7 +916,7 @@ class _HomePageState extends State<HomePage> {
           );
         },
         backgroundColor: Color(0xfffbbc07),
-        child: const Icon(Icons.attach_file_rounded),
+        child: const Icon(Icons.games_outlined),
       ),
     );
   }
