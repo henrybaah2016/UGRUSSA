@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:ugrussa/document_upload/all_files.dart';
 import 'package:ugrussa/document_upload/upload.dart';
 import 'package:ugrussa/dues/summary.dart';
+import 'package:ugrussa/game/game_player.dart';
 import 'package:ugrussa/login/login.dart';
 import 'package:ugrussa/splash/splash.dart';
 import 'package:ugrussa/utils/utils.dart';
@@ -911,7 +912,7 @@ class _HomePageState extends State<HomePage> {
         onPressed: () {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => Upload()),
+            MaterialPageRoute(builder: (context) => GamePlayer()),
           );
         },
         backgroundColor: Color(0xfffbbc07),
