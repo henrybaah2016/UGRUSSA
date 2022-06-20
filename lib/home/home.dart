@@ -54,6 +54,19 @@ class _HomePageState extends State<HomePage> {
             onTap: () {
               Navigator.push(
                 context,
+                MaterialPageRoute(builder: (context) => Upload()),
+              );
+            },
+            child: Icon(
+              Icons.drive_folder_upload_outlined,
+              color: Color(0xff072e79),
+              size: 25.0,
+            ),
+          ),
+          GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
                 MaterialPageRoute(builder: (context) => ChatList()),
               );
             },
