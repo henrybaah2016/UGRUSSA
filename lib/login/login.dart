@@ -231,8 +231,8 @@ class _LoginPageState extends State<LoginPage> {
                   suffixIcon: IconButton(
                     icon: Icon(
                       _obscurePassword
-                          ? Icons.remove_red_eye
-                          : Icons.visibility_off,
+                          ? Icons.visibility_off
+                          : Icons.remove_red_eye,
                       color: this._obscurePassword
                           ? Color(0xffff4A4A)
                           : Color(0xffC6C6C6),

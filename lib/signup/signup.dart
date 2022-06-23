@@ -620,7 +620,7 @@ class _SignupPageState extends State<SignupPage> {
                   padding: EdgeInsets.only(left: 5, right: 5),
                   child: TextField(
                     controller: _passwordController,
-                    keyboardType: TextInputType.number,
+                    keyboardType: TextInputType.text,
                     decoration: InputDecoration(
                       enabledBorder: OutlineInputBorder(
                         borderSide: BorderSide(color: Color(0xffB3B3B3)),
@@ -644,7 +644,9 @@ class _SignupPageState extends State<SignupPage> {
                           fontWeight: FontWeight.w600),
                       suffixIcon: IconButton(
                         icon: Icon(
-                          Icons.remove_red_eye,
+                          _showPassword
+                              ? Icons.visibility_off
+                              : Icons.remove_red_eye,
                           color: this._showPassword
                               ? Color(0xffff4A4A)
                               : Color(0xffC6C6C6),
@@ -652,7 +654,8 @@ class _SignupPageState extends State<SignupPage> {
                         ),
                         onPressed: () {
                           setState(
-                              () => this._showPassword = !this._showPassword);
+                            () => this._showPassword = !this._showPassword,
+                          );
                         },
                       ),
                     ),

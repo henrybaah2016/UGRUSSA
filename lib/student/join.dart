@@ -209,10 +209,13 @@ class _JoinPageState extends State<JoinPage> {
         leading: Builder(
           builder: (BuildContext context) {
             return Container(
-              child: Icon(
-                Icons.arrow_back_ios_rounded,
-                color: Color(0xffffffff),
-                size: 24.0,
+              child: GestureDetector(
+                onTap: () => Navigator.pop(context),
+                child: Icon(
+                  Icons.arrow_back_ios_rounded,
+                  color: Color(0xffffffff),
+                  size: 24.0,
+                ),
               ),
             );
           },
@@ -225,36 +228,6 @@ class _JoinPageState extends State<JoinPage> {
             fontWeight: FontWeight.normal,
           ),
         ),
-        actions: <Widget>[
-          PopupMenuButton(
-            onSelected: (result) async {
-              if (result == 0) {
-                Navigator.of(context).pop();
-              }
-            },
-            icon: const Icon(
-              Icons.more_vert_rounded,
-              color: Color(0xffffffff),
-              size: 30.0,
-            ),
-            offset: Offset(0, kToolbarHeight),
-            itemBuilder: (BuildContext context) => <PopupMenuEntry>[
-              const PopupMenuItem(
-                child: Padding(
-                  padding: EdgeInsets.only(left: 8.0, right: 25),
-                  child: Text(
-                    'logout',
-                    style: TextStyle(
-                        color: Color(0xff3e3956),
-                        fontSize: 20,
-                        fontWeight: FontWeight.w400),
-                  ),
-                ),
-                value: 0,
-              ),
-            ],
-          ),
-        ],
       ),
       body: SingleChildScrollView(
         child: Center(
