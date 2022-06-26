@@ -1,12 +1,16 @@
 import 'dart:io';
 
+import 'package:path/path.dart' as path;
 import 'package:dotted_border/dotted_border.dart';
 import 'package:file_picker/file_picker.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:ugrussa/document_upload/all_files.dart';
 import 'package:ugrussa/home/home.dart';
+
+import '../widgets/progress_dialog.dart';
 
 class Upload extends StatefulWidget {
   Upload({Key? key}) : super(key: key);
@@ -57,6 +61,36 @@ class _UploadState extends State<Upload> {
 
     print("FILE INDEX $index");
     print("FILES LEFT $files");
+  }
+
+  Future<void> _submitFile() async {
+    showDialog(
+      context: context,
+      // barrierDismissible: false,
+      builder: (ctx) => ProgressDialog(
+        message: "Please wait ... ",
+      ),
+    );
+    // String fileName = path.basename(_imageFile!.path);
+    Reference firebaseStorageRef =
+    FirebaseStorage.instance.ref().child('uploads/');
+    var uploadTask = firebaseStorageRef.putFile(files![0]);
+    var taskSnapshot = await uploadTask.then((taskSnapshot) {
+      taskSnapshot.ref.getDownloadURL().then(
+            (file) {
+          print("Done: $file");
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => AllFiles(file:file)),
+          );
+          // packagePreviewUrl = photoUrl;
+          // Navigator.pop(context);
+        },
+      );
+
+// 1
+      Navigator.pop(context);
+    });
   }
 
   @override
@@ -288,10 +322,8 @@ class _UploadState extends State<Upload> {
                           minimumSize: Size(double.infinity, 52),
                         ),
                         onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(builder: (context) => AllFiles()),
-                          );
+                          _submitFile();
+
                         },
                         child: Text('Save Files',
                             style: TextStyle(
@@ -352,10 +384,10 @@ class filePreviewWidget extends StatelessWidget {
                           Container(
                             margin: EdgeInsets.only(top: 5, bottom: 5, left: 5),
                             child: Container(
-                                height: 30,
-                                width: 30,
-                                child:
-                                    Image.asset('assets/images/pdf_icon.png')),
+                              height: 30,
+                              width: 30,
+                              child: Image.asset('assets/images/pdf_icon.png'),
+                            ),
                           ),
                           Container(
                             margin: EdgeInsets.only(top: 5, left: 5),
@@ -366,7 +398,10 @@ class filePreviewWidget extends StatelessWidget {
                                 Padding(
                                   padding: const EdgeInsets.all(1),
                                   child: Text(
-                                    '$fileName',
+                                    fileName.length > 30
+                                        ? fileName.replaceRange(
+                                            20, fileName.length, '...')
+                                        : fileName,
                                     style: TextStyle(
                                         color: Color(0xff575858),
                                         fontSize: 16,

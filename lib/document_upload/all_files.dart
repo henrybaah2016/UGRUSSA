@@ -1,21 +1,58 @@
 import 'package:dotted_border/dotted_border.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:ugrussa/home/home.dart';
 
 class AllFiles extends StatefulWidget {
-  AllFiles({Key? key}) : super(key: key);
+  final String? file;
+
+  AllFiles({Key? key, this.file}) : super(key: key);
 
   @override
   _AllFilesState createState() => _AllFilesState();
 }
 
 class _AllFilesState extends State<AllFiles> {
+  var _items = [];
+  List<dynamic> _fileNames = [];
+
+  var _isLoading = false;
+  String downloadUrl ="";
+
+  @override
+  void initState() {
+    super.initState();
+    fetchAllFiles();
+  }
+
+  void fetchAllFiles() async {
+    setState(() {
+      _isLoading = true;
+    });
+    final storageRef = FirebaseStorage.instance.ref().child("uploads/");
+    await storageRef.listAll().then((listResult) async{
+      setState(() {
+        _isLoading = false;
+      });
+
+
+      print("ALL FILES ${listResult.storage.ref()}");
+      for (var item in listResult.items) {
+        _items.add(item);
+        print("SINGLE FILES ${item.fullPath.split('/')[1]}");
+        var _filePath = item.fullPath.split('/')[1];
+        _fileNames.add(_filePath);
+       downloadUrl =  await storageRef.child("uploads/$_filePath").getDownloadURL();
+        print("FILE DOWNLOAD URL $downloadUrl");
+      }
+      ;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
         appBar: AppBar(
           backgroundColor: Color(0xffffffff),
@@ -31,601 +68,182 @@ class _AllFilesState extends State<AllFiles> {
               );
             },
           ),
-          title: const Text('All Files',style: TextStyle(color: Color(0xff072e79), fontSize: 20, fontWeight: FontWeight.w500,),),
-
+          title: const Text(
+            'All Files',
+            style: TextStyle(
+              color: Color(0xff072e79),
+              fontSize: 20,
+              fontWeight: FontWeight.w500,
+            ),
+          ),
           actions: <Widget>[
             PopupMenuButton(
               onSelected: (result) async {
-                if(result == 0){
+                if (result == 0) {
                   Navigator.of(context).pop();
                 }
-
               },
-
-              icon:const Icon(
-
+              icon: const Icon(
                 Icons.more_vert_rounded,
                 color: Color(0xff072e79),
                 size: 30.0,
-
-
               ),
               offset: Offset(0, kToolbarHeight),
-
               itemBuilder: (BuildContext context) => <PopupMenuEntry>[
                 const PopupMenuItem(
-                  child:Padding(
-                    padding: EdgeInsets.only(left:8.0,right: 25),
-                    child: Text('logout',style: TextStyle(color: Color(0xff3e3956), fontSize: 20,fontWeight: FontWeight.w400),),
+                  child: Padding(
+                    padding: EdgeInsets.only(left: 8.0, right: 25),
+                    child: Text(
+                      'logout',
+                      style: TextStyle(
+                          color: Color(0xff3e3956),
+                          fontSize: 20,
+                          fontWeight: FontWeight.w400),
+                    ),
                   ),
                   value: 0,
                 ),
-
               ],
             ),
           ],
         ),
-
-        body: SingleChildScrollView(
-          child: Column(
-              children: <Widget>[
-                
-                Container(
-                  margin: EdgeInsets.only(top:10),
-                  child: Column(
-                    children: [
-                      Container(
-                        margin: EdgeInsets.only(left: 10,right:10,top:10),
-
-                        decoration: BoxDecoration(
-                          border: Border.all(
-                            color: Color(0xA3ECECEC),
-                            style: BorderStyle.solid,
-                            width: 1.0,
+        body: _isLoading
+            ? Center(
+                child: CircularProgressIndicator(),
+              )
+            : ListView.builder(
+                itemCount: _fileNames.length,
+                itemBuilder: (ctx, i) {
+                  return Container(
+                    margin: EdgeInsets.only(top: 10),
+                    child: Column(
+                      children: [
+                        Container(
+                          margin: EdgeInsets.only(left: 10, right: 10, top: 10),
+                          decoration: BoxDecoration(
+                            border: Border.all(
+                              color: Color(0xA3ECECEC),
+                              style: BorderStyle.solid,
+                              width: 1.0,
+                            ),
+                            color: Colors.transparent,
+                            borderRadius: BorderRadius.circular(5.0),
                           ),
-                          color: Colors.transparent,
-                          borderRadius: BorderRadius.circular(5.0),
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Column(
-                            children: [
-                              Column(
-                                children: [
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      new GestureDetector(
-                                        onTap: () {
-                                          Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                                builder: (context) => HomePage()),
-                                          );
-                                        },
-                                        child: Row(
-                                          children: [
-                                            Container(
-                                              margin:
-                                              EdgeInsets.only(top: 5, bottom: 5, left: 5),
-                                              child: Container(
-                                                  height: 30,
-                                                  width: 30,
-                                                  child: Image.asset(
-                                                      'assets/images/pdf_icon.png')),
-                                            ),
-                                            Container(
-                                              margin: EdgeInsets.only(top: 5, left: 5),
-                                              child: Column(
-                                                mainAxisAlignment: MainAxisAlignment.start,
-                                                crossAxisAlignment: CrossAxisAlignment.start,
-                                                children: [
-                                                  Padding(
-                                                    padding: const EdgeInsets.all(1),
-                                                    child: Text(
-                                                      'Academic Calendar',
-                                                      style: TextStyle(
-                                                          color: Color(0xff575858),
-                                                          fontSize: 16,
-                                                          fontWeight: FontWeight.w600),
-                                                    ),
-                                                  ),
-                                                  Padding(
-                                                    padding: const EdgeInsets.all(1),
-                                                    child: Text(
-                                                      'Size: 154kb',
-                                                      style: TextStyle(
-                                                          color: Color(0xffc8cbcd),
-                                                          fontSize: 14,
-                                                          fontWeight: FontWeight.normal),
-                                                    ),
-                                                  ),
-                                                ],
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Column(
+                              children: [
+                                Column(
+                                  children: [
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        new GestureDetector(
+                                          onTap: () {
+                                            // Navigator.push(
+                                            //   context,
+                                            //   MaterialPageRoute(
+                                            //       builder: (context) => HomePage()),
+                                            // );
+                                          },
+                                          child: Row(
+                                            children: [
+                                              Container(
+                                                margin: EdgeInsets.only(
+                                                    top: 5, bottom: 5, left: 5),
+                                                child: Container(
+                                                    height: 30,
+                                                    width: 30,
+                                                    child: Image.asset(
+                                                        'assets/images/pdf_icon.png')),
                                               ),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                      Row(
-                                        children: [
-                                          Padding(
-                                            padding: const EdgeInsets.only(right:10),
-                                            child:  Icon(
-                                              Icons.file_open_outlined,
-                                              color: Color(0xFFB6B6B6),
-                                              size: 18.0,
-                                            ),
+                                              Container(
+                                                margin: EdgeInsets.only(
+                                                    top: 5, left: 5),
+                                                child: Column(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment.start,
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.start,
+                                                  children: [
+                                                    Padding(
+                                                      padding:
+                                                          const EdgeInsets.all(
+                                                              1),
+                                                      child: Text(
+                                                        (_fileNames[i]).length >
+                                                                20
+                                                            ? (_fileNames[i])
+                                                                .replaceRange(
+                                                                    25,
+                                                                    _fileNames[
+                                                                            i]
+                                                                        .length,
+                                                                    "...")
+                                                            : _fileNames[i],
+                                                        style: TextStyle(
+                                                            color: Color(
+                                                                0xff575858),
+                                                            fontSize: 16,
+                                                            fontWeight:
+                                                                FontWeight
+                                                                    .w600),
+                                                      ),
+                                                    ),
+                                                    Padding(
+                                                      padding:
+                                                          const EdgeInsets.all(
+                                                              1),
+                                                      child: Text(
+                                                        'Size: 154kb',
+                                                        style: TextStyle(
+                                                            color: Color(
+                                                                0xffc8cbcd),
+                                                            fontSize: 14,
+                                                            fontWeight:
+                                                                FontWeight
+                                                                    .normal),
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                            ],
                                           ),
+                                        ),
+                                        Row(
+                                          children: [
                                             Padding(
-                                              padding: const EdgeInsets.only(right:10),
-                                              child:  Icon(
-                                                Icons.clear_outlined,
+                                              padding: const EdgeInsets.only(
+                                                  right: 10),
+                                              child: Icon(
+                                                Icons.file_open_outlined,
                                                 color: Color(0xFFB6B6B6),
                                                 size: 18.0,
                                               ),
                                             ),
-
-                                        ],
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              ),
-
-                            ],
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-
-                Container(
-                  margin: EdgeInsets.only(top:10),
-                  child: Column(
-                    children: [
-                      Container(
-                        margin: EdgeInsets.only(left: 10,right:10,top:10),
-
-                        decoration: BoxDecoration(
-                          border: Border.all(
-                            color: Color(0xA3ECECEC),
-                            style: BorderStyle.solid,
-                            width: 1.0,
-                          ),
-                          color: Colors.transparent,
-                          borderRadius: BorderRadius.circular(5.0),
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Column(
-                            children: [
-                              Column(
-                                children: [
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      new GestureDetector(
-                                        onTap: () {
-                                          Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                                builder: (context) => HomePage()),
-                                          );
-                                        },
-                                        child: Row(
-                                          children: [
-                                            Container(
-                                              margin:
-                                              EdgeInsets.only(top: 5, bottom: 5, left: 5),
-                                              child: Container(
-                                                  height: 30,
-                                                  width: 30,
-                                                  child: Image.asset(
-                                                      'assets/images/pdf_icon.png')),
-                                            ),
-                                            Container(
-                                              margin: EdgeInsets.only(top: 5, left: 5),
-                                              child: Column(
-                                                mainAxisAlignment: MainAxisAlignment.start,
-                                                crossAxisAlignment: CrossAxisAlignment.start,
-                                                children: [
-                                                  Padding(
-                                                    padding: const EdgeInsets.all(1),
-                                                    child: Text(
-                                                      'Academic Calendar',
-                                                      style: TextStyle(
-                                                          color: Color(0xff575858),
-                                                          fontSize: 16,
-                                                          fontWeight: FontWeight.w600),
-                                                    ),
-                                                  ),
-                                                  Padding(
-                                                    padding: const EdgeInsets.all(1),
-                                                    child: Text(
-                                                      'Size: 154kb',
-                                                      style: TextStyle(
-                                                          color: Color(0xffc8cbcd),
-                                                          fontSize: 14,
-                                                          fontWeight: FontWeight.normal),
-                                                    ),
-                                                  ),
-                                                ],
-                                              ),
-                                            ),
+                                            // Padding(
+                                            //   padding: const EdgeInsets.only(right:10),
+                                            //   child:  Icon(
+                                            //     Icons.clear_outlined,
+                                            //     color: Color(0xFFB6B6B6),
+                                            //     size: 18.0,
+                                            //   ),
+                                            // ),
                                           ],
                                         ),
-                                      ),
-                                      Row(
-                                        children: [
-                                          Padding(
-                                            padding: const EdgeInsets.only(right:10),
-                                            child:  Icon(
-                                              Icons.file_open_outlined,
-                                              color: Color(0xFFB6B6B6),
-                                              size: 18.0,
-                                            ),
-                                          ),
-                                          Padding(
-                                            padding: const EdgeInsets.only(right:10),
-                                            child:  Icon(
-                                              Icons.clear_outlined,
-                                              color: Color(0xFFB6B6B6),
-                                              size: 18.0,
-                                            ),
-                                          ),
-
-                                        ],
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              ),
-
-                            ],
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
                           ),
                         ),
-                      ),
-                    ],
-                  ),
-                ),
-
-
-                Container(
-                  margin: EdgeInsets.only(top:10),
-                  child: Column(
-                    children: [
-                      Container(
-                        margin: EdgeInsets.only(left: 10,right:10,top:10),
-
-                        decoration: BoxDecoration(
-                          border: Border.all(
-                            color: Color(0xA3ECECEC),
-                            style: BorderStyle.solid,
-                            width: 1.0,
-                          ),
-                          color: Colors.transparent,
-                          borderRadius: BorderRadius.circular(5.0),
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Column(
-                            children: [
-                              Column(
-                                children: [
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      new GestureDetector(
-                                        onTap: () {
-                                          Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                                builder: (context) => HomePage()),
-                                          );
-                                        },
-                                        child: Row(
-                                          children: [
-                                            Container(
-                                              margin:
-                                              EdgeInsets.only(top: 5, bottom: 5, left: 5),
-                                              child: Container(
-                                                  height: 30,
-                                                  width: 30,
-                                                  child: Image.asset(
-                                                      'assets/images/pdf_icon.png')),
-                                            ),
-                                            Container(
-                                              margin: EdgeInsets.only(top: 5, left: 5),
-                                              child: Column(
-                                                mainAxisAlignment: MainAxisAlignment.start,
-                                                crossAxisAlignment: CrossAxisAlignment.start,
-                                                children: [
-                                                  Padding(
-                                                    padding: const EdgeInsets.all(1),
-                                                    child: Text(
-                                                      'Academic Calendar',
-                                                      style: TextStyle(
-                                                          color: Color(0xff575858),
-                                                          fontSize: 16,
-                                                          fontWeight: FontWeight.w600),
-                                                    ),
-                                                  ),
-                                                  Padding(
-                                                    padding: const EdgeInsets.all(1),
-                                                    child: Text(
-                                                      'Size: 154kb',
-                                                      style: TextStyle(
-                                                          color: Color(0xffc8cbcd),
-                                                          fontSize: 14,
-                                                          fontWeight: FontWeight.normal),
-                                                    ),
-                                                  ),
-                                                ],
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                      Row(
-                                        children: [
-                                          Padding(
-                                            padding: const EdgeInsets.only(right:10),
-                                            child:  Icon(
-                                              Icons.file_open_outlined,
-                                              color: Color(0xFFB6B6B6),
-                                              size: 18.0,
-                                            ),
-                                          ),
-                                          Padding(
-                                            padding: const EdgeInsets.only(right:10),
-                                            child:  Icon(
-                                              Icons.clear_outlined,
-                                              color: Color(0xFFB6B6B6),
-                                              size: 18.0,
-                                            ),
-                                          ),
-
-                                        ],
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              ),
-
-                            ],
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-
-
-                Container(
-                  margin: EdgeInsets.only(top:10),
-                  child: Column(
-                    children: [
-                      Container(
-                        margin: EdgeInsets.only(left: 10,right:10,top:10),
-
-                        decoration: BoxDecoration(
-                          border: Border.all(
-                            color: Color(0xA3ECECEC),
-                            style: BorderStyle.solid,
-                            width: 1.0,
-                          ),
-                          color: Colors.transparent,
-                          borderRadius: BorderRadius.circular(5.0),
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Column(
-                            children: [
-                              Column(
-                                children: [
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      new GestureDetector(
-                                        onTap: () {
-                                          Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                                builder: (context) => HomePage()),
-                                          );
-                                        },
-                                        child: Row(
-                                          children: [
-                                            Container(
-                                              margin:
-                                              EdgeInsets.only(top: 5, bottom: 5, left: 5),
-                                              child: Container(
-                                                  height: 30,
-                                                  width: 30,
-                                                  child: Image.asset(
-                                                      'assets/images/pdf_icon.png')),
-                                            ),
-                                            Container(
-                                              margin: EdgeInsets.only(top: 5, left: 5),
-                                              child: Column(
-                                                mainAxisAlignment: MainAxisAlignment.start,
-                                                crossAxisAlignment: CrossAxisAlignment.start,
-                                                children: [
-                                                  Padding(
-                                                    padding: const EdgeInsets.all(1),
-                                                    child: Text(
-                                                      'Academic Calendar',
-                                                      style: TextStyle(
-                                                          color: Color(0xff575858),
-                                                          fontSize: 16,
-                                                          fontWeight: FontWeight.w600),
-                                                    ),
-                                                  ),
-                                                  Padding(
-                                                    padding: const EdgeInsets.all(1),
-                                                    child: Text(
-                                                      'Size: 154kb',
-                                                      style: TextStyle(
-                                                          color: Color(0xffc8cbcd),
-                                                          fontSize: 14,
-                                                          fontWeight: FontWeight.normal),
-                                                    ),
-                                                  ),
-                                                ],
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                      Row(
-                                        children: [
-                                          Padding(
-                                            padding: const EdgeInsets.only(right:10),
-                                            child:  Icon(
-                                              Icons.file_open_outlined,
-                                              color: Color(0xFFB6B6B6),
-                                              size: 18.0,
-                                            ),
-                                          ),
-                                          Padding(
-                                            padding: const EdgeInsets.only(right:10),
-                                            child:  Icon(
-                                              Icons.clear_outlined,
-                                              color: Color(0xFFB6B6B6),
-                                              size: 18.0,
-                                            ),
-                                          ),
-
-                                        ],
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              ),
-
-                            ],
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-
-
-                Container(
-                  margin: EdgeInsets.only(top:10),
-                  child: Column(
-                    children: [
-                      Container(
-                        margin: EdgeInsets.only(left: 10,right:10,top:10),
-
-                        decoration: BoxDecoration(
-                          border: Border.all(
-                            color: Color(0xA3ECECEC),
-                            style: BorderStyle.solid,
-                            width: 1.0,
-                          ),
-                          color: Colors.transparent,
-                          borderRadius: BorderRadius.circular(5.0),
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Column(
-                            children: [
-                              Column(
-                                children: [
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      new GestureDetector(
-                                        onTap: () {
-                                          Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                                builder: (context) => HomePage()),
-                                          );
-                                        },
-                                        child: Row(
-                                          children: [
-                                            Container(
-                                              margin:
-                                              EdgeInsets.only(top: 5, bottom: 5, left: 5),
-                                              child: Container(
-                                                  height: 30,
-                                                  width: 30,
-                                                  child: Image.asset(
-                                                      'assets/images/pdf_icon.png')),
-                                            ),
-                                            Container(
-                                              margin: EdgeInsets.only(top: 5, left: 5),
-                                              child: Column(
-                                                mainAxisAlignment: MainAxisAlignment.start,
-                                                crossAxisAlignment: CrossAxisAlignment.start,
-                                                children: [
-                                                  Padding(
-                                                    padding: const EdgeInsets.all(1),
-                                                    child: Text(
-                                                      'Academic Calendar',
-                                                      style: TextStyle(
-                                                          color: Color(0xff575858),
-                                                          fontSize: 16,
-                                                          fontWeight: FontWeight.w600),
-                                                    ),
-                                                  ),
-                                                  Padding(
-                                                    padding: const EdgeInsets.all(1),
-                                                    child: Text(
-                                                      'Size: 154kb',
-                                                      style: TextStyle(
-                                                          color: Color(0xffc8cbcd),
-                                                          fontSize: 14,
-                                                          fontWeight: FontWeight.normal),
-                                                    ),
-                                                  ),
-                                                ],
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                      Row(
-                                        children: [
-                                          Padding(
-                                            padding: const EdgeInsets.only(right:10),
-                                            child:  Icon(
-                                              Icons.file_open_outlined,
-                                              color: Color(0xFFB6B6B6),
-                                              size: 18.0,
-                                            ),
-                                          ),
-                                          Padding(
-                                            padding: const EdgeInsets.only(right:10),
-                                            child:  Icon(
-                                              Icons.clear_outlined,
-                                              color: Color(0xFFB6B6B6),
-                                              size: 18.0,
-                                            ),
-                                          ),
-
-                                        ],
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              ),
-
-                            ],
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-
-              ]
-          ),
-        )
-    );
+                      ],
+                    ),
+                  );
+                }));
   }
 }
