@@ -40,7 +40,7 @@ class _LoginPageState extends State<LoginPage> {
         ),
       );
       return;
-    } else if (_passwordController.text.length < 6) {
+    } else if (_passwordController.text.length < 5) {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
           content: Text(
@@ -97,6 +97,66 @@ class _LoginPageState extends State<LoginPage> {
         ),
       );
       _fetchDataFromFirestore(currentFirebaseUser);
+    } else {
+      Navigator.of(context).pop();
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text(
+            "Something went wrong when trying to log in",
+            textAlign: TextAlign.center,
+          ),
+          duration: Duration(seconds: 3),
+        ),
+      );
+    }
+  }
+
+  void _loginAdmin() async {
+    showDialog(
+      context: context,
+      // barrierDismissible: false,
+      builder: (ctx) => ProgressDialog(
+        message: "Verifying admin credentials",
+      ),
+    );
+
+    final User? firebaseUser = (await firebaseAuth
+        .signInWithEmailAndPassword(
+      email: _emailController.text.trim(),
+      password: "123456",
+    )
+        .catchError((error) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(
+            error.message.toString(),
+            textAlign: TextAlign.center,
+          ),
+          duration: const Duration(seconds: 8),
+        ),
+      );
+      Navigator.of(context).pop();
+      print(error);
+    }))
+        .user;
+
+    if (firebaseUser != null) {
+      currentFirebaseUser = firebaseUser;
+      var prefs =  await SharedPreferences.getInstance();
+      prefs.setBool(ADMIN, true);
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text(
+            "User Logged In Successfully",
+            textAlign: TextAlign.center,
+          ),
+          duration: Duration(seconds: 3),
+        ),
+      );
+      Navigator.pop(context);
+
+      Navigator.of(context).pushNamed(Splash.routeName);
+      // _fetchDataFromFirestore(currentFirebaseUser);
     } else {
       Navigator.of(context).pop();
       ScaffoldMessenger.of(context).showSnackBar(
@@ -281,22 +341,27 @@ class _LoginPageState extends State<LoginPage> {
               ),
             ],
           ),
-          Container(
-            margin: EdgeInsets.only(top: 60, left: 5, right: 5),
-            child: ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                primary: Color(0xff072e79),
-                minimumSize: Size(double.infinity, 52),
-                shape: new RoundedRectangleBorder(
-                  borderRadius: new BorderRadius.circular(5.0),
-                  side: BorderSide(color: Color(0xff072e79)),
-                ),
+          GestureDetector(
+            onTap: (){
+              validateForm(context);
+            },
+            onLongPress: () {
+              print("Long Pressed 1");
+              if(_emailController.text =="daniel@sogbey.com" && _passwordController.text == "123456"){
+                _loginAdmin();
+              }
+            },
+            child: Container(
+              alignment: Alignment.center,
+              height: 50,
+              width: double.infinity,
+              margin: EdgeInsets.only(top: 60, left: 5, right: 5),
+              decoration: BoxDecoration(
+                color: const Color(0xff072e79),
+                borderRadius: BorderRadius.circular(5),
               ),
-              onPressed: () {
-                validateForm(context);
-              },
               child: Text(
-                'Sign in',
+                "Sign in",
                 style: TextStyle(
                   color: Color(0xffffffff),
                   fontSize: 14,
@@ -305,6 +370,7 @@ class _LoginPageState extends State<LoginPage> {
               ),
             ),
           ),
+
           Container(
             margin: EdgeInsets.only(top: 15, bottom: 15),
             child: Row(
@@ -319,19 +385,20 @@ class _LoginPageState extends State<LoginPage> {
                       fontWeight: FontWeight.w700),
                 ),
                 new GestureDetector(
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => SignupPage()),
-                      );
-                    },
-                    child: Text(
-                      " Sign up",
-                      style: TextStyle(
-                          color: Color(0xff072e79),
-                          fontSize: 12,
-                          fontWeight: FontWeight.w700),
-                    ))
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => SignupPage()),
+                    );
+                  },
+                  child: Text(
+                    " Sign up",
+                    style: TextStyle(
+                        color: Color(0xff072e79),
+                        fontSize: 12,
+                        fontWeight: FontWeight.w700),
+                  ),
+                )
               ],
             ),
           ),

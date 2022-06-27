@@ -1,5 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:ugrussa/document_upload/all_files.dart';
 import 'package:ugrussa/document_upload/upload.dart';
 import 'package:ugrussa/dues/summary.dart';
@@ -22,6 +23,17 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  bool? admin;
+
+  @override
+  void didChangeDependencies() async {
+    super.didChangeDependencies();
+    var prefs = await SharedPreferences.getInstance();
+    setState(() {
+      admin = prefs.getBool(ADMIN);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -50,19 +62,21 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
         actions: <Widget>[
-          GestureDetector(
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => Upload()),
-              );
-            },
-            child: Icon(
-              Icons.drive_folder_upload_outlined,
-              color: Color(0xff072e79),
-              size: 25.0,
-            ),
-          ),
+          admin!
+              ? GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => Upload()),
+                    );
+                  },
+                  child: Icon(
+                    Icons.drive_folder_upload_outlined,
+                    color: Color(0xff072e79),
+                    size: 25.0,
+                  ),
+                )
+              : Container(),
           PopupMenuButton(
             onSelected: (result) async {
               if (result == 0) {

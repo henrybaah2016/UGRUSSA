@@ -6,7 +6,9 @@ import 'package:ugrussa/login/login.dart';
 import 'package:ugrussa/utils/utils.dart';
 
 class Splash extends StatefulWidget {
-  const Splash({Key? key}) : super(key: key);
+
+  bool? admin;
+  Splash({Key? key, this.admin}) : super(key: key);
 
   static const routeName = "/splash";
 
