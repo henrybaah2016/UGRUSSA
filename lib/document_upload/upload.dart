@@ -101,11 +101,16 @@ class _UploadState extends State<Upload> {
           elevation: 0,
           leading: Builder(
             builder: (BuildContext context) {
-              return Container(
-                child: Icon(
-                  Icons.arrow_back_ios_rounded,
-                  color: Color(0xff072e79),
-                  size: 24.0,
+              return GestureDetector(
+                onTap: () {
+                  Navigator.pop(context);
+                },
+                child: Container(
+                  child: Icon(
+                    Icons.arrow_back_ios_rounded,
+                    color: Color(0xff072e79),
+                    size: 24.0,
+                  ),
                 ),
               );
             },
@@ -118,36 +123,7 @@ class _UploadState extends State<Upload> {
               fontWeight: FontWeight.w500,
             ),
           ),
-          actions: <Widget>[
-            PopupMenuButton(
-              onSelected: (result) async {
-                if (result == 0) {
-                  Navigator.of(context).pop();
-                }
-              },
-              icon: const Icon(
-                Icons.more_vert_rounded,
-                color: Color(0xff072e79),
-                size: 30.0,
-              ),
-              offset: Offset(0, kToolbarHeight),
-              itemBuilder: (BuildContext context) => <PopupMenuEntry>[
-                const PopupMenuItem(
-                  child: Padding(
-                    padding: EdgeInsets.only(left: 8.0, right: 25),
-                    child: Text(
-                      'logout',
-                      style: TextStyle(
-                          color: Color(0xff3e3956),
-                          fontSize: 20,
-                          fontWeight: FontWeight.w400),
-                    ),
-                  ),
-                  value: 0,
-                ),
-              ],
-            ),
-          ],
+
         ),
         body: SingleChildScrollView(
           child: Column(children: <Widget>[

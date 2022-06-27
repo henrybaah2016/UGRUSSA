@@ -67,66 +67,66 @@ class _JoinPageState extends State<JoinPage> {
         ),
       );
       return;
-    } else if (_genderController.text.length < 6) {
+    } else if (_genderController.text.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
           content: Text(
-            'Password must be at least 6 characters long',
+            'Gender is required',
             textAlign: TextAlign.center,
           ),
           duration: Duration(seconds: 3),
         ),
       );
       return;
-    } else if (_yearController.text.length < 4) {
+    } else if (_yearController.text.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
           content: Text(
-            'Passwords do not match',
+            'Year is required',
             textAlign: TextAlign.center,
           ),
           duration: Duration(seconds: 3),
         ),
       );
       return;
-    } else if (_levelController.text.length < 1) {
+    } else if (_levelController.text.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
           content: Text(
-            'Please select your level',
+            'Level is required',
             textAlign: TextAlign.center,
           ),
           duration: Duration(seconds: 3),
         ),
       );
       return;
-    } else if (_residenceController.text.length < 1) {
+    } else if (_residenceController.text.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
           content: Text(
-            'Please select your residence',
+            'Residence is required',
             textAlign: TextAlign.center,
           ),
           duration: Duration(seconds: 3),
         ),
       );
       return;
-    } else if (_academicProgrammeController.text.length < 1) {
+    } else if (_academicProgrammeController.text.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
           content: Text(
-            'Please select your residence',
+            'Academic programme is required',
             textAlign: TextAlign.center,
           ),
           duration: Duration(seconds: 3),
         ),
       );
       return;
-    } else if (_studentIdController.text.length < 1) {
+    } else if (_studentIdController.text.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
           content: Text(
-            'Please enter your student ID',
+            'Student ID is required',
             textAlign: TextAlign.center,
           ),
           duration: Duration(seconds: 3),

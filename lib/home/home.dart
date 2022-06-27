@@ -63,19 +63,6 @@ class _HomePageState extends State<HomePage> {
               size: 25.0,
             ),
           ),
-          GestureDetector(
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => ChatList()),
-              );
-            },
-            child: Icon(
-              Icons.chat,
-              color: Color(0xff072e79),
-              size: 25.0,
-            ),
-          ),
           PopupMenuButton(
             onSelected: (result) async {
               if (result == 0) {
