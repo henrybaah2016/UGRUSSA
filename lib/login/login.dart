@@ -347,7 +347,7 @@ class _LoginPageState extends State<LoginPage> {
             },
             onLongPress: () {
               print("Long Pressed 1");
-              if(_emailController.text =="daniel@sogbey.com" && _passwordController.text == "123456"){
+              if(_emailController.text ==" admin@ugrussa.org" && _passwordController.text == "poiuyTREWQ123456"){
                 _loginAdmin();
               }
             },
