@@ -73,7 +73,7 @@ class _UploadState extends State<Upload> {
     );
     // String fileName = path.basename(_imageFile!.path);
     Reference firebaseStorageRef =
-    FirebaseStorage.instance.ref().child('uploads/');
+    FirebaseStorage.instance.ref().child('uploads/${fileNames[0]}');
     var uploadTask = firebaseStorageRef.putFile(files![0]);
     var taskSnapshot = await uploadTask.then((taskSnapshot) {
       taskSnapshot.ref.getDownloadURL().then(
