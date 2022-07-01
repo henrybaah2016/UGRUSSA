@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'dart:math';
 
 import 'package:dotted_border/dotted_border.dart';
 import 'package:firebase_storage/firebase_storage.dart';
@@ -21,6 +22,7 @@ class AllFiles extends StatefulWidget {
 class _AllFilesState extends State<AllFiles> {
   var _items = [];
   List<dynamic> _fileNames = [];
+  List<dynamic> _fileSizes = [];
   bool _isDownloading = false;
 
   var _isLoading = false;
@@ -69,6 +71,15 @@ class _AllFilesState extends State<AllFiles> {
     }
   }
 
+  getFileSize(String filepath, int decimals) async {
+    var file = File(filepath);
+    int bytes = await file.length();
+    if (bytes <= 0) return "0 B";
+    const suffixes = ["B", "KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB"];
+    var i = (log(bytes) / log(1024)).floor();
+    return ((bytes / pow(1024, i)).toStringAsFixed(decimals)) + ' ' + suffixes[i];
+  }
+
   void fetchAllFiles() async {
     setState(() {
       _isLoading = true;
@@ -89,7 +100,9 @@ class _AllFilesState extends State<AllFiles> {
           setState(() {
             _isLoading = false;
           });
-          print("FILE DOWNLOAD URL $downloadUrl");
+
+          // print("FILE SIZE ${getFileSize(_filePath, 1)}");
+          // print("FILE DOWNLOAD URL $downloadUrl");
           // print("FILE DOWNLOAD URL ${downloadUrl.split("uploads")[1].split('?')[0].split("%2F")[1]}");
           // _fileNames.add(downloadUrl.split("uploads")[1].split('?')[0].split("%2F")[1]);
         });
@@ -136,10 +149,12 @@ class _AllFilesState extends State<AllFiles> {
                 child: CircularProgressIndicator(),
               )
             : _isDownloading
-                ? Container(
-                    height: 15,
-                    width: 15,
-                    child: CircularProgressIndicator(),
+                ? Center(
+                    child: Container(
+                      height: 25,
+                      width: 25,
+                      child: CircularProgressIndicator(),
+                    ),
                   )
                 : ListView.builder(
                     itemCount: _fileNames.length,
@@ -185,17 +200,17 @@ class _AllFilesState extends State<AllFiles> {
                                                 },
                                                 child: Row(
                                                   children: [
-                                                    Container(
-                                                      margin: EdgeInsets.only(
-                                                          top: 5,
-                                                          bottom: 5,
-                                                          left: 5),
-                                                      child: Container(
-                                                          height: 30,
-                                                          width: 30,
-                                                          child: Image.asset(
-                                                              'assets/images/pdf_icon.png')),
-                                                    ),
+                                                    // Container(
+                                                    //   margin: EdgeInsets.only(
+                                                    //       top: 5,
+                                                    //       bottom: 5,
+                                                    //       left: 5),
+                                                    //   child: Container(
+                                                    //       height: 30,
+                                                    //       width: 30,
+                                                    //       child: Image.asset(
+                                                    //           'assets/images/pdf_icon.png')),
+                                                    // ),
                                                     Container(
                                                       margin: EdgeInsets.only(
                                                           top: 5, left: 5),
@@ -238,7 +253,7 @@ class _AllFilesState extends State<AllFiles> {
                                                                 const EdgeInsets
                                                                     .all(1),
                                                             child: Text(
-                                                              'Size: 154kb',
+                                                              'Size: 0kb',
                                                               style: TextStyle(
                                                                   color: Color(
                                                                       0xffc8cbcd),
