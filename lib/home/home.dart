@@ -36,17 +36,17 @@ class _HomePageState extends State<HomePage> {
   }
 
   bottomSheetCardPayment(BuildContext context) {
-    Navigator.pop(context);
     showModalBottomSheet(
-        shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(25), topRight: Radius.circular(25)),
-        ),
-        isScrollControlled: true,
-        context: context,
-        builder: (context) {
-          return CardPayment();
-        });
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(25), topRight: Radius.circular(25)),
+      ),
+      isScrollControlled: true,
+      context: context,
+      builder: (context) {
+        return CardPayment();
+      },
+    );
   }
 
   @override
@@ -129,10 +129,9 @@ class _HomePageState extends State<HomePage> {
         child: Column(
           children: <Widget>[
             Container(
-              margin: EdgeInsets.only(top: 10),
+              margin: EdgeInsets.only(left: 0, top: 5),
               child: Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: <Widget>[
+                children: [
                   Expanded(
                     child: Container(
                       margin: EdgeInsets.all(10),
@@ -157,30 +156,42 @@ class _HomePageState extends State<HomePage> {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              Expanded(
-                                child: Container(
-                                    child: Padding(
-                                        padding:
-                                            const EdgeInsets.only(left: 10),
-                                        child: Flexible(
+                              Container(
+                                  height: 80,
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Padding(
+                                          padding:
+                                              const EdgeInsets.only(left: 10),
                                           child: Text(
-                                            'Student Registration',
+                                            'Student.',
                                             style: TextStyle(
                                                 color: Color(0xffffffff),
                                                 fontSize: 16,
                                                 fontWeight: FontWeight.w600),
-                                          ),
-                                        ))),
-                              ),
-                              Expanded(
-                                child: Container(
-                                    height: 70,
-                                    width: 70,
-                                    margin:
-                                        EdgeInsets.only(top: 10, bottom: 10),
-                                    child: Image.asset(
-                                        'assets/images/student_reg.png')),
-                              )
+                                          )),
+                                      Padding(
+                                          padding:
+                                              const EdgeInsets.only(left: 10),
+                                          child: Text(
+                                            'Registration.',
+                                            style: TextStyle(
+                                                color: Color(0xffffffff),
+                                                fontSize: 16,
+                                                fontWeight: FontWeight.w600),
+                                          )),
+                                    ],
+                                  )),
+                              Container(
+                                  height: 40,
+                                  width: 40,
+                                  margin: EdgeInsets.only(
+                                      top: 10, bottom: 10, right: 10),
+                                  child: Image.asset(
+                                      'assets/images/student_reg.png'))
                             ],
                           ),
                         ),
@@ -211,43 +222,56 @@ class _HomePageState extends State<HomePage> {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              Expanded(
-                                child: Container(
-                                    child: Padding(
+                              Container(
+                                height: 80,
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Padding(
                                         padding:
                                             const EdgeInsets.only(left: 10),
-                                        child: Flexible(
-                                          child: Text(
-                                            'Course Combination',
-                                            style: TextStyle(
-                                                color: Color(0xffffffff),
-                                                fontSize: 16,
-                                                fontWeight: FontWeight.w600),
-                                          ),
-                                        ),),),
+                                        child: Text(
+                                          'Course',
+                                          style: TextStyle(
+                                              color: Color(0xffffffff),
+                                              fontSize: 16,
+                                              fontWeight: FontWeight.w600),
+                                        )),
+                                    Padding(
+                                      padding: const EdgeInsets.only(left: 10),
+                                      child: Text(
+                                        'Combination',
+                                        style: TextStyle(
+                                            color: Color(0xffffffff),
+                                            fontSize: 16,
+                                            fontWeight: FontWeight.w600),
+                                      ),
+                                    ),
+                                  ],
+                                ),
                               ),
-                              Expanded(
-                                child: Container(
-                                    height: 70,
-                                    width: 70,
-                                    margin:
-                                        EdgeInsets.only(top: 10, bottom: 10),
-                                    child: Image.asset(
-                                        'assets/images/course_reg.png')),
+                              Container(
+                                height: 40,
+                                width: 40,
+                                margin: EdgeInsets.only(
+                                    top: 10, bottom: 10, right: 10),
+                                child:
+                                    Image.asset('assets/images/course_reg.png'),
                               )
                             ],
                           ),
                         ),
                       ),
                     ),
-                  ),
+                  )
                 ],
               ),
             ),
             Container(
+              margin: EdgeInsets.only(left: 0, top: 5),
               child: Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: <Widget>[
+                children: [
                   Expanded(
                     child: Container(
                       margin: EdgeInsets.all(10),
@@ -263,40 +287,48 @@ class _HomePageState extends State<HomePage> {
                           )),
                       child: new GestureDetector(
                         onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) =>bottomSheetCardPayment(context)),
-                          );
+                          bottomSheetCardPayment(context);
                         },
                         child: Container(
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              Expanded(
-                                child: Container(
-                                    child: Padding(
-                                        padding:
-                                            const EdgeInsets.only(left: 10),
-                                        child: Flexible(
+                              Container(
+                                  height: 80,
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Padding(
+                                          padding:
+                                              const EdgeInsets.only(left: 10),
                                           child: Text(
-                                            'Dues Payment Option',
+                                            'Dues',
                                             style: TextStyle(
                                                 color: Color(0xffffffff),
                                                 fontSize: 16,
                                                 fontWeight: FontWeight.w600),
-                                          ),
-                                        ),),),
-                              ),
-                              Expanded(
-                                child: Container(
-                                    height: 70,
-                                    width: 70,
-                                    margin:
-                                        EdgeInsets.only(top: 10, bottom: 10),
-                                    child: Image.asset(
-                                        'assets/images/payments.png')),
-                              )
+                                          )),
+                                      Padding(
+                                          padding:
+                                              const EdgeInsets.only(left: 10),
+                                          child: Text(
+                                            'Payment',
+                                            style: TextStyle(
+                                                color: Color(0xffffffff),
+                                                fontSize: 16,
+                                                fontWeight: FontWeight.w600),
+                                          )),
+                                    ],
+                                  )),
+                              Container(
+                                  height: 40,
+                                  width: 40,
+                                  margin: EdgeInsets.only(
+                                      top: 10, bottom: 10, right: 10),
+                                  child:
+                                      Image.asset('assets/images/payments.png'))
                             ],
                           ),
                         ),
@@ -327,36 +359,48 @@ class _HomePageState extends State<HomePage> {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              Expanded(
-                                child: Container(
-                                    child: Padding(
-                                        padding:
-                                            const EdgeInsets.only(left: 10),
-                                        child: Flexible(
+                              Container(
+                                  height: 80,
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Padding(
+                                          padding:
+                                              const EdgeInsets.only(left: 10),
                                           child: Text(
-                                            'Academic Calendar',
+                                            'Academic',
                                             style: TextStyle(
                                                 color: Color(0xffffffff),
                                                 fontSize: 16,
                                                 fontWeight: FontWeight.w600),
-                                          ),
-                                        ))),
-                              ),
-                              Expanded(
-                                child: Container(
-                                    height: 70,
-                                    width: 70,
-                                    margin:
-                                        EdgeInsets.only(top: 10, bottom: 10),
-                                    child: Image.asset(
-                                        'assets/images/calendar.png')),
-                              )
+                                          )),
+                                      Padding(
+                                          padding:
+                                              const EdgeInsets.only(left: 10),
+                                          child: Text(
+                                            'Calendar',
+                                            style: TextStyle(
+                                                color: Color(0xffffffff),
+                                                fontSize: 16,
+                                                fontWeight: FontWeight.w600),
+                                          )),
+                                    ],
+                                  )),
+                              Container(
+                                  height: 40,
+                                  width: 40,
+                                  margin: EdgeInsets.only(
+                                      top: 10, bottom: 10, right: 10),
+                                  child:
+                                      Image.asset('assets/images/calendar.png'))
                             ],
                           ),
                         ),
                       ),
                     ),
-                  ),
+                  )
                 ],
               ),
             ),

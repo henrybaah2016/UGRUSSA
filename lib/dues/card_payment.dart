@@ -28,12 +28,12 @@ class _CardPaymentState extends State<CardPayment> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: MediaQuery.of(context).size.height * 0.2,
+      margin: const EdgeInsets.only(top: 20),
+      height: MediaQuery.of(context).size.height * 0.15,
       color: Colors.white,
       child: ListView(
           padding: const EdgeInsets.symmetric(horizontal: 20),
           children: [
-
             GooglePayButton(
               paymentConfigurationAsset:
               'default_payment_profile_google_pay.json',
@@ -57,9 +57,7 @@ class _CardPaymentState extends State<CardPayment> {
                 child: CircularProgressIndicator(),
               ),
             ),
-            const SizedBox(height: 15)
           ],
-
       ),
     );
   }
