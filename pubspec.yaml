@@ -54,6 +54,7 @@ dependencies:
   path_provider: ^2.0.11
   open_file: ^3.2.1
   http: ^0.13.4
+  pay: ^1.0.10
 
 
 #  galleryimage: ^1.1.0
@@ -68,6 +69,7 @@ flutter:
   uses-material-design: true
 
   assets:
+    - assets/
     - assets/images/
 
 #  fonts:

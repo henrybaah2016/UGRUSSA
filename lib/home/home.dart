@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:ugrussa/document_upload/all_files.dart';
 import 'package:ugrussa/document_upload/upload.dart';
+import 'package:ugrussa/dues/card_payment.dart';
 import 'package:ugrussa/dues/summary.dart';
 import 'package:ugrussa/game/game_player.dart';
 import 'package:ugrussa/login/login.dart';
@@ -32,6 +33,20 @@ class _HomePageState extends State<HomePage> {
     setState(() {
       admin = prefs.getBool(ADMIN);
     });
+  }
+
+  bottomSheetCardPayment(BuildContext context) {
+    Navigator.pop(context);
+    showModalBottomSheet(
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(25), topRight: Radius.circular(25)),
+        ),
+        isScrollControlled: true,
+        context: context,
+        builder: (context) {
+          return CardPayment();
+        });
   }
 
   @override
@@ -209,7 +224,7 @@ class _HomePageState extends State<HomePage> {
                                                 fontSize: 16,
                                                 fontWeight: FontWeight.w600),
                                           ),
-                                        ))),
+                                        ),),),
                               ),
                               Expanded(
                                 child: Container(
@@ -251,7 +266,7 @@ class _HomePageState extends State<HomePage> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => SummaryPage()),
+                                builder: (context) =>bottomSheetCardPayment(context)),
                           );
                         },
                         child: Container(
@@ -271,7 +286,7 @@ class _HomePageState extends State<HomePage> {
                                                 fontSize: 16,
                                                 fontWeight: FontWeight.w600),
                                           ),
-                                        ))),
+                                        ),),),
                               ),
                               Expanded(
                                 child: Container(
