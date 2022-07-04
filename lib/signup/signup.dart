@@ -151,7 +151,7 @@ class _SignupPageState extends State<SignupPage> {
 
     String fileName = path.basename(_imageFile!.path);
     Reference firebaseStorageRef =
-        FirebaseStorage.instance.ref().child('uploads/$fileName');
+        FirebaseStorage.instance.ref().child('profile_photos/$fileName');
     var uploadTask = firebaseStorageRef.putFile(File(_imageFile!.path));
     var taskSnapshot = await uploadTask.then((taskSnapshot) {
       taskSnapshot.ref.getDownloadURL().then(
