@@ -304,6 +304,8 @@ class _SignupPageState extends State<SignupPage> {
 
     if (firebaseUser != null) {
       currentFirebaseUser = firebaseUser;
+      var prefs = await SharedPreferences.getInstance();
+      prefs.setBool(ADMIN, false);
       Map<String, dynamic> userMap = {
         "id": firebaseUser.uid,
         "name": _nameController.text,

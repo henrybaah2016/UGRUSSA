@@ -77,7 +77,7 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
         actions: <Widget>[
-          admin!
+          admin
               ? GestureDetector(
                   onTap: () {
                     Navigator.push(
@@ -1017,7 +1017,7 @@ class _HomePageState extends State<HomePage> {
           ],
         ),
       ),
-      floatingActionButton: admin!
+      floatingActionButton: admin
           ? FloatingActionButton(
               onPressed: () {
                 Navigator.push(

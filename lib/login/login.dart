@@ -87,6 +87,8 @@ class _LoginPageState extends State<LoginPage> {
 
     if (firebaseUser != null) {
       currentFirebaseUser = firebaseUser;
+      var prefs = await SharedPreferences.getInstance();
+      prefs.setBool(ADMIN, false);
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
           content: Text(
