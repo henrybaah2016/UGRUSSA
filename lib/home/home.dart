@@ -24,14 +24,14 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  bool? admin;
+  bool admin = false;
 
   @override
   void didChangeDependencies() async {
     super.didChangeDependencies();
     var prefs = await SharedPreferences.getInstance();
     setState(() {
-      admin = prefs.getBool(ADMIN);
+      admin = prefs.getBool(ADMIN)!;
     });
   }
 
