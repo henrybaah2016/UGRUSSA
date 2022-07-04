@@ -64,6 +64,9 @@ class _UploadState extends State<Upload> {
   }
 
   Future<void> _submitFile() async {
+   if( fileNames.isEmpty){
+     return;
+   }
     showDialog(
       context: context,
       // barrierDismissible: false,
@@ -87,7 +90,6 @@ class _UploadState extends State<Upload> {
           // Navigator.pop(context);
         },
       );
-
 // 1
       Navigator.pop(context);
     });

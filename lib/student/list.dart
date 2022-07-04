@@ -2,6 +2,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:ugrussa/splash/splash.dart';
 import 'package:ugrussa/student/details.dart';
 import 'package:ugrussa/student/join.dart';
@@ -56,6 +57,17 @@ class _ListPageState extends State<ListPage> {
         _isLoading = false;
       });
       print("ALL USER DATA $users");
+    });
+  }
+
+  bool? admin;
+
+  @override
+  void didChangeDependencies() async {
+    super.didChangeDependencies();
+    var prefs = await SharedPreferences.getInstance();
+    setState(() {
+      admin = prefs.getBool(ADMIN);
     });
   }
 
@@ -262,7 +274,7 @@ class _ListPageState extends State<ListPage> {
                                         ],
                                       ),
                                     ),
-                                    PopupMenuButton(
+                                    admin! ? PopupMenuButton(
                                       icon: Icon(
                                         Icons.more_vert_rounded,
                                         size: 24,
@@ -290,7 +302,7 @@ class _ListPageState extends State<ListPage> {
                                           ),
                                         ),
                                       ],
-                                    ),
+                                    ) : Container(),
                                   ],
                                 ),
                               ],

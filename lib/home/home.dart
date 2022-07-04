@@ -404,465 +404,465 @@ class _HomePageState extends State<HomePage> {
                 ],
               ),
             ),
-            Container(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Container(
-                    margin: EdgeInsets.only(
-                        top: 20, right: 5, left: 10, bottom: 10),
-                    alignment: Alignment.topRight,
-                    child: Text(
-                      'Our Alumni',
-                      style: TextStyle(
-                        color: Color(0xff575858),
-                        fontSize: 18,
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
-                  ),
-                  Container(
-                    margin: EdgeInsets.only(
-                        top: 20, right: 5, left: 10, bottom: 10),
-                    alignment: Alignment.topRight,
-                    child: Row(
-                      children: [
-                        Container(
-                          child: Text(
-                            'more',
-                            style: TextStyle(
-                              color: Color(0xffc8cbcd),
-                              fontSize: 16,
-                              fontWeight: FontWeight.w600,
-                            ),
-                          ),
-                        ),
-                        Container(
-                          height: 14,
-                          width: 14,
-                          margin: EdgeInsets.only(right: 5, left: 5),
-                          decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            color: Color(0xffc8cbcd),
-                          ),
-                          alignment: Alignment.center,
-                          child: Icon(
-                            Icons.chevron_right_rounded,
-                            size: 15,
-                            color: Color(0xffe0e2e3),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Container(
-              height: 200,
-              margin: EdgeInsets.only(right: 2),
-              child: ListView(
-                scrollDirection: Axis.horizontal,
-                children: <Widget>[
-                  Card(
-                    clipBehavior: Clip.antiAlias,
-                    child: Container(
-                      width: 150,
-                      decoration: BoxDecoration(
-                        borderRadius: new BorderRadius.circular(30.0),
-                        color: Color(0xffffffff),
-                      ),
-                      margin: EdgeInsets.only(left: 10, top: 5),
-                      child: Column(
-                        children: [
-                          Container(
-                            margin: EdgeInsets.only(top: 20),
-                            child: new GestureDetector(
-                              onTap: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => Splash()),
-                                );
-                              },
-                              child: ClipRRect(
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(100)),
-                                child: Container(
-                                    height: 50,
-                                    width: 50,
-                                    child: Image.asset(
-                                        'assets/images/use_profile.png')),
-                              ),
-                            ),
-                          ),
-                          Container(
-                              alignment: Alignment.center,
-                              margin: EdgeInsets.only(left: 0, top: 5),
-                              child: Padding(
-                                padding: const EdgeInsets.all(1),
-                                child: Text(
-                                  'Kemi Dzaks',
-                                  style: TextStyle(
-                                      color: Color(0xff575858),
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.w600),
-                                ),
-                              )),
-                          Container(
-                              alignment: Alignment.center,
-                              margin: EdgeInsets.only(left: 0, top: 1),
-                              child: Padding(
-                                padding: const EdgeInsets.all(1),
-                                child: Text(
-                                  'Student Rep.',
-                                  style: TextStyle(
-                                      color: Color(0xffc8cbcd),
-                                      fontSize: 12,
-                                      fontWeight: FontWeight.w600),
-                                ),
-                              )),
-                          Container(
-                            alignment: Alignment.center,
-                            margin: EdgeInsets.only(left: 0, top: 1),
-                            child: Padding(
-                              padding: const EdgeInsets.all(10.0),
-                              child: Container(
-                                margin:
-                                    EdgeInsets.only(top: 0, left: 5, right: 5),
-                                child: ElevatedButton(
-                                  style: ElevatedButton.styleFrom(
-                                    primary: Color(0xff072e79),
-                                    shape: new RoundedRectangleBorder(
-                                      borderRadius:
-                                          new BorderRadius.circular(50.0),
-                                      side:
-                                          BorderSide(color: Color(0xff072e79)),
-                                    ),
-                                  ),
-                                  onPressed: () {
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) => HomePage()),
-                                    );
-                                  },
-                                  child: Text(
-                                    'Follow',
-                                    style: TextStyle(
-                                      color: Color(0xffffffff),
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.w700,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                  Card(
-                    clipBehavior: Clip.antiAlias,
-                    child: Container(
-                      width: 150,
-                      decoration: BoxDecoration(
-                        borderRadius: new BorderRadius.circular(10.0),
-                        color: Color(0xffffffff),
-                      ),
-                      margin: EdgeInsets.only(left: 10, top: 5),
-                      child: Column(
-                        children: [
-                          Container(
-                            margin: EdgeInsets.only(top: 20),
-                            child: new GestureDetector(
-                              onTap: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => Splash()),
-                                );
-                              },
-                              child: ClipRRect(
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(100)),
-                                child: Container(
-                                    height: 50,
-                                    width: 50,
-                                    child: Image.asset(
-                                        'assets/images/use_profile.png')),
-                              ),
-                            ),
-                          ),
-                          Container(
-                              alignment: Alignment.center,
-                              margin: EdgeInsets.only(left: 0, top: 5),
-                              child: Padding(
-                                padding: const EdgeInsets.all(1),
-                                child: Text(
-                                  'Kemi Dzaks',
-                                  style: TextStyle(
-                                      color: Color(0xff575858),
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.w600),
-                                ),
-                              )),
-                          Container(
-                              alignment: Alignment.center,
-                              margin: EdgeInsets.only(left: 0, top: 1),
-                              child: Padding(
-                                padding: const EdgeInsets.all(1),
-                                child: Text(
-                                  'Student Rep.',
-                                  style: TextStyle(
-                                      color: Color(0xffc8cbcd),
-                                      fontSize: 12,
-                                      fontWeight: FontWeight.w600),
-                                ),
-                              )),
-                          Container(
-                            alignment: Alignment.center,
-                            margin: EdgeInsets.only(left: 0, top: 1),
-                            child: Padding(
-                              padding: const EdgeInsets.all(10.0),
-                              child: Container(
-                                margin:
-                                    EdgeInsets.only(top: 0, left: 5, right: 5),
-                                child: ElevatedButton(
-                                  style: ElevatedButton.styleFrom(
-                                    primary: Color(0xff072e79),
-                                    shape: new RoundedRectangleBorder(
-                                      borderRadius:
-                                          new BorderRadius.circular(50.0),
-                                      side:
-                                          BorderSide(color: Color(0xff072e79)),
-                                    ),
-                                  ),
-                                  onPressed: () {
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) => HomePage()),
-                                    );
-                                  },
-                                  child: Text(
-                                    'Follow',
-                                    style: TextStyle(
-                                      color: Color(0xffffffff),
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.w700,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                  Card(
-                    clipBehavior: Clip.antiAlias,
-                    child: Container(
-                      width: 150,
-                      decoration: BoxDecoration(
-                        borderRadius: new BorderRadius.circular(10.0),
-                        color: Color(0xffffffff),
-                      ),
-                      margin: EdgeInsets.only(left: 10, top: 5),
-                      child: Column(
-                        children: [
-                          Container(
-                            margin: EdgeInsets.only(top: 20),
-                            child: new GestureDetector(
-                              onTap: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => Splash()),
-                                );
-                              },
-                              child: ClipRRect(
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(100)),
-                                child: Container(
-                                    height: 50,
-                                    width: 50,
-                                    child: Image.asset(
-                                        'assets/images/use_profile.png')),
-                              ),
-                            ),
-                          ),
-                          Container(
-                              alignment: Alignment.center,
-                              margin: EdgeInsets.only(left: 0, top: 5),
-                              child: Padding(
-                                padding: const EdgeInsets.all(1),
-                                child: Text(
-                                  'Kemi Dzaks',
-                                  style: TextStyle(
-                                      color: Color(0xff575858),
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.w600),
-                                ),
-                              )),
-                          Container(
-                              alignment: Alignment.center,
-                              margin: EdgeInsets.only(left: 0, top: 1),
-                              child: Padding(
-                                padding: const EdgeInsets.all(1),
-                                child: Text(
-                                  'Student Rep.',
-                                  style: TextStyle(
-                                      color: Color(0xffc8cbcd),
-                                      fontSize: 12,
-                                      fontWeight: FontWeight.w600),
-                                ),
-                              )),
-                          Container(
-                            alignment: Alignment.center,
-                            margin: EdgeInsets.only(left: 0, top: 1),
-                            child: Padding(
-                              padding: const EdgeInsets.all(10.0),
-                              child: Container(
-                                margin:
-                                    EdgeInsets.only(top: 0, left: 5, right: 5),
-                                child: ElevatedButton(
-                                  style: ElevatedButton.styleFrom(
-                                    primary: Color(0xff072e79),
-                                    shape: new RoundedRectangleBorder(
-                                      borderRadius:
-                                          new BorderRadius.circular(50.0),
-                                      side:
-                                          BorderSide(color: Color(0xff072e79)),
-                                    ),
-                                  ),
-                                  onPressed: () {
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) => HomePage()),
-                                    );
-                                  },
-                                  child: Text(
-                                    'Follow',
-                                    style: TextStyle(
-                                      color: Color(0xffffffff),
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.w700,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                  Card(
-                    clipBehavior: Clip.antiAlias,
-                    child: Container(
-                      width: 150,
-                      decoration: BoxDecoration(
-                        borderRadius: new BorderRadius.circular(10.0),
-                        color: Color(0xffffffff),
-                      ),
-                      margin: EdgeInsets.only(left: 10, top: 5),
-                      child: Column(
-                        children: [
-                          Container(
-                            margin: EdgeInsets.only(top: 20),
-                            child: new GestureDetector(
-                              onTap: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => Splash()),
-                                );
-                              },
-                              child: ClipRRect(
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(100)),
-                                child: Container(
-                                    height: 50,
-                                    width: 50,
-                                    child: Image.asset(
-                                        'assets/images/use_profile.png')),
-                              ),
-                            ),
-                          ),
-                          Container(
-                              alignment: Alignment.center,
-                              margin: EdgeInsets.only(left: 0, top: 5),
-                              child: Padding(
-                                padding: const EdgeInsets.all(1),
-                                child: Text(
-                                  'Kemi Dzaks',
-                                  style: TextStyle(
-                                      color: Color(0xff575858),
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.w600),
-                                ),
-                              )),
-                          Container(
-                              alignment: Alignment.center,
-                              margin: EdgeInsets.only(left: 0, top: 1),
-                              child: Padding(
-                                padding: const EdgeInsets.all(1),
-                                child: Text(
-                                  'Student Rep.',
-                                  style: TextStyle(
-                                      color: Color(0xffc8cbcd),
-                                      fontSize: 12,
-                                      fontWeight: FontWeight.w600),
-                                ),
-                              )),
-                          Container(
-                            alignment: Alignment.center,
-                            margin: EdgeInsets.only(left: 0, top: 1),
-                            child: Padding(
-                              padding: const EdgeInsets.all(10.0),
-                              child: Container(
-                                margin:
-                                    EdgeInsets.only(top: 0, left: 5, right: 5),
-                                child: ElevatedButton(
-                                  style: ElevatedButton.styleFrom(
-                                    primary: Color(0xff072e79),
-                                    shape: new RoundedRectangleBorder(
-                                      borderRadius:
-                                          new BorderRadius.circular(50.0),
-                                      side:
-                                          BorderSide(color: Color(0xff072e79)),
-                                    ),
-                                  ),
-                                  onPressed: () {
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) => HomePage()),
-                                    );
-                                  },
-                                  child: Text(
-                                    'Follow',
-                                    style: TextStyle(
-                                      color: Color(0xffffffff),
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.w700,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
+            // Container(
+            //   child: Row(
+            //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            //     children: [
+            //       Container(
+            //         margin: EdgeInsets.only(
+            //             top: 20, right: 5, left: 10, bottom: 10),
+            //         alignment: Alignment.topRight,
+            //         child: Text(
+            //           'Our Alumni',
+            //           style: TextStyle(
+            //             color: Color(0xff575858),
+            //             fontSize: 18,
+            //             fontWeight: FontWeight.w600,
+            //           ),
+            //         ),
+            //       ),
+            //       Container(
+            //         margin: EdgeInsets.only(
+            //             top: 20, right: 5, left: 10, bottom: 10),
+            //         alignment: Alignment.topRight,
+            //         child: Row(
+            //           children: [
+            //             Container(
+            //               child: Text(
+            //                 'more',
+            //                 style: TextStyle(
+            //                   color: Color(0xffc8cbcd),
+            //                   fontSize: 16,
+            //                   fontWeight: FontWeight.w600,
+            //                 ),
+            //               ),
+            //             ),
+            //             Container(
+            //               height: 14,
+            //               width: 14,
+            //               margin: EdgeInsets.only(right: 5, left: 5),
+            //               decoration: BoxDecoration(
+            //                 shape: BoxShape.circle,
+            //                 color: Color(0xffc8cbcd),
+            //               ),
+            //               alignment: Alignment.center,
+            //               child: Icon(
+            //                 Icons.chevron_right_rounded,
+            //                 size: 15,
+            //                 color: Color(0xffe0e2e3),
+            //               ),
+            //             ),
+            //           ],
+            //         ),
+            //       ),
+            //     ],
+            //   ),
+            // ),
+            // Container(
+            //   height: 200,
+            //   margin: EdgeInsets.only(right: 2),
+            //   child: ListView(
+            //     scrollDirection: Axis.horizontal,
+            //     children: <Widget>[
+            //       Card(
+            //         clipBehavior: Clip.antiAlias,
+            //         child: Container(
+            //           width: 150,
+            //           decoration: BoxDecoration(
+            //             borderRadius: new BorderRadius.circular(30.0),
+            //             color: Color(0xffffffff),
+            //           ),
+            //           margin: EdgeInsets.only(left: 10, top: 5),
+            //           child: Column(
+            //             children: [
+            //               Container(
+            //                 margin: EdgeInsets.only(top: 20),
+            //                 child: new GestureDetector(
+            //                   onTap: () {
+            //                     Navigator.push(
+            //                       context,
+            //                       MaterialPageRoute(
+            //                           builder: (context) => Splash()),
+            //                     );
+            //                   },
+            //                   child: ClipRRect(
+            //                     borderRadius:
+            //                         BorderRadius.all(Radius.circular(100)),
+            //                     child: Container(
+            //                         height: 50,
+            //                         width: 50,
+            //                         child: Image.asset(
+            //                             'assets/images/use_profile.png')),
+            //                   ),
+            //                 ),
+            //               ),
+            //               Container(
+            //                   alignment: Alignment.center,
+            //                   margin: EdgeInsets.only(left: 0, top: 5),
+            //                   child: Padding(
+            //                     padding: const EdgeInsets.all(1),
+            //                     child: Text(
+            //                       'Kemi Dzaks',
+            //                       style: TextStyle(
+            //                           color: Color(0xff575858),
+            //                           fontSize: 16,
+            //                           fontWeight: FontWeight.w600),
+            //                     ),
+            //                   )),
+            //               Container(
+            //                   alignment: Alignment.center,
+            //                   margin: EdgeInsets.only(left: 0, top: 1),
+            //                   child: Padding(
+            //                     padding: const EdgeInsets.all(1),
+            //                     child: Text(
+            //                       'Student Rep.',
+            //                       style: TextStyle(
+            //                           color: Color(0xffc8cbcd),
+            //                           fontSize: 12,
+            //                           fontWeight: FontWeight.w600),
+            //                     ),
+            //                   )),
+            //               Container(
+            //                 alignment: Alignment.center,
+            //                 margin: EdgeInsets.only(left: 0, top: 1),
+            //                 child: Padding(
+            //                   padding: const EdgeInsets.all(10.0),
+            //                   child: Container(
+            //                     margin:
+            //                         EdgeInsets.only(top: 0, left: 5, right: 5),
+            //                     child: ElevatedButton(
+            //                       style: ElevatedButton.styleFrom(
+            //                         primary: Color(0xff072e79),
+            //                         shape: new RoundedRectangleBorder(
+            //                           borderRadius:
+            //                               new BorderRadius.circular(50.0),
+            //                           side:
+            //                               BorderSide(color: Color(0xff072e79)),
+            //                         ),
+            //                       ),
+            //                       onPressed: () {
+            //                         Navigator.push(
+            //                           context,
+            //                           MaterialPageRoute(
+            //                               builder: (context) => HomePage()),
+            //                         );
+            //                       },
+            //                       child: Text(
+            //                         'Follow',
+            //                         style: TextStyle(
+            //                           color: Color(0xffffffff),
+            //                           fontSize: 16,
+            //                           fontWeight: FontWeight.w700,
+            //                         ),
+            //                       ),
+            //                     ),
+            //                   ),
+            //                 ),
+            //               ),
+            //             ],
+            //           ),
+            //         ),
+            //       ),
+            //       Card(
+            //         clipBehavior: Clip.antiAlias,
+            //         child: Container(
+            //           width: 150,
+            //           decoration: BoxDecoration(
+            //             borderRadius: new BorderRadius.circular(10.0),
+            //             color: Color(0xffffffff),
+            //           ),
+            //           margin: EdgeInsets.only(left: 10, top: 5),
+            //           child: Column(
+            //             children: [
+            //               Container(
+            //                 margin: EdgeInsets.only(top: 20),
+            //                 child: new GestureDetector(
+            //                   onTap: () {
+            //                     Navigator.push(
+            //                       context,
+            //                       MaterialPageRoute(
+            //                           builder: (context) => Splash()),
+            //                     );
+            //                   },
+            //                   child: ClipRRect(
+            //                     borderRadius:
+            //                         BorderRadius.all(Radius.circular(100)),
+            //                     child: Container(
+            //                         height: 50,
+            //                         width: 50,
+            //                         child: Image.asset(
+            //                             'assets/images/use_profile.png')),
+            //                   ),
+            //                 ),
+            //               ),
+            //               Container(
+            //                   alignment: Alignment.center,
+            //                   margin: EdgeInsets.only(left: 0, top: 5),
+            //                   child: Padding(
+            //                     padding: const EdgeInsets.all(1),
+            //                     child: Text(
+            //                       'Kemi Dzaks',
+            //                       style: TextStyle(
+            //                           color: Color(0xff575858),
+            //                           fontSize: 16,
+            //                           fontWeight: FontWeight.w600),
+            //                     ),
+            //                   )),
+            //               Container(
+            //                   alignment: Alignment.center,
+            //                   margin: EdgeInsets.only(left: 0, top: 1),
+            //                   child: Padding(
+            //                     padding: const EdgeInsets.all(1),
+            //                     child: Text(
+            //                       'Student Rep.',
+            //                       style: TextStyle(
+            //                           color: Color(0xffc8cbcd),
+            //                           fontSize: 12,
+            //                           fontWeight: FontWeight.w600),
+            //                     ),
+            //                   )),
+            //               Container(
+            //                 alignment: Alignment.center,
+            //                 margin: EdgeInsets.only(left: 0, top: 1),
+            //                 child: Padding(
+            //                   padding: const EdgeInsets.all(10.0),
+            //                   child: Container(
+            //                     margin:
+            //                         EdgeInsets.only(top: 0, left: 5, right: 5),
+            //                     child: ElevatedButton(
+            //                       style: ElevatedButton.styleFrom(
+            //                         primary: Color(0xff072e79),
+            //                         shape: new RoundedRectangleBorder(
+            //                           borderRadius:
+            //                               new BorderRadius.circular(50.0),
+            //                           side:
+            //                               BorderSide(color: Color(0xff072e79)),
+            //                         ),
+            //                       ),
+            //                       onPressed: () {
+            //                         Navigator.push(
+            //                           context,
+            //                           MaterialPageRoute(
+            //                               builder: (context) => HomePage()),
+            //                         );
+            //                       },
+            //                       child: Text(
+            //                         'Follow',
+            //                         style: TextStyle(
+            //                           color: Color(0xffffffff),
+            //                           fontSize: 16,
+            //                           fontWeight: FontWeight.w700,
+            //                         ),
+            //                       ),
+            //                     ),
+            //                   ),
+            //                 ),
+            //               ),
+            //             ],
+            //           ),
+            //         ),
+            //       ),
+            //       Card(
+            //         clipBehavior: Clip.antiAlias,
+            //         child: Container(
+            //           width: 150,
+            //           decoration: BoxDecoration(
+            //             borderRadius: new BorderRadius.circular(10.0),
+            //             color: Color(0xffffffff),
+            //           ),
+            //           margin: EdgeInsets.only(left: 10, top: 5),
+            //           child: Column(
+            //             children: [
+            //               Container(
+            //                 margin: EdgeInsets.only(top: 20),
+            //                 child: new GestureDetector(
+            //                   onTap: () {
+            //                     Navigator.push(
+            //                       context,
+            //                       MaterialPageRoute(
+            //                           builder: (context) => Splash()),
+            //                     );
+            //                   },
+            //                   child: ClipRRect(
+            //                     borderRadius:
+            //                         BorderRadius.all(Radius.circular(100)),
+            //                     child: Container(
+            //                         height: 50,
+            //                         width: 50,
+            //                         child: Image.asset(
+            //                             'assets/images/use_profile.png')),
+            //                   ),
+            //                 ),
+            //               ),
+            //               Container(
+            //                   alignment: Alignment.center,
+            //                   margin: EdgeInsets.only(left: 0, top: 5),
+            //                   child: Padding(
+            //                     padding: const EdgeInsets.all(1),
+            //                     child: Text(
+            //                       'Kemi Dzaks',
+            //                       style: TextStyle(
+            //                           color: Color(0xff575858),
+            //                           fontSize: 16,
+            //                           fontWeight: FontWeight.w600),
+            //                     ),
+            //                   )),
+            //               Container(
+            //                   alignment: Alignment.center,
+            //                   margin: EdgeInsets.only(left: 0, top: 1),
+            //                   child: Padding(
+            //                     padding: const EdgeInsets.all(1),
+            //                     child: Text(
+            //                       'Student Rep.',
+            //                       style: TextStyle(
+            //                           color: Color(0xffc8cbcd),
+            //                           fontSize: 12,
+            //                           fontWeight: FontWeight.w600),
+            //                     ),
+            //                   )),
+            //               Container(
+            //                 alignment: Alignment.center,
+            //                 margin: EdgeInsets.only(left: 0, top: 1),
+            //                 child: Padding(
+            //                   padding: const EdgeInsets.all(10.0),
+            //                   child: Container(
+            //                     margin:
+            //                         EdgeInsets.only(top: 0, left: 5, right: 5),
+            //                     child: ElevatedButton(
+            //                       style: ElevatedButton.styleFrom(
+            //                         primary: Color(0xff072e79),
+            //                         shape: new RoundedRectangleBorder(
+            //                           borderRadius:
+            //                               new BorderRadius.circular(50.0),
+            //                           side:
+            //                               BorderSide(color: Color(0xff072e79)),
+            //                         ),
+            //                       ),
+            //                       onPressed: () {
+            //                         Navigator.push(
+            //                           context,
+            //                           MaterialPageRoute(
+            //                               builder: (context) => HomePage()),
+            //                         );
+            //                       },
+            //                       child: Text(
+            //                         'Follow',
+            //                         style: TextStyle(
+            //                           color: Color(0xffffffff),
+            //                           fontSize: 16,
+            //                           fontWeight: FontWeight.w700,
+            //                         ),
+            //                       ),
+            //                     ),
+            //                   ),
+            //                 ),
+            //               ),
+            //             ],
+            //           ),
+            //         ),
+            //       ),
+            //       Card(
+            //         clipBehavior: Clip.antiAlias,
+            //         child: Container(
+            //           width: 150,
+            //           decoration: BoxDecoration(
+            //             borderRadius: new BorderRadius.circular(10.0),
+            //             color: Color(0xffffffff),
+            //           ),
+            //           margin: EdgeInsets.only(left: 10, top: 5),
+            //           child: Column(
+            //             children: [
+            //               Container(
+            //                 margin: EdgeInsets.only(top: 20),
+            //                 child: new GestureDetector(
+            //                   onTap: () {
+            //                     Navigator.push(
+            //                       context,
+            //                       MaterialPageRoute(
+            //                           builder: (context) => Splash()),
+            //                     );
+            //                   },
+            //                   child: ClipRRect(
+            //                     borderRadius:
+            //                         BorderRadius.all(Radius.circular(100)),
+            //                     child: Container(
+            //                         height: 50,
+            //                         width: 50,
+            //                         child: Image.asset(
+            //                             'assets/images/use_profile.png')),
+            //                   ),
+            //                 ),
+            //               ),
+            //               Container(
+            //                   alignment: Alignment.center,
+            //                   margin: EdgeInsets.only(left: 0, top: 5),
+            //                   child: Padding(
+            //                     padding: const EdgeInsets.all(1),
+            //                     child: Text(
+            //                       'Kemi Dzaks',
+            //                       style: TextStyle(
+            //                           color: Color(0xff575858),
+            //                           fontSize: 16,
+            //                           fontWeight: FontWeight.w600),
+            //                     ),
+            //                   )),
+            //               Container(
+            //                   alignment: Alignment.center,
+            //                   margin: EdgeInsets.only(left: 0, top: 1),
+            //                   child: Padding(
+            //                     padding: const EdgeInsets.all(1),
+            //                     child: Text(
+            //                       'Student Rep.',
+            //                       style: TextStyle(
+            //                           color: Color(0xffc8cbcd),
+            //                           fontSize: 12,
+            //                           fontWeight: FontWeight.w600),
+            //                     ),
+            //                   )),
+            //               Container(
+            //                 alignment: Alignment.center,
+            //                 margin: EdgeInsets.only(left: 0, top: 1),
+            //                 child: Padding(
+            //                   padding: const EdgeInsets.all(10.0),
+            //                   child: Container(
+            //                     margin:
+            //                         EdgeInsets.only(top: 0, left: 5, right: 5),
+            //                     child: ElevatedButton(
+            //                       style: ElevatedButton.styleFrom(
+            //                         primary: Color(0xff072e79),
+            //                         shape: new RoundedRectangleBorder(
+            //                           borderRadius:
+            //                               new BorderRadius.circular(50.0),
+            //                           side:
+            //                               BorderSide(color: Color(0xff072e79)),
+            //                         ),
+            //                       ),
+            //                       onPressed: () {
+            //                         Navigator.push(
+            //                           context,
+            //                           MaterialPageRoute(
+            //                               builder: (context) => HomePage()),
+            //                         );
+            //                       },
+            //                       child: Text(
+            //                         'Follow',
+            //                         style: TextStyle(
+            //                           color: Color(0xffffffff),
+            //                           fontSize: 16,
+            //                           fontWeight: FontWeight.w700,
+            //                         ),
+            //                       ),
+            //                     ),
+            //                   ),
+            //                 ),
+            //               ),
+            //             ],
+            //           ),
+            //         ),
+            //       ),
+            //     ],
+            //   ),
+            // ),
             Container(
               margin: EdgeInsets.only(top: 10, right: 10, left: 10),
               child: Card(
@@ -1017,17 +1017,19 @@ class _HomePageState extends State<HomePage> {
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.push(
-            context,
-            // MaterialPageRoute(builder: (context) => GamePlayer()),
-            MaterialPageRoute(builder: (context) => Upload()),
-          );
-        },
-        backgroundColor: Color(0xfffbbc07),
-        child: const Icon(Icons.games_outlined),
-      ),
+      floatingActionButton: admin!
+          ? FloatingActionButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  // MaterialPageRoute(builder: (context) => GamePlayer()),
+                  MaterialPageRoute(builder: (context) => Upload()),
+                );
+              },
+              backgroundColor: Color(0xfffbbc07),
+              child: const Icon(Icons.games_outlined),
+            )
+          : Container(),
     );
   }
 }

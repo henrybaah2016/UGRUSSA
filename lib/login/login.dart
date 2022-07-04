@@ -121,11 +121,11 @@ class _LoginPageState extends State<LoginPage> {
     );
 
     final User? firebaseUser = (await firebaseAuth
-        .signInWithEmailAndPassword(
+            .signInWithEmailAndPassword(
       email: _emailController.text.trim(),
-      password: "123456",
+      password: _passwordController.text.trim(),
     )
-        .catchError((error) {
+            .catchError((error) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text(
@@ -142,7 +142,7 @@ class _LoginPageState extends State<LoginPage> {
 
     if (firebaseUser != null) {
       currentFirebaseUser = firebaseUser;
-      var prefs =  await SharedPreferences.getInstance();
+      var prefs = await SharedPreferences.getInstance();
       prefs.setBool(ADMIN, true);
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
@@ -327,11 +327,13 @@ class _LoginPageState extends State<LoginPage> {
                                     builder: (context) => ForgotPasswordPage()),
                               );
                             },
-                            child: new Text("Forgot Password",
-                                style: new TextStyle(
-                                    color: Color(0xff072e79),
-                                    fontSize: 12,
-                                    fontWeight: FontWeight.w600)),
+                            child: new Text(
+                              "Forgot Password",
+                              style: new TextStyle(
+                                  color: Color(0xff072e79),
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w600),
+                            ),
                           )
                         ],
                       ),
@@ -342,12 +344,13 @@ class _LoginPageState extends State<LoginPage> {
             ],
           ),
           GestureDetector(
-            onTap: (){
+            onTap: () {
               validateForm(context);
             },
             onLongPress: () {
               print("Long Pressed 1");
-              if(_emailController.text ==" admin@ugrussa.org" && _passwordController.text == "poiuyTREWQ123456"){
+              if (_emailController.text == "admin@ugrussa.org" &&
+                  _passwordController.text == "poiuyTREWQ123456") {
                 _loginAdmin();
               }
             },
@@ -370,7 +373,6 @@ class _LoginPageState extends State<LoginPage> {
               ),
             ),
           ),
-
           Container(
             margin: EdgeInsets.only(top: 15, bottom: 15),
             child: Row(

@@ -66,12 +66,13 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
           child: Column(
         children: <Widget>[
           Center(
-              child: Container(
-            margin: const EdgeInsets.only(top: 80, left: 5, bottom: 5),
-            height: 70,
-            width: 70,
-            child: Image.asset('assets/images/logo.png'),
-          )),
+            child: Container(
+              margin: const EdgeInsets.only(top: 80, left: 5, bottom: 5),
+              height: 70,
+              width: 70,
+              child: Image.asset('assets/images/logo.png'),
+            ),
+          ),
           Container(
             margin: const EdgeInsets.only(top: 0, left: 5, bottom: 40),
             child: Padding(
@@ -96,11 +97,10 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                   "Enter your email address below and ",
                   textAlign: TextAlign.right,
                   style: TextStyle(
-                      color: Color(0xffB3B3B3),
-                      fontSize: 12,
-                      fontWeight: FontWeight.w700,
+                    color: Color(0xffB3B3B3),
+                    fontSize: 12,
+                    fontWeight: FontWeight.w700,
                   ),
-
                 ),
                 Text(
                   "we will send you a link to reset your password",
