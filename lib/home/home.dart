@@ -1022,8 +1022,8 @@ class _HomePageState extends State<HomePage> {
               onPressed: () {
                 Navigator.push(
                   context,
-                  // MaterialPageRoute(builder: (context) => GamePlayer()),
-                  MaterialPageRoute(builder: (context) => Upload()),
+                  MaterialPageRoute(builder: (context) => GamePlayer()),
+                  // MaterialPageRoute(builder: (context) => Upload()),
                 );
               },
               backgroundColor: Color(0xfffbbc07),

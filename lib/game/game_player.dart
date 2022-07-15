@@ -98,7 +98,7 @@ class _GamePlayerState extends State<GamePlayer> {
                     Container(
                       alignment: Alignment.topLeft,
                       margin: EdgeInsets.only(top: 10, left: 20, right: 20),
-                      child: new Text('play the educative puzzle game to \nlearn new Russia words',
+                      child: new Text('play the educative puzzle game to \nlearn new Russian words',
                         style: TextStyle(color: Color(0xffffffff),fontSize: 18,fontWeight: FontWeight.normal),),
                     ),
                   ],

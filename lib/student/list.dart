@@ -210,12 +210,12 @@ class _ListPageState extends State<ListPage> {
                                   children: [
                                     new GestureDetector(
                                       onTap: () {
-                                        Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (context) =>
-                                                  DetailsPage()),
-                                        );
+                                        // Navigator.push(
+                                        //   context,
+                                        //   MaterialPageRoute(
+                                        //       builder: (context) =>
+                                        //           DetailsPage()),
+                                        // );
                                       },
                                       child: Row(
                                         children: [

@@ -86,7 +86,7 @@ class _AllFilesState extends State<AllFiles> {
     setState(() {
       _isLoading = true;
     });
-    final storageRef = FirebaseStorage.instance.ref().child("uploads/");
+    final storageRef = FirebaseStorage.instance.ref().child("all_files/");
     await storageRef.listAll().then((listResult) async {
       // print("ALL FILES ${listResult.storage.ref()}");
       for (var item in listResult.items) {
