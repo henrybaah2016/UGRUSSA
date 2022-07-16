@@ -112,7 +112,7 @@ class _GamePlayerState extends State<GamePlayer> {
                         margin: EdgeInsets.only(right:20,left:20),
                         child: const Icon(
 
-                          Icons.arrow_back_outlined,
+                          Icons.arrow_forward_outlined,
                           color: Color(0xffffffff),
                           size: 25.0,
 
