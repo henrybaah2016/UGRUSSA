@@ -50,14 +50,13 @@ class _GameBoardState extends State<GameBoard> with TickerProviderStateMixin {
     {"novyy": "new"},
   ];
 
-  _checkAnswers (){
+  _checkAnswers() {
     _answers.asMap().map((key, value) {
       print("KEY : ${value.keys}   ::: VALUE : ${value.values}");
 
       return MapEntry(key, value);
     });
   }
-
 
   @override
   void initState() {
@@ -77,6 +76,13 @@ class _GameBoardState extends State<GameBoard> with TickerProviderStateMixin {
     super.dispose();
   }
 
+  bool isOneMatch = false;
+  bool isTwoMatch = false;
+  bool isThreeMatch = false;
+  bool isFourMatch = false;
+  bool isFiveMatch = false;
+  int score = 0;
+
   @override
   Widget build(BuildContext context) {
     List<Map<String, String>> _choices = [
@@ -87,32 +93,33 @@ class _GameBoardState extends State<GameBoard> with TickerProviderStateMixin {
       {nine: ten},
     ];
     return Scaffold(
-        backgroundColor: Color(0xbe072e79),
-        appBar: AppBar(
-          backgroundColor: Colors.transparent,
-          elevation: 0,
-          actions: <Widget>[
-            PopupMenuButton(
-              onSelected: (result) async {
-                if (result == 0) {
-                  Navigator.of(context).pop();
-                }
-              },
-              icon: Container(
-                margin: EdgeInsets.only(right: 20),
-                child: const Icon(
-                  Icons.close_rounded,
-                  color: Color(0xffffffff),
-                  size: 25.0,
-                ),
+      backgroundColor: Color(0xbe072e79),
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        actions: <Widget>[
+          PopupMenuButton(
+            onSelected: (result) async {
+              if (result == 0) {
+                Navigator.of(context).pop();
+              }
+            },
+            icon: Container(
+              margin: EdgeInsets.only(right: 20),
+              child: const Icon(
+                Icons.close_rounded,
+                color: Color(0xffffffff),
+                size: 25.0,
               ),
-              offset: Offset(0, kToolbarHeight),
-              itemBuilder: (BuildContext context) => <PopupMenuEntry>[],
             ),
-          ],
-        ),
-        body: SingleChildScrollView(
-          child: Column(children: <Widget>[
+            offset: Offset(0, kToolbarHeight),
+            itemBuilder: (BuildContext context) => <PopupMenuEntry>[],
+          ),
+        ],
+      ),
+      body: SingleChildScrollView(
+        child: Column(
+          children: <Widget>[
             LinearProgressIndicator(
               //value: controller.value,
               semanticsLabel: 'Linear progress indicator',
@@ -161,389 +168,868 @@ class _GameBoardState extends State<GameBoard> with TickerProviderStateMixin {
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Expanded(
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: new ElevatedButton(
-                        child: Container(
-                          margin: EdgeInsets.symmetric(vertical: 20),
-                          child: new Text(
-                            'Food',
-                            style: TextStyle(
-                                color: isButtonPressedOne
-                                    ? Color(0xffffffff)
-                                    : Color(0xff073ea6),
-                                fontSize: 18),
-                          ),
-                        ),
-                        style: ElevatedButton.styleFrom(
-                          //primary: Color(0xff072e79),
-                          primary: isButtonPressedOne
-                              ? matchOneColor
-                              : Color(0xffffffff),
+                  if (!isThreeMatch)
+                    Expanded(
+                      child: Draggable(
+                        data: "3",
+                        feedback: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: new ElevatedButton(
+                            child: Container(
+                              margin: EdgeInsets.symmetric(vertical: 20),
+                              child: new Text(
+                                'Food',
+                                style: TextStyle(
+                                  color: Color(0xff073ea6),
+                                  fontSize: 18,
+                                ),
+                              ),
+                            ),
+                            style: ElevatedButton.styleFrom(
+                              //primary: Color(0xff072e79),
+                              primary: Color(0xffffffff),
 
-                          minimumSize: Size(double.infinity, 52),
-                          shape: new RoundedRectangleBorder(
-                            borderRadius: new BorderRadius.circular(100.0),
-                            // side: BorderSide(color: Color(0xffffffff)),
+                              minimumSize: Size(150, 52),
+                              shape: new RoundedRectangleBorder(
+                                borderRadius: new BorderRadius.circular(100.0),
+                                // side: BorderSide(color: Color(0xffffffff)),
+                              ),
+                            ),
+                            onPressed: () {},
                           ),
                         ),
-                        onPressed: () {
+                        childWhenDragging: Container(),
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: new ElevatedButton(
+                            child: Container(
+                              margin: EdgeInsets.symmetric(vertical: 20),
+                              child: new Text(
+                                'Food',
+                                style: TextStyle(
+                                  color: Color(0xff073ea6),
+                                  fontSize: 18,
+                                ),
+                              ),
+                            ),
+                            style: ElevatedButton.styleFrom(
+                              //primary: Color(0xff072e79),
+                              primary: Color(0xffffffff),
+
+                              minimumSize: Size(double.infinity, 52),
+                              shape: new RoundedRectangleBorder(
+                                borderRadius: new BorderRadius.circular(100.0),
+                                // side: BorderSide(color: Color(0xffffffff)),
+                              ),
+                            ),
+                            onPressed: () {},
+                          ),
+                        ),
+                      ),
+                    ),
+                  if (isThreeMatch)
+                    Expanded(
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: new ElevatedButton(
+                          child: Container(
+                            margin: EdgeInsets.symmetric(vertical: 20),
+                            child: new Text(
+                              '',
+                              style: TextStyle(
+                                color: Colors.transparent,
+                                fontSize: 18,
+                              ),
+                            ),
+                          ),
+                          style: ElevatedButton.styleFrom(
+                            //primary: Color(0xff072e79),
+                            primary: Colors.transparent,
+
+                            minimumSize: Size(double.infinity, 52),
+                            shape: new RoundedRectangleBorder(
+                              borderRadius: new BorderRadius.circular(100.0),
+                              // side: BorderSide(color: Color(0xffffffff)),
+                            ),
+                          ),
+                          onPressed: () {},
+                        ),
+                      ),
+                    ),
+                  if (!isOneMatch)
+                    Expanded(
+                      child: DragTarget(
+                        builder: (context, List<Object?> candidateData,
+                            rejectedData) {
+                          return Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: new ElevatedButton(
+                              child: Container(
+                                margin: EdgeInsets.symmetric(vertical: 20),
+                                child: new Text(
+                                  'tkan',
+                                  style: TextStyle(
+                                    color: Color(0xff073ea6),
+                                    fontSize: 18,
+                                  ),
+                                ),
+                              ),
+                              style: ElevatedButton.styleFrom(
+                                //primary: Color(0xff072e79),
+                                primary: Color(0xffffffff),
+
+                                minimumSize: Size(double.infinity, 52),
+                                shape: new RoundedRectangleBorder(
+                                  borderRadius:
+                                      new BorderRadius.circular(100.0),
+                                  // side: BorderSide(color: Color(0xffffffff)),
+                                ),
+                              ),
+                              onPressed: () {},
+                            ),
+                          );
+                        },
+                        onWillAccept: (data) {
+                          return true;
+                        },
+                        onAccept: (data) {
+                          print("data $data");
                           setState(() {
-                            isButtonPressedOne = !isButtonPressedOne;
-                            one="Food";
+                            if (data == "1") {
+                              isOneMatch = true;
+                              score += 10;
+                            }
                           });
                         },
                       ),
                     ),
-                  ),
-                  Expanded(
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: new ElevatedButton(
-                        child: Container(
-                          margin: EdgeInsets.symmetric(vertical: 20),
-                          child: new Text(
-                            'tkan',
-                            style: TextStyle(
-                                color: isButtonPressedTwo
-                                    ? Color(0xfffffffff)
-                                    : Color(0xff073ea6),
-                                fontSize: 18),
+                  if (isOneMatch)
+                    Expanded(
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: new ElevatedButton(
+                          child: Container(
+                            margin: EdgeInsets.symmetric(vertical: 20),
+                            child: new Text(
+                              '',
+                              style: TextStyle(
+                                color: Colors.transparent,
+                                fontSize: 18,
+                              ),
+                            ),
                           ),
-                        ),
-                        style: ElevatedButton.styleFrom(
-                          //primary: Color(0xff072e79),
-                          primary: isButtonPressedTwo
-                              ? Color(0xff073ea6)
-                              : Color(0xffffffff),
+                          style: ElevatedButton.styleFrom(
+                            //primary: Color(0xff072e79),
+                            primary: Colors.transparent,
 
-                          minimumSize: Size(double.infinity, 52),
-                          shape: new RoundedRectangleBorder(
-                            borderRadius: new BorderRadius.circular(100.0),
-                            //side: BorderSide(color: Color(0xffffffff)),
+                            minimumSize: Size(double.infinity, 52),
+                            shape: new RoundedRectangleBorder(
+                              borderRadius: new BorderRadius.circular(100.0),
+                              // side: BorderSide(color: Color(0xffffffff)),
+                            ),
                           ),
+                          onPressed: () {},
                         ),
-                        onPressed: () {
-                          setState(() {
-                            isButtonPressedTwo = !isButtonPressedTwo;
-                          });
-                        },
                       ),
                     ),
-                  ),
                 ],
               ),
             ),
+
+            //two
             Container(
               margin: EdgeInsets.only(top: 10, left: 10, right: 10),
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Expanded(
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: new ElevatedButton(
-                        child: Container(
-                          margin: EdgeInsets.symmetric(vertical: 20),
-                          child: new Text(
-                            'Yeda',
-                            style: TextStyle(
-                                color: isButtonPressedThree
-                                    ? Color(0xffffffff)
-                                    : Color(0xff073ea6),
-                                fontSize: 18),
-                          ),
-                        ),
-                        style: ElevatedButton.styleFrom(
-                          //primary: Color(0xff072e79),
-                          primary: isButtonPressedThree
-                              ? Color(0xff073ea6)
-                              : Color(0xffffffff),
+                  if (!isTwoMatch)
+                    Expanded(
+                      child: Draggable(
+                        data: "2",
+                        feedback: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: new ElevatedButton(
+                            child: Container(
+                              margin: EdgeInsets.symmetric(vertical: 20),
+                              child: new Text(
+                                'Yeda',
+                                style: TextStyle(
+                                  color: Color(0xff073ea6),
+                                  fontSize: 18,
+                                ),
+                              ),
+                            ),
+                            style: ElevatedButton.styleFrom(
+                              //primary: Color(0xff072e79),
+                              primary: Color(0xffffffff),
 
-                          minimumSize: Size(double.infinity, 52),
-                          shape: new RoundedRectangleBorder(
-                            borderRadius: new BorderRadius.circular(100.0),
-                            // side: BorderSide(color: Color(0xffffffff)),
+                              minimumSize: Size(150, 52),
+                              shape: new RoundedRectangleBorder(
+                                borderRadius: new BorderRadius.circular(100.0),
+                                // side: BorderSide(color: Color(0xffffffff)),
+                              ),
+                            ),
+                            onPressed: () {},
                           ),
                         ),
-                        onPressed: () {
+                        childWhenDragging: Container(),
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: new ElevatedButton(
+                            child: Container(
+                              margin: EdgeInsets.symmetric(vertical: 20),
+                              child: new Text(
+                                'Yeda',
+                                style: TextStyle(
+                                  color: Color(0xff073ea6),
+                                  fontSize: 18,
+                                ),
+                              ),
+                            ),
+                            style: ElevatedButton.styleFrom(
+                              //primary: Color(0xff072e79),
+                              primary: Color(0xffffffff),
+
+                              minimumSize: Size(double.infinity, 52),
+                              shape: new RoundedRectangleBorder(
+                                borderRadius: new BorderRadius.circular(100.0),
+                                // side: BorderSide(color: Color(0xffffffff)),
+                              ),
+                            ),
+                            onPressed: () {},
+                          ),
+                        ),
+                      ),
+                    ),
+                  if (isTwoMatch)
+                    Expanded(
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: new ElevatedButton(
+                          child: Container(
+                            margin: EdgeInsets.symmetric(vertical: 20),
+                            child: new Text(
+                              '',
+                              style: TextStyle(
+                                color: Colors.transparent,
+                                fontSize: 18,
+                              ),
+                            ),
+                          ),
+                          style: ElevatedButton.styleFrom(
+                            //primary: Color(0xff072e79),
+                            primary: Colors.transparent,
+
+                            minimumSize: Size(double.infinity, 52),
+                            shape: new RoundedRectangleBorder(
+                              borderRadius: new BorderRadius.circular(100.0),
+                              // side: BorderSide(color: Color(0xffffffff)),
+                            ),
+                          ),
+                          onPressed: () {},
+                        ),
+                      ),
+                    ),
+                  if (!isTwoMatch)
+                    Expanded(
+                      child: DragTarget(
+                        builder: (context, List<Object?> candidateData,
+                            rejectedData) {
+                          return Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: new ElevatedButton(
+                              child: Container(
+                                margin: EdgeInsets.symmetric(vertical: 20),
+                                child: new Text(
+                                  'Cloth',
+                                  style: TextStyle(
+                                    color: Color(0xff073ea6),
+                                    fontSize: 18,
+                                  ),
+                                ),
+                              ),
+                              style: ElevatedButton.styleFrom(
+                                //primary: Color(0xff072e79),
+                                primary: Color(0xffffffff),
+
+                                minimumSize: Size(double.infinity, 52),
+                                shape: new RoundedRectangleBorder(
+                                  borderRadius:
+                                      new BorderRadius.circular(100.0),
+                                  // side: BorderSide(color: Color(0xffffffff)),
+                                ),
+                              ),
+                              onPressed: () {},
+                            ),
+                          );
+                        },
+                        onWillAccept: (data) {
+                          return true;
+                        },
+                        onAccept: (data) {
+                          print("data $data");
                           setState(() {
-                            isButtonPressedThree = !isButtonPressedThree;
+                            if (data == "2") {
+                              isTwoMatch = true;
+                              score += 10;
+                            }
                           });
                         },
                       ),
                     ),
-                  ),
-                  Expanded(
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: new ElevatedButton(
-                        child: Container(
-                          margin: EdgeInsets.symmetric(vertical: 20),
-                          child: new Text(
-                            'Cloth',
-                            style: TextStyle(
-                                color: isButtonPressedFour
-                                    ? Color(0xffffffff)
-                                    : Color(0xff073ea6),
-                                fontSize: 18),
+                  if (isTwoMatch)
+                    Expanded(
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: new ElevatedButton(
+                          child: Container(
+                            margin: EdgeInsets.symmetric(vertical: 20),
+                            child: new Text(
+                              '',
+                              style: TextStyle(
+                                color: Colors.transparent,
+                                fontSize: 18,
+                              ),
+                            ),
                           ),
-                        ),
-                        style: ElevatedButton.styleFrom(
-                          //primary: Color(0xff072e79),
-                          primary: isButtonPressedFour
-                              ? Color(0xff073ea6)
-                              : Color(0xffffffff),
+                          style: ElevatedButton.styleFrom(
+                            //primary: Color(0xff072e79),
+                            primary: Colors.transparent,
 
-                          minimumSize: Size(double.infinity, 52),
-                          shape: new RoundedRectangleBorder(
-                            borderRadius: new BorderRadius.circular(100.0),
-                            //side: BorderSide(color: Color(0xffffffff)),
+                            minimumSize: Size(double.infinity, 52),
+                            shape: new RoundedRectangleBorder(
+                              borderRadius: new BorderRadius.circular(100.0),
+                              // side: BorderSide(color: Color(0xffffffff)),
+                            ),
                           ),
+                          onPressed: () {},
                         ),
-                        onPressed: () {
-                          setState(() {
-                            isButtonPressedFour = !isButtonPressedFour;
-                          });
-                        },
                       ),
                     ),
-                  ),
                 ],
               ),
             ),
+
+            //3
             Container(
               margin: EdgeInsets.only(top: 10, left: 10, right: 10),
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Expanded(
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: new ElevatedButton(
-                        child: Container(
-                          margin: EdgeInsets.symmetric(vertical: 20),
-                          child: new Text(
-                            'kniga',
-                            style: TextStyle(
-                                color: isButtonPressedFive
-                                    ? Color(0xffffffff)
-                                    : Color(0xff073ea6),
-                                fontSize: 18),
-                          ),
-                        ),
-                        style: ElevatedButton.styleFrom(
-                          //primary: Color(0xff072e79),
-                          primary: isButtonPressedFive
-                              ? Color(0xff073ea6)
-                              : Color(0xffffffff),
+                  if (!isOneMatch)
+                    Expanded(
+                      child: Draggable(
+                        data: "1",
+                        feedback: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: new ElevatedButton(
+                            child: Container(
+                              margin: EdgeInsets.symmetric(vertical: 20),
+                              child: new Text(
+                                'kniga',
+                                style: TextStyle(
+                                  color: Color(0xff073ea6),
+                                  fontSize: 18,
+                                ),
+                              ),
+                            ),
+                            style: ElevatedButton.styleFrom(
+                              //primary: Color(0xff072e79),
+                              primary: Color(0xffffffff),
 
-                          minimumSize: Size(double.infinity, 52),
-                          shape: new RoundedRectangleBorder(
-                            borderRadius: new BorderRadius.circular(100.0),
-                            // side: BorderSide(color: Color(0xffffffff)),
+                              minimumSize: Size(150, 52),
+                              shape: new RoundedRectangleBorder(
+                                borderRadius: new BorderRadius.circular(100.0),
+                                // side: BorderSide(color: Color(0xffffffff)),
+                              ),
+                            ),
+                            onPressed: () {},
                           ),
                         ),
-                        onPressed: () {
+                        childWhenDragging: Container(),
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: new ElevatedButton(
+                            child: Container(
+                              margin: EdgeInsets.symmetric(vertical: 20),
+                              child: new Text(
+                                'kniga',
+                                style: TextStyle(
+                                  color: Color(0xff073ea6),
+                                  fontSize: 18,
+                                ),
+                              ),
+                            ),
+                            style: ElevatedButton.styleFrom(
+                              //primary: Color(0xff072e79),
+                              primary: Color(0xffffffff),
+
+                              minimumSize: Size(double.infinity, 52),
+                              shape: new RoundedRectangleBorder(
+                                borderRadius: new BorderRadius.circular(100.0),
+                                // side: BorderSide(color: Color(0xffffffff)),
+                              ),
+                            ),
+                            onPressed: () {},
+                          ),
+                        ),
+                      ),
+                    ),
+                  if (isOneMatch)
+                    Expanded(
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: new ElevatedButton(
+                          child: Container(
+                            margin: EdgeInsets.symmetric(vertical: 20),
+                            child: new Text(
+                              '',
+                              style: TextStyle(
+                                color: Colors.transparent,
+                                fontSize: 18,
+                              ),
+                            ),
+                          ),
+                          style: ElevatedButton.styleFrom(
+                            //primary: Color(0xff072e79),
+                            primary: Colors.transparent,
+
+                            minimumSize: Size(double.infinity, 52),
+                            shape: new RoundedRectangleBorder(
+                              borderRadius: new BorderRadius.circular(100.0),
+                              // side: BorderSide(color: Color(0xffffffff)),
+                            ),
+                          ),
+                          onPressed: () {},
+                        ),
+                      ),
+                    ),
+                  if (!isThreeMatch)
+                    Expanded(
+                      child: DragTarget(
+                        builder: (context, List<Object?> candidateData,
+                            rejectedData) {
+                          return Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: new ElevatedButton(
+                              child: Container(
+                                margin: EdgeInsets.symmetric(vertical: 20),
+                                child: new Text(
+                                  'Pen',
+                                  style: TextStyle(
+                                    color: Color(0xff073ea6),
+                                    fontSize: 18,
+                                  ),
+                                ),
+                              ),
+                              style: ElevatedButton.styleFrom(
+                                //primary: Color(0xff072e79),
+                                primary: Color(0xffffffff),
+
+                                minimumSize: Size(double.infinity, 52),
+                                shape: new RoundedRectangleBorder(
+                                  borderRadius:
+                                      new BorderRadius.circular(100.0),
+                                  // side: BorderSide(color: Color(0xffffffff)),
+                                ),
+                              ),
+                              onPressed: () {},
+                            ),
+                          );
+                        },
+                        onWillAccept: (data) {
+                          return true;
+                        },
+                        onAccept: (data) {
+                          print("data $data");
                           setState(() {
-                            isButtonPressedFive = !isButtonPressedFive;
+                            if (data == "3") {
+                              isThreeMatch = true;
+                              score += 10;
+                            }
                           });
                         },
                       ),
                     ),
-                  ),
-                  Expanded(
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: new ElevatedButton(
-                        child: Container(
-                          margin: EdgeInsets.symmetric(vertical: 20),
-                          child: new Text(
-                            'Pen',
-                            style: TextStyle(
-                                color: isButtonPressedSix
-                                    ? Color(0xffffffff)
-                                    : Color(0xff073ea6),
-                                fontSize: 18),
-                          ),
-                        ),
-                        style: ElevatedButton.styleFrom(
-                          //primary: Color(0xff072e79),
-                          primary: isButtonPressedSix
-                              ? Color(0xff073ea6)
-                              : Color(0xffffffff),
 
-                          minimumSize: Size(double.infinity, 52),
-                          shape: new RoundedRectangleBorder(
-                            borderRadius: new BorderRadius.circular(100.0),
-                            //side: BorderSide(color: Color(0xffffffff)),
+                  if (isThreeMatch)
+                    Expanded(
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: new ElevatedButton(
+                          child: Container(
+                            margin: EdgeInsets.symmetric(vertical: 20),
+                            child: new Text(
+                              '',
+                              style: TextStyle(
+                                color: Colors.transparent,
+                                fontSize: 18,
+                              ),
+                            ),
                           ),
+                          style: ElevatedButton.styleFrom(
+                            //primary: Color(0xff072e79),
+                            primary: Colors.transparent,
+
+                            minimumSize: Size(double.infinity, 52),
+                            shape: new RoundedRectangleBorder(
+                              borderRadius: new BorderRadius.circular(100.0),
+                              // side: BorderSide(color: Color(0xffffffff)),
+                            ),
+                          ),
+                          onPressed: () {},
                         ),
-                        onPressed: () {
-                          setState(() {
-                            isButtonPressedSix = !isButtonPressedSix;
-                          });
-                        },
                       ),
                     ),
-                  ),
                 ],
               ),
             ),
+
+            //4
             Container(
               margin: EdgeInsets.only(top: 10, left: 10, right: 10),
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Expanded(
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: new ElevatedButton(
-                        child: Container(
-                          margin: EdgeInsets.symmetric(vertical: 20),
-                          child: new Text(
-                            'ruchka',
-                            style: TextStyle(
-                                color: isButtonPressedSeven
-                                    ? Color(0xffffffff)
-                                    : Color(0xff073ea6),
-                                fontSize: 18),
-                          ),
-                        ),
-                        style: ElevatedButton.styleFrom(
-                          //primary: Color(0xff072e79),
-                          primary: isButtonPressedSeven
-                              ? Color(0xff073ea6)
-                              : Color(0xffffffff),
+                  if (!isFiveMatch)
+                    Expanded(
+                      child: Draggable(
+                        data: "5",
+                        feedback: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: new ElevatedButton(
+                            child: Container(
+                              margin: EdgeInsets.symmetric(vertical: 20),
+                              child: new Text(
+                                'ruchka',
+                                style: TextStyle(
+                                  color: Color(0xff073ea6),
+                                  fontSize: 18,
+                                ),
+                              ),
+                            ),
+                            style: ElevatedButton.styleFrom(
+                              //primary: Color(0xff072e79),
+                              primary: Color(0xffffffff),
 
-                          minimumSize: Size(double.infinity, 52),
-                          shape: new RoundedRectangleBorder(
-                            borderRadius: new BorderRadius.circular(100.0),
-                            // side: BorderSide(color: Color(0xffffffff)),
+                              minimumSize: Size(150, 52),
+                              shape: new RoundedRectangleBorder(
+                                borderRadius: new BorderRadius.circular(100.0),
+                                // side: BorderSide(color: Color(0xffffffff)),
+                              ),
+                            ),
+                            onPressed: () {},
                           ),
                         ),
-                        onPressed: () {
+                        childWhenDragging: Container(),
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: new ElevatedButton(
+                            child: Container(
+                              margin: EdgeInsets.symmetric(vertical: 20),
+                              child: new Text(
+                                'ruchka',
+                                style: TextStyle(
+                                  color: Color(0xff073ea6),
+                                  fontSize: 18,
+                                ),
+                              ),
+                            ),
+                            style: ElevatedButton.styleFrom(
+                              //primary: Color(0xff072e79),
+                              primary: Color(0xffffffff),
+
+                              minimumSize: Size(double.infinity, 52),
+                              shape: new RoundedRectangleBorder(
+                                borderRadius: new BorderRadius.circular(100.0),
+                                // side: BorderSide(color: Color(0xffffffff)),
+                              ),
+                            ),
+                            onPressed: () {},
+                          ),
+                        ),
+                      ),
+                    ),
+                  if (isFiveMatch)
+                    Expanded(
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: new ElevatedButton(
+                          child: Container(
+                            margin: EdgeInsets.symmetric(vertical: 20),
+                            child: new Text(
+                              '',
+                              style: TextStyle(
+                                color: Colors.transparent,
+                                fontSize: 18,
+                              ),
+                            ),
+                          ),
+                          style: ElevatedButton.styleFrom(
+                            //primary: Color(0xff072e79),
+                            primary: Colors.transparent,
+
+                            minimumSize: Size(double.infinity, 52),
+                            shape: new RoundedRectangleBorder(
+                              borderRadius: new BorderRadius.circular(100.0),
+                              // side: BorderSide(color: Color(0xffffffff)),
+                            ),
+                          ),
+                          onPressed: () {},
+                        ),
+                      ),
+                    ),
+                  if (!isFourMatch)
+                    Expanded(
+                      child: DragTarget(
+                        builder: (context, List<Object?> candidateData,
+                            rejectedData) {
+                          return Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: new ElevatedButton(
+                              child: Container(
+                                margin: EdgeInsets.symmetric(vertical: 20),
+                                child: new Text(
+                                  'Book',
+                                  style: TextStyle(
+                                    color: Color(0xff073ea6),
+                                    fontSize: 18,
+                                  ),
+                                ),
+                              ),
+                              style: ElevatedButton.styleFrom(
+                                //primary: Color(0xff072e79),
+                                primary: Color(0xffffffff),
+
+                                minimumSize: Size(double.infinity, 52),
+                                shape: new RoundedRectangleBorder(
+                                  borderRadius:
+                                      new BorderRadius.circular(100.0),
+                                  // side: BorderSide(color: Color(0xffffffff)),
+                                ),
+                              ),
+                              onPressed: () {},
+                            ),
+                          );
+                        },
+                        onWillAccept: (data) {
+                          return true;
+                        },
+                        onAccept: (data) {
+                          print("data $data");
                           setState(() {
-                            isButtonPressedSeven = !isButtonPressedSeven;
+                            if (data == "4") {
+                              isFourMatch = true;
+                              score += 10;
+                            }
                           });
                         },
                       ),
                     ),
-                  ),
-                  Expanded(
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: new ElevatedButton(
-                        child: Container(
-                          margin: EdgeInsets.symmetric(vertical: 20),
-                          child: new Text(
-                            'Book',
-                            style: TextStyle(
-                                color: isButtonPressedEight
-                                    ? Color(0xffffffff)
-                                    : Color(0xff073ea6),
-                                fontSize: 18),
+                  if (isFourMatch)
+                    Expanded(
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: new ElevatedButton(
+                          child: Container(
+                            margin: EdgeInsets.symmetric(vertical: 20),
+                            child: new Text(
+                              '',
+                              style: TextStyle(
+                                color: Colors.transparent,
+                                fontSize: 18,
+                              ),
+                            ),
                           ),
-                        ),
-                        style: ElevatedButton.styleFrom(
-                          //primary: Color(0xff072e79),
-                          primary: isButtonPressedEight
-                              ? Color(0xff073ea6)
-                              : Color(0xffffffff),
+                          style: ElevatedButton.styleFrom(
+                            //primary: Color(0xff072e79),
+                            primary: Colors.transparent,
 
-                          minimumSize: Size(double.infinity, 52),
-                          shape: new RoundedRectangleBorder(
-                            borderRadius: new BorderRadius.circular(100.0),
-                            //side: BorderSide(color: Color(0xffffffff)),
+                            minimumSize: Size(double.infinity, 52),
+                            shape: new RoundedRectangleBorder(
+                              borderRadius: new BorderRadius.circular(100.0),
+                              // side: BorderSide(color: Color(0xffffffff)),
+                            ),
                           ),
+                          onPressed: () {},
                         ),
-                        onPressed: () {
-                          setState(() {
-                            isButtonPressedEight = !isButtonPressedEight;
-                          });
-                        },
                       ),
                     ),
-                  ),
                 ],
               ),
             ),
+
+            //5
             Container(
               margin: EdgeInsets.only(top: 10, left: 10, right: 10),
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Expanded(
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: new ElevatedButton(
-                        child: Container(
-                          margin: EdgeInsets.symmetric(vertical: 20),
-                          child: new Text(
-                            'novyy',
-                            style: TextStyle(
-                                color: isButtonPressedNine
-                                    ? Color(0xffffffff)
-                                    : Color(0xff073ea6),
-                                fontSize: 18),
-                          ),
-                        ),
-                        style: ElevatedButton.styleFrom(
-                          //primary: Color(0xff072e79),
-                          primary: isButtonPressedNine
-                              ? Color(0xff073ea6)
-                              : Color(0xffffffff),
+                  if (!isFourMatch)
+                    Expanded(
+                      child: Draggable(
+                        data: "4",
+                        feedback: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: new ElevatedButton(
+                            child: Container(
+                              margin: EdgeInsets.symmetric(vertical: 20),
+                              child: new Text(
+                                'Novyy',
+                                style: TextStyle(
+                                  color: Color(0xff073ea6),
+                                  fontSize: 18,
+                                ),
+                              ),
+                            ),
+                            style: ElevatedButton.styleFrom(
+                              //primary: Color(0xff072e79),
+                              primary: Color(0xffffffff),
 
-                          minimumSize: Size(double.infinity, 52),
-                          shape: new RoundedRectangleBorder(
-                            borderRadius: new BorderRadius.circular(100.0),
-                            // side: BorderSide(color: Color(0xffffffff)),
+                              minimumSize: Size(150, 52),
+                              shape: new RoundedRectangleBorder(
+                                borderRadius: new BorderRadius.circular(100.0),
+                                // side: BorderSide(color: Color(0xffffffff)),
+                              ),
+                            ),
+                            onPressed: () {},
                           ),
                         ),
-                        onPressed: () {
+                        childWhenDragging: Container(),
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: new ElevatedButton(
+                            child: Container(
+                              margin: EdgeInsets.symmetric(vertical: 20),
+                              child: new Text(
+                                'Novyy',
+                                style: TextStyle(
+                                  color: Color(0xff073ea6),
+                                  fontSize: 18,
+                                ),
+                              ),
+                            ),
+                            style: ElevatedButton.styleFrom(
+                              //primary: Color(0xff072e79),
+                              primary: Color(0xffffffff),
+
+                              minimumSize: Size(double.infinity, 52),
+                              shape: new RoundedRectangleBorder(
+                                borderRadius: new BorderRadius.circular(100.0),
+                                // side: BorderSide(color: Color(0xffffffff)),
+                              ),
+                            ),
+                            onPressed: () {},
+                          ),
+                        ),
+                      ),
+                    ),
+                  if (isFourMatch)
+                    Expanded(
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: new ElevatedButton(
+                          child: Container(
+                            margin: EdgeInsets.symmetric(vertical: 20),
+                            child: new Text(
+                              '',
+                              style: TextStyle(
+                                color: Colors.transparent,
+                                fontSize: 18,
+                              ),
+                            ),
+                          ),
+                          style: ElevatedButton.styleFrom(
+                            //primary: Color(0xff072e79),
+                            primary: Colors.transparent,
+
+                            minimumSize: Size(double.infinity, 52),
+                            shape: new RoundedRectangleBorder(
+                              borderRadius: new BorderRadius.circular(100.0),
+                              // side: BorderSide(color: Color(0xffffffff)),
+                            ),
+                          ),
+                          onPressed: () {},
+                        ),
+                      ),
+                    ),
+                  if (!isFiveMatch)
+                    Expanded(
+                      child: DragTarget(
+                        builder: (context, List<Object?> candidateData,
+                            rejectedData) {
+                          return Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: new ElevatedButton(
+                              child: Container(
+                                margin: EdgeInsets.symmetric(vertical: 20),
+                                child: new Text(
+                                  'New',
+                                  style: TextStyle(
+                                    color: Color(0xff073ea6),
+                                    fontSize: 18,
+                                  ),
+                                ),
+                              ),
+                              style: ElevatedButton.styleFrom(
+                                //primary: Color(0xff072e79),
+                                primary: Color(0xffffffff),
+
+                                minimumSize: Size(double.infinity, 52),
+                                shape: new RoundedRectangleBorder(
+                                  borderRadius:
+                                      new BorderRadius.circular(100.0),
+                                  // side: BorderSide(color: Color(0xffffffff)),
+                                ),
+                              ),
+                              onPressed: () {},
+                            ),
+                          );
+                        },
+                        onWillAccept: (data) {
+                          return true;
+                        },
+                        onAccept: (data) {
+                          print("data $data");
                           setState(() {
-                            isButtonPressedNine = !isButtonPressedNine;
+                            if (data == "5") {
+                              isFiveMatch = true;
+                              score += 10;
+                            }
                           });
                         },
                       ),
                     ),
-                  ),
-                  Expanded(
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: new ElevatedButton(
-                        child: Container(
-                          margin: EdgeInsets.symmetric(vertical: 20),
-                          child: new Text(
-                            'New',
-                            style: TextStyle(
-                                color: isButtonPressedTen
-                                    ? Color(0xffffffff)
-                                    : Color(0xff073ea6),
-                                fontSize: 18),
-                          ),
-                        ),
-                        style: ElevatedButton.styleFrom(
-                          //primary: Color(0xff072e79),
-                          primary: isButtonPressedTen
-                              ? Color(0xff073ea6)
-                              : Color(0xffffffff),
 
-                          minimumSize: Size(double.infinity, 52),
-                          shape: new RoundedRectangleBorder(
-                            borderRadius: new BorderRadius.circular(100.0),
-                            //side: BorderSide(color: Color(0xffffffff)),
+                  if (isFiveMatch)
+                    Expanded(
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: new ElevatedButton(
+                          child: Container(
+                            margin: EdgeInsets.symmetric(vertical: 20),
+                            child: new Text(
+                              '',
+                              style: TextStyle(
+                                color: Colors.transparent,
+                                fontSize: 18,
+                              ),
+                            ),
                           ),
+                          style: ElevatedButton.styleFrom(
+                            //primary: Color(0xff072e79),
+                            primary: Colors.transparent,
+
+                            minimumSize: Size(double.infinity, 52),
+                            shape: new RoundedRectangleBorder(
+                              borderRadius: new BorderRadius.circular(100.0),
+                              // side: BorderSide(color: Color(0xffffffff)),
+                            ),
+                          ),
+                          onPressed: () {},
                         ),
-                        onPressed: () {
-                          setState(() {
-                            isButtonPressedTen = !isButtonPressedTen;
-                          });
-                        },
                       ),
                     ),
-                  ),
                 ],
               ),
             ),
@@ -564,7 +1050,9 @@ class _GameBoardState extends State<GameBoard> with TickerProviderStateMixin {
                 backgroundColor: Color(0xff073ea6),
               ),
             ),
-          ]),
-        ));
+          ],
+        ),
+      ),
+    );
   }
 }
