@@ -82,6 +82,7 @@ class _GameBoardState extends State<GameBoard> with TickerProviderStateMixin {
   bool isFourMatch = false;
   bool isFiveMatch = false;
   int score = 0;
+  int chances = 5;
 
   @override
   Widget build(BuildContext context) {
@@ -136,6 +137,12 @@ class _GameBoardState extends State<GameBoard> with TickerProviderStateMixin {
             //       String? semanticsLabel,
             //       String? semanticsValue}
             // )
+
+            if (chances == 0)
+              Center(
+                child: Text("Game Over"),
+              ),
+
             Container(
               margin: EdgeInsets.only(top: 20, left: 20, right: 20),
               child: ElevatedButton(
@@ -298,6 +305,7 @@ class _GameBoardState extends State<GameBoard> with TickerProviderStateMixin {
                             if (data == "1") {
                               isOneMatch = true;
                               score += 10;
+                              chances -= 1;
                             }
                           });
                         },
@@ -472,6 +480,7 @@ class _GameBoardState extends State<GameBoard> with TickerProviderStateMixin {
                             if (data == "2") {
                               isTwoMatch = true;
                               score += 10;
+                              chances -= 1;
                             }
                           });
                         },
@@ -646,12 +655,12 @@ class _GameBoardState extends State<GameBoard> with TickerProviderStateMixin {
                             if (data == "3") {
                               isThreeMatch = true;
                               score += 10;
+                              chances -= 1;
                             }
                           });
                         },
                       ),
                     ),
-
                   if (isThreeMatch)
                     Expanded(
                       child: Padding(
@@ -821,6 +830,7 @@ class _GameBoardState extends State<GameBoard> with TickerProviderStateMixin {
                             if (data == "4") {
                               isFourMatch = true;
                               score += 10;
+                              chances -= 1;
                             }
                           });
                         },
@@ -902,7 +912,7 @@ class _GameBoardState extends State<GameBoard> with TickerProviderStateMixin {
                             child: Container(
                               margin: EdgeInsets.symmetric(vertical: 20),
                               child: new Text(
-                                'Novyy',
+                                'hurf',
                                 style: TextStyle(
                                   color: Color(0xff073ea6),
                                   fontSize: 18,
@@ -995,12 +1005,12 @@ class _GameBoardState extends State<GameBoard> with TickerProviderStateMixin {
                             if (data == "5") {
                               isFiveMatch = true;
                               score += 10;
+                              chances -= 1;
                             }
                           });
                         },
                       ),
                     ),
-
                   if (isFiveMatch)
                     Expanded(
                       child: Padding(
