@@ -12,7 +12,7 @@ final List<String> imgList = [
 class GameScore extends StatefulWidget {
   int? score;
 
-  GameScore({Key? key,this.score}) : super(key: key);
+  GameScore({Key? key, this.score}) : super(key: key);
 
   @override
   _GameScoreState createState() => _GameScoreState();
@@ -30,7 +30,12 @@ class _GameScoreState extends State<GameScore> {
             PopupMenuButton(
               onSelected: (result) async {
                 if (result == 0) {
-                  Navigator.of(context).pop();
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => GamePlayer(),
+                    ),
+                  );
                 }
               },
               icon: Container(
@@ -84,7 +89,7 @@ class _GameScoreState extends State<GameScore> {
                   alignment: Alignment.topCenter,
                   margin: EdgeInsets.only(top: 10, left: 20, right: 20),
                   child: new Text(
-                    'Do you want to play the puzzle game again?',
+                    'Do you want to play the match words game again?',
                     style: TextStyle(
                         color: Color(0xffffffff),
                         fontSize: 18,
@@ -110,7 +115,9 @@ class _GameScoreState extends State<GameScore> {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => GameScore()),
+                    MaterialPageRoute(
+                      builder: (context) => GameBoard(),
+                    ),
                   );
                 },
                 child: new Text(

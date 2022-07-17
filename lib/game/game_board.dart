@@ -303,7 +303,7 @@ class _GameBoardState extends State<GameBoard> with TickerProviderStateMixin {
                                       margin:
                                           EdgeInsets.symmetric(vertical: 20),
                                       child: new Text(
-                                        'tkan',
+                                        'Bag',
                                         style: TextStyle(
                                           color: Color(0xff073ea6),
                                           fontSize: 18,

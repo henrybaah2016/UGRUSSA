@@ -1017,8 +1017,7 @@ class _HomePageState extends State<HomePage> {
           ],
         ),
       ),
-      floatingActionButton: admin
-          ? FloatingActionButton(
+      floatingActionButton: FloatingActionButton(
               onPressed: () {
                 Navigator.push(
                   context,
@@ -1029,7 +1028,6 @@ class _HomePageState extends State<HomePage> {
               backgroundColor: Color(0xfffbbc07),
               child: const Icon(Icons.games_outlined),
             )
-          : Container(),
     );
   }
 }

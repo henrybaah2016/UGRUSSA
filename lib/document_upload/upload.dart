@@ -64,9 +64,9 @@ class _UploadState extends State<Upload> {
   }
 
   Future<void> _submitFile() async {
-   if( fileNames.isEmpty){
-     return;
-   }
+    if (fileNames.isEmpty) {
+      return;
+    }
     showDialog(
       context: context,
       // barrierDismissible: false,
@@ -76,59 +76,61 @@ class _UploadState extends State<Upload> {
     );
     // String fileName = path.basename(_imageFile!.path);
     Reference firebaseStorageRef =
-    FirebaseStorage.instance.ref().child('all_files/${fileNames[0]}');
+        FirebaseStorage.instance.ref().child('all_files/${fileNames[0]}');
     var uploadTask = firebaseStorageRef.putFile(files![0]);
-    var taskSnapshot = await uploadTask.then((taskSnapshot) {
-      taskSnapshot.ref.getDownloadURL().then(
-            (file) {
-          print("Done: $file");
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => AllFiles(file:file)),
-          );
-          // packagePreviewUrl = photoUrl;
-          // Navigator.pop(context);
-        },
-      );
+    var taskSnapshot = await uploadTask.then(
+      (taskSnapshot) {
+        taskSnapshot.ref.getDownloadURL().then(
+          (file) {
+            print("Done: $file");
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => AllFiles(file: file)),
+            );
+            // packagePreviewUrl = photoUrl;
+            // Navigator.pop(context);
+          },
+        );
 // 1
-      Navigator.pop(context);
-    });
+        Navigator.pop(context);
+      },
+    );
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          backgroundColor: Color(0xffffffff),
-          elevation: 0,
-          leading: Builder(
-            builder: (BuildContext context) {
-              return GestureDetector(
-                onTap: () {
-                  Navigator.pop(context);
-                },
-                child: Container(
-                  child: Icon(
-                    Icons.arrow_back_ios_rounded,
-                    color: Color(0xff072e79),
-                    size: 24.0,
-                  ),
+      appBar: AppBar(
+        backgroundColor: Color(0xffffffff),
+        elevation: 0,
+        leading: Builder(
+          builder: (BuildContext context) {
+            return GestureDetector(
+              onTap: () {
+                Navigator.pop(context);
+              },
+              child: Container(
+                child: Icon(
+                  Icons.arrow_back_ios_rounded,
+                  color: Color(0xff072e79),
+                  size: 24.0,
                 ),
-              );
-            },
-          ),
-          title: const Text(
-            'Files Manager',
-            style: TextStyle(
-              color: Color(0xff072e79),
-              fontSize: 20,
-              fontWeight: FontWeight.w500,
-            ),
-          ),
-
+              ),
+            );
+          },
         ),
-        body: SingleChildScrollView(
-          child: Column(children: <Widget>[
+        title: const Text(
+          'Files Manager',
+          style: TextStyle(
+            color: Color(0xff072e79),
+            fontSize: 20,
+            fontWeight: FontWeight.w500,
+          ),
+        ),
+      ),
+      body: SingleChildScrollView(
+        child: Column(
+          children: <Widget>[
             Container(
               alignment: Alignment.center,
               margin: const EdgeInsets.only(top: 50, bottom: 10),
@@ -227,55 +229,55 @@ class _UploadState extends State<Upload> {
                         child: ClipRRect(
                           borderRadius: BorderRadius.all(Radius.circular(12)),
                           child: Container(
-                              color: Color(0xffF4F9FE),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Container(
-                                    height: 150.0,
-                                    width: 250.0,
-                                    child: Column(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: <Widget>[
-                                        Container(
-                                          child: Icon(
-                                            Icons.folder,
-                                            color: Color(0xff7b8b9a),
-                                            size: 40.0,
-                                          ),
+                            color: Color(0xffF4F9FE),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Container(
+                                  height: 150.0,
+                                  width: 250.0,
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: <Widget>[
+                                      Container(
+                                        child: Icon(
+                                          Icons.folder,
+                                          color: Color(0xff7b8b9a),
+                                          size: 40.0,
                                         ),
-                                        Container(
-                                          alignment: Alignment.center,
-                                          child: Padding(
-                                            padding: const EdgeInsets.only(
-                                                top: 5, bottom: 5),
-                                            child: Text(
-                                              'Choose files here...',
-                                              style: TextStyle(
-                                                color: Color(0xc6000000),
-                                                fontSize: 18,
-                                                fontWeight: FontWeight.w500,
-                                              ),
-                                            ),
-                                          ),
-                                        ),
-                                        Container(
-                                          alignment: Alignment.center,
+                                      ),
+                                      Container(
+                                        alignment: Alignment.center,
+                                        child: Padding(
+                                          padding: const EdgeInsets.only(
+                                              top: 5, bottom: 5),
                                           child: Text(
-                                            'Max files size: 50mb',
+                                            'Choose files here...',
                                             style: TextStyle(
-                                              color: Color(0xc6adadad),
-                                              fontSize: 14,
+                                              color: Color(0xc6000000),
+                                              fontSize: 18,
                                               fontWeight: FontWeight.w500,
                                             ),
                                           ),
                                         ),
-                                      ],
-                                    ),
+                                      ),
+                                      Container(
+                                        alignment: Alignment.center,
+                                        child: Text(
+                                          'Max files size: 50mb',
+                                          style: TextStyle(
+                                            color: Color(0xc6adadad),
+                                            fontSize: 14,
+                                            fontWeight: FontWeight.w500,
+                                          ),
+                                        ),
+                                      ),
+                                    ],
                                   ),
-                                ],
-                              )),
+                                ),
+                              ],
+                            ),
+                          ),
                         ),
                       ),
                     ),
@@ -301,22 +303,25 @@ class _UploadState extends State<Upload> {
                         ),
                         onPressed: () {
                           _submitFile();
-
                         },
-                        child: Text('Save Files',
-                            style: TextStyle(
-                              color: Color(0xffffffff),
-                              fontSize: 14,
-                              fontWeight: FontWeight.w700,
-                            )),
+                        child: Text(
+                          'Save Files',
+                          style: TextStyle(
+                            color: Color(0xffffffff),
+                            fontSize: 14,
+                            fontWeight: FontWeight.w700,
+                          ),
+                        ),
                       ),
                     ),
                   ),
                 ],
               ),
             ),
-          ]),
-        ));
+          ],
+        ),
+      ),
+    );
   }
 }
 
