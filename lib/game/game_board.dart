@@ -374,7 +374,9 @@ class _GameBoardState extends State<GameBoard> with TickerProviderStateMixin {
 
                                     print("CHANCES $chances");
                                   } else {
-                                    score -= 5;
+                                    if(score >0){
+                                      score -= 5;
+                                    }
                                     isOneColorRed = true;
                                     chances -= 1;
                                   }
@@ -622,7 +624,9 @@ class _GameBoardState extends State<GameBoard> with TickerProviderStateMixin {
                                     chances -= 1;
                                     print("CHANCES $chances");
                                   } else {
-                                    score -= 5;
+                                    if(score >0){
+                                      score -= 5;
+                                    }
                                     isTwoColorRed = true;
                                     chances -= 1;
                                   }
@@ -871,7 +875,9 @@ class _GameBoardState extends State<GameBoard> with TickerProviderStateMixin {
                                     chances -= 1;
                                     print("CHANCES $chances");
                                   } else {
-                                    score -= 5;
+                                    if(score >0){
+                                      score -= 5;
+                                    }
                                     isThreeColorRed = true;
                                     chances -= 1;
                                   }
@@ -1120,7 +1126,9 @@ class _GameBoardState extends State<GameBoard> with TickerProviderStateMixin {
                                     chances -= 1;
                                     print("CHANCES $chances");
                                   } else {
-                                    score -= 5;
+                                    if(score >0){
+                                      score -= 5;
+                                    }
                                     isFourColorRed = true;
                                     chances -= 1;
                                   }
@@ -1368,7 +1376,9 @@ class _GameBoardState extends State<GameBoard> with TickerProviderStateMixin {
                                     chances -= 1;
                                     print("CHANCES $chances");
                                   } else {
-                                    score -= 5;
+                                    if(score >0){
+                                      score -= 5;
+                                    }
                                     isFiveColorRed = true;
                                     chances -= 1;
                                   }
@@ -1424,7 +1434,7 @@ class _GameBoardState extends State<GameBoard> with TickerProviderStateMixin {
                                 ),
                                 style: ElevatedButton.styleFrom(
                                   //primary: Color(0xff072e79),
-                                  primary: Colors.green,
+                                  primary: Colors.red,
 
                                   minimumSize: Size(double.infinity, 52),
                                   shape: new RoundedRectangleBorder(
