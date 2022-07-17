@@ -43,6 +43,28 @@ class _SignupPageState extends State<SignupPage> {
   XFile? _imageFile;
   var profilePhotoUrl = "";
 
+  var _levels = [
+    "100",
+    "200",
+    "300",
+    "400",
+    "Non Student" ,// non student
+  ];
+
+  var _currentSelectedLevel = "100";
+
+  var _residence = [
+    "Traditional hall",
+    "Diaspora",
+    "Pentagon",
+    "Evandy",
+    "TF",
+    "Not applicable"
+    // not applicable
+  ];
+
+  var _currentSelectedResidence = "Traditional hall";
+
   Future<void> _showChoiceDialog(BuildContext context, StateSetter setState) {
     return showDialog(
         context: context,
@@ -132,7 +154,7 @@ class _SignupPageState extends State<SignupPage> {
       context: context,
       // barrierDismissible: false,
       builder: (ctx) => ProgressDialog(
-        message: "Authenticating user",
+        message: "Creating account...",
       ),
     );
 
@@ -224,7 +246,7 @@ class _SignupPageState extends State<SignupPage> {
     // );
     // return;
     // }
-    else if (_levelController.text.length < 1) {
+    else if (_currentSelectedLevel.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
           content: Text(
@@ -235,7 +257,7 @@ class _SignupPageState extends State<SignupPage> {
         ),
       );
       return;
-    } else if (_residenceController.text.length < 1) {
+    } else if (_currentSelectedResidence.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
           content: Text(
@@ -312,8 +334,8 @@ class _SignupPageState extends State<SignupPage> {
         "email": _emailController.text,
         "phone": _phoneController.text,
         "student ID": _studentIdController.text,
-        "level": _levelController.text,
-        "residence": _residenceController.text,
+        "level": _currentSelectedLevel,
+        "residence": _currentSelectedResidence,
         "profilePhotoUrl": photoUrl
       };
 
@@ -531,37 +553,72 @@ class _SignupPageState extends State<SignupPage> {
                     controller: _studentIdController,
                     keyboardType: TextInputType.text,
                     decoration: InputDecoration(
-                        enabledBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: Color(0xffB3B3B3)),
-                        ),
-                        focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: Color(0xff000000)),
-                        ),
-                        border: OutlineInputBorder(
-                          borderSide: BorderSide(color: Color(0xffB3B3B3)),
-                        ),
-                        labelText: 'Student ID',
-                        labelStyle: TextStyle(
-                            color: Color(0xff000000),
-                            fontSize: 12,
-                            fontWeight: FontWeight.w600),
-                        contentPadding: EdgeInsets.only(bottom: 0, left: 10),
-                        hintText: 'Student ID',
-                        hintStyle: TextStyle(
-                            color: Color(0xff000000),
-                            fontSize: 16,
-                            fontWeight: FontWeight.w600)),
+                      enabledBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Color(0xffB3B3B3)),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Color(0xff000000)),
+                      ),
+                      border: OutlineInputBorder(
+                        borderSide: BorderSide(color: Color(0xffB3B3B3)),
+                      ),
+                      labelText: 'Student ID',
+                      labelStyle: TextStyle(
+                          color: Color(0xff000000),
+                          fontSize: 12,
+                          fontWeight: FontWeight.w600),
+                      contentPadding: EdgeInsets.only(bottom: 0, left: 10),
+                      hintText: 'Student ID',
+                      hintStyle: TextStyle(
+                          color: Color(0xff000000),
+                          fontSize: 16,
+                          fontWeight: FontWeight.w600),
+                    ),
                   ),
                 ),
               ),
+              // Container(
+              //   margin: const EdgeInsets.only(bottom: 25),
+              //   child: Padding(
+              //     padding: EdgeInsets.only(left: 5, right: 5),
+              //     child: TextField(
+              //       controller: _levelController,
+              //       keyboardType: TextInputType.text,
+              //       decoration: InputDecoration(
+              //           enabledBorder: OutlineInputBorder(
+              //             borderSide: BorderSide(color: Color(0xffB3B3B3)),
+              //           ),
+              //           focusedBorder: OutlineInputBorder(
+              //             borderSide: BorderSide(color: Color(0xff000000)),
+              //           ),
+              //           border: OutlineInputBorder(
+              //             borderSide: BorderSide(color: Color(0xffB3B3B3)),
+              //           ),
+              //           labelText: 'Level',
+              //           labelStyle: TextStyle(
+              //               color: Color(0xff000000),
+              //               fontSize: 12,
+              //               fontWeight: FontWeight.w600),
+              //           contentPadding: EdgeInsets.only(bottom: 0, left: 10),
+              //           hintText: 'Level',
+              //           hintStyle: TextStyle(
+              //               color: Color(0xff000000),
+              //               fontSize: 16,
+              //               fontWeight: FontWeight.w600)),
+              //     ),
+              //   ),
+              // ),
+
               Container(
-                margin: const EdgeInsets.only(bottom: 25),
-                child: Padding(
-                  padding: EdgeInsets.only(left: 5, right: 5),
-                  child: TextField(
-                    controller: _levelController,
-                    keyboardType: TextInputType.text,
-                    decoration: InputDecoration(
+                margin: const EdgeInsets.only(
+                  bottom: 25,
+                  left: 5,
+                  right: 5,
+                ),
+                child: FormField<String>(
+                  builder: (FormFieldState<String> state) {
+                    return InputDecorator(
+                      decoration: InputDecoration(
                         enabledBorder: OutlineInputBorder(
                           borderSide: BorderSide(color: Color(0xffB3B3B3)),
                         ),
@@ -571,28 +628,84 @@ class _SignupPageState extends State<SignupPage> {
                         border: OutlineInputBorder(
                           borderSide: BorderSide(color: Color(0xffB3B3B3)),
                         ),
-                        labelText: 'Level',
+                        labelText: 'Select level',
                         labelStyle: TextStyle(
                             color: Color(0xff000000),
                             fontSize: 12,
                             fontWeight: FontWeight.w600),
                         contentPadding: EdgeInsets.only(bottom: 0, left: 10),
-                        hintText: 'Level',
+                        hintText: 'Select level',
                         hintStyle: TextStyle(
-                            color: Color(0xff000000),
-                            fontSize: 16,
-                            fontWeight: FontWeight.w600)),
-                  ),
+                          color: Color(0xff000000),
+                          fontSize: 16,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                      isEmpty: _currentSelectedLevel == '',
+                      child: DropdownButtonHideUnderline(
+                        child: DropdownButton<String>(
+                          value: _currentSelectedLevel,
+                          isDense: true,
+                          onChanged: (String? newValue) {
+                            setState(() {
+                              _currentSelectedLevel = newValue!;
+                              state.didChange(newValue);
+                            });
+                          },
+                          items: _levels.map((String value) {
+                            return DropdownMenuItem<String>(
+                              value: value,
+                              child: Text(value),
+                            );
+                          }).toList(),
+                        ),
+                      ),
+                    );
+                  },
                 ),
               ),
+              // Container(
+              //   margin: const EdgeInsets.only(bottom: 25),
+              //   child: Padding(
+              //     padding: EdgeInsets.only(left: 5, right: 5),
+              //     child: TextField(
+              //       controller: _residenceController,
+              //       keyboardType: TextInputType.text,
+              //       decoration: InputDecoration(
+              //           enabledBorder: OutlineInputBorder(
+              //             borderSide: BorderSide(color: Color(0xffB3B3B3)),
+              //           ),
+              //           focusedBorder: OutlineInputBorder(
+              //             borderSide: BorderSide(color: Color(0xff000000)),
+              //           ),
+              //           border: OutlineInputBorder(
+              //             borderSide: BorderSide(color: Color(0xffB3B3B3)),
+              //           ),
+              //           labelText: 'Residence',
+              //           labelStyle: TextStyle(
+              //               color: Color(0xff000000),
+              //               fontSize: 12,
+              //               fontWeight: FontWeight.w600),
+              //           contentPadding: EdgeInsets.only(bottom: 0, left: 10),
+              //           hintText: 'Residence',
+              //           hintStyle: TextStyle(
+              //               color: Color(0xff000000),
+              //               fontSize: 16,
+              //               fontWeight: FontWeight.w600)),
+              //     ),
+              //   ),
+              // ),
+
               Container(
-                margin: const EdgeInsets.only(bottom: 25),
-                child: Padding(
-                  padding: EdgeInsets.only(left: 5, right: 5),
-                  child: TextField(
-                    controller: _residenceController,
-                    keyboardType: TextInputType.text,
-                    decoration: InputDecoration(
+                margin: const EdgeInsets.only(
+                  bottom: 25,
+                  left: 5,
+                  right: 5,
+                ),
+                child: FormField<String>(
+                  builder: (FormFieldState<String> state) {
+                    return InputDecorator(
+                      decoration: InputDecoration(
                         enabledBorder: OutlineInputBorder(
                           borderSide: BorderSide(color: Color(0xffB3B3B3)),
                         ),
@@ -602,18 +715,41 @@ class _SignupPageState extends State<SignupPage> {
                         border: OutlineInputBorder(
                           borderSide: BorderSide(color: Color(0xffB3B3B3)),
                         ),
-                        labelText: 'Residence',
+                        labelText: 'Select residence',
                         labelStyle: TextStyle(
-                            color: Color(0xff000000),
-                            fontSize: 12,
-                            fontWeight: FontWeight.w600),
+                          color: Color(0xff000000),
+                          fontSize: 12,
+                          fontWeight: FontWeight.w600,
+                        ),
                         contentPadding: EdgeInsets.only(bottom: 0, left: 10),
-                        hintText: 'Residence',
+                        hintText: 'Select residence',
                         hintStyle: TextStyle(
-                            color: Color(0xff000000),
-                            fontSize: 16,
-                            fontWeight: FontWeight.w600)),
-                  ),
+                          color: Color(0xff000000),
+                          fontSize: 16,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                      isEmpty: _currentSelectedResidence == '',
+                      child: DropdownButtonHideUnderline(
+                        child: DropdownButton<String>(
+                          value: _currentSelectedResidence,
+                          isDense: true,
+                          onChanged: (String? newValue) {
+                            setState(() {
+                              _currentSelectedResidence = newValue!;
+                              state.didChange(newValue);
+                            });
+                          },
+                          items: _residence.map((String value) {
+                            return DropdownMenuItem<String>(
+                              value: value,
+                              child: Text(value),
+                            );
+                          }).toList(),
+                        ),
+                      ),
+                    );
+                  },
                 ),
               ),
               Container(

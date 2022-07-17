@@ -40,7 +40,7 @@ class _AllFilesState extends State<AllFiles> {
     //Here you'll specify the file it should be saved as
     File downloadToFile = File('${appDocDir.path}/$file');
     //Here you'll specify the file it should download from Cloud Storage
-    String fileToDownload = 'uploads/$file';
+    String fileToDownload = 'all_files/$file';
 
     //Now you can try to download the specified file, and write it to the downloadToFile.
     try {
@@ -112,6 +112,11 @@ class _AllFilesState extends State<AllFiles> {
       ;
 
       print("FILES LENGTH ${_fileNames.length}");
+      if (_fileNames.length == 0) {
+        setState(() {
+          _isLoading = false;
+        });
+      }
     });
   }
 
@@ -158,154 +163,242 @@ class _AllFilesState extends State<AllFiles> {
                     child: CircularProgressIndicator(),
                   ),
                 )
-              : ListView.builder(
-                  itemCount: _fileNames.length,
-                  itemBuilder: (ctx, i) {
-                    return GestureDetector(
-                      onTap: () {
-                        print("fileName ${_fileNames[i]}");
-                        downloadFileExample(_fileNames[i]);
-                      },
-                      child: Container(
-                        margin: EdgeInsets.only(top: 10),
-                        child: Column(
-                          children: [
-                            Container(
-                              margin:
-                                  EdgeInsets.only(left: 10, right: 10, top: 10),
-                              decoration: BoxDecoration(
-                                border: Border.all(
-                                  color: Color(0xA3ECECEC),
-                                  style: BorderStyle.solid,
-                                  width: 1.0,
-                                ),
-                                color: Colors.transparent,
-                                borderRadius: BorderRadius.circular(5.0),
-                              ),
-                              child: Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Column(
-                                  children: [
-                                    Column(
+              : _fileNames.length == 0
+                  ? Center(
+                      child: Text("No files available"),
+                    )
+                  : ListView.builder(
+                      itemCount: _fileNames.length,
+                      itemBuilder: (ctx, i) {
+                        return GestureDetector(
+                          onTap: () {
+                            print("fileName ${_fileNames[i]}");
+                            downloadFileExample(_fileNames[i]);
+                          },
+                          child: Container(
+                            margin: EdgeInsets.only(top: 10),
+                            child: Column(
+                              children: [
+                                Container(
+                                  margin: EdgeInsets.only(
+                                      left: 10, right: 10, top: 10),
+                                  decoration: BoxDecoration(
+                                    border: Border.all(
+                                      color: Color(0xA3ECECEC),
+                                      style: BorderStyle.solid,
+                                      width: 1.0,
+                                    ),
+                                    color: Colors.transparent,
+                                    borderRadius: BorderRadius.circular(5.0),
+                                  ),
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Column(
                                       children: [
-                                        Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceBetween,
+                                        Column(
                                           children: [
-                                            new GestureDetector(
-                                              onTap: () {
-                                                // Navigator.push(
-                                                //   context,
-                                                //   MaterialPageRoute(
-                                                //       builder: (context) => HomePage()),
-                                                // );
-                                              },
-                                              child: Row(
-                                                children: [
-                                                  // Container(
-                                                  //   margin: EdgeInsets.only(
-                                                  //       top: 5,
-                                                  //       bottom: 5,
-                                                  //       left: 5),
-                                                  //   child: Container(
-                                                  //       height: 30,
-                                                  //       width: 30,
-                                                  //       child: Image.asset(
-                                                  //           'assets/images/pdf_icon.png')),
-                                                  // ),
-                                                  Container(
-                                                    margin: EdgeInsets.only(
-                                                        top: 5, left: 5),
-                                                    child: Column(
-                                                      mainAxisAlignment:
-                                                          MainAxisAlignment
-                                                              .start,
-                                                      crossAxisAlignment:
-                                                          CrossAxisAlignment
-                                                              .start,
-                                                      children: [
-                                                        Padding(
-                                                          padding:
-                                                              const EdgeInsets
-                                                                  .all(1),
-                                                          child: Text(
-                                                            (_fileNames[i])
-                                                                        .length >
-                                                                    20
-                                                                ? (_fileNames[
-                                                                        i])
-                                                                    .replaceRange(
-                                                                        25,
-                                                                        _fileNames[i]
-                                                                            .length,
-                                                                        "...")
-                                                                : _fileNames[i],
-                                                            style: TextStyle(
-                                                                color: Color(
-                                                                    0xff575858),
-                                                                fontSize: 16,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w600),
-                                                          ),
-                                                        ),
-                                                        Padding(
-                                                          padding:
-                                                              const EdgeInsets
-                                                                  .all(1),
-                                                          child: Text(
-                                                            'Size: 0kb',
-                                                            style: TextStyle(
-                                                                color: Color(
-                                                                    0xffc8cbcd),
-                                                                fontSize: 14,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .normal),
-                                                          ),
-                                                        ),
-                                                      ],
-                                                    ),
-                                                  ),
-                                                ],
-                                              ),
-                                            ),
                                             Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment
+                                                      .spaceBetween,
                                               children: [
-                                                Padding(
-                                                  padding:
-                                                      const EdgeInsets.only(
-                                                          right: 10),
-                                                  child: Icon(
-                                                    Icons.file_open_outlined,
-                                                    color: Color(0xFFB6B6B6),
-                                                    size: 18.0,
+                                                new GestureDetector(
+                                                  onTap: () {
+                                                    // Navigator.push(
+                                                    //   context,
+                                                    //   MaterialPageRoute(
+                                                    //       builder: (context) => HomePage()),
+                                                    // );
+                                                  },
+                                                  child: Row(
+                                                    children: [
+                                                      _fileNames[i].split(
+                                                                  ".")[1] ==
+                                                              "pdf"
+                                                          ? Container(
+                                                              margin: EdgeInsets
+                                                                  .only(
+                                                                      top: 5,
+                                                                      bottom: 5,
+                                                                      left: 5),
+                                                              child: Container(
+                                                                height: 30,
+                                                                width: 30,
+                                                                child:
+                                                                    Image.asset(
+                                                                  'assets/images/pdf_icon.png',
+                                                                ),
+                                                              ),
+                                                            )
+                                                          : _fileNames[i].split(
+                                                                      ".")[1] ==
+                                                                  "jpeg"
+                                                              ? Container(
+                                                                  margin:
+                                                                      EdgeInsets
+                                                                          .only(
+                                                                    top: 5,
+                                                                    bottom: 5,
+                                                                    left: 5,
+                                                                  ),
+                                                                  child:
+                                                                      Container(
+                                                                    height: 30,
+                                                                    width: 30,
+                                                                    child: Image
+                                                                        .asset(
+                                                                      'assets/images/jpeg.png',
+                                                                    ),
+                                                                  ),
+                                                                )
+                                                              : _fileNames[i].split(
+                                                                              ".")[
+                                                                          1] ==
+                                                                      "jpg"
+                                                                  ? Container(
+                                                                      margin: EdgeInsets
+                                                                          .only(
+                                                                        top: 5,
+                                                                        bottom:
+                                                                            5,
+                                                                        left: 5,
+                                                                      ),
+                                                                      child:
+                                                                          Container(
+                                                                        height:
+                                                                            30,
+                                                                        width:
+                                                                            30,
+                                                                        child: Image
+                                                                            .asset(
+                                                                          'assets/images/jpeg.png',
+                                                                        ),
+                                                                      ),
+                                                                    )
+                                                                  : _fileNames[i]
+                                                                              .split(".")[1] ==
+                                                                          "png"
+                                                                      ? Container(
+                                                                          margin:
+                                                                              EdgeInsets.only(
+                                                                            top:
+                                                                                5,
+                                                                            bottom:
+                                                                                5,
+                                                                            left:
+                                                                                5,
+                                                                          ),
+                                                                          child:
+                                                                              Container(
+                                                                            height:
+                                                                                30,
+                                                                            width:
+                                                                                30,
+                                                                            child:
+                                                                                Image.asset(
+                                                                              'assets/images/png.jpeg',
+                                                                            ),
+                                                                          ),
+                                                                        )
+                                                                      : Container(),
+                                                      Container(
+                                                        margin: EdgeInsets.only(
+                                                            top: 5, left: 5),
+                                                        child: Column(
+                                                          mainAxisAlignment:
+                                                              MainAxisAlignment
+                                                                  .start,
+                                                          crossAxisAlignment:
+                                                              CrossAxisAlignment
+                                                                  .start,
+                                                          children: [
+                                                            Padding(
+                                                              padding:
+                                                                  const EdgeInsets
+                                                                      .all(1),
+                                                              child: Text(
+                                                                (_fileNames[i])
+                                                                            .length >
+                                                                        20
+                                                                    ? (_fileNames[
+                                                                            i])
+                                                                        .replaceRange(
+                                                                            25,
+                                                                            _fileNames[i]
+                                                                                .length,
+                                                                            "...")
+                                                                    : _fileNames[
+                                                                        i],
+                                                                style: TextStyle(
+                                                                    color: Color(
+                                                                        0xff575858),
+                                                                    fontSize:
+                                                                        16,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w600),
+                                                              ),
+                                                            ),
+                                                            Padding(
+                                                              padding:
+                                                                  const EdgeInsets
+                                                                      .all(1),
+                                                              child: Text(
+                                                                'Size: ? kb',
+                                                                style: TextStyle(
+                                                                    color: Color(
+                                                                        0xffc8cbcd),
+                                                                    fontSize:
+                                                                        14,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .normal),
+                                                              ),
+                                                            ),
+                                                          ],
+                                                        ),
+                                                      ),
+                                                    ],
                                                   ),
                                                 ),
-                                                // Padding(
-                                                //   padding: const EdgeInsets.only(right:10),
-                                                //   child:  Icon(
-                                                //     Icons.clear_outlined,
-                                                //     color: Color(0xFFB6B6B6),
-                                                //     size: 18.0,
-                                                //   ),
-                                                // ),
+                                                Row(
+                                                  children: [
+                                                    Padding(
+                                                      padding:
+                                                          const EdgeInsets.only(
+                                                              right: 10),
+                                                      child: Icon(
+                                                        Icons
+                                                            .file_open_outlined,
+                                                        color:
+                                                            Color(0xFFB6B6B6),
+                                                        size: 18.0,
+                                                      ),
+                                                    ),
+                                                    // Padding(
+                                                    //   padding: const EdgeInsets.only(right:10),
+                                                    //   child:  Icon(
+                                                    //     Icons.clear_outlined,
+                                                    //     color: Color(0xFFB6B6B6),
+                                                    //     size: 18.0,
+                                                    //   ),
+                                                    // ),
+                                                  ],
+                                                ),
                                               ],
                                             ),
                                           ],
                                         ),
                                       ],
                                     ),
-                                  ],
+                                  ),
                                 ),
-                              ),
+                              ],
                             ),
-                          ],
-                        ),
-                      ),
-                    );
-                  },
-                ),
+                          ),
+                        );
+                      },
+                    ),
     );
   }
 }

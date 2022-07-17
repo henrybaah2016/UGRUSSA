@@ -83,6 +83,11 @@ class _GameBoardState extends State<GameBoard> with TickerProviderStateMixin {
   bool isFiveMatch = false;
   int score = 0;
   int chances = 5;
+  bool isOneColorRed = false;
+  bool isTwoColorRed = false;
+  bool isThreeColorRed = false;
+  bool isFourColorRed = false;
+  bool isFiveColorRed = false;
 
   @override
   Widget build(BuildContext context) {
@@ -168,39 +173,39 @@ class _GameBoardState extends State<GameBoard> with TickerProviderStateMixin {
                   // )
 
                   Container(
-                         margin: EdgeInsets.only(top: 20, left: 20, right: 20),
-                         child: ElevatedButton(
-                           style: ElevatedButton.styleFrom(
-                             //primary: Color(0xff072e79),
-                             primary: Color(0xff3bd854),
+                    margin: EdgeInsets.only(top: 20, left: 20, right: 20),
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        //primary: Color(0xff072e79),
+                        primary: Color(0xff3bd854),
 
-                             minimumSize: Size(double.infinity, 52),
-                             shape: new RoundedRectangleBorder(
-                               borderRadius: new BorderRadius.circular(100.0),
-                               // side: BorderSide(color: Color(0xffffffff)),
-                             ),
-                           ),
-                           onPressed: () {
-                             // Navigator.push(
-                             //   context,
-                             //   MaterialPageRoute(builder: (context) => GameScore()),
-                             // );
-                             // _checkAnswers();
-                           },
-                           child: new Text(
-                             'Match Words',
-                             style:
-                                 TextStyle(color: Color(0xffffffff), fontSize: 18),
-                           ),
-                         ),
-                       ),
+                        minimumSize: Size(double.infinity, 52),
+                        shape: new RoundedRectangleBorder(
+                          borderRadius: new BorderRadius.circular(100.0),
+                          // side: BorderSide(color: Color(0xffffffff)),
+                        ),
+                      ),
+                      onPressed: () {
+                        // Navigator.push(
+                        //   context,
+                        //   MaterialPageRoute(builder: (context) => GameScore()),
+                        // );
+                        // _checkAnswers();
+                      },
+                      child: new Text(
+                        'Match Words',
+                        style:
+                            TextStyle(color: Color(0xffffffff), fontSize: 18),
+                      ),
+                    ),
+                  ),
 
                   Container(
                     margin: EdgeInsets.only(top: 10, left: 10, right: 10),
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        if (!isThreeMatch)
+                        if (!isThreeMatch && !isThreeColorRed)
                           Expanded(
                             child: Draggable(
                               data: "3",
@@ -247,7 +252,7 @@ class _GameBoardState extends State<GameBoard> with TickerProviderStateMixin {
                                   ),
                                   style: ElevatedButton.styleFrom(
                                     //primary: Color(0xff072e79),
-                                    primary: Color(0xffffffff),
+                                    primary:Color(0xffffffff),
 
                                     minimumSize: Size(double.infinity, 52),
                                     shape: new RoundedRectangleBorder(
@@ -269,16 +274,16 @@ class _GameBoardState extends State<GameBoard> with TickerProviderStateMixin {
                                 child: Container(
                                   margin: EdgeInsets.symmetric(vertical: 20),
                                   child: new Text(
-                                    '',
+                                    'Food',
                                     style: TextStyle(
-                                      color: Colors.transparent,
+                                      // color: Colors.transparent,
                                       fontSize: 18,
                                     ),
                                   ),
                                 ),
                                 style: ElevatedButton.styleFrom(
                                   //primary: Color(0xff072e79),
-                                  primary: Colors.transparent,
+                                  primary: Colors.green,
 
                                   minimumSize: Size(double.infinity, 52),
                                   shape: new RoundedRectangleBorder(
@@ -291,7 +296,38 @@ class _GameBoardState extends State<GameBoard> with TickerProviderStateMixin {
                               ),
                             ),
                           ),
-                        if (!isOneMatch)
+                        if (isThreeColorRed)
+                          Expanded(
+                            child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: new ElevatedButton(
+                                child: Container(
+                                  margin: EdgeInsets.symmetric(vertical: 20),
+                                  child: new Text(
+                                    'Food',
+                                    style: TextStyle(
+                                      // color: Colors.transparent,
+                                      fontSize: 18,
+                                    ),
+                                  ),
+                                ),
+                                style: ElevatedButton.styleFrom(
+                                  //primary: Color(0xff072e79),
+                                  primary: Colors.red,
+
+                                  minimumSize: Size(double.infinity, 52),
+                                  shape: new RoundedRectangleBorder(
+                                    borderRadius:
+                                    new BorderRadius.circular(100.0),
+                                    // side: BorderSide(color: Color(0xffffffff)),
+                                  ),
+                                ),
+                                onPressed: () {},
+                              ),
+                            ),
+                          ),
+
+                        if (!isOneMatch && !isOneColorRed)
                           Expanded(
                             child: DragTarget(
                               builder: (context, List<Object?> candidateData,
@@ -339,6 +375,8 @@ class _GameBoardState extends State<GameBoard> with TickerProviderStateMixin {
                                     print("CHANCES $chances");
                                   } else {
                                     score -= 5;
+                                    isOneColorRed = true;
+                                    chances -= 1;
                                   }
                                 });
                               },
@@ -352,21 +390,52 @@ class _GameBoardState extends State<GameBoard> with TickerProviderStateMixin {
                                 child: Container(
                                   margin: EdgeInsets.symmetric(vertical: 20),
                                   child: new Text(
-                                    '',
+                                    'Bag',
                                     style: TextStyle(
-                                      color: Colors.transparent,
+                                      // color: Colors.transparent,
                                       fontSize: 18,
                                     ),
                                   ),
                                 ),
                                 style: ElevatedButton.styleFrom(
                                   //primary: Color(0xff072e79),
-                                  primary: Colors.transparent,
+                                  primary: Colors.green,
 
                                   minimumSize: Size(double.infinity, 52),
                                   shape: new RoundedRectangleBorder(
                                     borderRadius:
                                         new BorderRadius.circular(100.0),
+                                    // side: BorderSide(color: Color(0xffffffff)),
+                                  ),
+                                ),
+                                onPressed: () {},
+                              ),
+                            ),
+                          ),
+
+                        if (isOneColorRed)
+                          Expanded(
+                            child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: new ElevatedButton(
+                                child: Container(
+                                  margin: EdgeInsets.symmetric(vertical: 20),
+                                  child: new Text(
+                                    'Bag',
+                                    style: TextStyle(
+                                      // color: Colors.transparent,
+                                      fontSize: 18,
+                                    ),
+                                  ),
+                                ),
+                                style: ElevatedButton.styleFrom(
+                                  //primary: Color(0xff072e79),
+                                  primary: Colors.red,
+
+                                  minimumSize: Size(double.infinity, 52),
+                                  shape: new RoundedRectangleBorder(
+                                    borderRadius:
+                                    new BorderRadius.circular(100.0),
                                     // side: BorderSide(color: Color(0xffffffff)),
                                   ),
                                 ),
@@ -384,7 +453,7 @@ class _GameBoardState extends State<GameBoard> with TickerProviderStateMixin {
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        if (!isTwoMatch)
+                        if (!isTwoMatch && !isTwoColorRed)
                           Expanded(
                             child: Draggable(
                               data: "2",
@@ -453,16 +522,16 @@ class _GameBoardState extends State<GameBoard> with TickerProviderStateMixin {
                                 child: Container(
                                   margin: EdgeInsets.symmetric(vertical: 20),
                                   child: new Text(
-                                    '',
+                                    'Yeda',
                                     style: TextStyle(
-                                      color: Colors.transparent,
+                                      // color: Colors.transparent,
                                       fontSize: 18,
                                     ),
                                   ),
                                 ),
                                 style: ElevatedButton.styleFrom(
                                   //primary: Color(0xff072e79),
-                                  primary: Colors.transparent,
+                                  primary: Colors.green,
 
                                   minimumSize: Size(double.infinity, 52),
                                   shape: new RoundedRectangleBorder(
@@ -475,7 +544,39 @@ class _GameBoardState extends State<GameBoard> with TickerProviderStateMixin {
                               ),
                             ),
                           ),
-                        if (!isTwoMatch)
+                        if (isTwoColorRed)
+                          Expanded(
+                            child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: new ElevatedButton(
+                                child: Container(
+                                  margin: EdgeInsets.symmetric(vertical: 20),
+                                  child: new Text(
+                                    'Yeda',
+                                    style: TextStyle(
+                                      // color: Colors.transparent,
+                                      fontSize: 18,
+                                    ),
+                                  ),
+                                ),
+                                style: ElevatedButton.styleFrom(
+                                  //primary: Color(0xff072e79),
+                                  primary: Colors.red,
+
+                                  minimumSize: Size(double.infinity, 52),
+                                  shape: new RoundedRectangleBorder(
+                                    borderRadius:
+                                    new BorderRadius.circular(100.0),
+                                    // side: BorderSide(color: Color(0xffffffff)),
+                                  ),
+                                ),
+                                onPressed: () {},
+                              ),
+                            ),
+                          ),
+
+
+                        if (!isTwoMatch && !isTwoColorRed)
                           Expanded(
                             child: DragTarget(
                               builder: (context, List<Object?> candidateData,
@@ -522,6 +623,8 @@ class _GameBoardState extends State<GameBoard> with TickerProviderStateMixin {
                                     print("CHANCES $chances");
                                   } else {
                                     score -= 5;
+                                    isTwoColorRed = true;
+                                    chances -= 1;
                                   }
                                 });
                               },
@@ -535,21 +638,53 @@ class _GameBoardState extends State<GameBoard> with TickerProviderStateMixin {
                                 child: Container(
                                   margin: EdgeInsets.symmetric(vertical: 20),
                                   child: new Text(
-                                    '',
+                                    'Cloth',
                                     style: TextStyle(
-                                      color: Colors.transparent,
+                                      // color: Colors.transparent,
                                       fontSize: 18,
                                     ),
                                   ),
                                 ),
                                 style: ElevatedButton.styleFrom(
                                   //primary: Color(0xff072e79),
-                                  primary: Colors.transparent,
+                                  primary: Colors.green,
 
                                   minimumSize: Size(double.infinity, 52),
                                   shape: new RoundedRectangleBorder(
                                     borderRadius:
                                         new BorderRadius.circular(100.0),
+                                    // side: BorderSide(color: Color(0xffffffff)),
+                                  ),
+                                ),
+                                onPressed: () {},
+                              ),
+                            ),
+                          ),
+
+
+                        if (isTwoColorRed)
+                          Expanded(
+                            child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: new ElevatedButton(
+                                child: Container(
+                                  margin: EdgeInsets.symmetric(vertical: 20),
+                                  child: new Text(
+                                    'Cloth',
+                                    style: TextStyle(
+                                      // color: Colors.transparent,
+                                      fontSize: 18,
+                                    ),
+                                  ),
+                                ),
+                                style: ElevatedButton.styleFrom(
+                                  //primary: Color(0xff072e79),
+                                  primary: Colors.red,
+
+                                  minimumSize: Size(double.infinity, 52),
+                                  shape: new RoundedRectangleBorder(
+                                    borderRadius:
+                                    new BorderRadius.circular(100.0),
                                     // side: BorderSide(color: Color(0xffffffff)),
                                   ),
                                 ),
@@ -567,7 +702,7 @@ class _GameBoardState extends State<GameBoard> with TickerProviderStateMixin {
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        if (!isOneMatch)
+                        if (!isOneMatch && !isOneColorRed)
                           Expanded(
                             child: Draggable(
                               data: "1",
@@ -636,16 +771,16 @@ class _GameBoardState extends State<GameBoard> with TickerProviderStateMixin {
                                 child: Container(
                                   margin: EdgeInsets.symmetric(vertical: 20),
                                   child: new Text(
-                                    '',
+                                    'kniga',
                                     style: TextStyle(
-                                      color: Colors.transparent,
+                                      // color: Colors.transparent,
                                       fontSize: 18,
                                     ),
                                   ),
                                 ),
                                 style: ElevatedButton.styleFrom(
                                   //primary: Color(0xff072e79),
-                                  primary: Colors.transparent,
+                                  primary: Colors.green,
 
                                   minimumSize: Size(double.infinity, 52),
                                   shape: new RoundedRectangleBorder(
@@ -658,7 +793,39 @@ class _GameBoardState extends State<GameBoard> with TickerProviderStateMixin {
                               ),
                             ),
                           ),
-                        if (!isThreeMatch)
+
+                        if (isOneColorRed)
+                          Expanded(
+                            child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: new ElevatedButton(
+                                child: Container(
+                                  margin: EdgeInsets.symmetric(vertical: 20),
+                                  child: new Text(
+                                    'kniga',
+                                    style: TextStyle(
+                                      // color: Colors.transparent,
+                                      fontSize: 18,
+                                    ),
+                                  ),
+                                ),
+                                style: ElevatedButton.styleFrom(
+                                  //primary: Color(0xff072e79),
+                                  primary: Colors.red,
+
+                                  minimumSize: Size(double.infinity, 52),
+                                  shape: new RoundedRectangleBorder(
+                                    borderRadius:
+                                    new BorderRadius.circular(100.0),
+                                    // side: BorderSide(color: Color(0xffffffff)),
+                                  ),
+                                ),
+                                onPressed: () {},
+                              ),
+                            ),
+                          ),
+
+                        if (!isThreeMatch && !isThreeColorRed)
                           Expanded(
                             child: DragTarget(
                               builder: (context, List<Object?> candidateData,
@@ -705,6 +872,8 @@ class _GameBoardState extends State<GameBoard> with TickerProviderStateMixin {
                                     print("CHANCES $chances");
                                   } else {
                                     score -= 5;
+                                    isThreeColorRed = true;
+                                    chances -= 1;
                                   }
                                 });
                               },
@@ -718,16 +887,16 @@ class _GameBoardState extends State<GameBoard> with TickerProviderStateMixin {
                                 child: Container(
                                   margin: EdgeInsets.symmetric(vertical: 20),
                                   child: new Text(
-                                    '',
+                                    'Ethhs',
                                     style: TextStyle(
-                                      color: Colors.transparent,
+                                      // color: Colors.transparent,
                                       fontSize: 18,
                                     ),
                                   ),
                                 ),
                                 style: ElevatedButton.styleFrom(
                                   //primary: Color(0xff072e79),
-                                  primary: Colors.transparent,
+                                  primary: Colors.green,
 
                                   minimumSize: Size(double.infinity, 52),
                                   shape: new RoundedRectangleBorder(
@@ -740,9 +909,41 @@ class _GameBoardState extends State<GameBoard> with TickerProviderStateMixin {
                               ),
                             ),
                           ),
+
+                        if (isThreeColorRed)
+                          Expanded(
+                            child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: new ElevatedButton(
+                                child: Container(
+                                  margin: EdgeInsets.symmetric(vertical: 20),
+                                  child: new Text(
+                                    'Ethhs',
+                                    style: TextStyle(
+                                      // color: Colors.transparent,
+                                      fontSize: 18,
+                                    ),
+                                  ),
+                                ),
+                                style: ElevatedButton.styleFrom(
+                                  //primary: Color(0xff072e79),
+                                  primary: Colors.red,
+
+                                  minimumSize: Size(double.infinity, 52),
+                                  shape: new RoundedRectangleBorder(
+                                    borderRadius:
+                                    new BorderRadius.circular(100.0),
+                                    // side: BorderSide(color: Color(0xffffffff)),
+                                  ),
+                                ),
+                                onPressed: () {},
+                              ),
+                            ),
+                          ),
                       ],
                     ),
                   ),
+
 
                   //4
                   Container(
@@ -750,7 +951,7 @@ class _GameBoardState extends State<GameBoard> with TickerProviderStateMixin {
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        if (!isFiveMatch)
+                        if (!isFiveMatch && !isFiveColorRed)
                           Expanded(
                             child: Draggable(
                               data: "5",
@@ -769,7 +970,7 @@ class _GameBoardState extends State<GameBoard> with TickerProviderStateMixin {
                                   ),
                                   style: ElevatedButton.styleFrom(
                                     //primary: Color(0xff072e79),
-                                    primary: Color(0xffffffff),
+                                    primary:Color(0xffffffff),
 
                                     minimumSize: Size(150, 52),
                                     shape: new RoundedRectangleBorder(
@@ -819,16 +1020,16 @@ class _GameBoardState extends State<GameBoard> with TickerProviderStateMixin {
                                 child: Container(
                                   margin: EdgeInsets.symmetric(vertical: 20),
                                   child: new Text(
-                                    '',
+                                    'ruchka',
                                     style: TextStyle(
-                                      color: Colors.transparent,
+                                      // color: Colors.transparent,
                                       fontSize: 18,
                                     ),
                                   ),
                                 ),
                                 style: ElevatedButton.styleFrom(
                                   //primary: Color(0xff072e79),
-                                  primary: Colors.transparent,
+                                  primary: Colors.green,
 
                                   minimumSize: Size(double.infinity, 52),
                                   shape: new RoundedRectangleBorder(
@@ -841,7 +1042,39 @@ class _GameBoardState extends State<GameBoard> with TickerProviderStateMixin {
                               ),
                             ),
                           ),
-                        if (!isFourMatch)
+
+                        if (isFiveColorRed)
+                          Expanded(
+                            child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: new ElevatedButton(
+                                child: Container(
+                                  margin: EdgeInsets.symmetric(vertical: 20),
+                                  child: new Text(
+                                    'ruchka',
+                                    style: TextStyle(
+                                      // color: Colors.transparent,
+                                      fontSize: 18,
+                                    ),
+                                  ),
+                                ),
+                                style: ElevatedButton.styleFrom(
+                                  //primary: Color(0xff072e79),
+                                  primary: Colors.red,
+
+                                  minimumSize: Size(double.infinity, 52),
+                                  shape: new RoundedRectangleBorder(
+                                    borderRadius:
+                                    new BorderRadius.circular(100.0),
+                                    // side: BorderSide(color: Color(0xffffffff)),
+                                  ),
+                                ),
+                                onPressed: () {},
+                              ),
+                            ),
+                          ),
+
+                        if (!isFourMatch && !isFourColorRed)
                           Expanded(
                             child: DragTarget(
                               builder: (context, List<Object?> candidateData,
@@ -888,6 +1121,8 @@ class _GameBoardState extends State<GameBoard> with TickerProviderStateMixin {
                                     print("CHANCES $chances");
                                   } else {
                                     score -= 5;
+                                    isFourColorRed = true;
+                                    chances -= 1;
                                   }
                                 });
                               },
@@ -901,21 +1136,52 @@ class _GameBoardState extends State<GameBoard> with TickerProviderStateMixin {
                                 child: Container(
                                   margin: EdgeInsets.symmetric(vertical: 20),
                                   child: new Text(
-                                    '',
+                                    'Book',
                                     style: TextStyle(
-                                      color: Colors.transparent,
+                                      // color: Colors.transparent,
                                       fontSize: 18,
                                     ),
                                   ),
                                 ),
                                 style: ElevatedButton.styleFrom(
                                   //primary: Color(0xff072e79),
-                                  primary: Colors.transparent,
+                                  primary: Colors.green,
 
                                   minimumSize: Size(double.infinity, 52),
                                   shape: new RoundedRectangleBorder(
                                     borderRadius:
                                         new BorderRadius.circular(100.0),
+                                    // side: BorderSide(color: Color(0xffffffff)),
+                                  ),
+                                ),
+                                onPressed: () {},
+                              ),
+                            ),
+                          ),
+
+                        if (isFourColorRed)
+                          Expanded(
+                            child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: new ElevatedButton(
+                                child: Container(
+                                  margin: EdgeInsets.symmetric(vertical: 20),
+                                  child: new Text(
+                                    'Book',
+                                    style: TextStyle(
+                                      // color: Colors.transparent,
+                                      fontSize: 18,
+                                    ),
+                                  ),
+                                ),
+                                style: ElevatedButton.styleFrom(
+                                  //primary: Color(0xff072e79),
+                                  primary: Colors.red,
+
+                                  minimumSize: Size(double.infinity, 52),
+                                  shape: new RoundedRectangleBorder(
+                                    borderRadius:
+                                    new BorderRadius.circular(100.0),
                                     // side: BorderSide(color: Color(0xffffffff)),
                                   ),
                                 ),
@@ -933,7 +1199,7 @@ class _GameBoardState extends State<GameBoard> with TickerProviderStateMixin {
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        if (!isFourMatch)
+                        if (!isFourMatch && !isFourColorRed)
                           Expanded(
                             child: Draggable(
                               data: "4",
@@ -943,7 +1209,7 @@ class _GameBoardState extends State<GameBoard> with TickerProviderStateMixin {
                                   child: Container(
                                     margin: EdgeInsets.symmetric(vertical: 20),
                                     child: new Text(
-                                      'Novyy',
+                                      'hurf',
                                       style: TextStyle(
                                         color: Color(0xff073ea6),
                                         fontSize: 18,
@@ -952,7 +1218,7 @@ class _GameBoardState extends State<GameBoard> with TickerProviderStateMixin {
                                   ),
                                   style: ElevatedButton.styleFrom(
                                     //primary: Color(0xff072e79),
-                                    primary: Color(0xffffffff),
+                                    primary:  Color(0xffffffff),
 
                                     minimumSize: Size(150, 52),
                                     shape: new RoundedRectangleBorder(
@@ -1002,16 +1268,16 @@ class _GameBoardState extends State<GameBoard> with TickerProviderStateMixin {
                                 child: Container(
                                   margin: EdgeInsets.symmetric(vertical: 20),
                                   child: new Text(
-                                    '',
+                                    'hurf',
                                     style: TextStyle(
-                                      color: Colors.transparent,
+                                      // color: Colors.green,
                                       fontSize: 18,
                                     ),
                                   ),
                                 ),
                                 style: ElevatedButton.styleFrom(
                                   //primary: Color(0xff072e79),
-                                  primary: Colors.transparent,
+                                  primary: Colors.green,
 
                                   minimumSize: Size(double.infinity, 52),
                                   shape: new RoundedRectangleBorder(
@@ -1024,7 +1290,39 @@ class _GameBoardState extends State<GameBoard> with TickerProviderStateMixin {
                               ),
                             ),
                           ),
-                        if (!isFiveMatch)
+
+                        if (isFourColorRed)
+                          Expanded(
+                            child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: new ElevatedButton(
+                                child: Container(
+                                  margin: EdgeInsets.symmetric(vertical: 20),
+                                  child: new Text(
+                                    'hurf',
+                                    style: TextStyle(
+                                      // color: Colors.green,
+                                      fontSize: 18,
+                                    ),
+                                  ),
+                                ),
+                                style: ElevatedButton.styleFrom(
+                                  //primary: Color(0xff072e79),
+                                  primary: Colors.red,
+
+                                  minimumSize: Size(double.infinity, 52),
+                                  shape: new RoundedRectangleBorder(
+                                    borderRadius:
+                                    new BorderRadius.circular(100.0),
+                                    // side: BorderSide(color: Color(0xffffffff)),
+                                  ),
+                                ),
+                                onPressed: () {},
+                              ),
+                            ),
+                          ),
+
+                        if (!isFiveMatch && !isFiveColorRed)
                           Expanded(
                             child: DragTarget(
                               builder: (context, List<Object?> candidateData,
@@ -1071,6 +1369,8 @@ class _GameBoardState extends State<GameBoard> with TickerProviderStateMixin {
                                     print("CHANCES $chances");
                                   } else {
                                     score -= 5;
+                                    isFiveColorRed = true;
+                                    chances -= 1;
                                   }
                                 });
                               },
@@ -1084,21 +1384,52 @@ class _GameBoardState extends State<GameBoard> with TickerProviderStateMixin {
                                 child: Container(
                                   margin: EdgeInsets.symmetric(vertical: 20),
                                   child: new Text(
-                                    '',
+                                    'New',
                                     style: TextStyle(
-                                      color: Colors.transparent,
+                                      // color: Colors.transparent,
                                       fontSize: 18,
                                     ),
                                   ),
                                 ),
                                 style: ElevatedButton.styleFrom(
                                   //primary: Color(0xff072e79),
-                                  primary: Colors.transparent,
+                                  primary: Colors.green,
 
                                   minimumSize: Size(double.infinity, 52),
                                   shape: new RoundedRectangleBorder(
                                     borderRadius:
                                         new BorderRadius.circular(100.0),
+                                    // side: BorderSide(color: Color(0xffffffff)),
+                                  ),
+                                ),
+                                onPressed: () {},
+                              ),
+                            ),
+                          ),
+
+                        if (isFiveColorRed)
+                          Expanded(
+                            child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: new ElevatedButton(
+                                child: Container(
+                                  margin: EdgeInsets.symmetric(vertical: 20),
+                                  child: new Text(
+                                    'New',
+                                    style: TextStyle(
+                                      // color: Colors.transparent,
+                                      fontSize: 18,
+                                    ),
+                                  ),
+                                ),
+                                style: ElevatedButton.styleFrom(
+                                  //primary: Color(0xff072e79),
+                                  primary: Colors.green,
+
+                                  minimumSize: Size(double.infinity, 52),
+                                  shape: new RoundedRectangleBorder(
+                                    borderRadius:
+                                    new BorderRadius.circular(100.0),
                                     // side: BorderSide(color: Color(0xffffffff)),
                                   ),
                                 ),

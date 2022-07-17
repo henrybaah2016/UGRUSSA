@@ -305,7 +305,7 @@ class _UploadState extends State<Upload> {
                           _submitFile();
                         },
                         child: Text(
-                          'Save Files',
+                          'Post Files',
                           style: TextStyle(
                             color: Color(0xffffffff),
                             fontSize: 14,
