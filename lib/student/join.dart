@@ -33,6 +33,38 @@ class _JoinPageState extends State<JoinPage> {
   final _yearController = TextEditingController();
   final _academicProgrammeController = TextEditingController();
 
+  var _levels = [
+    "100",
+    "200",
+    "300",
+    "400",
+    "Non Student" ,// non student
+  ];
+
+  var _currentSelectedLevel = "100";
+
+  var _residence = [
+    "Traditional hall",
+    "Diaspora",
+    "Pentagon",
+    "Evandy",
+    "TF",
+    "Not applicable"
+    // not applicable
+  ];
+
+  var _currentSelectedResidence = "Traditional hall";
+
+
+  var _gender = [
+    "Male",
+    "Female",
+  ];
+
+  var _currentSelectedGender = "Male";
+
+  // TODO : USE DATE PICKER FOR DATE OF BIRTH
+
   validateForm(BuildContext context) {
     if (_fullNameController.text.length < 3) {
       ScaffoldMessenger.of(context).showSnackBar(
@@ -67,7 +99,7 @@ class _JoinPageState extends State<JoinPage> {
         ),
       );
       return;
-    } else if (_genderController.text.isEmpty) {
+    } else if (_currentSelectedGender.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
           content: Text(
@@ -89,7 +121,7 @@ class _JoinPageState extends State<JoinPage> {
         ),
       );
       return;
-    } else if (_levelController.text.isEmpty) {
+    } else if (_currentSelectedLevel.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
           content: Text(
@@ -100,7 +132,7 @@ class _JoinPageState extends State<JoinPage> {
         ),
       );
       return;
-    } else if (_residenceController.text.isEmpty) {
+    } else if (_currentSelectedResidence.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
           content: Text(
@@ -150,10 +182,10 @@ class _JoinPageState extends State<JoinPage> {
       "id": currentFirebaseUser!.uid,
       "Full name": _fullNameController.text,
       "Email": _emailController.text,
-      "Gender": _genderController.text,
+      "Gender": _currentSelectedGender,
       "Student ID": _studentIdController.text,
-      "Level": _levelController.text,
-      "Residence": _residenceController.text,
+      "Level": _currentSelectedLevel,
+      "Residence": _currentSelectedResidence,
       "Date of  birth": _dateOfBirthController.text,
       "Year": _yearController.text,
       "Academic Programme": _academicProgrammeController.text,
@@ -334,73 +366,115 @@ class _JoinPageState extends State<JoinPage> {
                                   ),
                                 ),
                                 Container(
-                                  margin: const EdgeInsets.only(bottom: 25),
-                                  child: Padding(
-                                    padding: EdgeInsets.only(left: 5, right: 5),
-                                    child: TextField(
-                                      controller: _residenceController,
-                                      keyboardType: TextInputType.text,
-                                      decoration: InputDecoration(
+                                  margin: const EdgeInsets.only(
+                                    bottom: 25,
+                                    left: 5,
+                                    right: 5,
+                                  ),
+                                  child: FormField<String>(
+                                    builder: (FormFieldState<String> state) {
+                                      return InputDecorator(
+                                        decoration: InputDecoration(
                                           enabledBorder: OutlineInputBorder(
-                                            borderSide: BorderSide(
-                                                color: Color(0xffB3B3B3)),
+                                            borderSide: BorderSide(color: Color(0xffB3B3B3)),
                                           ),
                                           focusedBorder: OutlineInputBorder(
-                                            borderSide: BorderSide(
-                                                color: Color(0xff000000)),
+                                            borderSide: BorderSide(color: Color(0xff000000)),
                                           ),
                                           border: OutlineInputBorder(
-                                            borderSide: BorderSide(
-                                                color: Color(0xffB3B3B3)),
+                                            borderSide: BorderSide(color: Color(0xffB3B3B3)),
                                           ),
-                                          labelText: 'Residence',
+                                          labelText: 'Select residence',
                                           labelStyle: TextStyle(
-                                              color: Color(0xff000000),
-                                              fontSize: 12,
-                                              fontWeight: FontWeight.w600),
-                                          contentPadding: EdgeInsets.only(
-                                              bottom: 0, left: 10),
-                                          hintText: 'Residence',
+                                            color: Color(0xff000000),
+                                            fontSize: 12,
+                                            fontWeight: FontWeight.w600,
+                                          ),
+                                          contentPadding: EdgeInsets.only(bottom: 0, left: 10),
+                                          hintText: 'Select residence',
                                           hintStyle: TextStyle(
-                                              color: Color(0xff000000),
-                                              fontSize: 16,
-                                              fontWeight: FontWeight.w600)),
-                                    ),
+                                            color: Color(0xff000000),
+                                            fontSize: 16,
+                                            fontWeight: FontWeight.w600,
+                                          ),
+                                        ),
+                                        isEmpty: _currentSelectedResidence == '',
+                                        child: DropdownButtonHideUnderline(
+                                          child: DropdownButton<String>(
+                                            value: _currentSelectedResidence,
+                                            isDense: true,
+                                            onChanged: (String? newValue) {
+                                              setState(() {
+                                                _currentSelectedResidence = newValue!;
+                                                state.didChange(newValue);
+                                              });
+                                            },
+                                            items: _residence.map((String value) {
+                                              return DropdownMenuItem<String>(
+                                                value: value,
+                                                child: Text(value),
+                                              );
+                                            }).toList(),
+                                          ),
+                                        ),
+                                      );
+                                    },
                                   ),
                                 ),
                                 Container(
-                                  margin: const EdgeInsets.only(bottom: 25),
-                                  child: Padding(
-                                    padding: EdgeInsets.only(left: 5, right: 5),
-                                    child: TextField(
-                                      controller: _genderController,
-                                      keyboardType: TextInputType.text,
-                                      decoration: InputDecoration(
+                                  margin: const EdgeInsets.only(
+                                    bottom: 25,
+                                    left: 5,
+                                    right: 5,
+                                  ),
+                                  child: FormField<String>(
+                                    builder: (FormFieldState<String> state) {
+                                      return InputDecorator(
+                                        decoration: InputDecoration(
                                           enabledBorder: OutlineInputBorder(
-                                            borderSide: BorderSide(
-                                                color: Color(0xffB3B3B3)),
+                                            borderSide: BorderSide(color: Color(0xffB3B3B3)),
                                           ),
                                           focusedBorder: OutlineInputBorder(
-                                            borderSide: BorderSide(
-                                                color: Color(0xff000000)),
+                                            borderSide: BorderSide(color: Color(0xff000000)),
                                           ),
                                           border: OutlineInputBorder(
-                                            borderSide: BorderSide(
-                                                color: Color(0xffB3B3B3)),
+                                            borderSide: BorderSide(color: Color(0xffB3B3B3)),
                                           ),
-                                          labelText: 'Gender',
+                                          labelText: 'Select gender',
                                           labelStyle: TextStyle(
-                                              color: Color(0xff000000),
-                                              fontSize: 12,
-                                              fontWeight: FontWeight.w600),
-                                          contentPadding: EdgeInsets.only(
-                                              bottom: 0, left: 10),
-                                          hintText: 'Gender',
+                                            color: Color(0xff000000),
+                                            fontSize: 12,
+                                            fontWeight: FontWeight.w600,
+                                          ),
+                                          contentPadding: EdgeInsets.only(bottom: 0, left: 10),
+                                          hintText: 'Select Gender',
                                           hintStyle: TextStyle(
-                                              color: Color(0xff000000),
-                                              fontSize: 16,
-                                              fontWeight: FontWeight.w600)),
-                                    ),
+                                            color: Color(0xff000000),
+                                            fontSize: 16,
+                                            fontWeight: FontWeight.w600,
+                                          ),
+                                        ),
+                                        isEmpty: _currentSelectedGender == '',
+                                        child: DropdownButtonHideUnderline(
+                                          child: DropdownButton<String>(
+                                            value: _currentSelectedGender,
+                                            isDense: true,
+                                            onChanged: (String? newValue) {
+                                              setState(() {
+                                                _currentSelectedGender = newValue!;
+                                                state.didChange(newValue);
+                                              });
+                                            },
+                                            items: _gender.map((String value) {
+                                              return DropdownMenuItem<String>(
+                                                value: value,
+                                                child: Text(value),
+                                              );
+                                            }).toList(),
+                                          ),
+                                        ),
+                                      );
+                                    },
                                   ),
                                 ),
                                 Container(
@@ -502,38 +576,58 @@ class _JoinPageState extends State<JoinPage> {
                                 ),
                               ),
                               Container(
-                                margin: const EdgeInsets.only(bottom: 25),
-                                child: Padding(
-                                  padding: EdgeInsets.only(left: 5, right: 5),
-                                  child: TextField(
-                                    controller: _levelController,
-                                    keyboardType: TextInputType.text,
-                                    decoration: InputDecoration(
+                                margin: const EdgeInsets.only(
+                                  bottom: 25,
+                                  left: 5,
+                                  right: 5,
+                                ),
+                                child: FormField<String>(
+                                  builder: (FormFieldState<String> state) {
+                                    return InputDecorator(
+                                      decoration: InputDecoration(
                                         enabledBorder: OutlineInputBorder(
-                                          borderSide: BorderSide(
-                                              color: Color(0xffB3B3B3)),
+                                          borderSide: BorderSide(color: Color(0xffB3B3B3)),
                                         ),
                                         focusedBorder: OutlineInputBorder(
-                                          borderSide: BorderSide(
-                                              color: Color(0xff000000)),
+                                          borderSide: BorderSide(color: Color(0xff000000)),
                                         ),
                                         border: OutlineInputBorder(
-                                          borderSide: BorderSide(
-                                              color: Color(0xffB3B3B3)),
+                                          borderSide: BorderSide(color: Color(0xffB3B3B3)),
                                         ),
-                                        labelText: 'Level',
+                                        labelText: 'Select level',
                                         labelStyle: TextStyle(
                                             color: Color(0xff000000),
                                             fontSize: 12,
                                             fontWeight: FontWeight.w600),
-                                        contentPadding: EdgeInsets.only(
-                                            bottom: 0, left: 10),
-                                        hintText: 'Level',
+                                        contentPadding: EdgeInsets.only(bottom: 0, left: 10),
+                                        hintText: 'Select level',
                                         hintStyle: TextStyle(
-                                            color: Color(0xff000000),
-                                            fontSize: 16,
-                                            fontWeight: FontWeight.w600)),
-                                  ),
+                                          color: Color(0xff000000),
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.w600,
+                                        ),
+                                      ),
+                                      isEmpty: _currentSelectedLevel == '',
+                                      child: DropdownButtonHideUnderline(
+                                        child: DropdownButton<String>(
+                                          value: _currentSelectedLevel,
+                                          isDense: true,
+                                          onChanged: (String? newValue) {
+                                            setState(() {
+                                              _currentSelectedLevel = newValue!;
+                                              state.didChange(newValue);
+                                            });
+                                          },
+                                          items: _levels.map((String value) {
+                                            return DropdownMenuItem<String>(
+                                              value: value,
+                                              child: Text(value),
+                                            );
+                                          }).toList(),
+                                        ),
+                                      ),
+                                    );
+                                  },
                                 ),
                               ),
                               Container(
