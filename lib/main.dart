@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 // import 'firebase_options.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:ugrussa/document_upload/news_upload.dart';
 import 'package:ugrussa/home/home.dart';
 import 'package:ugrussa/login/login.dart';
 import 'package:ugrussa/signup/signup.dart';
@@ -39,6 +40,7 @@ class MyApp extends StatelessWidget {
         JoinPage.routeName: (ctx) => JoinPage(),
         ListPage.routeName: (ctx) => ListPage(),
         Splash.routeName: (ctx) => Splash(),
+        NewsUpload.routeName: (ctx) => NewsUpload(),
       },
     );
   }
