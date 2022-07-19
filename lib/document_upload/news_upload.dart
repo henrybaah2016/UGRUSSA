@@ -32,10 +32,29 @@ class _NewsUploadState extends State<NewsUpload> {
 
   List<String> fileNames = [];
 
+  var focusNode = FocusNode();
+  var _isFocus = false;
+
+  void _onFocusChange() {
+    debugPrint("Focus: ${focusNode.hasFocus.toString()}");
+    setState(() {
+      _isFocus = focusNode.hasFocus;
+    });
+
+    debugPrint("IS FOCUS: $_isFocus");
+  }
+
+  @override
+  initState() {
+    super.initState();
+    focusNode.addListener(_onFocusChange);
+  }
+
+
   _uploadFile() async {
     result = await FilePicker.platform.pickFiles(
       type: FileType.custom,
-      allowedExtensions: ['jpg', 'pdf', 'doc', 'jpeg','png'],
+      allowedExtensions: ['jpg', 'pdf', 'doc', 'jpeg', 'png'],
     );
 
     if (result != null) {
@@ -134,7 +153,7 @@ class _NewsUploadState extends State<NewsUpload> {
           leading: Builder(
             builder: (BuildContext context) {
               return GestureDetector(
-                onTap: (){
+                onTap: () {
                   Navigator.pop(context);
                 },
                 child: Container(
@@ -247,72 +266,68 @@ class _NewsUploadState extends State<NewsUpload> {
                     onTap: () {
                       _uploadFile();
                     },
-                    child:  Padding(
-                            padding: const EdgeInsets.all(12.0),
-                            child: DottedBorder(
-                              borderType: BorderType.RRect,
-                              color: Colors.blue,
-                              strokeWidth: 1,
-                              radius: Radius.circular(4),
-                              child: ClipRRect(
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(12)),
-                                child: Container(
-                                    color: Color(0xffF4F9FE),
-                                    child: Row(
+                    child: Padding(
+                      padding: const EdgeInsets.all(12.0),
+                      child: DottedBorder(
+                        borderType: BorderType.RRect,
+                        color: Colors.blue,
+                        strokeWidth: 1,
+                        radius: Radius.circular(4),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.all(Radius.circular(12)),
+                          child: Container(
+                              color: Color(0xffF4F9FE),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Container(
+                                    height: 150.0,
+                                    width: 250.0,
+                                    child: Column(
                                       mainAxisAlignment:
                                           MainAxisAlignment.center,
-                                      children: [
+                                      children: <Widget>[
                                         Container(
-                                          height: 150.0,
-                                          width: 250.0,
-                                          child: Column(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.center,
-                                            children: <Widget>[
-                                              Container(
-                                                child: Icon(
-                                                  Icons.folder,
-                                                  color: Color(0xff7b8b9a),
-                                                  size: 40.0,
-                                                ),
+                                          child: Icon(
+                                            Icons.folder,
+                                            color: Color(0xff7b8b9a),
+                                            size: 40.0,
+                                          ),
+                                        ),
+                                        Container(
+                                          alignment: Alignment.center,
+                                          child: Padding(
+                                            padding: const EdgeInsets.only(
+                                                top: 5, bottom: 5),
+                                            child: Text(
+                                              'Upload feed file here...',
+                                              style: TextStyle(
+                                                color: Color(0xc6000000),
+                                                fontSize: 18,
+                                                fontWeight: FontWeight.w500,
                                               ),
-                                              Container(
-                                                alignment: Alignment.center,
-                                                child: Padding(
-                                                  padding:
-                                                      const EdgeInsets.only(
-                                                          top: 5, bottom: 5),
-                                                  child: Text(
-                                                    'Upload feed file here...',
-                                                    style: TextStyle(
-                                                      color: Color(0xc6000000),
-                                                      fontSize: 18,
-                                                      fontWeight:
-                                                          FontWeight.w500,
-                                                    ),
-                                                  ),
-                                                ),
-                                              ),
-                                              Container(
-                                                alignment: Alignment.center,
-                                                child: Text(
-                                                  'Max files size: 50mb',
-                                                  style: TextStyle(
-                                                    color: Color(0xc6adadad),
-                                                    fontSize: 14,
-                                                    fontWeight: FontWeight.w500,
-                                                  ),
-                                                ),
-                                              ),
-                                            ],
+                                            ),
+                                          ),
+                                        ),
+                                        Container(
+                                          alignment: Alignment.center,
+                                          child: Text(
+                                            'Max files size: 50mb',
+                                            style: TextStyle(
+                                              color: Color(0xc6adadad),
+                                              fontSize: 14,
+                                              fontWeight: FontWeight.w500,
+                                            ),
                                           ),
                                         ),
                                       ],
-                                    )),
-                              ),
-                            ),
-                          ),
+                                    ),
+                                  ),
+                                ],
+                              )),
+                        ),
+                      ),
+                    ),
                   ),
                   SizedBox(height: 20),
                   if (files != null)
@@ -330,6 +345,8 @@ class _NewsUploadState extends State<NewsUpload> {
                     child: Padding(
                       padding: EdgeInsets.only(left: 10, right: 10),
                       child: TextField(
+                        focusNode: focusNode,
+                        maxLines: _isFocus ? 8 : 1,
                         controller: _feedController,
                         keyboardType: TextInputType.text,
                         decoration: InputDecoration(
@@ -344,11 +361,12 @@ class _NewsUploadState extends State<NewsUpload> {
                           ),
                           labelText: 'Feed Description',
                           labelStyle: TextStyle(
-                              color: Color(0xff000000),
-                              fontSize: 12,
-                              fontWeight: FontWeight.w600),
+                            color: Color(0xff000000),
+                            fontSize: 12,
+                            fontWeight: FontWeight.w600,
+                          ),
                           contentPadding: EdgeInsets.only(bottom: 0, left: 10),
-                          hintText: 'Feed Description',
+                          hintText: '',
                           hintStyle: TextStyle(
                             color: Color(0xff000000),
                             fontSize: 16,
