@@ -1,6 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
+import 'package:intl/intl.dart';
 import 'package:multi_wizard/multi_wizard.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:ugrussa/home/home.dart';
@@ -33,12 +35,14 @@ class _JoinPageState extends State<JoinPage> {
   final _yearController = TextEditingController();
   final _academicProgrammeController = TextEditingController();
 
+  String? _dateOfBirth;
+
   var _levels = [
     "100",
     "200",
     "300",
     "400",
-    "Non Student" ,// non student
+    "Non Student", // non student
   ];
 
   var _currentSelectedLevel = "100";
@@ -54,7 +58,6 @@ class _JoinPageState extends State<JoinPage> {
   ];
 
   var _currentSelectedResidence = "Traditional hall";
-
 
   var _gender = [
     "Male",
@@ -88,7 +91,7 @@ class _JoinPageState extends State<JoinPage> {
         ),
       );
       return;
-    } else if (_dateOfBirthController.text.length < 1) {
+    } else if (_dateOfBirth!.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
           content: Text(
@@ -277,243 +280,292 @@ class _JoinPageState extends State<JoinPage> {
                       child: Form(
                         key: _key,
                         child: Container(
-                            margin: const EdgeInsets.only(
-                                left: 5, right: 5, bottom: 5, top: 10),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: <Widget>[
-                                Padding(
-                                  padding: const EdgeInsets.only(
-                                      top: 5.0, right: 4, left: 0, bottom: 20),
+                          margin: const EdgeInsets.only(
+                              left: 5, right: 5, bottom: 5, top: 10),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: <Widget>[
+                              Padding(
+                                padding: const EdgeInsets.only(
+                                    top: 5.0, right: 4, left: 0, bottom: 20),
+                                child: Text(
+                                  'General Information',
+                                  style: TextStyle(
+                                    color: Color(0xff4b4b4b),
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                ),
+                              ),
+                              Container(
+                                margin: const EdgeInsets.only(bottom: 25),
+                                child: Padding(
+                                  padding: EdgeInsets.only(left: 5, right: 5),
+                                  child: TextField(
+                                    controller: _fullNameController,
+                                    keyboardType: TextInputType.text,
+                                    decoration: InputDecoration(
+                                        enabledBorder: OutlineInputBorder(
+                                          borderSide: BorderSide(
+                                              color: Color(0xffB3B3B3)),
+                                        ),
+                                        focusedBorder: OutlineInputBorder(
+                                          borderSide: BorderSide(
+                                              color: Color(0xff000000)),
+                                        ),
+                                        border: OutlineInputBorder(
+                                          borderSide: BorderSide(
+                                              color: Color(0xffB3B3B3)),
+                                        ),
+                                        labelText: 'Full Name',
+                                        labelStyle: TextStyle(
+                                            color: Color(0xff000000),
+                                            fontSize: 12,
+                                            fontWeight: FontWeight.w600),
+                                        contentPadding: EdgeInsets.only(
+                                            bottom: 0, left: 10),
+                                        hintText: '',
+                                        hintStyle: TextStyle(
+                                            color: Color(0xff000000),
+                                            fontSize: 16,
+                                            fontWeight: FontWeight.w600)),
+                                  ),
+                                ),
+                              ),
+                              Container(
+                                margin: const EdgeInsets.only(bottom: 25),
+                                child: Padding(
+                                  padding: EdgeInsets.only(left: 5, right: 5),
+                                  child: TextField(
+                                    controller: _emailController,
+                                    keyboardType: TextInputType.emailAddress,
+                                    decoration: InputDecoration(
+                                        enabledBorder: OutlineInputBorder(
+                                          borderSide: BorderSide(
+                                              color: Color(0xffB3B3B3)),
+                                        ),
+                                        focusedBorder: OutlineInputBorder(
+                                          borderSide: BorderSide(
+                                              color: Color(0xff000000)),
+                                        ),
+                                        border: OutlineInputBorder(
+                                          borderSide: BorderSide(
+                                              color: Color(0xffB3B3B3)),
+                                        ),
+                                        labelText: 'Student Email',
+                                        labelStyle: TextStyle(
+                                            color: Color(0xff000000),
+                                            fontSize: 12,
+                                            fontWeight: FontWeight.w600),
+                                        contentPadding: EdgeInsets.only(
+                                            bottom: 0, left: 10),
+                                        hintText: '',
+                                        hintStyle: TextStyle(
+                                            color: Color(0xff000000),
+                                            fontSize: 16,
+                                            fontWeight: FontWeight.w600)),
+                                  ),
+                                ),
+                              ),
+                              Container(
+                                margin: const EdgeInsets.only(
+                                  bottom: 25,
+                                  left: 5,
+                                  right: 5,
+                                ),
+                                child: FormField<String>(
+                                  builder: (FormFieldState<String> state) {
+                                    return InputDecorator(
+                                      decoration: InputDecoration(
+                                        enabledBorder: OutlineInputBorder(
+                                          borderSide: BorderSide(
+                                              color: Color(0xffB3B3B3)),
+                                        ),
+                                        focusedBorder: OutlineInputBorder(
+                                          borderSide: BorderSide(
+                                              color: Color(0xff000000)),
+                                        ),
+                                        border: OutlineInputBorder(
+                                          borderSide: BorderSide(
+                                              color: Color(0xffB3B3B3)),
+                                        ),
+                                        labelText: 'Select residence',
+                                        labelStyle: TextStyle(
+                                          color: Color(0xff000000),
+                                          fontSize: 12,
+                                          fontWeight: FontWeight.w600,
+                                        ),
+                                        contentPadding: EdgeInsets.only(
+                                            bottom: 0, left: 10),
+                                        hintText: 'Select residence',
+                                        hintStyle: TextStyle(
+                                          color: Color(0xff000000),
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.w600,
+                                        ),
+                                      ),
+                                      isEmpty: _currentSelectedResidence == '',
+                                      child: DropdownButtonHideUnderline(
+                                        child: DropdownButton<String>(
+                                          value: _currentSelectedResidence,
+                                          isDense: true,
+                                          onChanged: (String? newValue) {
+                                            setState(() {
+                                              _currentSelectedResidence =
+                                                  newValue!;
+                                              state.didChange(newValue);
+                                            });
+                                          },
+                                          items: _residence.map((String value) {
+                                            return DropdownMenuItem<String>(
+                                              value: value,
+                                              child: Text(value),
+                                            );
+                                          }).toList(),
+                                        ),
+                                      ),
+                                    );
+                                  },
+                                ),
+                              ),
+                              Container(
+                                margin: const EdgeInsets.only(
+                                  bottom: 25,
+                                  left: 5,
+                                  right: 5,
+                                ),
+                                child: FormField<String>(
+                                  builder: (FormFieldState<String> state) {
+                                    return InputDecorator(
+                                      decoration: InputDecoration(
+                                        enabledBorder: OutlineInputBorder(
+                                          borderSide: BorderSide(
+                                              color: Color(0xffB3B3B3)),
+                                        ),
+                                        focusedBorder: OutlineInputBorder(
+                                          borderSide: BorderSide(
+                                              color: Color(0xff000000)),
+                                        ),
+                                        border: OutlineInputBorder(
+                                          borderSide: BorderSide(
+                                              color: Color(0xffB3B3B3)),
+                                        ),
+                                        labelText: 'Select gender',
+                                        labelStyle: TextStyle(
+                                          color: Color(0xff000000),
+                                          fontSize: 12,
+                                          fontWeight: FontWeight.w600,
+                                        ),
+                                        contentPadding: EdgeInsets.only(
+                                            bottom: 0, left: 10),
+                                        hintText: 'Select Gender',
+                                        hintStyle: TextStyle(
+                                          color: Color(0xff000000),
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.w600,
+                                        ),
+                                      ),
+                                      isEmpty: _currentSelectedGender == '',
+                                      child: DropdownButtonHideUnderline(
+                                        child: DropdownButton<String>(
+                                          value: _currentSelectedGender,
+                                          isDense: true,
+                                          onChanged: (String? newValue) {
+                                            setState(() {
+                                              _currentSelectedGender =
+                                                  newValue!;
+                                              state.didChange(newValue);
+                                            });
+                                          },
+                                          items: _gender.map((String value) {
+                                            return DropdownMenuItem<String>(
+                                              value: value,
+                                              child: Text(value),
+                                            );
+                                          }).toList(),
+                                        ),
+                                      ),
+                                    );
+                                  },
+                                ),
+                              ),
+                              // Container(
+                              //   margin: const EdgeInsets.only(bottom: 25),
+                              //   child: Padding(
+                              //     padding: EdgeInsets.only(left: 5, right: 5),
+                              //     child: TextField(
+                              //       controller: _dateOfBirthController,
+                              //       keyboardType: TextInputType.text,
+                              //       decoration: InputDecoration(
+                              //           enabledBorder: OutlineInputBorder(
+                              //             borderSide: BorderSide(
+                              //                 color: Color(0xffB3B3B3)),
+                              //           ),
+                              //           focusedBorder: OutlineInputBorder(
+                              //             borderSide: BorderSide(
+                              //                 color: Color(0xff000000)),
+                              //           ),
+                              //           border: OutlineInputBorder(
+                              //             borderSide: BorderSide(
+                              //                 color: Color(0xffB3B3B3)),
+                              //           ),
+                              //           labelText: 'Date of Birth',
+                              //           labelStyle: TextStyle(
+                              //               color: Color(0xff000000),
+                              //               fontSize: 12,
+                              //               fontWeight: FontWeight.w600),
+                              //           contentPadding: EdgeInsets.only(
+                              //               bottom: 0, left: 10),
+                              //           hintText: 'Date of Birth',
+                              //           hintStyle: TextStyle(
+                              //               color: Color(0xff000000),
+                              //               fontSize: 16,
+                              //               fontWeight: FontWeight.w600)),
+                              //     ),
+                              //   ),
+                              // ),
+
+                              GestureDetector(
+                                onTap: () {
+                                  DatePicker.showDatePicker(context,
+                                      showTitleActions: true,
+                                      // minTime: DateTime(2018, 3, 5),
+                                      // maxTime: DateTime(2019, 6, 7),
+                                      onChanged: (date) {
+                                    print('change $date');
+                                  }, onConfirm: (date) {
+                                    print('confirm $date');
+                                    setState((){
+                                      _dateOfBirth = DateFormat
+                                          .yMMMd()
+                                          .format(
+                                          date,
+                                      );
+                                    });
+                                    print("DATE OF BIRTH CHOSEN $_dateOfBirth");
+                                  },
+                                      currentTime: DateTime.now(),
+                                      locale: LocaleType.en);
+                                },
+                                child: Container(
+                                  width: double.infinity,
+                                  alignment: Alignment.center,
+                                  padding: const EdgeInsets.symmetric(vertical: 20,horizontal: 20),
+                                  margin: const EdgeInsets.only(bottom: 25,left:5,right: 5),
+                                  decoration: BoxDecoration(
+                                    color: Colors.blue,
+                                    borderRadius: BorderRadius.circular(3)
+                                  ),
                                   child: Text(
-                                    'General Information',
-                                    style: TextStyle(
-                                      color: Color(0xff4b4b4b),
-                                      fontSize: 18,
-                                      fontWeight: FontWeight.w600,
-                                    ),
+                                    _dateOfBirth ?? 'Date of Birth',
+                                    style: TextStyle(color: Colors.white),
                                   ),
                                 ),
-                                Container(
-                                  margin: const EdgeInsets.only(bottom: 25),
-                                  child: Padding(
-                                    padding: EdgeInsets.only(left: 5, right: 5),
-                                    child: TextField(
-                                      controller: _fullNameController,
-                                      keyboardType: TextInputType.text,
-                                      decoration: InputDecoration(
-                                          enabledBorder: OutlineInputBorder(
-                                            borderSide: BorderSide(
-                                                color: Color(0xffB3B3B3)),
-                                          ),
-                                          focusedBorder: OutlineInputBorder(
-                                            borderSide: BorderSide(
-                                                color: Color(0xff000000)),
-                                          ),
-                                          border: OutlineInputBorder(
-                                            borderSide: BorderSide(
-                                                color: Color(0xffB3B3B3)),
-                                          ),
-                                          labelText: 'Full Name',
-                                          labelStyle: TextStyle(
-                                              color: Color(0xff000000),
-                                              fontSize: 12,
-                                              fontWeight: FontWeight.w600),
-                                          contentPadding: EdgeInsets.only(
-                                              bottom: 0, left: 10),
-                                          hintText: 'Full Name',
-                                          hintStyle: TextStyle(
-                                              color: Color(0xff000000),
-                                              fontSize: 16,
-                                              fontWeight: FontWeight.w600)),
-                                    ),
-                                  ),
-                                ),
-                                Container(
-                                  margin: const EdgeInsets.only(bottom: 25),
-                                  child: Padding(
-                                    padding: EdgeInsets.only(left: 5, right: 5),
-                                    child: TextField(
-                                      controller: _emailController,
-                                      keyboardType: TextInputType.emailAddress,
-                                      decoration: InputDecoration(
-                                          enabledBorder: OutlineInputBorder(
-                                            borderSide: BorderSide(
-                                                color: Color(0xffB3B3B3)),
-                                          ),
-                                          focusedBorder: OutlineInputBorder(
-                                            borderSide: BorderSide(
-                                                color: Color(0xff000000)),
-                                          ),
-                                          border: OutlineInputBorder(
-                                            borderSide: BorderSide(
-                                                color: Color(0xffB3B3B3)),
-                                          ),
-                                          labelText: 'Student Email',
-                                          labelStyle: TextStyle(
-                                              color: Color(0xff000000),
-                                              fontSize: 12,
-                                              fontWeight: FontWeight.w600),
-                                          contentPadding: EdgeInsets.only(
-                                              bottom: 0, left: 10),
-                                          hintText: 'Student Email',
-                                          hintStyle: TextStyle(
-                                              color: Color(0xff000000),
-                                              fontSize: 16,
-                                              fontWeight: FontWeight.w600)),
-                                    ),
-                                  ),
-                                ),
-                                Container(
-                                  margin: const EdgeInsets.only(
-                                    bottom: 25,
-                                    left: 5,
-                                    right: 5,
-                                  ),
-                                  child: FormField<String>(
-                                    builder: (FormFieldState<String> state) {
-                                      return InputDecorator(
-                                        decoration: InputDecoration(
-                                          enabledBorder: OutlineInputBorder(
-                                            borderSide: BorderSide(color: Color(0xffB3B3B3)),
-                                          ),
-                                          focusedBorder: OutlineInputBorder(
-                                            borderSide: BorderSide(color: Color(0xff000000)),
-                                          ),
-                                          border: OutlineInputBorder(
-                                            borderSide: BorderSide(color: Color(0xffB3B3B3)),
-                                          ),
-                                          labelText: 'Select residence',
-                                          labelStyle: TextStyle(
-                                            color: Color(0xff000000),
-                                            fontSize: 12,
-                                            fontWeight: FontWeight.w600,
-                                          ),
-                                          contentPadding: EdgeInsets.only(bottom: 0, left: 10),
-                                          hintText: 'Select residence',
-                                          hintStyle: TextStyle(
-                                            color: Color(0xff000000),
-                                            fontSize: 16,
-                                            fontWeight: FontWeight.w600,
-                                          ),
-                                        ),
-                                        isEmpty: _currentSelectedResidence == '',
-                                        child: DropdownButtonHideUnderline(
-                                          child: DropdownButton<String>(
-                                            value: _currentSelectedResidence,
-                                            isDense: true,
-                                            onChanged: (String? newValue) {
-                                              setState(() {
-                                                _currentSelectedResidence = newValue!;
-                                                state.didChange(newValue);
-                                              });
-                                            },
-                                            items: _residence.map((String value) {
-                                              return DropdownMenuItem<String>(
-                                                value: value,
-                                                child: Text(value),
-                                              );
-                                            }).toList(),
-                                          ),
-                                        ),
-                                      );
-                                    },
-                                  ),
-                                ),
-                                Container(
-                                  margin: const EdgeInsets.only(
-                                    bottom: 25,
-                                    left: 5,
-                                    right: 5,
-                                  ),
-                                  child: FormField<String>(
-                                    builder: (FormFieldState<String> state) {
-                                      return InputDecorator(
-                                        decoration: InputDecoration(
-                                          enabledBorder: OutlineInputBorder(
-                                            borderSide: BorderSide(color: Color(0xffB3B3B3)),
-                                          ),
-                                          focusedBorder: OutlineInputBorder(
-                                            borderSide: BorderSide(color: Color(0xff000000)),
-                                          ),
-                                          border: OutlineInputBorder(
-                                            borderSide: BorderSide(color: Color(0xffB3B3B3)),
-                                          ),
-                                          labelText: 'Select gender',
-                                          labelStyle: TextStyle(
-                                            color: Color(0xff000000),
-                                            fontSize: 12,
-                                            fontWeight: FontWeight.w600,
-                                          ),
-                                          contentPadding: EdgeInsets.only(bottom: 0, left: 10),
-                                          hintText: 'Select Gender',
-                                          hintStyle: TextStyle(
-                                            color: Color(0xff000000),
-                                            fontSize: 16,
-                                            fontWeight: FontWeight.w600,
-                                          ),
-                                        ),
-                                        isEmpty: _currentSelectedGender == '',
-                                        child: DropdownButtonHideUnderline(
-                                          child: DropdownButton<String>(
-                                            value: _currentSelectedGender,
-                                            isDense: true,
-                                            onChanged: (String? newValue) {
-                                              setState(() {
-                                                _currentSelectedGender = newValue!;
-                                                state.didChange(newValue);
-                                              });
-                                            },
-                                            items: _gender.map((String value) {
-                                              return DropdownMenuItem<String>(
-                                                value: value,
-                                                child: Text(value),
-                                              );
-                                            }).toList(),
-                                          ),
-                                        ),
-                                      );
-                                    },
-                                  ),
-                                ),
-                                Container(
-                                  margin: const EdgeInsets.only(bottom: 25),
-                                  child: Padding(
-                                    padding: EdgeInsets.only(left: 5, right: 5),
-                                    child: TextField(
-                                      controller: _dateOfBirthController,
-                                      keyboardType: TextInputType.text,
-                                      decoration: InputDecoration(
-                                          enabledBorder: OutlineInputBorder(
-                                            borderSide: BorderSide(
-                                                color: Color(0xffB3B3B3)),
-                                          ),
-                                          focusedBorder: OutlineInputBorder(
-                                            borderSide: BorderSide(
-                                                color: Color(0xff000000)),
-                                          ),
-                                          border: OutlineInputBorder(
-                                            borderSide: BorderSide(
-                                                color: Color(0xffB3B3B3)),
-                                          ),
-                                          labelText: 'Date of Birth',
-                                          labelStyle: TextStyle(
-                                              color: Color(0xff000000),
-                                              fontSize: 12,
-                                              fontWeight: FontWeight.w600),
-                                          contentPadding: EdgeInsets.only(
-                                              bottom: 0, left: 10),
-                                          hintText: 'Date of Birth',
-                                          hintStyle: TextStyle(
-                                              color: Color(0xff000000),
-                                              fontSize: 16,
-                                              fontWeight: FontWeight.w600)),
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            )),
+                              ),
+                            ],
+                          ),
+                        ),
                       ),
                     ),
                   ),
@@ -567,7 +619,7 @@ class _JoinPageState extends State<JoinPage> {
                                             fontWeight: FontWeight.w600),
                                         contentPadding: EdgeInsets.only(
                                             bottom: 0, left: 10),
-                                        hintText: 'Student ID',
+                                        hintText: '',
                                         hintStyle: TextStyle(
                                             color: Color(0xff000000),
                                             fontSize: 16,
@@ -586,20 +638,24 @@ class _JoinPageState extends State<JoinPage> {
                                     return InputDecorator(
                                       decoration: InputDecoration(
                                         enabledBorder: OutlineInputBorder(
-                                          borderSide: BorderSide(color: Color(0xffB3B3B3)),
+                                          borderSide: BorderSide(
+                                              color: Color(0xffB3B3B3)),
                                         ),
                                         focusedBorder: OutlineInputBorder(
-                                          borderSide: BorderSide(color: Color(0xff000000)),
+                                          borderSide: BorderSide(
+                                              color: Color(0xff000000)),
                                         ),
                                         border: OutlineInputBorder(
-                                          borderSide: BorderSide(color: Color(0xffB3B3B3)),
+                                          borderSide: BorderSide(
+                                              color: Color(0xffB3B3B3)),
                                         ),
                                         labelText: 'Select level',
                                         labelStyle: TextStyle(
                                             color: Color(0xff000000),
                                             fontSize: 12,
                                             fontWeight: FontWeight.w600),
-                                        contentPadding: EdgeInsets.only(bottom: 0, left: 10),
+                                        contentPadding: EdgeInsets.only(
+                                            bottom: 0, left: 10),
                                         hintText: 'Select level',
                                         hintStyle: TextStyle(
                                           color: Color(0xff000000),
@@ -657,7 +713,7 @@ class _JoinPageState extends State<JoinPage> {
                                             fontWeight: FontWeight.w600),
                                         contentPadding: EdgeInsets.only(
                                             bottom: 0, left: 10),
-                                        hintText: 'Year',
+                                        hintText: '',
                                         hintStyle: TextStyle(
                                             color: Color(0xff000000),
                                             fontSize: 16,
@@ -666,7 +722,7 @@ class _JoinPageState extends State<JoinPage> {
                                 ),
                               ),
                               Container(
-                                margin: const EdgeInsets.only(bottom: 25),
+                                margin: const EdgeInsets.only(bottom: 5),
                                 child: Padding(
                                   padding: EdgeInsets.only(left: 5, right: 5),
                                   child: TextField(
@@ -692,7 +748,7 @@ class _JoinPageState extends State<JoinPage> {
                                             fontWeight: FontWeight.w600),
                                         contentPadding: EdgeInsets.only(
                                             bottom: 0, left: 10),
-                                        hintText: 'Residence',
+                                        hintText: '',
                                         hintStyle: TextStyle(
                                             color: Color(0xff000000),
                                             fontSize: 16,

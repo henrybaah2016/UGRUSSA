@@ -481,7 +481,7 @@ class _SignupPageState extends State<SignupPage> {
                             fontSize: 12,
                             fontWeight: FontWeight.w600),
                         contentPadding: EdgeInsets.only(bottom: 0, left: 10),
-                        hintText: 'Full Name',
+                        hintText: '',
                         hintStyle: TextStyle(
                             color: Color(0xff000000),
                             fontSize: 16,
@@ -512,7 +512,7 @@ class _SignupPageState extends State<SignupPage> {
                           fontSize: 12,
                           fontWeight: FontWeight.w600),
                       contentPadding: EdgeInsets.only(bottom: 0, left: 10),
-                      hintText: 'Email Address',
+                      hintText: '',
                       hintStyle: TextStyle(
                           color: Color(0xff000000),
                           fontSize: 16,
@@ -630,7 +630,7 @@ class _SignupPageState extends State<SignupPage> {
                           fontSize: 12,
                           fontWeight: FontWeight.w600),
                       contentPadding: EdgeInsets.only(bottom: 0, left: 10),
-                      hintText: 'Student ID',
+                      hintText: '',
                       hintStyle: TextStyle(
                           color: Color(0xff000000),
                           fontSize: 16,
@@ -696,7 +696,7 @@ class _SignupPageState extends State<SignupPage> {
                             fontSize: 12,
                             fontWeight: FontWeight.w600),
                         contentPadding: EdgeInsets.only(bottom: 0, left: 10),
-                        hintText: 'Select level',
+                        hintText: '',
                         hintStyle: TextStyle(
                           color: Color(0xff000000),
                           fontSize: 16,
@@ -784,7 +784,7 @@ class _SignupPageState extends State<SignupPage> {
                           fontWeight: FontWeight.w600,
                         ),
                         contentPadding: EdgeInsets.only(bottom: 0, left: 10),
-                        hintText: 'Select residence',
+                        hintText: '',
                         hintStyle: TextStyle(
                           color: Color(0xff000000),
                           fontSize: 16,
@@ -837,7 +837,7 @@ class _SignupPageState extends State<SignupPage> {
                           fontSize: 12,
                           fontWeight: FontWeight.w600),
                       contentPadding: EdgeInsets.only(bottom: 0, left: 10),
-                      hintText: 'Password',
+                      hintText: '',
                       hintStyle: TextStyle(
                           color: Color(0xff000000),
                           fontSize: 16,
@@ -892,7 +892,7 @@ class _SignupPageState extends State<SignupPage> {
                             fontWeight: FontWeight.w600),
                       ),
                       new Text(
-                        "and i accept it",
+                        "and I accept it",
                         style: new TextStyle(
                             color: Color(0xffB3B3B3),
                             fontSize: 11,
