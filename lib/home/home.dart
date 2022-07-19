@@ -1090,7 +1090,7 @@ class _HomePageState extends State<HomePage> {
         mainAxisAlignment: MainAxisAlignment.end,
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
-         FloatingActionButton(
+        admin ? FloatingActionButton(
             child: Icon(Icons.edit),
             onPressed: () {
               Navigator.push(
@@ -1102,7 +1102,7 @@ class _HomePageState extends State<HomePage> {
               );
             },
             heroTag: null,
-          ) ,
+          ) : Container(),
           SizedBox(
             height: 10,
           ),

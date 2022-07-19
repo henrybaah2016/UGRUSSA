@@ -32,35 +32,7 @@ class _GamePlayerState extends State<GamePlayer> {
           elevation: 0,
 
 
-          actions: <Widget>[
-            PopupMenuButton(
-              onSelected: (result) async {
-                if(result == 0){
-                  Navigator.of(context).pop();
-                }
 
-              },
-
-
-              icon:Container(
-                margin: EdgeInsets.only(right:20),
-                child: const Icon(
-
-                  Icons.close_rounded,
-                  color: Color(0xffffffff),
-                  size: 25.0,
-
-
-                ),
-              ),
-              offset: Offset(0, kToolbarHeight),
-
-              itemBuilder: (BuildContext context) => <PopupMenuEntry>[
-
-
-              ],
-            ),
-          ],
         ),
 
         body: SingleChildScrollView(
