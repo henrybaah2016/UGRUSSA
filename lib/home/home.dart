@@ -101,6 +101,7 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
         backgroundColor: Color(0xfff8f8fa),
         appBar: AppBar(
+          // toolbarHeight: 80,
           backgroundColor: Color(0xffffffff),
           elevation: 0,
           leading: Builder(
@@ -132,10 +133,10 @@ class _HomePageState extends State<HomePage> {
                         MaterialPageRoute(builder: (context) => Upload()),
                       );
                     },
-                    child: Icon(
-                      Icons.drive_folder_upload_outlined,
-                      color: Color(0xff072e79),
-                      size: 25.0,
+                    child: Image.asset(
+                      "assets/images/file.png",
+                      width: 30,
+                      fit: BoxFit.contain,
                     ),
                   )
                 : Container(),
@@ -1024,7 +1025,8 @@ class _HomePageState extends State<HomePage> {
                                                               const EdgeInsets
                                                                   .all(1),
                                                           child: Text(
-                                                            DateFormat.yMMMMEEEEd()
+                                                            DateFormat
+                                                                    .yMMMMEEEEd()
                                                                 .format(
                                                               e['date']
                                                                   .toDate(),
@@ -1091,6 +1093,7 @@ class _HomePageState extends State<HomePage> {
                                 ),
                               );
                             }).toList(),
+                            const SizedBox(height: 80),
                           ],
                         ),
             ],
