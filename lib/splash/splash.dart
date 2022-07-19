@@ -21,12 +21,12 @@ class _SplashState extends State<Splash> {
   void initState() {
     super.initState();
 
-    _navigatetohome();
+    _navigateToHome();
   }
 
-  _navigatetohome() async {
-    Timer(const Duration(seconds: 3), () {
-      final currentUser = firebaseAuth.currentUser;
+  _navigateToHome() async {
+    Timer(const Duration(seconds: 3), () async {
+      final currentUser = await firebaseAuth.currentUser;
 
       if (currentUser != null) {
         currentFirebaseUser = firebaseAuth.currentUser;

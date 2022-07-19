@@ -8,6 +8,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:ugrussa/document_upload/all_files.dart';
+import 'package:ugrussa/document_upload/upload.dart';
 import 'package:ugrussa/home/home.dart';
 
 import '../utils/utils.dart';
@@ -34,7 +35,7 @@ class _NewsUploadState extends State<NewsUpload> {
   _uploadFile() async {
     result = await FilePicker.platform.pickFiles(
       type: FileType.custom,
-      allowedExtensions: ['jpg', 'pdf', 'doc', 'jpeg','mp3'],
+      allowedExtensions: ['jpg', 'pdf', 'doc', 'jpeg','png'],
     );
 
     if (result != null) {
@@ -102,6 +103,12 @@ class _NewsUploadState extends State<NewsUpload> {
             FirebaseFirestore.instance.collection("feeds").add(_feed).then(
               (_) {
                 Navigator.pop(context);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => HomePage(),
+                  ),
+                );
               },
             );
 
@@ -126,11 +133,16 @@ class _NewsUploadState extends State<NewsUpload> {
           elevation: 0,
           leading: Builder(
             builder: (BuildContext context) {
-              return Container(
-                child: Icon(
-                  Icons.arrow_back_ios_rounded,
-                  color: Color(0xff072e79),
-                  size: 24.0,
+              return GestureDetector(
+                onTap: (){
+                  Navigator.pop(context);
+                },
+                child: Container(
+                  child: Icon(
+                    Icons.arrow_back_ios_rounded,
+                    color: Color(0xff072e79),
+                    size: 24.0,
+                  ),
                 ),
               );
             },
@@ -302,6 +314,16 @@ class _NewsUploadState extends State<NewsUpload> {
                             ),
                           ),
                   ),
+                  SizedBox(height: 20),
+                  if (files != null)
+                    ...fileNames.map((file) {
+                      var index = fileNames.indexOf(file);
+                      print("FILE INDEX $index");
+                      return filePreviewWidget(
+                        fileName: file.toString(),
+                        removeFile: () => _removeFile(index),
+                      );
+                    }),
                   SizedBox(height: 20),
                   Container(
                     margin: const EdgeInsets.only(bottom: 25),
