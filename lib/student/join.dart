@@ -256,7 +256,7 @@ class _JoinPageState extends State<JoinPage> {
           },
         ),
         title: const Text(
-          'Kaha Mane',
+          'Student Registration',
           style: TextStyle(
             color: Color(0xffffffff),
             fontSize: 20,
