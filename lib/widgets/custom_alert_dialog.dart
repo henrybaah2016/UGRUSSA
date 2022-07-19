@@ -19,7 +19,7 @@ class CustomAlertDialog extends StatelessWidget {
               GestureDetector(
                 onTap: () => Navigator.of(context).pop(),
                 child: Text(
-                  "Okay",
+                  "",
                   style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,

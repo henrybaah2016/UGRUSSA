@@ -131,7 +131,7 @@ class _GameBoardState extends State<GameBoard> with TickerProviderStateMixin {
                 actions: [
                   GestureDetector(
                     onTap: () {
-                      Navigator.push(
+                      Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(
                           builder: (context) => GameScore(

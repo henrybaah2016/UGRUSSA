@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:io';
 import 'dart:math' as math;
+import 'package:intl_phone_number_input/intl_phone_number_input.dart';
 import 'package:path/path.dart' as path;
 
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -43,12 +44,16 @@ class _SignupPageState extends State<SignupPage> {
   XFile? _imageFile;
   var profilePhotoUrl = "";
 
+  String initialCountry = 'GH';
+  PhoneNumber number = PhoneNumber(isoCode: 'GH');
+  String _phoneNumber = "";
+
   var _levels = [
     "100",
     "200",
     "300",
     "400",
-    "Non Student" ,// non student
+    "Non Student", // non student
   ];
 
   var _currentSelectedLevel = "100";
@@ -161,14 +166,15 @@ class _SignupPageState extends State<SignupPage> {
     if (_imageFile == null) {
       Navigator.of(context).pop();
       showDialog(
-          context: context,
-          builder: (BuildContext context) {
-            return CustomAlertDialog(
-              alertTitle: "Profile Picture Upload",
-              alertMessage:
-                  "Select a profile picture to continue with the sign up process",
-            );
-          });
+        context: context,
+        builder: (BuildContext context) {
+          return CustomAlertDialog(
+            alertTitle: "Profile Picture Upload",
+            alertMessage:
+                "Select a profile picture to continue with the sign up process",
+          );
+        },
+      );
     }
 
     String fileName = path.basename(_imageFile!.path);
@@ -211,7 +217,7 @@ class _SignupPageState extends State<SignupPage> {
         ),
       );
       return;
-    } else if (_phoneController.text.length < 10) {
+    } else if (_phoneNumber.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
           content: Text(
@@ -332,7 +338,7 @@ class _SignupPageState extends State<SignupPage> {
         "id": firebaseUser.uid,
         "name": _nameController.text,
         "email": _emailController.text,
-        "phone": _phoneController.text,
+        "phone": _phoneNumber,
         "student ID": _studentIdController.text,
         "level": _currentSelectedLevel,
         "residence": _currentSelectedResidence,
@@ -491,58 +497,114 @@ class _SignupPageState extends State<SignupPage> {
                     controller: _emailController,
                     keyboardType: TextInputType.emailAddress,
                     decoration: InputDecoration(
-                        enabledBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: Color(0xffB3B3B3)),
-                        ),
-                        focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: Color(0xff000000)),
-                        ),
-                        border: OutlineInputBorder(
-                          borderSide: BorderSide(color: Color(0xffB3B3B3)),
-                        ),
-                        labelText: 'Email Address',
-                        labelStyle: TextStyle(
-                            color: Color(0xff000000),
-                            fontSize: 12,
-                            fontWeight: FontWeight.w600),
-                        contentPadding: EdgeInsets.only(bottom: 0, left: 10),
-                        hintText: 'Email Address',
-                        hintStyle: TextStyle(
-                            color: Color(0xff000000),
-                            fontSize: 16,
-                            fontWeight: FontWeight.w600)),
+                      enabledBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Color(0xffB3B3B3)),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Color(0xff000000)),
+                      ),
+                      border: OutlineInputBorder(
+                        borderSide: BorderSide(color: Color(0xffB3B3B3)),
+                      ),
+                      labelText: 'Email Address',
+                      labelStyle: TextStyle(
+                          color: Color(0xff000000),
+                          fontSize: 12,
+                          fontWeight: FontWeight.w600),
+                      contentPadding: EdgeInsets.only(bottom: 0, left: 10),
+                      hintText: 'Email Address',
+                      hintStyle: TextStyle(
+                          color: Color(0xff000000),
+                          fontSize: 16,
+                          fontWeight: FontWeight.w600),
+                    ),
                   ),
                 ),
               ),
+              // Container(
+              //   margin: const EdgeInsets.only(bottom: 25),
+              //   child: Padding(
+              //     padding: EdgeInsets.only(left: 5, right: 5),
+              //     child: TextField(
+              //       controller: _phoneController,
+              //       keyboardType: TextInputType.number,
+              //       decoration: InputDecoration(
+              //           enabledBorder: OutlineInputBorder(
+              //             borderSide: BorderSide(color: Color(0xffB3B3B3)),
+              //           ),
+              //           focusedBorder: OutlineInputBorder(
+              //             borderSide: BorderSide(color: Color(0xff000000)),
+              //           ),
+              //           border: OutlineInputBorder(
+              //             borderSide: BorderSide(color: Color(0xffB3B3B3)),
+              //           ),
+              //           labelText: 'Phone Number',
+              //           labelStyle: TextStyle(
+              //               color: Color(0xff000000),
+              //               fontSize: 12,
+              //               fontWeight: FontWeight.w600),
+              //           contentPadding: EdgeInsets.only(bottom: 0, left: 10),
+              //           hintText: 'Phone Number',
+              //           hintStyle: TextStyle(
+              //               color: Color(0xff000000),
+              //               fontSize: 16,
+              //               fontWeight: FontWeight.w600)),
+              //     ),
+              //   ),
+              // ),
+
               Container(
-                margin: const EdgeInsets.only(bottom: 25),
-                child: Padding(
-                  padding: EdgeInsets.only(left: 5, right: 5),
-                  child: TextField(
-                    controller: _phoneController,
-                    keyboardType: TextInputType.number,
-                    decoration: InputDecoration(
-                        enabledBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: Color(0xffB3B3B3)),
-                        ),
-                        focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: Color(0xff000000)),
-                        ),
-                        border: OutlineInputBorder(
-                          borderSide: BorderSide(color: Color(0xffB3B3B3)),
-                        ),
-                        labelText: 'Phone Number',
-                        labelStyle: TextStyle(
-                            color: Color(0xff000000),
-                            fontSize: 12,
-                            fontWeight: FontWeight.w600),
-                        contentPadding: EdgeInsets.only(bottom: 0, left: 10),
-                        hintText: 'Phone Number',
-                        hintStyle: TextStyle(
-                            color: Color(0xff000000),
-                            fontSize: 16,
-                            fontWeight: FontWeight.w600)),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 10,
+                  vertical: 0,
+                ),
+                decoration: BoxDecoration(
+                  border: Border.all(
+                    color: Color(0xffB3B3B3),
+                    width: 1,
                   ),
+                  borderRadius: BorderRadius.circular(3),
+                ),
+                margin: const EdgeInsets.only(bottom: 25, left: 5, right: 5),
+                child: InternationalPhoneNumberInput(
+                  onInputChanged: (PhoneNumber number) {
+                    print(number.phoneNumber);
+                    setState(() {
+                      _phoneNumber = number.phoneNumber!;
+                    });
+                  },
+                  onInputValidated: (bool value) {
+                    print("Value here $value");
+                    if (value) {
+                      print("Number is correct");
+                      // setState(() {
+                      //   _showBanner = true;
+                      //   _errorMessage = "Phone number is valid";
+                      // });
+                    } else {
+                      // setState(() {
+                      //   _showBanner = true;
+                      //   _errorMessage =
+                      //   "Please enter a valid phone number";
+                      // });
+                    }
+                  },
+                  // selectorConfig: const SelectorConfig(
+                  //   selectorType: PhoneInputSelectorType.BOTTOM_SHEET,
+                  // ),
+
+                  ignoreBlank: false,
+                  autoValidateMode: AutovalidateMode.disabled,
+                  selectorTextStyle: const TextStyle(color: Colors.black),
+                  initialValue: number,
+                  textFieldController: _phoneController,
+                  formatInput: false,
+                  keyboardType: const TextInputType.numberWithOptions(
+                      signed: true, decimal: true),
+                  inputBorder: InputBorder.none,
+                  onSaved: (PhoneNumber number) {
+                    print('On Saved: $number');
+                  },
                 ),
               ),
               Container(

@@ -54,6 +54,18 @@
 @import image_picker_ios;
 #endif
 
+#if __has_include(<libphonenumber/LibphonenumberPlugin.h>)
+#import <libphonenumber/LibphonenumberPlugin.h>
+#else
+@import libphonenumber;
+#endif
+
+#if __has_include(<libphonenumber_plugin/FLTLibphonenumberPlugin.h>)
+#import <libphonenumber_plugin/FLTLibphonenumberPlugin.h>
+#else
+@import libphonenumber_plugin;
+#endif
+
 #if __has_include(<open_file/OpenFilePlugin.h>)
 #import <open_file/OpenFilePlugin.h>
 #else
@@ -113,6 +125,8 @@
   [FLTFirebaseMessagingPlugin registerWithRegistrar:[registry registrarForPlugin:@"FLTFirebaseMessagingPlugin"]];
   [FLTFirebaseStoragePlugin registerWithRegistrar:[registry registrarForPlugin:@"FLTFirebaseStoragePlugin"]];
   [FLTImagePickerPlugin registerWithRegistrar:[registry registrarForPlugin:@"FLTImagePickerPlugin"]];
+  [LibphonenumberPlugin registerWithRegistrar:[registry registrarForPlugin:@"LibphonenumberPlugin"]];
+  [FLTLibphonenumberPlugin registerWithRegistrar:[registry registrarForPlugin:@"FLTLibphonenumberPlugin"]];
   [OpenFilePlugin registerWithRegistrar:[registry registrarForPlugin:@"OpenFilePlugin"]];
   [FLTPathProviderPlugin registerWithRegistrar:[registry registrarForPlugin:@"FLTPathProviderPlugin"]];
   [PayPlugin registerWithRegistrar:[registry registrarForPlugin:@"PayPlugin"]];
