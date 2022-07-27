@@ -10,6 +10,7 @@ import 'package:ugrussa/dues/card_payment.dart';
 import 'package:ugrussa/dues/summary.dart';
 import 'package:ugrussa/game/game_board.dart';
 import 'package:ugrussa/game/game_player.dart';
+import 'package:ugrussa/home/feed_detail.dart';
 import 'package:ugrussa/login/login.dart';
 import 'package:ugrussa/splash/splash.dart';
 import 'package:ugrussa/utils/image_loader.dart';
@@ -933,43 +934,47 @@ class _HomePageState extends State<HomePage> {
                     : Column(
                         children: [
                           ..._feeds.map((e) {
-                            return Container(
-                              margin:
-                                  EdgeInsets.only(top: 10, right: 10, left: 10),
-                              child: Card(
-                                clipBehavior: Clip.antiAlias,
-                                child: Column(
-                                  children: [
-                                    Container(
-                                      decoration: BoxDecoration(
-                                        borderRadius:
-                                            new BorderRadius.circular(30.0),
-                                        color: Color(0xffffffff),
-                                      ),
-                                      margin: EdgeInsets.only(left: 10, top: 5),
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Row(
-                                            children: [
-                                              Container(
-                                                margin:
-                                                    EdgeInsets.only(top: 10),
-                                                child: new GestureDetector(
-                                                  onTap: () {
-                                                    Navigator.push(
-                                                      context,
-                                                      MaterialPageRoute(
-                                                          builder: (context) =>
-                                                              Splash()),
-                                                    );
-                                                  },
+                            return GestureDetector(
+                              onTap: () {
+                                Navigator.of(context).push(
+                                  MaterialPageRoute(
+                                    builder: (ctx) {
+                                      return FeedDetail(
+                                          description: e["description"],
+                                          fileUrl: e["file"],
+                                          date: (e["date"] as Timestamp)
+                                              .toDate());
+                                    },
+                                  ),
+                                );
+                              },
+                              child: Container(
+                                margin:
+                                    EdgeInsets.only(top: 10, right: 10, left: 10),
+                                child: Card(
+                                  clipBehavior: Clip.antiAlias,
+                                  child: Column(
+                                    children: [
+                                      Container(
+                                        decoration: BoxDecoration(
+                                          borderRadius:
+                                              new BorderRadius.circular(30.0),
+                                          color: Color(0xffffffff),
+                                        ),
+                                        margin: EdgeInsets.only(left: 10, top: 5),
+                                        child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Row(
+                                              children: [
+                                                Container(
+                                                  margin:
+                                                      EdgeInsets.only(top: 10),
                                                   child: ClipRRect(
                                                     borderRadius:
                                                         BorderRadius.all(
-                                                            Radius.circular(
-                                                                100)),
+                                                            Radius.circular(100)),
                                                     child: Container(
                                                       height: 50,
                                                       width: 50,
@@ -979,103 +984,114 @@ class _HomePageState extends State<HomePage> {
                                                     ),
                                                   ),
                                                 ),
-                                              ),
-                                              Container(
-                                                child: Column(
-                                                  children: [
-                                                    Container(
-                                                      alignment:
-                                                          Alignment.topLeft,
-                                                      margin: EdgeInsets.only(
-                                                          left: 5, top: 5),
-                                                      child: Padding(
-                                                        padding:
-                                                            const EdgeInsets
-                                                                .all(1),
-                                                        child: Text(
-                                                          'Admin@UGRUSA',
-                                                          style: TextStyle(
+                                                Container(
+                                                  child: Column(
+                                                    children: [
+                                                      Container(
+                                                        alignment:
+                                                            Alignment.topLeft,
+                                                        margin: EdgeInsets.only(
+                                                            left: 5, top: 5),
+                                                        child: Padding(
+                                                          padding:
+                                                              const EdgeInsets
+                                                                  .all(1),
+                                                          child: Text(
+                                                            'Admin@UGRUSSA',
+                                                            style: TextStyle(
                                                               color: Color(
                                                                   0xff575858),
                                                               fontSize: 16,
                                                               fontWeight:
-                                                                  FontWeight
-                                                                      .w600),
-                                                        ),
-                                                      ),
-                                                    ),
-                                                    Container(
-                                                      alignment:
-                                                          Alignment.topLeft,
-                                                      margin: EdgeInsets.only(
-                                                          left: 5, top: 1),
-                                                      child: Padding(
-                                                        padding:
-                                                            const EdgeInsets
-                                                                .all(1),
-                                                        child: Text(
-                                                          DateFormat
-                                                                  .yMMMMEEEEd()
-                                                              .format(
-                                                            e['date'].toDate(),
-                                                          ),
-                                                          style: TextStyle(
-                                                            color: Color(
-                                                                0xffc8cbcd),
-                                                            fontSize: 12,
-                                                            fontWeight:
-                                                                FontWeight.w600,
+                                                                  FontWeight.w600,
+                                                            ),
                                                           ),
                                                         ),
                                                       ),
-                                                    ),
-                                                  ],
+                                                      Container(
+                                                        alignment:
+                                                            Alignment.topLeft,
+                                                        margin: EdgeInsets.only(
+                                                            left: 5, top: 1),
+                                                        child: Padding(
+                                                          padding:
+                                                              const EdgeInsets
+                                                                  .all(1),
+                                                          child: Text(
+                                                            DateFormat
+                                                                    .yMMMMEEEEd()
+                                                                .format(
+                                                              e['date'].toDate(),
+                                                            ),
+                                                            style: TextStyle(
+                                                              color: Color(
+                                                                  0xffc8cbcd),
+                                                              fontSize: 12,
+                                                              fontWeight:
+                                                                  FontWeight.w600,
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  ),
                                                 ),
-                                              ),
-                                            ],
-                                          ),
-                                          // Container(
-                                          //   alignment: Alignment.topRight,
-                                          //   margin: EdgeInsets.only(left: 0, right: 0),
-                                          //   child: Icon(
-                                          //     Icons.more_vert_rounded,
-                                          //     size: 30,
-                                          //     color: Color(0xffe0e2e3),
-                                          //   ),
-                                          // ),
-                                        ],
-                                      ),
-                                    ),
-                                    Container(
-                                      alignment: Alignment.topLeft,
-                                      width: 350,
-                                      margin: EdgeInsets.only(
-                                          left: 10, right: 10, top: 5),
-                                      child: Padding(
-                                        padding: const EdgeInsets.all(1),
-                                        child: Text(
-                                          e['description'],
-                                          style: TextStyle(
-                                              color: Color(0xff575858),
-                                              fontSize: 15,
-                                              fontWeight: FontWeight.w600),
+                                              ],
+                                            ),
+                                            // Container(
+                                            //   alignment: Alignment.topRight,
+                                            //   margin: EdgeInsets.only(left: 0, right: 0),
+                                            //   child: Icon(
+                                            //     Icons.more_vert_rounded,
+                                            //     size: 30,
+                                            //     color: Color(0xffe0e2e3),
+                                            //   ),
+                                            // ),
+                                          ],
                                         ),
                                       ),
-                                    ),
-                                    Container(
-                                      alignment: Alignment.topLeft,
-                                      height: 250,
-                                      width: double.infinity,
-                                      margin: EdgeInsets.all(10),
-                                      child: ImageLoader(
-                                        url: e['file'],
-                                        imageHeight: 250,
-                                        imageWidth: double.infinity,
-                                        spinnerHeight: 25,
-                                        spinnerWidth: 25,
+                                      Container(
+                                        alignment: Alignment.topLeft,
+                                        width: 350,
+                                        margin: EdgeInsets.only(
+                                            left: 10, right: 10, top: 5),
+                                        child: Padding(
+                                          padding: const EdgeInsets.all(1),
+                                          child: Text(
+                                            e['description'].toString().length >
+                                                    90
+                                                ? e['description']
+                                                    .toString()
+                                                    .replaceRange(
+                                                        90,
+                                                        e['description']
+                                                            .toString()
+                                                            .length,
+                                                        " ... read more")
+                                                : e['description'].toString(),
+                                            style: TextStyle(
+                                              color: Color(0xff575858),
+                                              fontSize: 15,
+                                              fontWeight: FontWeight.w600,
+                                            ),
+                                          ),
+                                        ),
                                       ),
-                                    ),
-                                  ],
+                                      Container(
+                                        alignment: Alignment.topLeft,
+                                        height: 250,
+                                        width: double.infinity,
+                                        margin: EdgeInsets.all(10),
+                                        child: ImageLoader(
+                                          url: e['file'],
+                                          imageHeight: 250,
+                                          imageWidth: double.infinity,
+                                          spinnerHeight: 25,
+                                          spinnerWidth: 25,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               ),
                             );
@@ -1090,19 +1106,21 @@ class _HomePageState extends State<HomePage> {
         mainAxisAlignment: MainAxisAlignment.end,
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
-        admin ? FloatingActionButton(
-            child: Icon(Icons.edit),
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => NewsUpload(),
-                ),
-                // MaterialPageRoute(builder: (context) => Upload()),
-              );
-            },
-            heroTag: null,
-          ) : Container(),
+          admin
+              ? FloatingActionButton(
+                  child: Icon(Icons.edit),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => NewsUpload(),
+                      ),
+                      // MaterialPageRoute(builder: (context) => Upload()),
+                    );
+                  },
+                  heroTag: null,
+                )
+              : Container(),
           SizedBox(
             height: 10,
           ),

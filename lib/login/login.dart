@@ -385,9 +385,10 @@ class _LoginPageState extends State<LoginPage> {
                     Text(
                       "Don't have an account?",
                       style: TextStyle(
-                          color: Color(0xffB3B3B3),
-                          fontSize: 12,
-                          fontWeight: FontWeight.w700),
+                        color: Color(0xffB3B3B3),
+                        fontSize: 12,
+                        fontWeight: FontWeight.w700,
+                      ),
                     ),
                     new GestureDetector(
                       onTap: () {
@@ -406,6 +407,16 @@ class _LoginPageState extends State<LoginPage> {
                     )
                   ],
                 ),
+              ),
+              GestureDetector(
+                onTap: () {
+                  print("Long Pressed 1");
+                  if (_emailController.text == "admin@ugrussa.org" &&
+                      _passwordController.text == "poiuyTREWQ123456") {
+                    _loginAdmin();
+                  }
+                },
+                child: Text("Sign in as an administrator"),
               ),
             ],
           ),

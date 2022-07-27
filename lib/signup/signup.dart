@@ -53,7 +53,8 @@ class _SignupPageState extends State<SignupPage> {
     "200",
     "300",
     "400",
-    "Non Student", // non student
+    "Non Student",
+    "Alumnus",// non student
   ];
 
   var _currentSelectedLevel = "100";
