@@ -148,25 +148,26 @@ class _HomePageState extends State<HomePage> {
                 // Navigator.of(context).pop();
                 //sign out
                 showDialog(
-                    context: context,
-                    barrierDismissible: false,
-                    builder: (ctx) {
-                      return NotificationDialog(
-                        infoTitle: "Logout of Account",
-                        infoText:
-                        "Are you sure you want to logout of your account?",
-                        firstButtonText: "No",
-                        firstButtonAction: () {
-                          Navigator.pop(context);
-                        },
-                        secondButtonText: "Yes",
-                        secondButtonAction: () {
-                          firebaseAuth.signOut();
-                          Navigator.of(context).pushReplacementNamed(LoginPage.routeName);
-                        },
-                      );
-                    });
-
+                  context: context,
+                  barrierDismissible: false,
+                  builder: (ctx) {
+                    return NotificationDialog(
+                      infoTitle: "Logout of Account",
+                      infoText:
+                          "Are you sure you want to logout of your account?",
+                      firstButtonText: "No",
+                      firstButtonAction: () {
+                        Navigator.pop(context);
+                      },
+                      secondButtonText: "Yes",
+                      secondButtonAction: () {
+                        firebaseAuth.signOut();
+                        Navigator.of(context)
+                            .pushReplacementNamed(LoginPage.routeName);
+                      },
+                    );
+                  },
+                );
               }
             },
             icon: const Icon(
@@ -968,8 +969,8 @@ class _HomePageState extends State<HomePage> {
                                 );
                               },
                               child: Container(
-                                margin:
-                                    EdgeInsets.only(top: 10, right: 10, left: 10),
+                                margin: EdgeInsets.only(
+                                    top: 10, right: 10, left: 10),
                                 child: Card(
                                   clipBehavior: Clip.antiAlias,
                                   child: Column(
@@ -980,7 +981,8 @@ class _HomePageState extends State<HomePage> {
                                               new BorderRadius.circular(30.0),
                                           color: Color(0xffffffff),
                                         ),
-                                        margin: EdgeInsets.only(left: 10, top: 5),
+                                        margin:
+                                            EdgeInsets.only(left: 10, top: 5),
                                         child: Row(
                                           mainAxisAlignment:
                                               MainAxisAlignment.spaceBetween,
@@ -993,7 +995,8 @@ class _HomePageState extends State<HomePage> {
                                                   child: ClipRRect(
                                                     borderRadius:
                                                         BorderRadius.all(
-                                                            Radius.circular(100)),
+                                                            Radius.circular(
+                                                                100)),
                                                     child: Container(
                                                       height: 50,
                                                       width: 50,
@@ -1022,7 +1025,8 @@ class _HomePageState extends State<HomePage> {
                                                                   0xff575858),
                                                               fontSize: 16,
                                                               fontWeight:
-                                                                  FontWeight.w600,
+                                                                  FontWeight
+                                                                      .w600,
                                                             ),
                                                           ),
                                                         ),
@@ -1040,14 +1044,16 @@ class _HomePageState extends State<HomePage> {
                                                             DateFormat
                                                                     .yMMMMEEEEd()
                                                                 .format(
-                                                              e['date'].toDate(),
+                                                              e['date']
+                                                                  .toDate(),
                                                             ),
                                                             style: TextStyle(
                                                               color: Color(
                                                                   0xffc8cbcd),
                                                               fontSize: 12,
                                                               fontWeight:
-                                                                  FontWeight.w600,
+                                                                  FontWeight
+                                                                      .w600,
                                                             ),
                                                           ),
                                                         ),

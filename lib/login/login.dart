@@ -149,7 +149,7 @@ class _LoginPageState extends State<LoginPage> {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
           content: Text(
-            "User Logged In Successfully",
+            "Admin Logged In Successfully",
             textAlign: TextAlign.center,
           ),
           duration: Duration(seconds: 3),
