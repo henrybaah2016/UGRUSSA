@@ -19,6 +19,7 @@ import 'package:ugrussa/widgets/progress_dialog.dart';
 import '../chat/chat.dart';
 import '../chat/chat_list.dart';
 import '../student/list.dart';
+import '../widgets/notification_dialog.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({Key? key}) : super(key: key);
@@ -146,8 +147,26 @@ class _HomePageState extends State<HomePage> {
               if (result == 0) {
                 // Navigator.of(context).pop();
                 //sign out
-                firebaseAuth.signOut();
-                Navigator.of(context).pushReplacementNamed(LoginPage.routeName);
+                showDialog(
+                    context: context,
+                    barrierDismissible: false,
+                    builder: (ctx) {
+                      return NotificationDialog(
+                        infoTitle: "Logout of Account",
+                        infoText:
+                        "Are you sure you want to logout of your account?",
+                        firstButtonText: "No",
+                        firstButtonAction: () {
+                          Navigator.pop(context);
+                        },
+                        secondButtonText: "Yes",
+                        secondButtonAction: () {
+                          firebaseAuth.signOut();
+                          Navigator.of(context).pushReplacementNamed(LoginPage.routeName);
+                        },
+                      );
+                    });
+
               }
             },
             icon: const Icon(

@@ -22,13 +22,10 @@ class FeedDetail extends StatelessWidget {
       body: CustomScrollView(
         slivers: [
           SliverAppBar(
+            // backgroundColor: Colors.white,
             leading: Container(
-              margin: const EdgeInsets.all(5),
+              // margin: const EdgeInsets.all(5),
               padding: const EdgeInsets.all(0),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(25),
-                color: Colors.transparent,
-              ),
               child: IconButton(
                 onPressed: () {
                   Navigator.pop(context);
@@ -49,12 +46,12 @@ class FeedDetail extends StatelessWidget {
               title: Text("Admin@UGRUSSA"), //Text
               background: Container(
                 alignment: Alignment.topLeft,
-                height: 250,
+                // height: 300,
                 width: double.infinity,
-                margin: EdgeInsets.all(10),
+                // margin: EdgeInsets.all(10),
                 child: ImageLoader(
                   url: fileUrl,
-                  imageHeight: 250,
+                  imageHeight: 300,
                   imageWidth: double.infinity,
                   spinnerHeight: 25,
                   spinnerWidth: 25,
@@ -62,8 +59,8 @@ class FeedDetail extends StatelessWidget {
               ),
             ),
             //FlexibleSpaceBar
-            expandedHeight: 230,
-            backgroundColor: Theme.of(context).primaryColor,
+            expandedHeight: 270,
+            // backgroundColor: Theme.of(context).primaryColor,
             //IconButton
           ),
           SliverFixedExtentList(
