@@ -90,9 +90,9 @@ class _NewsUploadState extends State<NewsUpload> {
   }
 
   Future<void> _postFeed() async {
-    if (fileNames.isEmpty) {
-      return;
-    }
+    // if (fileNames.isEmpty) {
+    //   return;
+    // }
     showDialog(
       context: context,
       // barrierDismissible: false,
@@ -101,47 +101,68 @@ class _NewsUploadState extends State<NewsUpload> {
       ),
     );
     // String fileName = path.basename(_imageFile!.path);
-    Reference firebaseStorageRef =
-        FirebaseStorage.instance.ref().child('all_feeds_file/${fileNames[0]}');
-    var uploadTask = firebaseStorageRef.putFile(files![0]);
-    var taskSnapshot = await uploadTask.then(
-      (taskSnapshot) {
-        taskSnapshot.ref.getDownloadURL().then(
-          (file) {
-            print("Done: $file");
-            setState(() {
-              _fileUrl = file;
-            });
-            Map<String, dynamic> _feed = {
-              "description": _feedController.text,
-              "file": file,
-              "user": currentFirebaseUser!.uid,
-              "date": DateTime.now(),
-            };
+    if(fileNames.isNotEmpty) {
+      Reference firebaseStorageRef =
+      FirebaseStorage.instance.ref().child('all_feeds_file/${fileNames[0]}');
+      var uploadTask = firebaseStorageRef.putFile(files![0]);
+      var taskSnapshot = await uploadTask.then(
+            (taskSnapshot) {
+          taskSnapshot.ref.getDownloadURL().then(
+                (file) {
+              print("Done: $file");
+              setState(() {
+                _fileUrl = file;
+              });
+              Map<String, dynamic> _feed = {
+                "description": _feedController.text,
+                "file": file,
+                "user": currentFirebaseUser!.uid,
+                "date": DateTime.now(),
+              };
 
-            FirebaseFirestore.instance.collection("feeds").add(_feed).then(
-              (_) {
-                Navigator.pop(context);
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => HomePage(),
-                  ),
-                );
-              },
-            );
+              FirebaseFirestore.instance.collection("feeds").add(_feed).then(
+                    (_) {
+                  Navigator.pop(context);
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => HomePage(),
+                    ),
+                  );
+                },
+              );
 
-            // Navigator.push(
-            //   context,
-            //   MaterialPageRoute(
-            //     builder: (context) => HomePage(),
-            //   ),
-            // );
-          },
-        );
+              // Navigator.push(
+              //   context,
+              //   MaterialPageRoute(
+              //     builder: (context) => HomePage(),
+              //   ),
+              // );
+            },
+          );
 // 1
-      },
-    );
+        },
+      );
+    }else {
+      Map<String, dynamic> _feed = {
+        "description": _feedController.text,
+        "file": null,
+        "user": currentFirebaseUser!.uid,
+        "date": DateTime.now(),
+      };
+
+      FirebaseFirestore.instance.collection("feeds").add(_feed).then(
+            (_) {
+          Navigator.pop(context);
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => HomePage(),
+            ),
+          );
+        },
+      );
+    }
   }
 
   @override

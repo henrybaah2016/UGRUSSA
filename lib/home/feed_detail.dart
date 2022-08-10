@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
 
 import '../splash/splash.dart';
 import '../utils/image_loader.dart';
 
-class FeedDetail extends StatelessWidget {
+class FeedDetail extends StatefulWidget {
   final String description;
   final DateTime date;
   final String fileUrl;
@@ -17,12 +18,26 @@ class FeedDetail extends StatelessWidget {
   }) : super(key: key);
 
   @override
+  State<FeedDetail> createState() => _FeedDetailState();
+}
+
+class _FeedDetailState extends State<FeedDetail> {
+
+  @override
+  void initState() {
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+      statusBarColor: Colors.transparent,
+    ));
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: CustomScrollView(
         slivers: [
           SliverAppBar(
-            // backgroundColor: Colors.white,
+            // backgroundColor: Colors.transparent,
             leading: Container(
               // margin: const EdgeInsets.all(5),
               padding: const EdgeInsets.all(0),
@@ -43,14 +58,19 @@ class FeedDetail extends StatelessWidget {
             floating: true,
             flexibleSpace: FlexibleSpaceBar(
               centerTitle: true,
-              title: Text("Admin@UGRUSSA"), //Text
+              title: Text(
+                "Admin@UGRUSSA",
+                style: TextStyle(
+                  fontSize: 15,
+                ),
+              ), //Text
               background: Container(
                 alignment: Alignment.topLeft,
                 // height: 300,
                 width: double.infinity,
                 // margin: EdgeInsets.all(10),
                 child: ImageLoader(
-                  url: fileUrl,
+                  url: widget.fileUrl,
                   imageHeight: 300,
                   imageWidth: double.infinity,
                   spinnerHeight: 25,
@@ -80,8 +100,7 @@ class FeedDetail extends StatelessWidget {
                             children: [
                               Container(
                                 decoration: BoxDecoration(
-                                  borderRadius:
-                                      new BorderRadius.circular(30.0),
+                                  borderRadius: new BorderRadius.circular(30.0),
                                   color: Color(0xffffffff),
                                 ),
                                 margin: EdgeInsets.only(left: 10, top: 5),
@@ -118,8 +137,7 @@ class FeedDetail extends StatelessWidget {
                                                   child: Text(
                                                     'Admin@UGRUSSA',
                                                     style: TextStyle(
-                                                      color:
-                                                          Color(0xff575858),
+                                                      color: Color(0xff575858),
                                                       fontSize: 16,
                                                       fontWeight:
                                                           FontWeight.w600,
@@ -137,11 +155,10 @@ class FeedDetail extends StatelessWidget {
                                                   child: Text(
                                                     DateFormat.yMMMMEEEEd()
                                                         .format(
-                                                      date,
+                                                      widget.date,
                                                     ),
                                                     style: TextStyle(
-                                                      color:
-                                                          Color(0xffc8cbcd),
+                                                      color: Color(0xffc8cbcd),
                                                       fontSize: 12,
                                                       fontWeight:
                                                           FontWeight.w600,
@@ -165,7 +182,7 @@ class FeedDetail extends StatelessWidget {
                                 child: Padding(
                                   padding: const EdgeInsets.all(1),
                                   child: Text(
-                                    description,
+                                    widget.description,
                                     style: TextStyle(
                                       color: Color(0xff575858),
                                       fontSize: 15,

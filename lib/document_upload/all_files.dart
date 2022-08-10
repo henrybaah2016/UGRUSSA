@@ -323,7 +323,7 @@ class _AllFilesState extends State<AllFiles> {
                                                                     ? (_fileNames[
                                                                             i])
                                                                         .replaceRange(
-                                                                            25,
+                                                                            19,
                                                                             _fileNames[i]
                                                                                 .length,
                                                                             "...")

@@ -93,6 +93,7 @@ class _HomePageState extends State<HomePage> {
       setState(() {
         _feeds = allData;
         _isLoading = false;
+        _feeds = _feeds.reversed.toList();
       });
       print("ALL FEEDS DATA $_feeds");
     });
@@ -347,7 +348,7 @@ class _HomePageState extends State<HomePage> {
                   Expanded(
                     child: GestureDetector(
                       onTap: () {
-                        bottomSheetCardPayment(context);
+                        // bottomSheetCardPayment(context);
                       },
                       child: Container(
                         margin: EdgeInsets.all(10),
@@ -366,34 +367,34 @@ class _HomePageState extends State<HomePage> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Container(
-                                  height: 80,
-                                  child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Padding(
-                                          padding:
-                                              const EdgeInsets.only(left: 10),
-                                          child: Text(
-                                            'Dues',
-                                            style: TextStyle(
-                                                color: Color(0xffffffff),
-                                                fontSize: 16,
-                                                fontWeight: FontWeight.w600),
-                                          )),
-                                      Padding(
-                                          padding:
-                                              const EdgeInsets.only(left: 10),
-                                          child: Text(
-                                            'Payment',
-                                            style: TextStyle(
-                                                color: Color(0xffffffff),
-                                                fontSize: 16,
-                                                fontWeight: FontWeight.w600),
-                                          )),
-                                    ],
-                                  )),
+                                height: 80,
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Padding(
+                                        padding:
+                                            const EdgeInsets.only(left: 10),
+                                        child: Text(
+                                          'Dues',
+                                          style: TextStyle(
+                                              color: Color(0xffffffff),
+                                              fontSize: 16,
+                                              fontWeight: FontWeight.w600),
+                                        )),
+                                    Padding(
+                                      padding: const EdgeInsets.only(left: 10),
+                                      child: Text(
+                                        'Payment',
+                                        style: TextStyle(
+                                            color: Color(0xffffffff),
+                                            fontSize: 16,
+                                            fontWeight: FontWeight.w600),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
                               Container(
                                   height: 40,
                                   width: 40,
@@ -1079,7 +1080,11 @@ class _HomePageState extends State<HomePage> {
                                         alignment: Alignment.topLeft,
                                         width: 350,
                                         margin: EdgeInsets.only(
-                                            left: 10, right: 10, top: 5),
+                                          left: 10,
+                                          right: 10,
+                                          top: 5,
+                                          bottom: e["file"] == null ? 10 : 0,
+                                        ),
                                         child: Padding(
                                           padding: const EdgeInsets.all(1),
                                           child: Text(
@@ -1102,19 +1107,21 @@ class _HomePageState extends State<HomePage> {
                                           ),
                                         ),
                                       ),
-                                      Container(
-                                        alignment: Alignment.topLeft,
-                                        height: 250,
-                                        width: double.infinity,
-                                        margin: EdgeInsets.all(10),
-                                        child: ImageLoader(
-                                          url: e['file'],
-                                          imageHeight: 250,
-                                          imageWidth: double.infinity,
-                                          spinnerHeight: 25,
-                                          spinnerWidth: 25,
-                                        ),
-                                      ),
+                                      e["file"] != null
+                                          ? Container(
+                                              alignment: Alignment.topLeft,
+                                              height: 250,
+                                              width: double.infinity,
+                                              margin: EdgeInsets.all(10),
+                                              child: ImageLoader(
+                                                url: e['file'],
+                                                imageHeight: 250,
+                                                imageWidth: double.infinity,
+                                                spinnerHeight: 25,
+                                                spinnerWidth: 25,
+                                              ),
+                                            )
+                                          : Container(),
                                     ],
                                   ),
                                 ),

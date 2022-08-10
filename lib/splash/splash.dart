@@ -6,8 +6,8 @@ import 'package:ugrussa/login/login.dart';
 import 'package:ugrussa/utils/utils.dart';
 
 class Splash extends StatefulWidget {
-
   bool? admin;
+
   Splash({Key? key, this.admin}) : super(key: key);
 
   static const routeName = "/splash";
@@ -54,6 +54,24 @@ class _SplashState extends State<Splash> {
                 ],
               ),
             ),
+            const SizedBox(height: 25),
+            Text(
+              "Sponsor",
+              style: TextStyle(
+                fontWeight: FontWeight.w700,
+              ),
+            ),
+            const SizedBox(height: 5),
+            Text("Firdaus Issaka Naana"),
+            const SizedBox(height: 10),
+            Text(
+              "Developers",
+              style: TextStyle(
+                fontWeight: FontWeight.w700,
+              ),
+            ),
+            const SizedBox(height: 5),
+            Text("Intellisense Apps. Limited."),
           ],
         ),
       ),
