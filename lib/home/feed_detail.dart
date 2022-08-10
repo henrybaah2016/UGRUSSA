@@ -8,12 +8,12 @@ import '../utils/image_loader.dart';
 class FeedDetail extends StatefulWidget {
   final String description;
   final DateTime date;
-  final String fileUrl;
+  String? fileUrl;
 
-  const FeedDetail({
+  FeedDetail({
     Key? key,
     required this.description,
-    required this.fileUrl,
+    this.fileUrl,
     required this.date,
   }) : super(key: key);
 
@@ -64,19 +64,19 @@ class _FeedDetailState extends State<FeedDetail> {
                   fontSize: 15,
                 ),
               ), //Text
-              background: Container(
+              background: widget.fileUrl != null ? Container(
                 alignment: Alignment.topLeft,
                 // height: 300,
                 width: double.infinity,
                 // margin: EdgeInsets.all(10),
                 child: ImageLoader(
-                  url: widget.fileUrl,
+                  url: widget.fileUrl!,
                   imageHeight: 300,
                   imageWidth: double.infinity,
                   spinnerHeight: 25,
                   spinnerWidth: 25,
                 ),
-              ),
+              ): Container(),
             ),
             //FlexibleSpaceBar
             expandedHeight: 270,

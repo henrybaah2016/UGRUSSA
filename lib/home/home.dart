@@ -349,6 +349,29 @@ class _HomePageState extends State<HomePage> {
                     child: GestureDetector(
                       onTap: () {
                         // bottomSheetCardPayment(context);
+                        showDialog(context: context, builder: (ctx){
+                          return NotificationDialog(
+                            infoTitle: "Dues Payment",
+                            infoText: "Dues payment not supported in the mobile app at the moment.",
+                            firstButtonText: "",
+                            firstButtonAction: (){
+
+                            },
+                            secondButtonText: "okay",
+                            secondButtonAction: (){
+                              Navigator.pop(context);
+                            },
+                          );
+                        });
+                        // ScaffoldMessenger.of(context).showSnackBar(
+                        //   const SnackBar(
+                        //     content: Text(
+                        //       "Dues payment not enabled yet",
+                        //       textAlign: TextAlign.center,
+                        //     ),
+                        //     duration: Duration(seconds: 3),
+                        //   ),
+                        // );
                       },
                       child: Container(
                         margin: EdgeInsets.all(10),
@@ -962,7 +985,7 @@ class _HomePageState extends State<HomePage> {
                                     builder: (ctx) {
                                       return FeedDetail(
                                           description: e["description"],
-                                          fileUrl: e["file"],
+                                          fileUrl: e["file"] != null ?  e["file"] : null,
                                           date: (e["date"] as Timestamp)
                                               .toDate());
                                     },

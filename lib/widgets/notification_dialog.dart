@@ -36,7 +36,7 @@ class NotificationDialog extends StatelessWidget {
         infoText!,
         style: const TextStyle(
           fontFamily: "Quicksand",
-          fontWeight: FontWeight.w500,
+          fontWeight: FontWeight.w300,
           letterSpacing: 0,
         ),
       ),
