@@ -54,7 +54,7 @@ class _NewsUploadState extends State<NewsUpload> {
   _uploadFile() async {
     result = await FilePicker.platform.pickFiles(
       type: FileType.custom,
-      allowedExtensions: ['jpg', 'pdf', 'doc', 'jpeg', 'png'],
+      allowedExtensions: ['jpg','jpeg', 'pdf', 'doc','png', 'PDF','DOC' , 'JPG', 'JPEG' ,'PNG'],
     );
 
     if (result != null) {
@@ -206,7 +206,7 @@ class _NewsUploadState extends State<NewsUpload> {
                 Container(
                   margin: EdgeInsets.only(left: 10, right: 10),
                   child: Text(
-                    'Upload image or video',
+                    'Upload image',
                     style: TextStyle(
                       color: Color(0xff4C4C4C),
                       fontSize: 14,
@@ -231,23 +231,23 @@ class _NewsUploadState extends State<NewsUpload> {
                   decoration: BoxDecoration(
                       shape: BoxShape.rectangle, color: Color(0xffC3D0DD)),
                 ),
-                Container(
-                  margin: EdgeInsets.only(right: 2, top: 5),
-                  width: 35,
-                  height: 18,
-                  child: Center(
-                    child: Text(
-                      'Video',
-                      style: TextStyle(
-                        color: Color(0xfffbbc07),
-                        fontSize: 10,
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
-                  ),
-                  decoration: BoxDecoration(
-                      shape: BoxShape.rectangle, color: Color(0x2ffbbc07)),
-                ),
+                // Container(
+                //   margin: EdgeInsets.only(right: 2, top: 5),
+                //   width: 35,
+                //   height: 18,
+                //   child: Center(
+                //     child: Text(
+                //       'Video',
+                //       style: TextStyle(
+                //         color: Color(0xfffbbc07),
+                //         fontSize: 10,
+                //         fontWeight: FontWeight.w600,
+                //       ),
+                //     ),
+                //   ),
+                //   decoration: BoxDecoration(
+                //       shape: BoxShape.rectangle, color: Color(0x2ffbbc07)),
+                // ),
               ],
             ),
             Container(
