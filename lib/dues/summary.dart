@@ -242,7 +242,7 @@ class _SummaryPageState extends State<SummaryPage> with SingleTickerProviderStat
                                                           height: 45,
                                                           width: 45,
                                                           child: Image.asset(
-                                                              'assets/images/use_profile.png')),
+                                                              'assets/images/logo.png')),
                                                     ),
                                                   ),
                                                   Container(
@@ -347,7 +347,7 @@ class _SummaryPageState extends State<SummaryPage> with SingleTickerProviderStat
                                                           height: 45,
                                                           width: 45,
                                                           child: Image.asset(
-                                                              'assets/images/use_profile.png')),
+                                                              'assets/images/logo.png')),
                                                     ),
                                                   ),
                                                   Container(
@@ -453,7 +453,7 @@ class _SummaryPageState extends State<SummaryPage> with SingleTickerProviderStat
                                                           height: 45,
                                                           width: 45,
                                                           child: Image.asset(
-                                                              'assets/images/use_profile.png')),
+                                                              'assets/images/logo.png')),
                                                     ),
                                                   ),
                                                   Container(

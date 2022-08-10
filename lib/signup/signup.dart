@@ -450,7 +450,7 @@ class _SignupPageState extends State<SignupPage> {
                             fit: BoxFit.cover,
                           )
                         : Image.asset(
-                            "assets/images/use_profile.png",
+                            "assets/images/profile_avatar.png",
                             width: 100,
                             height: 100,
                             fit: BoxFit.cover,

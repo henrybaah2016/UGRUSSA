@@ -199,7 +199,7 @@ class _ChatState extends State<Chat> {
                                   child: Container(
                                       width: 50,
                                       child: Image.asset(
-                                          'assets/images/use_profile.png')),
+                                          'assets/images/logo.png')),
                                 ),
                               ),
                               Container(
@@ -335,7 +335,7 @@ class _ChatState extends State<Chat> {
                                   child: Container(
                                       width: 50,
                                       child: Image.asset(
-                                          'assets/images/use_profile.png')),
+                                          'assets/images/logo.png')),
                                 ),
                               ),
                               Container(
@@ -471,7 +471,7 @@ class _ChatState extends State<Chat> {
                                   child: Container(
                                       width: 50,
                                       child: Image.asset(
-                                          'assets/images/use_profile.png')),
+                                          'assets/images/logo.png')),
                                 ),
                               ),
                               Container(

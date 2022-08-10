@@ -229,7 +229,7 @@ class _ListPageState extends State<ListPage> {
                                           //         height: 45,
                                           //         width: 45,
                                           //         child: Image.asset(
-                                          //             'assets/images/use_profile.png')),
+                                          //             'assets/images/logo.png')),
                                           //   ),
                                           // ),
                                           Container(

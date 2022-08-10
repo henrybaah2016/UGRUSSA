@@ -119,7 +119,7 @@ class _FeedDetailState extends State<FeedDetail> {
                                               height: 50,
                                               width: 50,
                                               child: Image.asset(
-                                                'assets/images/use_profile.png',
+                                                'assets/images/logo.png',
                                               ),
                                             ),
                                           ),

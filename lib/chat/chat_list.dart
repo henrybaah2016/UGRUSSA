@@ -113,7 +113,7 @@ class _ChatListState extends State<ChatList> {
                                       height: 45,
                                       width: 45,
                                       child: Image.asset(
-                                          'assets/images/use_profile.png')),
+                                          'assets/images/logo.png')),
                                 ),
                               ),
                               Container(
@@ -197,7 +197,7 @@ class _ChatListState extends State<ChatList> {
                                       height: 45,
                                       width: 45,
                                       child: Image.asset(
-                                          'assets/images/use_profile.png')),
+                                          'assets/images/logo.png')),
                                 ),
                               ),
                               Container(
@@ -281,7 +281,7 @@ class _ChatListState extends State<ChatList> {
                                       height: 45,
                                       width: 45,
                                       child: Image.asset(
-                                          'assets/images/use_profile.png')),
+                                          'assets/images/logo.png')),
                                 ),
                               ),
                               Container(
@@ -365,7 +365,7 @@ class _ChatListState extends State<ChatList> {
                                       height: 45,
                                       width: 45,
                                       child: Image.asset(
-                                          'assets/images/use_profile.png')),
+                                          'assets/images/logo.png')),
                                 ),
                               ),
                               Container(
@@ -449,7 +449,7 @@ class _ChatListState extends State<ChatList> {
                                       height: 45,
                                       width: 45,
                                       child: Image.asset(
-                                          'assets/images/use_profile.png')),
+                                          'assets/images/logo.png')),
                                 ),
                               ),
                               Container(
