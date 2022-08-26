@@ -2,6 +2,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:ugrussa/game/choose_stage_screen.dart';
 import 'package:ugrussa/game/game_board.dart';
 
 final List<String> imgList = [
@@ -107,7 +108,7 @@ class _GamePlayerState extends State<GamePlayer> {
                           onPressed: () {
                             Navigator.push(
                               context,
-                              MaterialPageRoute(builder: (context) => GameBoard()),
+                              MaterialPageRoute(builder: (context) => ChooseStageScreen()),
                             );
                           },
                           child: new Text('Next',

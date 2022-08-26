@@ -116,7 +116,7 @@ class _GameScoreState extends State<GameScore> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => GameBoard(),
+                      builder: (context) => GameBoard(stage:1),
                     ),
                   );
                 },
