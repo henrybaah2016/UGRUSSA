@@ -236,19 +236,19 @@ class _HomePageState extends State<HomePage> {
                                         padding:
                                             const EdgeInsets.only(left: 10),
                                         child: Text(
-                                          'Student.',
+                                          'Student',
                                           style: TextStyle(
                                               color: Color(0xffffffff),
-                                              fontSize: 16,
+                                              fontSize: 12,
                                               fontWeight: FontWeight.w600),
                                         )),
                                     Padding(
                                       padding: const EdgeInsets.only(left: 10),
                                       child: Text(
-                                        'Registration.',
+                                        'Registration',
                                         style: TextStyle(
                                             color: Color(0xffffffff),
-                                            fontSize: 16,
+                                            fontSize: 12,
                                             fontWeight: FontWeight.w600),
                                       ),
                                     ),
@@ -308,7 +308,7 @@ class _HomePageState extends State<HomePage> {
                                           'Course',
                                           style: TextStyle(
                                               color: Color(0xffffffff),
-                                              fontSize: 16,
+                                              fontSize: 12,
                                               fontWeight: FontWeight.w600),
                                         )),
                                     Padding(
@@ -317,7 +317,7 @@ class _HomePageState extends State<HomePage> {
                                         'Combination',
                                         style: TextStyle(
                                             color: Color(0xffffffff),
-                                            fontSize: 16,
+                                            fontSize: 12,
                                             fontWeight: FontWeight.w600),
                                       ),
                                     ),
@@ -402,7 +402,7 @@ class _HomePageState extends State<HomePage> {
                                           'Dues',
                                           style: TextStyle(
                                               color: Color(0xffffffff),
-                                              fontSize: 16,
+                                              fontSize: 12,
                                               fontWeight: FontWeight.w600),
                                         )),
                                     Padding(
@@ -411,7 +411,7 @@ class _HomePageState extends State<HomePage> {
                                         'Payment',
                                         style: TextStyle(
                                             color: Color(0xffffffff),
-                                            fontSize: 16,
+                                            fontSize: 12,
                                             fontWeight: FontWeight.w600),
                                       ),
                                     ),
@@ -469,7 +469,7 @@ class _HomePageState extends State<HomePage> {
                                             'Academic',
                                             style: TextStyle(
                                                 color: Color(0xffffffff),
-                                                fontSize: 16,
+                                                fontSize: 12,
                                                 fontWeight: FontWeight.w600),
                                           )),
                                       Padding(
@@ -479,7 +479,7 @@ class _HomePageState extends State<HomePage> {
                                             'Calendar',
                                             style: TextStyle(
                                                 color: Color(0xffffffff),
-                                                fontSize: 16,
+                                                fontSize: 12,
                                                 fontWeight: FontWeight.w600),
                                           )),
                                     ],

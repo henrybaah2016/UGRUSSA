@@ -51,20 +51,22 @@ class _AllFilesState extends State<AllFiles> {
           .ref(fileToDownload)
           .writeToFile(downloadToFile)
           .then((_) {
-        setState(() {
-          _isDownloading = false;
-        });
+
 
         Navigator.pop(context);
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text("File downloaded successfully"),
-          ),
-        );
+        // ScaffoldMessenger.of(context).showSnackBar(
+        //   SnackBar(
+        //     content: Text("File downloaded successfully"),
+        //   ),
+        // );
       });
 
       await downloadToFile.create();
       await OpenFile.open(downloadToFile.path);
+
+      setState(() {
+        _isDownloading = false;
+      });
     } on FirebaseException catch (e) {
       // e.g, e.code == 'canceled'
       print('Download error: $e');

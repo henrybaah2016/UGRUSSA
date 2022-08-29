@@ -32,8 +32,6 @@ class _GamePlayerState extends State<GamePlayer> {
           backgroundColor: Colors.transparent,
           elevation: 0,
 
-
-
         ),
 
         body: SingleChildScrollView(

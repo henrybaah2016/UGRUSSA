@@ -343,7 +343,8 @@ class _SignupPageState extends State<SignupPage> {
         "student ID": _studentIdController.text,
         "level": _currentSelectedLevel,
         "residence": _currentSelectedResidence,
-        "profilePhotoUrl": photoUrl
+        "profilePhotoUrl": photoUrl,
+        "date": DateTime.now(),
       };
 
       // DatabaseReference driversRef =

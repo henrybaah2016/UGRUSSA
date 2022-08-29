@@ -8,6 +8,24 @@ class ChooseStageScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xff3bd854),
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        actions: <Widget>[
+          PopupMenuButton(
+            onSelected: (result) async {
+              if (result == 0) {
+                Navigator.of(context).pop();
+              }
+            },
+            icon: Container(
+
+            ),
+            offset: Offset(0, kToolbarHeight),
+            itemBuilder: (BuildContext context) => <PopupMenuEntry>[],
+          ),
+        ],
+      ),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Center(

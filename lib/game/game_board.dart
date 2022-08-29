@@ -242,14 +242,7 @@ class _GameBoardState extends State<GameBoard> with TickerProviderStateMixin {
                 Navigator.of(context).pop();
               }
             },
-            icon: Container(
-              margin: EdgeInsets.only(right: 20),
-              child: const Icon(
-                Icons.close_rounded,
-                color: Color(0xffffffff),
-                size: 25.0,
-              ),
-            ),
+            icon: Container(),
             offset: Offset(0, kToolbarHeight),
             itemBuilder: (BuildContext context) => <PopupMenuEntry>[],
           ),
@@ -320,7 +313,7 @@ class _GameBoardState extends State<GameBoard> with TickerProviderStateMixin {
                       onPressed: () {
                         // Navigator.push(
                         //   context,
-                        //   MaterialPageRoute(builder: (context) => GameScore()),
+                        //   MaterialPageRoute(builder: (context) => GameScore(),),
                         // );
                         // _checkAnswers();
                       },
@@ -501,7 +494,8 @@ class _GameBoardState extends State<GameBoard> with TickerProviderStateMixin {
                                               shape: new RoundedRectangleBorder(
                                                 borderRadius:
                                                     new BorderRadius.circular(
-                                                        100.0),
+                                                  100.0,
+                                                ),
                                                 // side: BorderSide(color: Color(0xffffffff)),
                                               ),
                                             ),
@@ -510,7 +504,7 @@ class _GameBoardState extends State<GameBoard> with TickerProviderStateMixin {
                                         );
                                       },
                                       onWillAccept: (data) {
-                                        return true;
+                                           return true;
                                       },
                                       onAccept: (data) {
                                         print("data $data");
@@ -9716,2244 +9710,3559 @@ class _GameBoardState extends State<GameBoard> with TickerProviderStateMixin {
                                                 ),
                                               ),
                                             ])
-                                          : widget.stage == 7 ?
-                                         Column(
-                                             children : [
-                                           //1
-                                           Container(
-                                             margin: EdgeInsets.only(top: 10, left: 10, right: 10),
-                                             child: Row(
-                                               crossAxisAlignment: CrossAxisAlignment.center,
-                                               children: [
-                                                 if (!isThirtyOneMatch && !isThirtyOneColorRed)
-                                                   Expanded(
-                                                     child: Draggable(
-                                                       data: "31",
-                                                       feedback: Padding(
-                                                         padding: const EdgeInsets.all(8.0),
-                                                         child: new ElevatedButton(
-                                                           child: Container(
-                                                             margin: EdgeInsets.symmetric(vertical: 20),
-                                                             child: new Text(
-                                                               'одиннадцать',
-                                                               style: TextStyle(
-                                                                 color: Color(0xff073ea6),
-                                                                 fontSize: 18,
-                                                               ),
-                                                             ),
-                                                           ),
-                                                           style: ElevatedButton.styleFrom(
-                                                             //primary: Color(0xff072e79),
-                                                             primary: Color(0xffffffff),
-
-                                                             minimumSize: Size(150, 52),
-                                                             shape: new RoundedRectangleBorder(
-                                                               borderRadius:
-                                                               new BorderRadius.circular(100.0),
-                                                               // side: BorderSide(color: Color(0xffffffff)),
-                                                             ),
-                                                           ),
-                                                           onPressed: () {},
-                                                         ),
-                                                       ),
-                                                       childWhenDragging: Container(),
-                                                       child: Padding(
-                                                         padding: const EdgeInsets.all(8.0),
-                                                         child: new ElevatedButton(
-                                                           child: Container(
-                                                             margin: EdgeInsets.symmetric(vertical: 20),
-                                                             child: new Text(
-                                                               'одиннадцать',
-                                                               style: TextStyle(
-                                                                 color: Color(0xff073ea6),
-                                                                 fontSize: 18,
-                                                               ),
-                                                             ),
-                                                           ),
-                                                           style: ElevatedButton.styleFrom(
-                                                             //primary: Color(0xff072e79),
-                                                             primary: Color(0xffffffff),
-
-                                                             minimumSize: Size(double.infinity, 52),
-                                                             shape: new RoundedRectangleBorder(
-                                                               borderRadius:
-                                                               new BorderRadius.circular(100.0),
-                                                               // side: BorderSide(color: Color(0xffffffff)),
-                                                             ),
-                                                           ),
-                                                           onPressed: () {},
-                                                         ),
-                                                       ),
-                                                     ),
-                                                   ),
-                                                 if (isThirtyOneMatch)
-                                                   Expanded(
-                                                     child: Padding(
-                                                       padding: const EdgeInsets.all(8.0),
-                                                       child: new ElevatedButton(
-                                                         child: Container(
-                                                           margin: EdgeInsets.symmetric(vertical: 20),
-                                                           child: new Text(
-                                                             'одиннадцать',
-                                                             style: TextStyle(
-                                                               // color: Colors.transparent,
-                                                               fontSize: 18,
-                                                             ),
-                                                           ),
-                                                         ),
-                                                         style: ElevatedButton.styleFrom(
-                                                           //primary: Color(0xff072e79),
-                                                           primary: Colors.green,
-
-                                                           minimumSize: Size(double.infinity, 52),
-                                                           shape: new RoundedRectangleBorder(
-                                                             borderRadius:
-                                                             new BorderRadius.circular(100.0),
-                                                             // side: BorderSide(color: Color(0xffffffff)),
-                                                           ),
-                                                         ),
-                                                         onPressed: () {},
-                                                       ),
-                                                     ),
-                                                   ),
-                                                 if (isThirtyOneColorRed)
-                                                   Expanded(
-                                                     child: Padding(
-                                                       padding: const EdgeInsets.all(8.0),
-                                                       child: new ElevatedButton(
-                                                         child: Container(
-                                                           margin: EdgeInsets.symmetric(vertical: 20),
-                                                           child: new Text(
-                                                             'одиннадцать',
-                                                             style: TextStyle(
-                                                               // color: Colors.transparent,
-                                                               fontSize: 18,
-                                                             ),
-                                                           ),
-                                                         ),
-                                                         style: ElevatedButton.styleFrom(
-                                                           //primary: Color(0xff072e79),
-                                                           primary: Colors.red,
-
-                                                           minimumSize: Size(double.infinity, 52),
-                                                           shape: new RoundedRectangleBorder(
-                                                             borderRadius:
-                                                             new BorderRadius.circular(100.0),
-                                                             // side: BorderSide(color: Color(0xffffffff)),
-                                                           ),
-                                                         ),
-                                                         onPressed: () {},
-                                                       ),
-                                                     ),
-                                                   ),
-                                                 if (!isThirtyFourMatch && !isThirtyFourColorRed)
-                                                   Expanded(
-                                                     child: DragTarget(
-                                                       builder: (context, List<Object?> candidateData,
-                                                           rejectedData) {
-                                                         return Padding(
-                                                           padding: const EdgeInsets.all(8.0),
-                                                           child: new ElevatedButton(
-                                                             child: Container(
-                                                               margin:
-                                                               EdgeInsets.symmetric(vertical: 20),
-                                                               child: new Text(
-                                                                 'Prague',
-                                                                 style: TextStyle(
-                                                                   color: Color(0xff073ea6),
-                                                                   fontSize: 18,
-                                                                 ),
-                                                               ),
-                                                             ),
-                                                             style: ElevatedButton.styleFrom(
-                                                               //primary: Color(0xff072e79),
-                                                               primary: Color(0xffffffff),
-
-                                                               minimumSize: Size(double.infinity, 52),
-                                                               shape: new RoundedRectangleBorder(
-                                                                 borderRadius:
-                                                                 new BorderRadius.circular(100.0),
-                                                                 // side: BorderSide(color: Color(0xffffffff)),
-                                                               ),
-                                                             ),
-                                                             onPressed: () {},
-                                                           ),
-                                                         );
-                                                       },
-                                                       onWillAccept: (data) {
-                                                         return true;
-                                                       },
-                                                       onAccept: (data) {
-                                                         print("data $data");
-                                                         setState(() {
-                                                           if (data == "34") {
-                                                             isThirtyFourMatch = true;
-                                                             score += 10;
-                                                             chances -= 1;
-
-                                                             print("CHANCES $chances");
-                                                           } else {
-                                                             if (score > 0) {
-                                                               score -= 5;
-                                                             }
-                                                             isThirtyFourColorRed = true;
-                                                             chances -= 1;
-                                                           }
-                                                         });
-                                                       },
-                                                     ),
-                                                   ),
-                                                 if (isThirtyFourMatch)
-                                                   Expanded(
-                                                     child: Padding(
-                                                       padding: const EdgeInsets.all(8.0),
-                                                       child: new ElevatedButton(
-                                                         child: Container(
-                                                           margin: EdgeInsets.symmetric(vertical: 20),
-                                                           child: new Text(
-                                                             'Prague',
-                                                             style: TextStyle(
-                                                               // color: Colors.transparent,
-                                                               fontSize: 18,
-                                                             ),
-                                                           ),
-                                                         ),
-                                                         style: ElevatedButton.styleFrom(
-                                                           //primary: Color(0xff072e79),
-                                                           primary: Colors.green,
-
-                                                           minimumSize: Size(double.infinity, 52),
-                                                           shape: new RoundedRectangleBorder(
-                                                             borderRadius:
-                                                             new BorderRadius.circular(100.0),
-                                                             // side: BorderSide(color: Color(0xffffffff)),
-                                                           ),
-                                                         ),
-                                                         onPressed: () {},
-                                                       ),
-                                                     ),
-                                                   ),
-                                                 if (isThirtyFourColorRed)
-                                                   Expanded(
-                                                     child: Padding(
-                                                       padding: const EdgeInsets.all(8.0),
-                                                       child: new ElevatedButton(
-                                                         child: Container(
-                                                           margin: EdgeInsets.symmetric(vertical: 20),
-                                                           child: new Text(
-                                                             'Prague',
-                                                             style: TextStyle(
-                                                               // color: Colors.transparent,
-                                                               fontSize: 18,
-                                                             ),
-                                                           ),
-                                                         ),
-                                                         style: ElevatedButton.styleFrom(
-                                                           //primary: Color(0xff072e79),
-                                                           primary: Colors.red,
-
-                                                           minimumSize: Size(double.infinity, 52),
-                                                           shape: new RoundedRectangleBorder(
-                                                             borderRadius:
-                                                             new BorderRadius.circular(100.0),
-                                                             // side: BorderSide(color: Color(0xffffffff)),
-                                                           ),
-                                                         ),
-                                                         onPressed: () {},
-                                                       ),
-                                                     ),
-                                                   ),
-                                               ],
-                                             ),
-                                           ),
-
-                                           //2
-                                           Container(
-                                             margin: EdgeInsets.only(top: 10, left: 10, right: 10),
-                                             child: Row(
-                                               crossAxisAlignment: CrossAxisAlignment.center,
-                                               children: [
-                                                 if (!isThirtyTwoMatch && !isThirtyTwoColorRed)
-                                                   Expanded(
-                                                     child: Draggable(
-                                                       data: "32",
-                                                       feedback: Padding(
-                                                         padding: const EdgeInsets.all(8.0),
-                                                         child: new ElevatedButton(
-                                                           child: Container(
-                                                             margin: EdgeInsets.symmetric(vertical: 20),
-                                                             child: new Text(
-                                                               'Мужской',
-                                                               style: TextStyle(
-                                                                 color: Color(0xff073ea6),
-                                                                 fontSize: 18,
-                                                               ),
-                                                             ),
-                                                           ),
-                                                           style: ElevatedButton.styleFrom(
-                                                             //primary: Color(0xff072e79),
-                                                             primary: Color(0xffffffff),
-
-                                                             minimumSize: Size(150, 52),
-                                                             shape: new RoundedRectangleBorder(
-                                                               borderRadius:
-                                                               new BorderRadius.circular(100.0),
-                                                               // side: BorderSide(color: Color(0xffffffff)),
-                                                             ),
-                                                           ),
-                                                           onPressed: () {},
-                                                         ),
-                                                       ),
-                                                       childWhenDragging: Container(),
-                                                       child: Padding(
-                                                         padding: const EdgeInsets.all(8.0),
-                                                         child: new ElevatedButton(
-                                                           child: Container(
-                                                             margin: EdgeInsets.symmetric(vertical: 20),
-                                                             child: new Text(
-                                                               'Мужской',
-                                                               style: TextStyle(
-                                                                 color: Color(0xff073ea6),
-                                                                 fontSize: 18,
-                                                               ),
-                                                             ),
-                                                           ),
-                                                           style: ElevatedButton.styleFrom(
-                                                             //primary: Color(0xff072e79),
-                                                             primary: Color(0xffffffff),
-
-                                                             minimumSize: Size(double.infinity, 52),
-                                                             shape: new RoundedRectangleBorder(
-                                                               borderRadius:
-                                                               new BorderRadius.circular(100.0),
-                                                               // side: BorderSide(color: Color(0xffffffff)),
-                                                             ),
-                                                           ),
-                                                           onPressed: () {},
-                                                         ),
-                                                       ),
-                                                     ),
-                                                   ),
-                                                 if (isThirtyTwoMatch)
-                                                   Expanded(
-                                                     child: Padding(
-                                                       padding: const EdgeInsets.all(8.0),
-                                                       child: new ElevatedButton(
-                                                         child: Container(
-                                                           margin: EdgeInsets.symmetric(vertical: 20),
-                                                           child: new Text(
-                                                             "Мужской",
-                                                             style: TextStyle(
-                                                               // color: Colors.transparent,
-                                                               fontSize: 18,
-                                                             ),
-                                                           ),
-                                                         ),
-                                                         style: ElevatedButton.styleFrom(
-                                                           //primary: Color(0xff072e79),
-                                                           primary: Colors.green,
-
-                                                           minimumSize: Size(double.infinity, 52),
-                                                           shape: new RoundedRectangleBorder(
-                                                             borderRadius:
-                                                             new BorderRadius.circular(100.0),
-                                                             // side: BorderSide(color: Color(0xffffffff)),
-                                                           ),
-                                                         ),
-                                                         onPressed: () {},
-                                                       ),
-                                                     ),
-                                                   ),
-                                                 if (isThirtyTwoColorRed)
-                                                   Expanded(
-                                                     child: Padding(
-                                                       padding: const EdgeInsets.all(8.0),
-                                                       child: new ElevatedButton(
-                                                         child: Container(
-                                                           margin: EdgeInsets.symmetric(vertical: 20),
-                                                           child: new Text(
-                                                             'Мужской',
-                                                             style: TextStyle(
-                                                               // color: Colors.transparent,
-                                                               fontSize: 18,
-                                                             ),
-                                                           ),
-                                                         ),
-                                                         style: ElevatedButton.styleFrom(
-                                                           //primary: Color(0xff072e79),
-                                                           primary: Colors.red,
-
-                                                           minimumSize: Size(double.infinity, 52),
-                                                           shape: new RoundedRectangleBorder(
-                                                             borderRadius:
-                                                             new BorderRadius.circular(100.0),
-                                                             // side: BorderSide(color: Color(0xffffffff)),
-                                                           ),
-                                                         ),
-                                                         onPressed: () {},
-                                                       ),
-                                                     ),
-                                                   ),
-                                                 if (!isThirtyFiveMatch && !isThirtyFiveColorRed)
-                                                   Expanded(
-                                                     child: DragTarget(
-                                                       builder: (context, List<Object?> candidateData,
-                                                           rejectedData) {
-                                                         return Padding(
-                                                           padding: const EdgeInsets.all(8.0),
-                                                           child: new ElevatedButton(
-                                                             child: Container(
-                                                               margin:
-                                                               EdgeInsets.symmetric(vertical: 20),
-                                                               child: new Text(
-                                                                 'Gomel',
-                                                                 style: TextStyle(
-                                                                   color: Color(0xff073ea6),
-                                                                   fontSize: 18,
-                                                                 ),
-                                                               ),
-                                                             ),
-                                                             style: ElevatedButton.styleFrom(
-                                                               //primary: Color(0xff072e79),
-                                                               primary: Color(0xffffffff),
-
-                                                               minimumSize: Size(double.infinity, 52),
-                                                               shape: new RoundedRectangleBorder(
-                                                                 borderRadius:
-                                                                 new BorderRadius.circular(100.0),
-                                                                 // side: BorderSide(color: Color(0xffffffff)),
-                                                               ),
-                                                             ),
-                                                             onPressed: () {},
-                                                           ),
-                                                         );
-                                                       },
-                                                       onWillAccept: (data) {
-                                                         return true;
-                                                       },
-                                                       onAccept: (data) {
-                                                         print("data $data");
-                                                         setState(() {
-                                                           if (data == "35") {
-                                                             isThirtyFiveMatch = true;
-                                                             score += 10;
-                                                             chances -= 1;
-                                                             print("CHANCES $chances");
-                                                           } else {
-                                                             if (score > 0) {
-                                                               score -= 5;
-                                                             }
-                                                             isThirtyFiveColorRed = true;
-                                                             chances -= 1;
-                                                           }
-                                                         });
-                                                       },
-                                                     ),
-                                                   ),
-                                                 if (isThirtyFiveMatch)
-                                                   Expanded(
-                                                     child: Padding(
-                                                       padding: const EdgeInsets.all(8.0),
-                                                       child: new ElevatedButton(
-                                                         child: Container(
-                                                           margin: EdgeInsets.symmetric(vertical: 20),
-                                                           child: new Text(
-                                                             'Gomel',
-                                                             style: TextStyle(
-                                                               // color: Colors.transparent,
-                                                               fontSize: 18,
-                                                             ),
-                                                           ),
-                                                         ),
-                                                         style: ElevatedButton.styleFrom(
-                                                           //primary: Color(0xff072e79),
-                                                           primary: Colors.green,
-
-                                                           minimumSize: Size(double.infinity, 52),
-                                                           shape: new RoundedRectangleBorder(
-                                                             borderRadius:
-                                                             new BorderRadius.circular(100.0),
-                                                             // side: BorderSide(color: Color(0xffffffff)),
-                                                           ),
-                                                         ),
-                                                         onPressed: () {},
-                                                       ),
-                                                     ),
-                                                   ),
-                                                 if (isThirtyFiveColorRed)
-                                                   Expanded(
-                                                     child: Padding(
-                                                       padding: const EdgeInsets.all(8.0),
-                                                       child: new ElevatedButton(
-                                                         child: Container(
-                                                           margin: EdgeInsets.symmetric(vertical: 20),
-                                                           child: new Text(
-                                                             'Gomel',
-                                                             style: TextStyle(
-                                                               // color: Colors.transparent,
-                                                               fontSize: 18,
-                                                             ),
-                                                           ),
-                                                         ),
-                                                         style: ElevatedButton.styleFrom(
-                                                           //primary: Color(0xff072e79),
-                                                           primary: Colors.red,
-
-                                                           minimumSize: Size(double.infinity, 52),
-                                                           shape: new RoundedRectangleBorder(
-                                                             borderRadius:
-                                                             new BorderRadius.circular(100.0),
-                                                             // side: BorderSide(color: Color(0xffffffff)),
-                                                           ),
-                                                         ),
-                                                         onPressed: () {},
-                                                       ),
-                                                     ),
-                                                   ),
-                                               ],
-                                             ),
-                                           ),
-
-                                           //3
-                                           Container(
-                                             margin: EdgeInsets.only(top: 10, left: 10, right: 10),
-                                             child: Row(
-                                               crossAxisAlignment: CrossAxisAlignment.center,
-                                               children: [
-                                                 if (!isThirtyThreeMatch && !isThirtyThreeColorRed)
-                                                   Expanded(
-                                                     child: Draggable(
-                                                       data: "33",
-                                                       feedback: Padding(
-                                                         padding: const EdgeInsets.all(8.0),
-                                                         child: new ElevatedButton(
-                                                           child: Container(
-                                                             margin: EdgeInsets.symmetric(vertical: 20),
-                                                             child: new Text(
-                                                               'Женский',
-                                                               style: TextStyle(
-                                                                 color: Color(0xff073ea6),
-                                                                 fontSize: 18,
-                                                               ),
-                                                             ),
-                                                           ),
-                                                           style: ElevatedButton.styleFrom(
-                                                             //primary: Color(0xff072e79),
-                                                             primary: Color(0xffffffff),
-
-                                                             minimumSize: Size(150, 52),
-                                                             shape: new RoundedRectangleBorder(
-                                                               borderRadius:
-                                                               new BorderRadius.circular(100.0),
-                                                               // side: BorderSide(color: Color(0xffffffff)),
-                                                             ),
-                                                           ),
-                                                           onPressed: () {},
-                                                         ),
-                                                       ),
-                                                       childWhenDragging: Container(),
-                                                       child: Padding(
-                                                         padding: const EdgeInsets.all(8.0),
-                                                         child: new ElevatedButton(
-                                                           child: Container(
-                                                             margin: EdgeInsets.symmetric(vertical: 20),
-                                                             child: new Text(
-                                                               'Женский',
-                                                               style: TextStyle(
-                                                                 color: Color(0xff073ea6),
-                                                                 fontSize: 18,
-                                                               ),
-                                                             ),
-                                                           ),
-                                                           style: ElevatedButton.styleFrom(
-                                                             //primary: Color(0xff072e79),
-                                                             primary: Color(0xffffffff),
-
-                                                             minimumSize: Size(double.infinity, 52),
-                                                             shape: new RoundedRectangleBorder(
-                                                               borderRadius:
-                                                               new BorderRadius.circular(100.0),
-                                                               // side: BorderSide(color: Color(0xffffffff)),
-                                                             ),
-                                                           ),
-                                                           onPressed: () {},
-                                                         ),
-                                                       ),
-                                                     ),
-                                                   ),
-                                                 if (isThirtyThreeMatch)
-                                                   Expanded(
-                                                     child: Padding(
-                                                       padding: const EdgeInsets.all(8.0),
-                                                       child: new ElevatedButton(
-                                                         child: Container(
-                                                           margin: EdgeInsets.symmetric(vertical: 20),
-                                                           child: new Text(
-                                                             'Женский',
-                                                             style: TextStyle(
-                                                               // color: Colors.transparent,
-                                                               fontSize: 18,
-                                                             ),
-                                                           ),
-                                                         ),
-                                                         style: ElevatedButton.styleFrom(
-                                                           //primary: Color(0xff072e79),
-                                                           primary: Colors.green,
-
-                                                           minimumSize: Size(double.infinity, 52),
-                                                           shape: new RoundedRectangleBorder(
-                                                             borderRadius:
-                                                             new BorderRadius.circular(100.0),
-                                                             // side: BorderSide(color: Color(0xffffffff)),
-                                                           ),
-                                                         ),
-                                                         onPressed: () {},
-                                                       ),
-                                                     ),
-                                                   ),
-                                                 if (isThirtyThreeColorRed)
-                                                   Expanded(
-                                                     child: Padding(
-                                                       padding: const EdgeInsets.all(8.0),
-                                                       child: new ElevatedButton(
-                                                         child: Container(
-                                                           margin: EdgeInsets.symmetric(vertical: 20),
-                                                           child: new Text(
-                                                             'Женский',
-                                                             style: TextStyle(
-                                                               // color: Colors.transparent,
-                                                               fontSize: 18,
-                                                             ),
-                                                           ),
-                                                         ),
-                                                         style: ElevatedButton.styleFrom(
-                                                           //primary: Color(0xff072e79),
-                                                           primary: Colors.red,
-
-                                                           minimumSize: Size(double.infinity, 52),
-                                                           shape: new RoundedRectangleBorder(
-                                                             borderRadius:
-                                                             new BorderRadius.circular(100.0),
-                                                             // side: BorderSide(color: Color(0xffffffff)),
-                                                           ),
-                                                         ),
-                                                         onPressed: () {},
-                                                       ),
-                                                     ),
-                                                   ),
-                                                 if (!isThirtyOneMatch && !isThirtyOneColorRed)
-                                                   Expanded(
-                                                     child: DragTarget(
-                                                       builder: (context, List<Object?> candidateData,
-                                                           rejectedData) {
-                                                         return Padding(
-                                                           padding: const EdgeInsets.all(8.0),
-                                                           child: new ElevatedButton(
-                                                             child: Container(
-                                                               margin:
-                                                               EdgeInsets.symmetric(vertical: 20),
-                                                               child: new Text(
-                                                                 'Eleven',
-                                                                 style: TextStyle(
-                                                                   color: Color(0xff073ea6),
-                                                                   fontSize: 18,
-                                                                 ),
-                                                               ),
-                                                             ),
-                                                             style: ElevatedButton.styleFrom(
-                                                               //primary: Color(0xff072e79),
-                                                               primary: Color(0xffffffff),
-
-                                                               minimumSize: Size(double.infinity, 52),
-                                                               shape: new RoundedRectangleBorder(
-                                                                 borderRadius:
-                                                                 new BorderRadius.circular(100.0),
-                                                                 // side: BorderSide(color: Color(0xffffffff)),
-                                                               ),
-                                                             ),
-                                                             onPressed: () {},
-                                                           ),
-                                                         );
-                                                       },
-                                                       onWillAccept: (data) {
-                                                         return true;
-                                                       },
-                                                       onAccept: (data) {
-                                                         print("data $data");
-                                                         setState(() {
-                                                           if (data == "31") {
-                                                             isThirtyOneMatch = true;
-                                                             score += 10;
-                                                             chances -= 1;
-                                                             print("CHANCES $chances");
-                                                           } else {
-                                                             if (score > 0) {
-                                                               score -= 5;
-                                                             }
-                                                             isThirtyOneColorRed = true;
-                                                             chances -= 1;
-                                                           }
-                                                         });
-                                                       },
-                                                     ),
-                                                   ),
-                                                 if (isThirtyOneMatch)
-                                                   Expanded(
-                                                     child: Padding(
-                                                       padding: const EdgeInsets.all(8.0),
-                                                       child: new ElevatedButton(
-                                                         child: Container(
-                                                           margin: EdgeInsets.symmetric(vertical: 20),
-                                                           child: new Text(
-                                                             'Eleven ',
-                                                             style: TextStyle(
-                                                               // color: Colors.transparent,
-                                                               fontSize: 18,
-                                                             ),
-                                                           ),
-                                                         ),
-                                                         style: ElevatedButton.styleFrom(
-                                                           //primary: Color(0xff072e79),
-                                                           primary: Colors.green,
-
-                                                           minimumSize: Size(double.infinity, 52),
-                                                           shape: new RoundedRectangleBorder(
-                                                             borderRadius:
-                                                             new BorderRadius.circular(100.0),
-                                                             // side: BorderSide(color: Color(0xffffffff)),
-                                                           ),
-                                                         ),
-                                                         onPressed: () {},
-                                                       ),
-                                                     ),
-                                                   ),
-                                                 if (isThirtyOneColorRed)
-                                                   Expanded(
-                                                     child: Padding(
-                                                       padding: const EdgeInsets.all(8.0),
-                                                       child: new ElevatedButton(
-                                                         child: Container(
-                                                           margin: EdgeInsets.symmetric(vertical: 20),
-                                                           child: new Text(
-                                                             'Eleven',
-                                                             style: TextStyle(
-                                                               // color: Colors.transparent,
-                                                               fontSize: 18,
-                                                             ),
-                                                           ),
-                                                         ),
-                                                         style: ElevatedButton.styleFrom(
-                                                           //primary: Color(0xff072e79),
-                                                           primary: Colors.red,
-
-                                                           minimumSize: Size(double.infinity, 52),
-                                                           shape: new RoundedRectangleBorder(
-                                                             borderRadius:
-                                                             new BorderRadius.circular(100.0),
-                                                             // side: BorderSide(color: Color(0xffffffff)),
-                                                           ),
-                                                         ),
-                                                         onPressed: () {},
-                                                       ),
-                                                     ),
-                                                   ),
-                                               ],
-                                             ),
-                                           ),
-
-                                           //4
-                                           Container(
-                                             margin: EdgeInsets.only(top: 10, left: 10, right: 10),
-                                             child: Row(
-                                               crossAxisAlignment: CrossAxisAlignment.center,
-                                               children: [
-                                                 if (!isThirtyFourMatch && !isThirtyFourColorRed)
-                                                   Expanded(
-                                                     child: Draggable(
-                                                       data: "34",
-                                                       feedback: Padding(
-                                                         padding: const EdgeInsets.all(8.0),
-                                                         child: new ElevatedButton(
-                                                           child: Container(
-                                                             margin: EdgeInsets.symmetric(vertical: 20),
-                                                             child: new Text(
-                                                               'Прага',
-                                                               style: TextStyle(
-                                                                 color: Color(0xff073ea6),
-                                                                 fontSize: 18,
-                                                               ),
-                                                             ),
-                                                           ),
-                                                           style: ElevatedButton.styleFrom(
-                                                             //primary: Color(0xff072e79),
-                                                             primary: Color(0xffffffff),
-
-                                                             minimumSize: Size(150, 52),
-                                                             shape: new RoundedRectangleBorder(
-                                                               borderRadius:
-                                                               new BorderRadius.circular(100.0),
-                                                               // side: BorderSide(color: Color(0xffffffff)),
-                                                             ),
-                                                           ),
-                                                           onPressed: () {},
-                                                         ),
-                                                       ),
-                                                       childWhenDragging: Container(),
-                                                       child: Padding(
-                                                         padding: const EdgeInsets.all(8.0),
-                                                         child: new ElevatedButton(
-                                                           child: Container(
-                                                             margin: EdgeInsets.symmetric(vertical: 20),
-                                                             child: new Text(
-                                                               'Прага',
-                                                               style: TextStyle(
-                                                                 color: Color(0xff073ea6),
-                                                                 fontSize: 18,
-                                                               ),
-                                                             ),
-                                                           ),
-                                                           style: ElevatedButton.styleFrom(
-                                                             //primary: Color(0xff072e79),
-                                                             primary: Color(0xffffffff),
-
-                                                             minimumSize: Size(double.infinity, 52),
-                                                             shape: new RoundedRectangleBorder(
-                                                               borderRadius:
-                                                               new BorderRadius.circular(100.0),
-                                                               // side: BorderSide(color: Color(0xffffffff)),
-                                                             ),
-                                                           ),
-                                                           onPressed: () {},
-                                                         ),
-                                                       ),
-                                                     ),
-                                                   ),
-                                                 if (isThirtyFourMatch)
-                                                   Expanded(
-                                                     child: Padding(
-                                                       padding: const EdgeInsets.all(8.0),
-                                                       child: new ElevatedButton(
-                                                         child: Container(
-                                                           margin: EdgeInsets.symmetric(vertical: 20),
-                                                           child: new Text(
-                                                             'Прага',
-                                                             style: TextStyle(
-                                                               // color: Colors.transparent,
-                                                               fontSize: 18,
-                                                             ),
-                                                           ),
-                                                         ),
-                                                         style: ElevatedButton.styleFrom(
-                                                           //primary: Color(0xff072e79),
-                                                           primary: Colors.green,
-
-                                                           minimumSize: Size(double.infinity, 52),
-                                                           shape: new RoundedRectangleBorder(
-                                                             borderRadius:
-                                                             new BorderRadius.circular(100.0),
-                                                             // side: BorderSide(color: Color(0xffffffff)),
-                                                           ),
-                                                         ),
-                                                         onPressed: () {},
-                                                       ),
-                                                     ),
-                                                   ),
-                                                 if (isThirtyFourColorRed)
-                                                   Expanded(
-                                                     child: Padding(
-                                                       padding: const EdgeInsets.all(8.0),
-                                                       child: new ElevatedButton(
-                                                         child: Container(
-                                                           margin: EdgeInsets.symmetric(vertical: 20),
-                                                           child: new Text(
-                                                             'Прага',
-                                                             style: TextStyle(
-                                                               // color: Colors.transparent,
-                                                               fontSize: 18,
-                                                             ),
-                                                           ),
-                                                         ),
-                                                         style: ElevatedButton.styleFrom(
-                                                           //primary: Color(0xff072e79),
-                                                           primary: Colors.red,
-
-                                                           minimumSize: Size(double.infinity, 52),
-                                                           shape: new RoundedRectangleBorder(
-                                                             borderRadius:
-                                                             new BorderRadius.circular(100.0),
-                                                             // side: BorderSide(color: Color(0xffffffff)),
-                                                           ),
-                                                         ),
-                                                         onPressed: () {},
-                                                       ),
-                                                     ),
-                                                   ),
-                                                 if (!isThirtyTwoMatch && !isThirtyTwoColorRed)
-                                                   Expanded(
-                                                     child: DragTarget(
-                                                       builder: (context, List<Object?> candidateData,
-                                                           rejectedData) {
-                                                         return Padding(
-                                                           padding: const EdgeInsets.all(8.0),
-                                                           child: new ElevatedButton(
-                                                             child: Container(
-                                                               margin:
-                                                               EdgeInsets.symmetric(vertical: 20),
-                                                               child: new Text(
-                                                                 'Men',
-                                                                 style: TextStyle(
-                                                                   color: Color(0xff073ea6),
-                                                                   fontSize: 18,
-                                                                 ),
-                                                               ),
-                                                             ),
-                                                             style: ElevatedButton.styleFrom(
-                                                               //primary: Color(0xff072e79),
-                                                               primary: Color(0xffffffff),
-
-                                                               minimumSize: Size(double.infinity, 52),
-                                                               shape: new RoundedRectangleBorder(
-                                                                 borderRadius:
-                                                                 new BorderRadius.circular(100.0),
-                                                                 // side: BorderSide(color: Color(0xffffffff)),
-                                                               ),
-                                                             ),
-                                                             onPressed: () {},
-                                                           ),
-                                                         );
-                                                       },
-                                                       onWillAccept: (data) {
-                                                         return true;
-                                                       },
-                                                       onAccept: (data) {
-                                                         print("data $data");
-                                                         setState(() {
-                                                           if (data == "32") {
-                                                             isThirtyTwoMatch = true;
-                                                             score += 10;
-                                                             chances -= 1;
-                                                             print("CHANCES $chances");
-                                                           } else {
-                                                             if (score > 0) {
-                                                               score -= 5;
-                                                             }
-                                                             isThirtyTwoColorRed = true;
-                                                             chances -= 1;
-                                                           }
-                                                         });
-                                                       },
-                                                     ),
-                                                   ),
-                                                 if (isThirtyTwoMatch)
-                                                   Expanded(
-                                                     child: Padding(
-                                                       padding: const EdgeInsets.all(8.0),
-                                                       child: new ElevatedButton(
-                                                         child: Container(
-                                                           margin: EdgeInsets.symmetric(vertical: 20),
-                                                           child: new Text(
-                                                             'Men',
-                                                             style: TextStyle(
-                                                               // color: Colors.transparent,
-                                                               fontSize: 18,
-                                                             ),
-                                                           ),
-                                                         ),
-                                                         style: ElevatedButton.styleFrom(
-                                                           //primary: Color(0xff072e79),
-                                                           primary: Colors.green,
-
-                                                           minimumSize: Size(double.infinity, 52),
-                                                           shape: new RoundedRectangleBorder(
-                                                             borderRadius:
-                                                             new BorderRadius.circular(100.0),
-                                                             // side: BorderSide(color: Color(0xffffffff)),
-                                                           ),
-                                                         ),
-                                                         onPressed: () {},
-                                                       ),
-                                                     ),
-                                                   ),
-                                                 if (isThirtyTwoColorRed)
-                                                   Expanded(
-                                                     child: Padding(
-                                                       padding: const EdgeInsets.all(8.0),
-                                                       child: new ElevatedButton(
-                                                         child: Container(
-                                                           margin: EdgeInsets.symmetric(vertical: 20),
-                                                           child: new Text(
-                                                             'Men',
-                                                             style: TextStyle(
-                                                               // color: Colors.transparent,
-                                                               fontSize: 18,
-                                                             ),
-                                                           ),
-                                                         ),
-                                                         style: ElevatedButton.styleFrom(
-                                                           //primary: Color(0xff072e79),
-                                                           primary: Colors.red,
-
-                                                           minimumSize: Size(double.infinity, 52),
-                                                           shape: new RoundedRectangleBorder(
-                                                             borderRadius:
-                                                             new BorderRadius.circular(100.0),
-                                                             // side: BorderSide(color: Color(0xffffffff)),
-                                                           ),
-                                                         ),
-                                                         onPressed: () {},
-                                                       ),
-                                                     ),
-                                                   ),
-                                               ],
-                                             ),
-                                           ),
-
-                                           //5
-                                           Container(
-                                             margin: EdgeInsets.only(top: 10, left: 10, right: 10),
-                                             child: Row(
-                                               crossAxisAlignment: CrossAxisAlignment.center,
-                                               children: [
-                                                 if (!isThirtyFiveMatch && !isThirtyFiveColorRed)
-                                                   Expanded(
-                                                     child: Draggable(
-                                                       data: "35",
-                                                       feedback: Padding(
-                                                         padding: const EdgeInsets.all(8.0),
-                                                         child: new ElevatedButton(
-                                                           child: Container(
-                                                             margin: EdgeInsets.symmetric(vertical: 20),
-                                                             child: new Text(
-                                                               'Гомель',
-                                                               style: TextStyle(
-                                                                 color: Color(0xff073ea6),
-                                                                 fontSize: 18,
-                                                               ),
-                                                             ),
-                                                           ),
-                                                           style: ElevatedButton.styleFrom(
-                                                             //primary: Color(0xff072e79),
-                                                             primary: Color(0xffffffff),
-
-                                                             minimumSize: Size(150, 52),
-                                                             shape: new RoundedRectangleBorder(
-                                                               borderRadius:
-                                                               new BorderRadius.circular(100.0),
-                                                               // side: BorderSide(color: Color(0xffffffff)),
-                                                             ),
-                                                           ),
-                                                           onPressed: () {},
-                                                         ),
-                                                       ),
-                                                       childWhenDragging: Container(),
-                                                       child: Padding(
-                                                         padding: const EdgeInsets.all(8.0),
-                                                         child: new ElevatedButton(
-                                                           child: Container(
-                                                             margin: EdgeInsets.symmetric(vertical: 20),
-                                                             child: new Text(
-                                                               'Гомель',
-                                                               style: TextStyle(
-                                                                 color: Color(0xff073ea6),
-                                                                 fontSize: 18,
-                                                               ),
-                                                             ),
-                                                           ),
-                                                           style: ElevatedButton.styleFrom(
-                                                             //primary: Color(0xff072e79),
-                                                             primary: Color(0xffffffff),
-
-                                                             minimumSize: Size(double.infinity, 52),
-                                                             shape: new RoundedRectangleBorder(
-                                                               borderRadius:
-                                                               new BorderRadius.circular(100.0),
-                                                               // side: BorderSide(color: Color(0xffffffff)),
-                                                             ),
-                                                           ),
-                                                           onPressed: () {},
-                                                         ),
-                                                       ),
-                                                     ),
-                                                   ),
-                                                 if (isThirtyFiveMatch)
-                                                   Expanded(
-                                                     child: Padding(
-                                                       padding: const EdgeInsets.all(8.0),
-                                                       child: new ElevatedButton(
-                                                         child: Container(
-                                                           margin: EdgeInsets.symmetric(vertical: 20),
-                                                           child: new Text(
-                                                             'Гомель',
-                                                             style: TextStyle(
-                                                               // color: Colors.green,
-                                                               fontSize: 18,
-                                                             ),
-                                                           ),
-                                                         ),
-                                                         style: ElevatedButton.styleFrom(
-                                                           //primary: Color(0xff072e79),
-                                                           primary: Colors.green,
-
-                                                           minimumSize: Size(double.infinity, 52),
-                                                           shape: new RoundedRectangleBorder(
-                                                             borderRadius:
-                                                             new BorderRadius.circular(100.0),
-                                                             // side: BorderSide(color: Color(0xffffffff)),
-                                                           ),
-                                                         ),
-                                                         onPressed: () {},
-                                                       ),
-                                                     ),
-                                                   ),
-                                                 if (isThirtyFiveColorRed)
-                                                   Expanded(
-                                                     child: Padding(
-                                                       padding: const EdgeInsets.all(8.0),
-                                                       child: new ElevatedButton(
-                                                         child: Container(
-                                                           margin: EdgeInsets.symmetric(vertical: 20),
-                                                           child: new Text(
-                                                             'Гомель',
-                                                             style: TextStyle(
-                                                               // color: Colors.green,
-                                                               fontSize: 18,
-                                                             ),
-                                                           ),
-                                                         ),
-                                                         style: ElevatedButton.styleFrom(
-                                                           //primary: Color(0xff072e79),
-                                                           primary: Colors.red,
-
-                                                           minimumSize: Size(double.infinity, 52),
-                                                           shape: new RoundedRectangleBorder(
-                                                             borderRadius:
-                                                             new BorderRadius.circular(100.0),
-                                                             // side: BorderSide(color: Color(0xffffffff)),
-                                                           ),
-                                                         ),
-                                                         onPressed: () {},
-                                                       ),
-                                                     ),
-                                                   ),
-                                                 if (!isThirtyThreeMatch && !isThirtyThreeColorRed)
-                                                   Expanded(
-                                                     child: DragTarget(
-                                                       builder: (context, List<Object?> candidateData,
-                                                           rejectedData) {
-                                                         return Padding(
-                                                           padding: const EdgeInsets.all(8.0),
-                                                           child: new ElevatedButton(
-                                                             child: Container(
-                                                               margin:
-                                                               EdgeInsets.symmetric(vertical: 20),
-                                                               child: new Text(
-                                                                 'lane',
-                                                                 style: TextStyle(
-                                                                   color: Color(0xff073ea6),
-                                                                   fontSize: 18,
-                                                                 ),
-                                                               ),
-                                                             ),
-                                                             style: ElevatedButton.styleFrom(
-                                                               //primary: Color(0xff072e79),
-                                                               primary: Color(0xffffffff),
-
-                                                               minimumSize: Size(double.infinity, 52),
-                                                               shape: new RoundedRectangleBorder(
-                                                                 borderRadius:
-                                                                 new BorderRadius.circular(100.0),
-                                                                 // side: BorderSide(color: Color(0xffffffff)),
-                                                               ),
-                                                             ),
-                                                             onPressed: () {},
-                                                           ),
-                                                         );
-                                                       },
-                                                       onWillAccept: (data) {
-                                                         return true;
-                                                       },
-                                                       onAccept: (data) {
-                                                         print("data $data");
-                                                         setState(() {
-                                                           if (data == "33") {
-                                                             isThirtyThreeMatch = true;
-                                                             score += 10;
-                                                             chances -= 1;
-                                                             print("CHANCES $chances");
-                                                           } else {
-                                                             if (score > 0) {
-                                                               score -= 5;
-                                                             }
-                                                             isThirtyThreeColorRed = true;
-                                                             chances -= 1;
-                                                           }
-                                                         });
-                                                       },
-                                                     ),
-                                                   ),
-                                                 if (isThirtyThreeMatch)
-                                                   Expanded(
-                                                     child: Padding(
-                                                       padding: const EdgeInsets.all(8.0),
-                                                       child: new ElevatedButton(
-                                                         child: Container(
-                                                           margin: EdgeInsets.symmetric(vertical: 20),
-                                                           child: new Text(
-                                                             'lane',
-                                                             style: TextStyle(
-                                                               // color: Colors.transparent,
-                                                               fontSize: 18,
-                                                             ),
-                                                           ),
-                                                         ),
-                                                         style: ElevatedButton.styleFrom(
-                                                           //primary: Color(0xff072e79),
-                                                           primary: Colors.green,
-
-                                                           minimumSize: Size(double.infinity, 52),
-                                                           shape: new RoundedRectangleBorder(
-                                                             borderRadius:
-                                                             new BorderRadius.circular(100.0),
-                                                             // side: BorderSide(color: Color(0xffffffff)),
-                                                           ),
-                                                         ),
-                                                         onPressed: () {},
-                                                       ),
-                                                     ),
-                                                   ),
-                                                 if (isThirtyThreeColorRed)
-                                                   Expanded(
-                                                     child: Padding(
-                                                       padding: const EdgeInsets.all(8.0),
-                                                       child: new ElevatedButton(
-                                                         child: Container(
-                                                           margin: EdgeInsets.symmetric(vertical: 20),
-                                                           child: new Text(
-                                                             'lane',
-                                                             style: TextStyle(
-                                                               // color: Colors.transparent,
-                                                               fontSize: 18,
-                                                             ),
-                                                           ),
-                                                         ),
-                                                         style: ElevatedButton.styleFrom(
-                                                           //primary: Color(0xff072e79),
-                                                           primary: Colors.red,
-
-                                                           minimumSize: Size(double.infinity, 52),
-                                                           shape: new RoundedRectangleBorder(
-                                                             borderRadius:
-                                                             new BorderRadius.circular(100.0),
-                                                             // side: BorderSide(color: Color(0xffffffff)),
-                                                           ),
-                                                         ),
-                                                         onPressed: () {},
-                                                       ),
-                                                     ),
-                                                   ),
-                                               ],
-                                             ),
-                                           ),
-                                         ]
-                                         ) :
-                                         widget.stage == 8 ?
-                                         Column(
-                                             children : [
-
-                                               //1
-                                               Container(
-                                                 margin: EdgeInsets.only(top: 10, left: 10, right: 10),
-                                                 child: Row(
-                                                   crossAxisAlignment: CrossAxisAlignment.center,
-                                                   children: [
-                                                     if (!isThirtySixMatch && !isThirtySixColorRed)
-                                                       Expanded(
-                                                         child: Draggable(
-                                                           data: "36",
-                                                           feedback: Padding(
-                                                             padding: const EdgeInsets.all(8.0),
-                                                             child: new ElevatedButton(
-                                                               child: Container(
-                                                                 margin: EdgeInsets.symmetric(vertical: 20),
-                                                                 child: new Text(
-                                                                   'Киев',
-                                                                   style: TextStyle(
-                                                                     color: Color(0xff073ea6),
-                                                                     fontSize: 18,
-                                                                   ),
-                                                                 ),
-                                                               ),
-                                                               style: ElevatedButton.styleFrom(
-                                                                 //primary: Color(0xff072e79),
-                                                                 primary: Color(0xffffffff),
-
-                                                                 minimumSize: Size(150, 52),
-                                                                 shape: new RoundedRectangleBorder(
-                                                                   borderRadius:
-                                                                   new BorderRadius.circular(100.0),
-                                                                   // side: BorderSide(color: Color(0xffffffff)),
-                                                                 ),
-                                                               ),
-                                                               onPressed: () {},
-                                                             ),
-                                                           ),
-                                                           childWhenDragging: Container(),
-                                                           child: Padding(
-                                                             padding: const EdgeInsets.all(8.0),
-                                                             child: new ElevatedButton(
-                                                               child: Container(
-                                                                 margin: EdgeInsets.symmetric(vertical: 20),
-                                                                 child: new Text(
-                                                                   'Киев',
-                                                                   style: TextStyle(
-                                                                     color: Color(0xff073ea6),
-                                                                     fontSize: 18,
-                                                                   ),
-                                                                 ),
-                                                               ),
-                                                               style: ElevatedButton.styleFrom(
-                                                                 //primary: Color(0xff072e79),
-                                                                 primary: Color(0xffffffff),
-
-                                                                 minimumSize: Size(double.infinity, 52),
-                                                                 shape: new RoundedRectangleBorder(
-                                                                   borderRadius:
-                                                                   new BorderRadius.circular(100.0),
-                                                                   // side: BorderSide(color: Color(0xffffffff)),
-                                                                 ),
-                                                               ),
-                                                               onPressed: () {},
-                                                             ),
-                                                           ),
-                                                         ),
-                                                       ),
-                                                     if (isThirtySixMatch)
-                                                       Expanded(
-                                                         child: Padding(
-                                                           padding: const EdgeInsets.all(8.0),
-                                                           child: new ElevatedButton(
-                                                             child: Container(
-                                                               margin: EdgeInsets.symmetric(vertical: 20),
-                                                               child: new Text(
-                                                                 'Киев',
-                                                                 style: TextStyle(
-                                                                   // color: Colors.transparent,
-                                                                   fontSize: 18,
-                                                                 ),
-                                                               ),
-                                                             ),
-                                                             style: ElevatedButton.styleFrom(
-                                                               //primary: Color(0xff072e79),
-                                                               primary: Colors.green,
-
-                                                               minimumSize: Size(double.infinity, 52),
-                                                               shape: new RoundedRectangleBorder(
-                                                                 borderRadius:
-                                                                 new BorderRadius.circular(100.0),
-                                                                 // side: BorderSide(color: Color(0xffffffff)),
-                                                               ),
-                                                             ),
-                                                             onPressed: () {},
-                                                           ),
-                                                         ),
-                                                       ),
-                                                     if (isThirtySixColorRed)
-                                                       Expanded(
-                                                         child: Padding(
-                                                           padding: const EdgeInsets.all(8.0),
-                                                           child: new ElevatedButton(
-                                                             child: Container(
-                                                               margin: EdgeInsets.symmetric(vertical: 20),
-                                                               child: new Text(
-                                                                 'Киев',
-                                                                 style: TextStyle(
-                                                                   // color: Colors.transparent,
-                                                                   fontSize: 18,
-                                                                 ),
-                                                               ),
-                                                             ),
-                                                             style: ElevatedButton.styleFrom(
-                                                               //primary: Color(0xff072e79),
-                                                               primary: Colors.red,
-
-                                                               minimumSize: Size(double.infinity, 52),
-                                                               shape: new RoundedRectangleBorder(
-                                                                 borderRadius:
-                                                                 new BorderRadius.circular(100.0),
-                                                                 // side: BorderSide(color: Color(0xffffffff)),
-                                                               ),
-                                                             ),
-                                                             onPressed: () {},
-                                                           ),
-                                                         ),
-                                                       ),
-                                                     if (!isThirtyEightMatch && !isThirtyEightColorRed)
-                                                       Expanded(
-                                                         child: DragTarget(
-                                                           builder: (context, List<Object?> candidateData,
-                                                               rejectedData) {
-                                                             return Padding(
-                                                               padding: const EdgeInsets.all(8.0),
-                                                               child: new ElevatedButton(
-                                                                 child: Container(
-                                                                   margin:
-                                                                   EdgeInsets.symmetric(vertical: 20),
-                                                                   child: new Text(
-                                                                     'Three Hundred',
-                                                                     style: TextStyle(
-                                                                       color: Color(0xff073ea6),
-                                                                       fontSize: 18,
-                                                                     ),
-                                                                   ),
-                                                                 ),
-                                                                 style: ElevatedButton.styleFrom(
-                                                                   //primary: Color(0xff072e79),
-                                                                   primary: Color(0xffffffff),
-
-                                                                   minimumSize: Size(double.infinity, 52),
-                                                                   shape: new RoundedRectangleBorder(
-                                                                     borderRadius:
-                                                                     new BorderRadius.circular(100.0),
-                                                                     // side: BorderSide(color: Color(0xffffffff)),
-                                                                   ),
-                                                                 ),
-                                                                 onPressed: () {},
-                                                               ),
-                                                             );
-                                                           },
-                                                           onWillAccept: (data) {
-                                                             return true;
-                                                           },
-                                                           onAccept: (data) {
-                                                             print("data $data");
-                                                             setState(() {
-                                                               if (data == "38") {
-                                                                 isThirtyEightMatch = true;
-                                                                 score += 10;
-                                                                 chances -= 1;
-
-                                                                 print("CHANCES $chances");
-                                                               } else {
-                                                                 if (score > 0) {
-                                                                   score -= 5;
-                                                                 }
-                                                                 isThirtyEightColorRed = true;
-                                                                 chances -= 1;
-                                                               }
-                                                             });
-                                                           },
-                                                         ),
-                                                       ),
-                                                     if (isThirtyEightMatch)
-                                                       Expanded(
-                                                         child: Padding(
-                                                           padding: const EdgeInsets.all(8.0),
-                                                           child: new ElevatedButton(
-                                                             child: Container(
-                                                               margin: EdgeInsets.symmetric(vertical: 20),
-                                                               child: new Text(
-                                                                 'Three Hundred',
-                                                                 style: TextStyle(
-                                                                   // color: Colors.transparent,
-                                                                   fontSize: 18,
-                                                                 ),
-                                                               ),
-                                                             ),
-                                                             style: ElevatedButton.styleFrom(
-                                                               //primary: Color(0xff072e79),
-                                                               primary: Colors.green,
-
-                                                               minimumSize: Size(double.infinity, 52),
-                                                               shape: new RoundedRectangleBorder(
-                                                                 borderRadius:
-                                                                 new BorderRadius.circular(100.0),
-                                                                 // side: BorderSide(color: Color(0xffffffff)),
-                                                               ),
-                                                             ),
-                                                             onPressed: () {},
-                                                           ),
-                                                         ),
-                                                       ),
-                                                     if (isThirtyEightColorRed)
-                                                       Expanded(
-                                                         child: Padding(
-                                                           padding: const EdgeInsets.all(8.0),
-                                                           child: new ElevatedButton(
-                                                             child: Container(
-                                                               margin: EdgeInsets.symmetric(vertical: 20),
-                                                               child: new Text(
-                                                                 'Three Hundred',
-                                                                 style: TextStyle(
-                                                                   // color: Colors.transparent,
-                                                                   fontSize: 18,
-                                                                 ),
-                                                               ),
-                                                             ),
-                                                             style: ElevatedButton.styleFrom(
-                                                               //primary: Color(0xff072e79),
-                                                               primary: Colors.red,
-
-                                                               minimumSize: Size(double.infinity, 52),
-                                                               shape: new RoundedRectangleBorder(
-                                                                 borderRadius:
-                                                                 new BorderRadius.circular(100.0),
-                                                                 // side: BorderSide(color: Color(0xffffffff)),
-                                                               ),
-                                                             ),
-                                                             onPressed: () {},
-                                                           ),
-                                                         ),
-                                                       ),
-                                                   ],
-                                                 ),
-                                               ),
-
-                                               //2
-                                               Container(
-                                                 margin: EdgeInsets.only(top: 10, left: 10, right: 10),
-                                                 child: Row(
-                                                   crossAxisAlignment: CrossAxisAlignment.center,
-                                                   children: [
-                                                     if (!isThirtySevenMatch && !isThirtySevenColorRed)
-                                                       Expanded(
-                                                         child: Draggable(
-                                                           data: "37",
-                                                           feedback: Padding(
-                                                             padding: const EdgeInsets.all(8.0),
-                                                             child: new ElevatedButton(
-                                                               child: Container(
-                                                                 margin: EdgeInsets.symmetric(vertical: 20),
-                                                                 child: new Text(
-                                                                   'восемнадцать',
-                                                                   style: TextStyle(
-                                                                     color: Color(0xff073ea6),
-                                                                     fontSize: 18,
-                                                                   ),
-                                                                 ),
-                                                               ),
-                                                               style: ElevatedButton.styleFrom(
-                                                                 //primary: Color(0xff072e79),
-                                                                 primary: Color(0xffffffff),
-
-                                                                 minimumSize: Size(150, 52),
-                                                                 shape: new RoundedRectangleBorder(
-                                                                   borderRadius:
-                                                                   new BorderRadius.circular(100.0),
-                                                                   // side: BorderSide(color: Color(0xffffffff)),
-                                                                 ),
-                                                               ),
-                                                               onPressed: () {},
-                                                             ),
-                                                           ),
-                                                           childWhenDragging: Container(),
-                                                           child: Padding(
-                                                             padding: const EdgeInsets.all(8.0),
-                                                             child: new ElevatedButton(
-                                                               child: Container(
-                                                                 margin: EdgeInsets.symmetric(vertical: 20),
-                                                                 child: new Text(
-                                                                   'восемнадцать',
-                                                                   style: TextStyle(
-                                                                     color: Color(0xff073ea6),
-                                                                     fontSize: 18,
-                                                                   ),
-                                                                 ),
-                                                               ),
-                                                               style: ElevatedButton.styleFrom(
-                                                                 //primary: Color(0xff072e79),
-                                                                 primary: Color(0xffffffff),
-
-                                                                 minimumSize: Size(double.infinity, 52),
-                                                                 shape: new RoundedRectangleBorder(
-                                                                   borderRadius:
-                                                                   new BorderRadius.circular(100.0),
-                                                                   // side: BorderSide(color: Color(0xffffffff)),
-                                                                 ),
-                                                               ),
-                                                               onPressed: () {},
-                                                             ),
-                                                           ),
-                                                         ),
-                                                       ),
-                                                     if (isThirtySevenMatch)
-                                                       Expanded(
-                                                         child: Padding(
-                                                           padding: const EdgeInsets.all(8.0),
-                                                           child: new ElevatedButton(
-                                                             child: Container(
-                                                               margin: EdgeInsets.symmetric(vertical: 20),
-                                                               child: new Text(
-                                                                 "восемнадцать",
-                                                                 style: TextStyle(
-                                                                   // color: Colors.transparent,
-                                                                   fontSize: 18,
-                                                                 ),
-                                                               ),
-                                                             ),
-                                                             style: ElevatedButton.styleFrom(
-                                                               //primary: Color(0xff072e79),
-                                                               primary: Colors.green,
-
-                                                               minimumSize: Size(double.infinity, 52),
-                                                               shape: new RoundedRectangleBorder(
-                                                                 borderRadius:
-                                                                 new BorderRadius.circular(100.0),
-                                                                 // side: BorderSide(color: Color(0xffffffff)),
-                                                               ),
-                                                             ),
-                                                             onPressed: () {},
-                                                           ),
-                                                         ),
-                                                       ),
-                                                     if (isThirtySevenColorRed)
-                                                       Expanded(
-                                                         child: Padding(
-                                                           padding: const EdgeInsets.all(8.0),
-                                                           child: new ElevatedButton(
-                                                             child: Container(
-                                                               margin: EdgeInsets.symmetric(vertical: 20),
-                                                               child: new Text(
-                                                                 'восемнадцать',
-                                                                 style: TextStyle(
-                                                                   // color: Colors.transparent,
-                                                                   fontSize: 18,
-                                                                 ),
-                                                               ),
-                                                             ),
-                                                             style: ElevatedButton.styleFrom(
-                                                               //primary: Color(0xff072e79),
-                                                               primary: Colors.red,
-
-                                                               minimumSize: Size(double.infinity, 52),
-                                                               shape: new RoundedRectangleBorder(
-                                                                 borderRadius:
-                                                                 new BorderRadius.circular(100.0),
-                                                                 // side: BorderSide(color: Color(0xffffffff)),
-                                                               ),
-                                                             ),
-                                                             onPressed: () {},
-                                                           ),
-                                                         ),
-                                                       ),
-                                                     if (!isThirtySixMatch && !isThirtySixColorRed)
-                                                       Expanded(
-                                                         child: DragTarget(
-                                                           builder: (context, List<Object?> candidateData,
-                                                               rejectedData) {
-                                                             return Padding(
-                                                               padding: const EdgeInsets.all(8.0),
-                                                               child: new ElevatedButton(
-                                                                 child: Container(
-                                                                   margin:
-                                                                   EdgeInsets.symmetric(vertical: 20),
-                                                                   child: new Text(
-                                                                     'Kiev',
-                                                                     style: TextStyle(
-                                                                       color: Color(0xff073ea6),
-                                                                       fontSize: 18,
-                                                                     ),
-                                                                   ),
-                                                                 ),
-                                                                 style: ElevatedButton.styleFrom(
-                                                                   //primary: Color(0xff072e79),
-                                                                   primary: Color(0xffffffff),
-
-                                                                   minimumSize: Size(double.infinity, 52),
-                                                                   shape: new RoundedRectangleBorder(
-                                                                     borderRadius:
-                                                                     new BorderRadius.circular(100.0),
-                                                                     // side: BorderSide(color: Color(0xffffffff)),
-                                                                   ),
-                                                                 ),
-                                                                 onPressed: () {},
-                                                               ),
-                                                             );
-                                                           },
-                                                           onWillAccept: (data) {
-                                                             return true;
-                                                           },
-                                                           onAccept: (data) {
-                                                             print("data $data");
-                                                             setState(() {
-                                                               if (data == "36") {
-                                                                 isThirtySixMatch = true;
-                                                                 score += 10;
-                                                                 chances -= 1;
-                                                                 print("CHANCES $chances");
-                                                               } else {
-                                                                 if (score > 0) {
-                                                                   score -= 5;
-                                                                 }
-                                                                 isThirtySixColorRed = true;
-                                                                 chances -= 1;
-                                                               }
-                                                             });
-                                                           },
-                                                         ),
-                                                       ),
-                                                     if (isThirtySixMatch)
-                                                       Expanded(
-                                                         child: Padding(
-                                                           padding: const EdgeInsets.all(8.0),
-                                                           child: new ElevatedButton(
-                                                             child: Container(
-                                                               margin: EdgeInsets.symmetric(vertical: 20),
-                                                               child: new Text(
-                                                                 'Kiev',
-                                                                 style: TextStyle(
-                                                                   // color: Colors.transparent,
-                                                                   fontSize: 18,
-                                                                 ),
-                                                               ),
-                                                             ),
-                                                             style: ElevatedButton.styleFrom(
-                                                               //primary: Color(0xff072e79),
-                                                               primary: Colors.green,
-
-                                                               minimumSize: Size(double.infinity, 52),
-                                                               shape: new RoundedRectangleBorder(
-                                                                 borderRadius:
-                                                                 new BorderRadius.circular(100.0),
-                                                                 // side: BorderSide(color: Color(0xffffffff)),
-                                                               ),
-                                                             ),
-                                                             onPressed: () {},
-                                                           ),
-                                                         ),
-                                                       ),
-                                                     if (isThirtySixColorRed)
-                                                       Expanded(
-                                                         child: Padding(
-                                                           padding: const EdgeInsets.all(8.0),
-                                                           child: new ElevatedButton(
-                                                             child: Container(
-                                                               margin: EdgeInsets.symmetric(vertical: 20),
-                                                               child: new Text(
-                                                                 'Kiev',
-                                                                 style: TextStyle(
-                                                                   // color: Colors.transparent,
-                                                                   fontSize: 18,
-                                                                 ),
-                                                               ),
-                                                             ),
-                                                             style: ElevatedButton.styleFrom(
-                                                               //primary: Color(0xff072e79),
-                                                               primary: Colors.red,
-
-                                                               minimumSize: Size(double.infinity, 52),
-                                                               shape: new RoundedRectangleBorder(
-                                                                 borderRadius:
-                                                                 new BorderRadius.circular(100.0),
-                                                                 // side: BorderSide(color: Color(0xffffffff)),
-                                                               ),
-                                                             ),
-                                                             onPressed: () {},
-                                                           ),
-                                                         ),
-                                                       ),
-                                                   ],
-                                                 ),
-                                               ),
-
-                                               //3
-                                               Container(
-                                                 margin: EdgeInsets.only(top: 10, left: 10, right: 10),
-                                                 child: Row(
-                                                   crossAxisAlignment: CrossAxisAlignment.center,
-                                                   children: [
-                                                     if (!isThirtyEightMatch && !isThirtyEightColorRed)
-                                                       Expanded(
-                                                         child: Draggable(
-                                                           data: "38",
-                                                           feedback: Padding(
-                                                             padding: const EdgeInsets.all(8.0),
-                                                             child: new ElevatedButton(
-                                                               child: Container(
-                                                                 margin: EdgeInsets.symmetric(vertical: 20),
-                                                                 child: new Text(
-                                                                   'триста',
-                                                                   style: TextStyle(
-                                                                     color: Color(0xff073ea6),
-                                                                     fontSize: 18,
-                                                                   ),
-                                                                 ),
-                                                               ),
-                                                               style: ElevatedButton.styleFrom(
-                                                                 //primary: Color(0xff072e79),
-                                                                 primary: Color(0xffffffff),
-
-                                                                 minimumSize: Size(150, 52),
-                                                                 shape: new RoundedRectangleBorder(
-                                                                   borderRadius:
-                                                                   new BorderRadius.circular(100.0),
-                                                                   // side: BorderSide(color: Color(0xffffffff)),
-                                                                 ),
-                                                               ),
-                                                               onPressed: () {},
-                                                             ),
-                                                           ),
-                                                           childWhenDragging: Container(),
-                                                           child: Padding(
-                                                             padding: const EdgeInsets.all(8.0),
-                                                             child: new ElevatedButton(
-                                                               child: Container(
-                                                                 margin: EdgeInsets.symmetric(vertical: 20),
-                                                                 child: new Text(
-                                                                   'триста',
-                                                                   style: TextStyle(
-                                                                     color: Color(0xff073ea6),
-                                                                     fontSize: 18,
-                                                                   ),
-                                                                 ),
-                                                               ),
-                                                               style: ElevatedButton.styleFrom(
-                                                                 //primary: Color(0xff072e79),
-                                                                 primary: Color(0xffffffff),
-
-                                                                 minimumSize: Size(double.infinity, 52),
-                                                                 shape: new RoundedRectangleBorder(
-                                                                   borderRadius:
-                                                                   new BorderRadius.circular(100.0),
-                                                                   // side: BorderSide(color: Color(0xffffffff)),
-                                                                 ),
-                                                               ),
-                                                               onPressed: () {},
-                                                             ),
-                                                           ),
-                                                         ),
-                                                       ),
-                                                     if (isThirtyEightMatch)
-                                                       Expanded(
-                                                         child: Padding(
-                                                           padding: const EdgeInsets.all(8.0),
-                                                           child: new ElevatedButton(
-                                                             child: Container(
-                                                               margin: EdgeInsets.symmetric(vertical: 20),
-                                                               child: new Text(
-                                                                 'триста',
-                                                                 style: TextStyle(
-                                                                   // color: Colors.transparent,
-                                                                   fontSize: 18,
-                                                                 ),
-                                                               ),
-                                                             ),
-                                                             style: ElevatedButton.styleFrom(
-                                                               //primary: Color(0xff072e79),
-                                                               primary: Colors.green,
-
-                                                               minimumSize: Size(double.infinity, 52),
-                                                               shape: new RoundedRectangleBorder(
-                                                                 borderRadius:
-                                                                 new BorderRadius.circular(100.0),
-                                                                 // side: BorderSide(color: Color(0xffffffff)),
-                                                               ),
-                                                             ),
-                                                             onPressed: () {},
-                                                           ),
-                                                         ),
-                                                       ),
-                                                     if (isThirtyEightColorRed)
-                                                       Expanded(
-                                                         child: Padding(
-                                                           padding: const EdgeInsets.all(8.0),
-                                                           child: new ElevatedButton(
-                                                             child: Container(
-                                                               margin: EdgeInsets.symmetric(vertical: 20),
-                                                               child: new Text(
-                                                                 'триста',
-                                                                 style: TextStyle(
-                                                                   // color: Colors.transparent,
-                                                                   fontSize: 18,
-                                                                 ),
-                                                               ),
-                                                             ),
-                                                             style: ElevatedButton.styleFrom(
-                                                               //primary: Color(0xff072e79),
-                                                               primary: Colors.red,
-
-                                                               minimumSize: Size(double.infinity, 52),
-                                                               shape: new RoundedRectangleBorder(
-                                                                 borderRadius:
-                                                                 new BorderRadius.circular(100.0),
-                                                                 // side: BorderSide(color: Color(0xffffffff)),
-                                                               ),
-                                                             ),
-                                                             onPressed: () {},
-                                                           ),
-                                                         ),
-                                                       ),
-                                                     if (!isThirtyNineMatch && !isThirtyNineColorRed)
-                                                       Expanded(
-                                                         child: DragTarget(
-                                                           builder: (context, List<Object?> candidateData,
-                                                               rejectedData) {
-                                                             return Padding(
-                                                               padding: const EdgeInsets.all(8.0),
-                                                               child: new ElevatedButton(
-                                                                 child: Container(
-                                                                   margin:
-                                                                   EdgeInsets.symmetric(vertical: 20),
-                                                                   child: new Text(
-                                                                     'two thousand',
-                                                                     style: TextStyle(
-                                                                       color: Color(0xff073ea6),
-                                                                       fontSize: 18,
-                                                                     ),
-                                                                   ),
-                                                                 ),
-                                                                 style: ElevatedButton.styleFrom(
-                                                                   //primary: Color(0xff072e79),
-                                                                   primary: Color(0xffffffff),
-
-                                                                   minimumSize: Size(double.infinity, 52),
-                                                                   shape: new RoundedRectangleBorder(
-                                                                     borderRadius:
-                                                                     new BorderRadius.circular(100.0),
-                                                                     // side: BorderSide(color: Color(0xffffffff)),
-                                                                   ),
-                                                                 ),
-                                                                 onPressed: () {},
-                                                               ),
-                                                             );
-                                                           },
-                                                           onWillAccept: (data) {
-                                                             return true;
-                                                           },
-                                                           onAccept: (data) {
-                                                             print("data $data");
-                                                             setState(() {
-                                                               if (data == "39") {
-                                                                 isThirtyNineMatch = true;
-                                                                 score += 10;
-                                                                 chances -= 1;
-                                                                 print("CHANCES $chances");
-                                                               } else {
-                                                                 if (score > 0) {
-                                                                   score -= 5;
-                                                                 }
-                                                                 isThirtyNineColorRed = true;
-                                                                 chances -= 1;
-                                                               }
-                                                             });
-                                                           },
-                                                         ),
-                                                       ),
-                                                     if (isThirtyNineMatch)
-                                                       Expanded(
-                                                         child: Padding(
-                                                           padding: const EdgeInsets.all(8.0),
-                                                           child: new ElevatedButton(
-                                                             child: Container(
-                                                               margin: EdgeInsets.symmetric(vertical: 20),
-                                                               child: new Text(
-                                                                 'two thousand',
-                                                                 style: TextStyle(
-                                                                   // color: Colors.transparent,
-                                                                   fontSize: 18,
-                                                                 ),
-                                                               ),
-                                                             ),
-                                                             style: ElevatedButton.styleFrom(
-                                                               //primary: Color(0xff072e79),
-                                                               primary: Colors.green,
-
-                                                               minimumSize: Size(double.infinity, 52),
-                                                               shape: new RoundedRectangleBorder(
-                                                                 borderRadius:
-                                                                 new BorderRadius.circular(100.0),
-                                                                 // side: BorderSide(color: Color(0xffffffff)),
-                                                               ),
-                                                             ),
-                                                             onPressed: () {},
-                                                           ),
-                                                         ),
-                                                       ),
-                                                     if (isThirtyNineColorRed)
-                                                       Expanded(
-                                                         child: Padding(
-                                                           padding: const EdgeInsets.all(8.0),
-                                                           child: new ElevatedButton(
-                                                             child: Container(
-                                                               margin: EdgeInsets.symmetric(vertical: 20),
-                                                               child: new Text(
-                                                                 'two thousand',
-                                                                 style: TextStyle(
-                                                                   // color: Colors.transparent,
-                                                                   fontSize: 18,
-                                                                 ),
-                                                               ),
-                                                             ),
-                                                             style: ElevatedButton.styleFrom(
-                                                               //primary: Color(0xff072e79),
-                                                               primary: Colors.red,
-
-                                                               minimumSize: Size(double.infinity, 52),
-                                                               shape: new RoundedRectangleBorder(
-                                                                 borderRadius:
-                                                                 new BorderRadius.circular(100.0),
-                                                                 // side: BorderSide(color: Color(0xffffffff)),
-                                                               ),
-                                                             ),
-                                                             onPressed: () {},
-                                                           ),
-                                                         ),
-                                                       ),
-                                                   ],
-                                                 ),
-                                               ),
-
-                                               //4
-
-                                               Container(
-                                                 margin: EdgeInsets.only(top: 10, left: 10, right: 10),
-                                                 child: Row(
-                                                   crossAxisAlignment: CrossAxisAlignment.center,
-                                                   children: [
-                                                     if (!isThirtyNineMatch && !isThirtyNineColorRed)
-                                                       Expanded(
-                                                         child: Draggable(
-                                                           data: "39",
-                                                           feedback: Padding(
-                                                             padding: const EdgeInsets.all(8.0),
-                                                             child: new ElevatedButton(
-                                                               child: Container(
-                                                                 margin: EdgeInsets.symmetric(vertical: 20),
-                                                                 child: new Text(
-                                                                   'две тысячи',
-                                                                   style: TextStyle(
-                                                                     color: Color(0xff073ea6),
-                                                                     fontSize: 18,
-                                                                   ),
-                                                                 ),
-                                                               ),
-                                                               style: ElevatedButton.styleFrom(
-                                                                 //primary: Color(0xff072e79),
-                                                                 primary: Color(0xffffffff),
-
-                                                                 minimumSize: Size(150, 52),
-                                                                 shape: new RoundedRectangleBorder(
-                                                                   borderRadius:
-                                                                   new BorderRadius.circular(100.0),
-                                                                   // side: BorderSide(color: Color(0xffffffff)),
-                                                                 ),
-                                                               ),
-                                                               onPressed: () {},
-                                                             ),
-                                                           ),
-                                                           childWhenDragging: Container(),
-                                                           child: Padding(
-                                                             padding: const EdgeInsets.all(8.0),
-                                                             child: new ElevatedButton(
-                                                               child: Container(
-                                                                 margin: EdgeInsets.symmetric(vertical: 20),
-                                                                 child: new Text(
-                                                                   'две тысячи',
-                                                                   style: TextStyle(
-                                                                     color: Color(0xff073ea6),
-                                                                     fontSize: 18,
-                                                                   ),
-                                                                 ),
-                                                               ),
-                                                               style: ElevatedButton.styleFrom(
-                                                                 //primary: Color(0xff072e79),
-                                                                 primary: Color(0xffffffff),
-
-                                                                 minimumSize: Size(double.infinity, 52),
-                                                                 shape: new RoundedRectangleBorder(
-                                                                   borderRadius:
-                                                                   new BorderRadius.circular(100.0),
-                                                                   // side: BorderSide(color: Color(0xffffffff)),
-                                                                 ),
-                                                               ),
-                                                               onPressed: () {},
-                                                             ),
-                                                           ),
-                                                         ),
-                                                       ),
-                                                     if (isThirtyNineMatch)
-                                                       Expanded(
-                                                         child: Padding(
-                                                           padding: const EdgeInsets.all(8.0),
-                                                           child: new ElevatedButton(
-                                                             child: Container(
-                                                               margin: EdgeInsets.symmetric(vertical: 20),
-                                                               child: new Text(
-                                                                 'две тысячи',
-                                                                 style: TextStyle(
-                                                                   // color: Colors.transparent,
-                                                                   fontSize: 18,
-                                                                 ),
-                                                               ),
-                                                             ),
-                                                             style: ElevatedButton.styleFrom(
-                                                               //primary: Color(0xff072e79),
-                                                               primary: Colors.green,
-
-                                                               minimumSize: Size(double.infinity, 52),
-                                                               shape: new RoundedRectangleBorder(
-                                                                 borderRadius:
-                                                                 new BorderRadius.circular(100.0),
-                                                                 // side: BorderSide(color: Color(0xffffffff)),
-                                                               ),
-                                                             ),
-                                                             onPressed: () {},
-                                                           ),
-                                                         ),
-                                                       ),
-                                                     if (isThirtyNineColorRed)
-                                                       Expanded(
-                                                         child: Padding(
-                                                           padding: const EdgeInsets.all(8.0),
-                                                           child: new ElevatedButton(
-                                                             child: Container(
-                                                               margin: EdgeInsets.symmetric(vertical: 20),
-                                                               child: new Text(
-                                                                 'две тысячи',
-                                                                 style: TextStyle(
-                                                                   // color: Colors.transparent,
-                                                                   fontSize: 18,
-                                                                 ),
-                                                               ),
-                                                             ),
-                                                             style: ElevatedButton.styleFrom(
-                                                               //primary: Color(0xff072e79),
-                                                               primary: Colors.red,
-
-                                                               minimumSize: Size(double.infinity, 52),
-                                                               shape: new RoundedRectangleBorder(
-                                                                 borderRadius:
-                                                                 new BorderRadius.circular(100.0),
-                                                                 // side: BorderSide(color: Color(0xffffffff)),
-                                                               ),
-                                                             ),
-                                                             onPressed: () {},
-                                                           ),
-                                                         ),
-                                                       ),
-                                                     if (!isThirtySevenMatch && !isThirtySevenColorRed)
-                                                       Expanded(
-                                                         child: DragTarget(
-                                                           builder: (context, List<Object?> candidateData,
-                                                               rejectedData) {
-                                                             return Padding(
-                                                               padding: const EdgeInsets.all(8.0),
-                                                               child: new ElevatedButton(
-                                                                 child: Container(
-                                                                   margin:
-                                                                   EdgeInsets.symmetric(vertical: 20),
-                                                                   child: new Text(
-                                                                     'eighteen',
-                                                                     style: TextStyle(
-                                                                       color: Color(0xff073ea6),
-                                                                       fontSize: 18,
-                                                                     ),
-                                                                   ),
-                                                                 ),
-                                                                 style: ElevatedButton.styleFrom(
-                                                                   //primary: Color(0xff072e79),
-                                                                   primary: Color(0xffffffff),
-
-                                                                   minimumSize: Size(double.infinity, 52),
-                                                                   shape: new RoundedRectangleBorder(
-                                                                     borderRadius:
-                                                                     new BorderRadius.circular(100.0),
-                                                                     // side: BorderSide(color: Color(0xffffffff)),
-                                                                   ),
-                                                                 ),
-                                                                 onPressed: () {},
-                                                               ),
-                                                             );
-                                                           },
-                                                           onWillAccept: (data) {
-                                                             return true;
-                                                           },
-                                                           onAccept: (data) {
-                                                             print("data $data");
-                                                             setState(() {
-                                                               if (data == "37") {
-                                                                 isThirtySevenMatch = true;
-                                                                 score += 10;
-                                                                 chances -= 1;
-                                                                 print("CHANCES $chances");
-                                                               } else {
-                                                                 if (score > 0) {
-                                                                   score -= 5;
-                                                                 }
-                                                                 isThirtySevenColorRed = true;
-                                                                 chances -= 1;
-                                                               }
-                                                             });
-                                                           },
-                                                         ),
-                                                       ),
-                                                     if (isThirtySevenMatch)
-                                                       Expanded(
-                                                         child: Padding(
-                                                           padding: const EdgeInsets.all(8.0),
-                                                           child: new ElevatedButton(
-                                                             child: Container(
-                                                               margin: EdgeInsets.symmetric(vertical: 20),
-                                                               child: new Text(
-                                                                 'eighteen',
-                                                                 style: TextStyle(
-                                                                   // color: Colors.transparent,
-                                                                   fontSize: 18,
-                                                                 ),
-                                                               ),
-                                                             ),
-                                                             style: ElevatedButton.styleFrom(
-                                                               //primary: Color(0xff072e79),
-                                                               primary: Colors.green,
-
-                                                               minimumSize: Size(double.infinity, 52),
-                                                               shape: new RoundedRectangleBorder(
-                                                                 borderRadius:
-                                                                 new BorderRadius.circular(100.0),
-                                                                 // side: BorderSide(color: Color(0xffffffff)),
-                                                               ),
-                                                             ),
-                                                             onPressed: () {},
-                                                           ),
-                                                         ),
-                                                       ),
-                                                     if (isThirtySevenColorRed)
-                                                       Expanded(
-                                                         child: Padding(
-                                                           padding: const EdgeInsets.all(8.0),
-                                                           child: new ElevatedButton(
-                                                             child: Container(
-                                                               margin: EdgeInsets.symmetric(vertical: 20),
-                                                               child: new Text(
-                                                                 'eighteen',
-                                                                 style: TextStyle(
-                                                                   // color: Colors.transparent,
-                                                                   fontSize: 18,
-                                                                 ),
-                                                               ),
-                                                             ),
-                                                             style: ElevatedButton.styleFrom(
-                                                               //primary: Color(0xff072e79),
-                                                               primary: Colors.red,
-
-                                                               minimumSize: Size(double.infinity, 52),
-                                                               shape: new RoundedRectangleBorder(
-                                                                 borderRadius:
-                                                                 new BorderRadius.circular(100.0),
-                                                                 // side: BorderSide(color: Color(0xffffffff)),
-                                                               ),
-                                                             ),
-                                                             onPressed: () {},
-                                                           ),
-                                                         ),
-                                                       ),
-                                                   ],
-                                                 ),
-                                               ),
-                                             ]
-                                         )
-                                         : Container(),
-
-
+                                          : widget.stage == 7
+                                              ? Column(children: [
+                                                  //1
+                                                  Container(
+                                                    margin: EdgeInsets.only(
+                                                        top: 10,
+                                                        left: 10,
+                                                        right: 10),
+                                                    child: Row(
+                                                      crossAxisAlignment:
+                                                          CrossAxisAlignment
+                                                              .center,
+                                                      children: [
+                                                        if (!isThirtyOneMatch &&
+                                                            !isThirtyOneColorRed)
+                                                          Expanded(
+                                                            child: Draggable(
+                                                              data: "31",
+                                                              feedback: Padding(
+                                                                padding:
+                                                                    const EdgeInsets
+                                                                            .all(
+                                                                        8.0),
+                                                                child:
+                                                                    new ElevatedButton(
+                                                                  child:
+                                                                      Container(
+                                                                    margin: EdgeInsets.symmetric(
+                                                                        vertical:
+                                                                            20),
+                                                                    child:
+                                                                        new Text(
+                                                                      'одиннадцать',
+                                                                      style:
+                                                                          TextStyle(
+                                                                        color: Color(
+                                                                            0xff073ea6),
+                                                                        fontSize:
+                                                                            18,
+                                                                      ),
+                                                                    ),
+                                                                  ),
+                                                                  style: ElevatedButton
+                                                                      .styleFrom(
+                                                                    //primary: Color(0xff072e79),
+                                                                    primary: Color(
+                                                                        0xffffffff),
+
+                                                                    minimumSize:
+                                                                        Size(
+                                                                            150,
+                                                                            52),
+                                                                    shape:
+                                                                        new RoundedRectangleBorder(
+                                                                      borderRadius:
+                                                                          new BorderRadius.circular(
+                                                                              100.0),
+                                                                      // side: BorderSide(color: Color(0xffffffff)),
+                                                                    ),
+                                                                  ),
+                                                                  onPressed:
+                                                                      () {},
+                                                                ),
+                                                              ),
+                                                              childWhenDragging:
+                                                                  Container(),
+                                                              child: Padding(
+                                                                padding:
+                                                                    const EdgeInsets
+                                                                            .all(
+                                                                        8.0),
+                                                                child:
+                                                                    new ElevatedButton(
+                                                                  child:
+                                                                      Container(
+                                                                    margin: EdgeInsets.symmetric(
+                                                                        vertical:
+                                                                            20),
+                                                                    child:
+                                                                        new Text(
+                                                                      'одиннадцать',
+                                                                      style:
+                                                                          TextStyle(
+                                                                        color: Color(
+                                                                            0xff073ea6),
+                                                                        fontSize:
+                                                                            18,
+                                                                      ),
+                                                                    ),
+                                                                  ),
+                                                                  style: ElevatedButton
+                                                                      .styleFrom(
+                                                                    //primary: Color(0xff072e79),
+                                                                    primary: Color(
+                                                                        0xffffffff),
+
+                                                                    minimumSize:
+                                                                        Size(
+                                                                            double.infinity,
+                                                                            52),
+                                                                    shape:
+                                                                        new RoundedRectangleBorder(
+                                                                      borderRadius:
+                                                                          new BorderRadius.circular(
+                                                                              100.0),
+                                                                      // side: BorderSide(color: Color(0xffffffff)),
+                                                                    ),
+                                                                  ),
+                                                                  onPressed:
+                                                                      () {},
+                                                                ),
+                                                              ),
+                                                            ),
+                                                          ),
+                                                        if (isThirtyOneMatch)
+                                                          Expanded(
+                                                            child: Padding(
+                                                              padding:
+                                                                  const EdgeInsets
+                                                                      .all(8.0),
+                                                              child:
+                                                                  new ElevatedButton(
+                                                                child:
+                                                                    Container(
+                                                                  margin: EdgeInsets
+                                                                      .symmetric(
+                                                                          vertical:
+                                                                              20),
+                                                                  child:
+                                                                      new Text(
+                                                                    'одиннадцать',
+                                                                    style:
+                                                                        TextStyle(
+                                                                      // color: Colors.transparent,
+                                                                      fontSize:
+                                                                          18,
+                                                                    ),
+                                                                  ),
+                                                                ),
+                                                                style: ElevatedButton
+                                                                    .styleFrom(
+                                                                  //primary: Color(0xff072e79),
+                                                                  primary: Colors
+                                                                      .green,
+
+                                                                  minimumSize: Size(
+                                                                      double
+                                                                          .infinity,
+                                                                      52),
+                                                                  shape:
+                                                                      new RoundedRectangleBorder(
+                                                                    borderRadius:
+                                                                        new BorderRadius.circular(
+                                                                            100.0),
+                                                                    // side: BorderSide(color: Color(0xffffffff)),
+                                                                  ),
+                                                                ),
+                                                                onPressed:
+                                                                    () {},
+                                                              ),
+                                                            ),
+                                                          ),
+                                                        if (isThirtyOneColorRed)
+                                                          Expanded(
+                                                            child: Padding(
+                                                              padding:
+                                                                  const EdgeInsets
+                                                                      .all(8.0),
+                                                              child:
+                                                                  new ElevatedButton(
+                                                                child:
+                                                                    Container(
+                                                                  margin: EdgeInsets
+                                                                      .symmetric(
+                                                                          vertical:
+                                                                              20),
+                                                                  child:
+                                                                      new Text(
+                                                                    'одиннадцать',
+                                                                    style:
+                                                                        TextStyle(
+                                                                      // color: Colors.transparent,
+                                                                      fontSize:
+                                                                          18,
+                                                                    ),
+                                                                  ),
+                                                                ),
+                                                                style: ElevatedButton
+                                                                    .styleFrom(
+                                                                  //primary: Color(0xff072e79),
+                                                                  primary:
+                                                                      Colors
+                                                                          .red,
+
+                                                                  minimumSize: Size(
+                                                                      double
+                                                                          .infinity,
+                                                                      52),
+                                                                  shape:
+                                                                      new RoundedRectangleBorder(
+                                                                    borderRadius:
+                                                                        new BorderRadius.circular(
+                                                                            100.0),
+                                                                    // side: BorderSide(color: Color(0xffffffff)),
+                                                                  ),
+                                                                ),
+                                                                onPressed:
+                                                                    () {},
+                                                              ),
+                                                            ),
+                                                          ),
+                                                        if (!isThirtyFourMatch &&
+                                                            !isThirtyFourColorRed)
+                                                          Expanded(
+                                                            child: DragTarget(
+                                                              builder: (context,
+                                                                  List<Object?>
+                                                                      candidateData,
+                                                                  rejectedData) {
+                                                                return Padding(
+                                                                  padding:
+                                                                      const EdgeInsets
+                                                                              .all(
+                                                                          8.0),
+                                                                  child:
+                                                                      new ElevatedButton(
+                                                                    child:
+                                                                        Container(
+                                                                      margin: EdgeInsets.symmetric(
+                                                                          vertical:
+                                                                              20),
+                                                                      child:
+                                                                          new Text(
+                                                                        'Prague',
+                                                                        style:
+                                                                            TextStyle(
+                                                                          color:
+                                                                              Color(0xff073ea6),
+                                                                          fontSize:
+                                                                              18,
+                                                                        ),
+                                                                      ),
+                                                                    ),
+                                                                    style: ElevatedButton
+                                                                        .styleFrom(
+                                                                      //primary: Color(0xff072e79),
+                                                                      primary:
+                                                                          Color(
+                                                                              0xffffffff),
+
+                                                                      minimumSize: Size(
+                                                                          double
+                                                                              .infinity,
+                                                                          52),
+                                                                      shape:
+                                                                          new RoundedRectangleBorder(
+                                                                        borderRadius:
+                                                                            new BorderRadius.circular(100.0),
+                                                                        // side: BorderSide(color: Color(0xffffffff)),
+                                                                      ),
+                                                                    ),
+                                                                    onPressed:
+                                                                        () {},
+                                                                  ),
+                                                                );
+                                                              },
+                                                              onWillAccept:
+                                                                  (data) {
+                                                                return true;
+                                                              },
+                                                              onAccept: (data) {
+                                                                print(
+                                                                    "data $data");
+                                                                setState(() {
+                                                                  if (data ==
+                                                                      "34") {
+                                                                    isThirtyFourMatch =
+                                                                        true;
+                                                                    score += 10;
+                                                                    chances -=
+                                                                        1;
+
+                                                                    print(
+                                                                        "CHANCES $chances");
+                                                                  } else {
+                                                                    if (score >
+                                                                        0) {
+                                                                      score -=
+                                                                          5;
+                                                                    }
+                                                                    isThirtyFourColorRed =
+                                                                        true;
+                                                                    chances -=
+                                                                        1;
+                                                                  }
+                                                                });
+                                                              },
+                                                            ),
+                                                          ),
+                                                        if (isThirtyFourMatch)
+                                                          Expanded(
+                                                            child: Padding(
+                                                              padding:
+                                                                  const EdgeInsets
+                                                                      .all(8.0),
+                                                              child:
+                                                                  new ElevatedButton(
+                                                                child:
+                                                                    Container(
+                                                                  margin: EdgeInsets
+                                                                      .symmetric(
+                                                                          vertical:
+                                                                              20),
+                                                                  child:
+                                                                      new Text(
+                                                                    'Prague',
+                                                                    style:
+                                                                        TextStyle(
+                                                                      // color: Colors.transparent,
+                                                                      fontSize:
+                                                                          18,
+                                                                    ),
+                                                                  ),
+                                                                ),
+                                                                style: ElevatedButton
+                                                                    .styleFrom(
+                                                                  //primary: Color(0xff072e79),
+                                                                  primary: Colors
+                                                                      .green,
+
+                                                                  minimumSize: Size(
+                                                                      double
+                                                                          .infinity,
+                                                                      52),
+                                                                  shape:
+                                                                      new RoundedRectangleBorder(
+                                                                    borderRadius:
+                                                                        new BorderRadius.circular(
+                                                                            100.0),
+                                                                    // side: BorderSide(color: Color(0xffffffff)),
+                                                                  ),
+                                                                ),
+                                                                onPressed:
+                                                                    () {},
+                                                              ),
+                                                            ),
+                                                          ),
+                                                        if (isThirtyFourColorRed)
+                                                          Expanded(
+                                                            child: Padding(
+                                                              padding:
+                                                                  const EdgeInsets
+                                                                      .all(8.0),
+                                                              child:
+                                                                  new ElevatedButton(
+                                                                child:
+                                                                    Container(
+                                                                  margin: EdgeInsets
+                                                                      .symmetric(
+                                                                          vertical:
+                                                                              20),
+                                                                  child:
+                                                                      new Text(
+                                                                    'Prague',
+                                                                    style:
+                                                                        TextStyle(
+                                                                      // color: Colors.transparent,
+                                                                      fontSize:
+                                                                          18,
+                                                                    ),
+                                                                  ),
+                                                                ),
+                                                                style: ElevatedButton
+                                                                    .styleFrom(
+                                                                  //primary: Color(0xff072e79),
+                                                                  primary:
+                                                                      Colors
+                                                                          .red,
+
+                                                                  minimumSize: Size(
+                                                                      double
+                                                                          .infinity,
+                                                                      52),
+                                                                  shape:
+                                                                      new RoundedRectangleBorder(
+                                                                    borderRadius:
+                                                                        new BorderRadius.circular(
+                                                                            100.0),
+                                                                    // side: BorderSide(color: Color(0xffffffff)),
+                                                                  ),
+                                                                ),
+                                                                onPressed:
+                                                                    () {},
+                                                              ),
+                                                            ),
+                                                          ),
+                                                      ],
+                                                    ),
+                                                  ),
+
+                                                  //2
+                                                  Container(
+                                                    margin: EdgeInsets.only(
+                                                        top: 10,
+                                                        left: 10,
+                                                        right: 10),
+                                                    child: Row(
+                                                      crossAxisAlignment:
+                                                          CrossAxisAlignment
+                                                              .center,
+                                                      children: [
+                                                        if (!isThirtyTwoMatch &&
+                                                            !isThirtyTwoColorRed)
+                                                          Expanded(
+                                                            child: Draggable(
+                                                              data: "32",
+                                                              feedback: Padding(
+                                                                padding:
+                                                                    const EdgeInsets
+                                                                            .all(
+                                                                        8.0),
+                                                                child:
+                                                                    new ElevatedButton(
+                                                                  child:
+                                                                      Container(
+                                                                    margin: EdgeInsets.symmetric(
+                                                                        vertical:
+                                                                            20),
+                                                                    child:
+                                                                        new Text(
+                                                                      'Мужской',
+                                                                      style:
+                                                                          TextStyle(
+                                                                        color: Color(
+                                                                            0xff073ea6),
+                                                                        fontSize:
+                                                                            18,
+                                                                      ),
+                                                                    ),
+                                                                  ),
+                                                                  style: ElevatedButton
+                                                                      .styleFrom(
+                                                                    //primary: Color(0xff072e79),
+                                                                    primary: Color(
+                                                                        0xffffffff),
+
+                                                                    minimumSize:
+                                                                        Size(
+                                                                            150,
+                                                                            52),
+                                                                    shape:
+                                                                        new RoundedRectangleBorder(
+                                                                      borderRadius:
+                                                                          new BorderRadius.circular(
+                                                                              100.0),
+                                                                      // side: BorderSide(color: Color(0xffffffff)),
+                                                                    ),
+                                                                  ),
+                                                                  onPressed:
+                                                                      () {},
+                                                                ),
+                                                              ),
+                                                              childWhenDragging:
+                                                                  Container(),
+                                                              child: Padding(
+                                                                padding:
+                                                                    const EdgeInsets
+                                                                            .all(
+                                                                        8.0),
+                                                                child:
+                                                                    new ElevatedButton(
+                                                                  child:
+                                                                      Container(
+                                                                    margin: EdgeInsets.symmetric(
+                                                                        vertical:
+                                                                            20),
+                                                                    child:
+                                                                        new Text(
+                                                                      'Мужской',
+                                                                      style:
+                                                                          TextStyle(
+                                                                        color: Color(
+                                                                            0xff073ea6),
+                                                                        fontSize:
+                                                                            18,
+                                                                      ),
+                                                                    ),
+                                                                  ),
+                                                                  style: ElevatedButton
+                                                                      .styleFrom(
+                                                                    //primary: Color(0xff072e79),
+                                                                    primary: Color(
+                                                                        0xffffffff),
+
+                                                                    minimumSize:
+                                                                        Size(
+                                                                            double.infinity,
+                                                                            52),
+                                                                    shape:
+                                                                        new RoundedRectangleBorder(
+                                                                      borderRadius:
+                                                                          new BorderRadius.circular(
+                                                                              100.0),
+                                                                      // side: BorderSide(color: Color(0xffffffff)),
+                                                                    ),
+                                                                  ),
+                                                                  onPressed:
+                                                                      () {},
+                                                                ),
+                                                              ),
+                                                            ),
+                                                          ),
+                                                        if (isThirtyTwoMatch)
+                                                          Expanded(
+                                                            child: Padding(
+                                                              padding:
+                                                                  const EdgeInsets
+                                                                      .all(8.0),
+                                                              child:
+                                                                  new ElevatedButton(
+                                                                child:
+                                                                    Container(
+                                                                  margin: EdgeInsets
+                                                                      .symmetric(
+                                                                          vertical:
+                                                                              20),
+                                                                  child:
+                                                                      new Text(
+                                                                    "Мужской",
+                                                                    style:
+                                                                        TextStyle(
+                                                                      // color: Colors.transparent,
+                                                                      fontSize:
+                                                                          18,
+                                                                    ),
+                                                                  ),
+                                                                ),
+                                                                style: ElevatedButton
+                                                                    .styleFrom(
+                                                                  //primary: Color(0xff072e79),
+                                                                  primary: Colors
+                                                                      .green,
+
+                                                                  minimumSize: Size(
+                                                                      double
+                                                                          .infinity,
+                                                                      52),
+                                                                  shape:
+                                                                      new RoundedRectangleBorder(
+                                                                    borderRadius:
+                                                                        new BorderRadius.circular(
+                                                                            100.0),
+                                                                    // side: BorderSide(color: Color(0xffffffff)),
+                                                                  ),
+                                                                ),
+                                                                onPressed:
+                                                                    () {},
+                                                              ),
+                                                            ),
+                                                          ),
+                                                        if (isThirtyTwoColorRed)
+                                                          Expanded(
+                                                            child: Padding(
+                                                              padding:
+                                                                  const EdgeInsets
+                                                                      .all(8.0),
+                                                              child:
+                                                                  new ElevatedButton(
+                                                                child:
+                                                                    Container(
+                                                                  margin: EdgeInsets
+                                                                      .symmetric(
+                                                                          vertical:
+                                                                              20),
+                                                                  child:
+                                                                      new Text(
+                                                                    'Мужской',
+                                                                    style:
+                                                                        TextStyle(
+                                                                      // color: Colors.transparent,
+                                                                      fontSize:
+                                                                          18,
+                                                                    ),
+                                                                  ),
+                                                                ),
+                                                                style: ElevatedButton
+                                                                    .styleFrom(
+                                                                  //primary: Color(0xff072e79),
+                                                                  primary:
+                                                                      Colors
+                                                                          .red,
+
+                                                                  minimumSize: Size(
+                                                                      double
+                                                                          .infinity,
+                                                                      52),
+                                                                  shape:
+                                                                      new RoundedRectangleBorder(
+                                                                    borderRadius:
+                                                                        new BorderRadius.circular(
+                                                                            100.0),
+                                                                    // side: BorderSide(color: Color(0xffffffff)),
+                                                                  ),
+                                                                ),
+                                                                onPressed:
+                                                                    () {},
+                                                              ),
+                                                            ),
+                                                          ),
+                                                        if (!isThirtyFiveMatch &&
+                                                            !isThirtyFiveColorRed)
+                                                          Expanded(
+                                                            child: DragTarget(
+                                                              builder: (context,
+                                                                  List<Object?>
+                                                                      candidateData,
+                                                                  rejectedData) {
+                                                                return Padding(
+                                                                  padding:
+                                                                      const EdgeInsets
+                                                                              .all(
+                                                                          8.0),
+                                                                  child:
+                                                                      new ElevatedButton(
+                                                                    child:
+                                                                        Container(
+                                                                      margin: EdgeInsets.symmetric(
+                                                                          vertical:
+                                                                              20),
+                                                                      child:
+                                                                          new Text(
+                                                                        'Gomel',
+                                                                        style:
+                                                                            TextStyle(
+                                                                          color:
+                                                                              Color(0xff073ea6),
+                                                                          fontSize:
+                                                                              18,
+                                                                        ),
+                                                                      ),
+                                                                    ),
+                                                                    style: ElevatedButton
+                                                                        .styleFrom(
+                                                                      //primary: Color(0xff072e79),
+                                                                      primary:
+                                                                          Color(
+                                                                              0xffffffff),
+
+                                                                      minimumSize: Size(
+                                                                          double
+                                                                              .infinity,
+                                                                          52),
+                                                                      shape:
+                                                                          new RoundedRectangleBorder(
+                                                                        borderRadius:
+                                                                            new BorderRadius.circular(100.0),
+                                                                        // side: BorderSide(color: Color(0xffffffff)),
+                                                                      ),
+                                                                    ),
+                                                                    onPressed:
+                                                                        () {},
+                                                                  ),
+                                                                );
+                                                              },
+                                                              onWillAccept:
+                                                                  (data) {
+                                                                return true;
+                                                              },
+                                                              onAccept: (data) {
+                                                                print(
+                                                                    "data $data");
+                                                                setState(() {
+                                                                  if (data ==
+                                                                      "35") {
+                                                                    isThirtyFiveMatch =
+                                                                        true;
+                                                                    score += 10;
+                                                                    chances -=
+                                                                        1;
+                                                                    print(
+                                                                        "CHANCES $chances");
+                                                                  } else {
+                                                                    if (score >
+                                                                        0) {
+                                                                      score -=
+                                                                          5;
+                                                                    }
+                                                                    isThirtyFiveColorRed =
+                                                                        true;
+                                                                    chances -=
+                                                                        1;
+                                                                  }
+                                                                });
+                                                              },
+                                                            ),
+                                                          ),
+                                                        if (isThirtyFiveMatch)
+                                                          Expanded(
+                                                            child: Padding(
+                                                              padding:
+                                                                  const EdgeInsets
+                                                                      .all(8.0),
+                                                              child:
+                                                                  new ElevatedButton(
+                                                                child:
+                                                                    Container(
+                                                                  margin: EdgeInsets
+                                                                      .symmetric(
+                                                                          vertical:
+                                                                              20),
+                                                                  child:
+                                                                      new Text(
+                                                                    'Gomel',
+                                                                    style:
+                                                                        TextStyle(
+                                                                      // color: Colors.transparent,
+                                                                      fontSize:
+                                                                          18,
+                                                                    ),
+                                                                  ),
+                                                                ),
+                                                                style: ElevatedButton
+                                                                    .styleFrom(
+                                                                  //primary: Color(0xff072e79),
+                                                                  primary: Colors
+                                                                      .green,
+
+                                                                  minimumSize: Size(
+                                                                      double
+                                                                          .infinity,
+                                                                      52),
+                                                                  shape:
+                                                                      new RoundedRectangleBorder(
+                                                                    borderRadius:
+                                                                        new BorderRadius.circular(
+                                                                            100.0),
+                                                                    // side: BorderSide(color: Color(0xffffffff)),
+                                                                  ),
+                                                                ),
+                                                                onPressed:
+                                                                    () {},
+                                                              ),
+                                                            ),
+                                                          ),
+                                                        if (isThirtyFiveColorRed)
+                                                          Expanded(
+                                                            child: Padding(
+                                                              padding:
+                                                                  const EdgeInsets
+                                                                      .all(8.0),
+                                                              child:
+                                                                  new ElevatedButton(
+                                                                child:
+                                                                    Container(
+                                                                  margin: EdgeInsets
+                                                                      .symmetric(
+                                                                          vertical:
+                                                                              20),
+                                                                  child:
+                                                                      new Text(
+                                                                    'Gomel',
+                                                                    style:
+                                                                        TextStyle(
+                                                                      // color: Colors.transparent,
+                                                                      fontSize:
+                                                                          18,
+                                                                    ),
+                                                                  ),
+                                                                ),
+                                                                style: ElevatedButton
+                                                                    .styleFrom(
+                                                                  //primary: Color(0xff072e79),
+                                                                  primary:
+                                                                      Colors
+                                                                          .red,
+
+                                                                  minimumSize: Size(
+                                                                      double
+                                                                          .infinity,
+                                                                      52),
+                                                                  shape:
+                                                                      new RoundedRectangleBorder(
+                                                                    borderRadius:
+                                                                        new BorderRadius.circular(
+                                                                            100.0),
+                                                                    // side: BorderSide(color: Color(0xffffffff)),
+                                                                  ),
+                                                                ),
+                                                                onPressed:
+                                                                    () {},
+                                                              ),
+                                                            ),
+                                                          ),
+                                                      ],
+                                                    ),
+                                                  ),
+
+                                                  //3
+                                                  Container(
+                                                    margin: EdgeInsets.only(
+                                                        top: 10,
+                                                        left: 10,
+                                                        right: 10),
+                                                    child: Row(
+                                                      crossAxisAlignment:
+                                                          CrossAxisAlignment
+                                                              .center,
+                                                      children: [
+                                                        if (!isThirtyThreeMatch &&
+                                                            !isThirtyThreeColorRed)
+                                                          Expanded(
+                                                            child: Draggable(
+                                                              data: "33",
+                                                              feedback: Padding(
+                                                                padding:
+                                                                    const EdgeInsets
+                                                                            .all(
+                                                                        8.0),
+                                                                child:
+                                                                    new ElevatedButton(
+                                                                  child:
+                                                                      Container(
+                                                                    margin: EdgeInsets.symmetric(
+                                                                        vertical:
+                                                                            20),
+                                                                    child:
+                                                                        new Text(
+                                                                      'Женский',
+                                                                      style:
+                                                                          TextStyle(
+                                                                        color: Color(
+                                                                            0xff073ea6),
+                                                                        fontSize:
+                                                                            18,
+                                                                      ),
+                                                                    ),
+                                                                  ),
+                                                                  style: ElevatedButton
+                                                                      .styleFrom(
+                                                                    //primary: Color(0xff072e79),
+                                                                    primary: Color(
+                                                                        0xffffffff),
+
+                                                                    minimumSize:
+                                                                        Size(
+                                                                            150,
+                                                                            52),
+                                                                    shape:
+                                                                        new RoundedRectangleBorder(
+                                                                      borderRadius:
+                                                                          new BorderRadius.circular(
+                                                                              100.0),
+                                                                      // side: BorderSide(color: Color(0xffffffff)),
+                                                                    ),
+                                                                  ),
+                                                                  onPressed:
+                                                                      () {},
+                                                                ),
+                                                              ),
+                                                              childWhenDragging:
+                                                                  Container(),
+                                                              child: Padding(
+                                                                padding:
+                                                                    const EdgeInsets
+                                                                            .all(
+                                                                        8.0),
+                                                                child:
+                                                                    new ElevatedButton(
+                                                                  child:
+                                                                      Container(
+                                                                    margin: EdgeInsets.symmetric(
+                                                                        vertical:
+                                                                            20),
+                                                                    child:
+                                                                        new Text(
+                                                                      'Женский',
+                                                                      style:
+                                                                          TextStyle(
+                                                                        color: Color(
+                                                                            0xff073ea6),
+                                                                        fontSize:
+                                                                            18,
+                                                                      ),
+                                                                    ),
+                                                                  ),
+                                                                  style: ElevatedButton
+                                                                      .styleFrom(
+                                                                    //primary: Color(0xff072e79),
+                                                                    primary: Color(
+                                                                        0xffffffff),
+
+                                                                    minimumSize:
+                                                                        Size(
+                                                                            double.infinity,
+                                                                            52),
+                                                                    shape:
+                                                                        new RoundedRectangleBorder(
+                                                                      borderRadius:
+                                                                          new BorderRadius.circular(
+                                                                              100.0),
+                                                                      // side: BorderSide(color: Color(0xffffffff)),
+                                                                    ),
+                                                                  ),
+                                                                  onPressed:
+                                                                      () {},
+                                                                ),
+                                                              ),
+                                                            ),
+                                                          ),
+                                                        if (isThirtyThreeMatch)
+                                                          Expanded(
+                                                            child: Padding(
+                                                              padding:
+                                                                  const EdgeInsets
+                                                                      .all(8.0),
+                                                              child:
+                                                                  new ElevatedButton(
+                                                                child:
+                                                                    Container(
+                                                                  margin: EdgeInsets
+                                                                      .symmetric(
+                                                                          vertical:
+                                                                              20),
+                                                                  child:
+                                                                      new Text(
+                                                                    'Женский',
+                                                                    style:
+                                                                        TextStyle(
+                                                                      // color: Colors.transparent,
+                                                                      fontSize:
+                                                                          18,
+                                                                    ),
+                                                                  ),
+                                                                ),
+                                                                style: ElevatedButton
+                                                                    .styleFrom(
+                                                                  //primary: Color(0xff072e79),
+                                                                  primary: Colors
+                                                                      .green,
+
+                                                                  minimumSize: Size(
+                                                                      double
+                                                                          .infinity,
+                                                                      52),
+                                                                  shape:
+                                                                      new RoundedRectangleBorder(
+                                                                    borderRadius:
+                                                                        new BorderRadius.circular(
+                                                                            100.0),
+                                                                    // side: BorderSide(color: Color(0xffffffff)),
+                                                                  ),
+                                                                ),
+                                                                onPressed:
+                                                                    () {},
+                                                              ),
+                                                            ),
+                                                          ),
+                                                        if (isThirtyThreeColorRed)
+                                                          Expanded(
+                                                            child: Padding(
+                                                              padding:
+                                                                  const EdgeInsets
+                                                                      .all(8.0),
+                                                              child:
+                                                                  new ElevatedButton(
+                                                                child:
+                                                                    Container(
+                                                                  margin: EdgeInsets
+                                                                      .symmetric(
+                                                                          vertical:
+                                                                              20),
+                                                                  child:
+                                                                      new Text(
+                                                                    'Женский',
+                                                                    style:
+                                                                        TextStyle(
+                                                                      // color: Colors.transparent,
+                                                                      fontSize:
+                                                                          18,
+                                                                    ),
+                                                                  ),
+                                                                ),
+                                                                style: ElevatedButton
+                                                                    .styleFrom(
+                                                                  //primary: Color(0xff072e79),
+                                                                  primary:
+                                                                      Colors
+                                                                          .red,
+
+                                                                  minimumSize: Size(
+                                                                      double
+                                                                          .infinity,
+                                                                      52),
+                                                                  shape:
+                                                                      new RoundedRectangleBorder(
+                                                                    borderRadius:
+                                                                        new BorderRadius.circular(
+                                                                            100.0),
+                                                                    // side: BorderSide(color: Color(0xffffffff)),
+                                                                  ),
+                                                                ),
+                                                                onPressed:
+                                                                    () {},
+                                                              ),
+                                                            ),
+                                                          ),
+                                                        if (!isThirtyOneMatch &&
+                                                            !isThirtyOneColorRed)
+                                                          Expanded(
+                                                            child: DragTarget(
+                                                              builder: (context,
+                                                                  List<Object?>
+                                                                      candidateData,
+                                                                  rejectedData) {
+                                                                return Padding(
+                                                                  padding:
+                                                                      const EdgeInsets
+                                                                              .all(
+                                                                          8.0),
+                                                                  child:
+                                                                      new ElevatedButton(
+                                                                    child:
+                                                                        Container(
+                                                                      margin: EdgeInsets.symmetric(
+                                                                          vertical:
+                                                                              20),
+                                                                      child:
+                                                                          new Text(
+                                                                        'Eleven',
+                                                                        style:
+                                                                            TextStyle(
+                                                                          color:
+                                                                              Color(0xff073ea6),
+                                                                          fontSize:
+                                                                              18,
+                                                                        ),
+                                                                      ),
+                                                                    ),
+                                                                    style: ElevatedButton
+                                                                        .styleFrom(
+                                                                      //primary: Color(0xff072e79),
+                                                                      primary:
+                                                                          Color(
+                                                                              0xffffffff),
+
+                                                                      minimumSize: Size(
+                                                                          double
+                                                                              .infinity,
+                                                                          52),
+                                                                      shape:
+                                                                          new RoundedRectangleBorder(
+                                                                        borderRadius:
+                                                                            new BorderRadius.circular(100.0),
+                                                                        // side: BorderSide(color: Color(0xffffffff)),
+                                                                      ),
+                                                                    ),
+                                                                    onPressed:
+                                                                        () {},
+                                                                  ),
+                                                                );
+                                                              },
+                                                              onWillAccept:
+                                                                  (data) {
+                                                                return true;
+                                                              },
+                                                              onAccept: (data) {
+                                                                print(
+                                                                    "data $data");
+                                                                setState(() {
+                                                                  if (data ==
+                                                                      "31") {
+                                                                    isThirtyOneMatch =
+                                                                        true;
+                                                                    score += 10;
+                                                                    chances -=
+                                                                        1;
+                                                                    print(
+                                                                        "CHANCES $chances");
+                                                                  } else {
+                                                                    if (score >
+                                                                        0) {
+                                                                      score -=
+                                                                          5;
+                                                                    }
+                                                                    isThirtyOneColorRed =
+                                                                        true;
+                                                                    chances -=
+                                                                        1;
+                                                                  }
+                                                                });
+                                                              },
+                                                            ),
+                                                          ),
+                                                        if (isThirtyOneMatch)
+                                                          Expanded(
+                                                            child: Padding(
+                                                              padding:
+                                                                  const EdgeInsets
+                                                                      .all(8.0),
+                                                              child:
+                                                                  new ElevatedButton(
+                                                                child:
+                                                                    Container(
+                                                                  margin: EdgeInsets
+                                                                      .symmetric(
+                                                                          vertical:
+                                                                              20),
+                                                                  child:
+                                                                      new Text(
+                                                                    'Eleven ',
+                                                                    style:
+                                                                        TextStyle(
+                                                                      // color: Colors.transparent,
+                                                                      fontSize:
+                                                                          18,
+                                                                    ),
+                                                                  ),
+                                                                ),
+                                                                style: ElevatedButton
+                                                                    .styleFrom(
+                                                                  //primary: Color(0xff072e79),
+                                                                  primary: Colors
+                                                                      .green,
+
+                                                                  minimumSize: Size(
+                                                                      double
+                                                                          .infinity,
+                                                                      52),
+                                                                  shape:
+                                                                      new RoundedRectangleBorder(
+                                                                    borderRadius:
+                                                                        new BorderRadius.circular(
+                                                                            100.0),
+                                                                    // side: BorderSide(color: Color(0xffffffff)),
+                                                                  ),
+                                                                ),
+                                                                onPressed:
+                                                                    () {},
+                                                              ),
+                                                            ),
+                                                          ),
+                                                        if (isThirtyOneColorRed)
+                                                          Expanded(
+                                                            child: Padding(
+                                                              padding:
+                                                                  const EdgeInsets
+                                                                      .all(8.0),
+                                                              child:
+                                                                  new ElevatedButton(
+                                                                child:
+                                                                    Container(
+                                                                  margin: EdgeInsets
+                                                                      .symmetric(
+                                                                          vertical:
+                                                                              20),
+                                                                  child:
+                                                                      new Text(
+                                                                    'Eleven',
+                                                                    style:
+                                                                        TextStyle(
+                                                                      // color: Colors.transparent,
+                                                                      fontSize:
+                                                                          18,
+                                                                    ),
+                                                                  ),
+                                                                ),
+                                                                style: ElevatedButton
+                                                                    .styleFrom(
+                                                                  //primary: Color(0xff072e79),
+                                                                  primary:
+                                                                      Colors
+                                                                          .red,
+
+                                                                  minimumSize: Size(
+                                                                      double
+                                                                          .infinity,
+                                                                      52),
+                                                                  shape:
+                                                                      new RoundedRectangleBorder(
+                                                                    borderRadius:
+                                                                        new BorderRadius.circular(
+                                                                            100.0),
+                                                                    // side: BorderSide(color: Color(0xffffffff)),
+                                                                  ),
+                                                                ),
+                                                                onPressed:
+                                                                    () {},
+                                                              ),
+                                                            ),
+                                                          ),
+                                                      ],
+                                                    ),
+                                                  ),
+
+                                                  //4
+                                                  Container(
+                                                    margin: EdgeInsets.only(
+                                                        top: 10,
+                                                        left: 10,
+                                                        right: 10),
+                                                    child: Row(
+                                                      crossAxisAlignment:
+                                                          CrossAxisAlignment
+                                                              .center,
+                                                      children: [
+                                                        if (!isThirtyFourMatch &&
+                                                            !isThirtyFourColorRed)
+                                                          Expanded(
+                                                            child: Draggable(
+                                                              data: "34",
+                                                              feedback: Padding(
+                                                                padding:
+                                                                    const EdgeInsets
+                                                                            .all(
+                                                                        8.0),
+                                                                child:
+                                                                    new ElevatedButton(
+                                                                  child:
+                                                                      Container(
+                                                                    margin: EdgeInsets.symmetric(
+                                                                        vertical:
+                                                                            20),
+                                                                    child:
+                                                                        new Text(
+                                                                      'Прага',
+                                                                      style:
+                                                                          TextStyle(
+                                                                        color: Color(
+                                                                            0xff073ea6),
+                                                                        fontSize:
+                                                                            18,
+                                                                      ),
+                                                                    ),
+                                                                  ),
+                                                                  style: ElevatedButton
+                                                                      .styleFrom(
+                                                                    //primary: Color(0xff072e79),
+                                                                    primary: Color(
+                                                                        0xffffffff),
+
+                                                                    minimumSize:
+                                                                        Size(
+                                                                            150,
+                                                                            52),
+                                                                    shape:
+                                                                        new RoundedRectangleBorder(
+                                                                      borderRadius:
+                                                                          new BorderRadius.circular(
+                                                                              100.0),
+                                                                      // side: BorderSide(color: Color(0xffffffff)),
+                                                                    ),
+                                                                  ),
+                                                                  onPressed:
+                                                                      () {},
+                                                                ),
+                                                              ),
+                                                              childWhenDragging:
+                                                                  Container(),
+                                                              child: Padding(
+                                                                padding:
+                                                                    const EdgeInsets
+                                                                            .all(
+                                                                        8.0),
+                                                                child:
+                                                                    new ElevatedButton(
+                                                                  child:
+                                                                      Container(
+                                                                    margin: EdgeInsets.symmetric(
+                                                                        vertical:
+                                                                            20),
+                                                                    child:
+                                                                        new Text(
+                                                                      'Прага',
+                                                                      style:
+                                                                          TextStyle(
+                                                                        color: Color(
+                                                                            0xff073ea6),
+                                                                        fontSize:
+                                                                            18,
+                                                                      ),
+                                                                    ),
+                                                                  ),
+                                                                  style: ElevatedButton
+                                                                      .styleFrom(
+                                                                    //primary: Color(0xff072e79),
+                                                                    primary: Color(
+                                                                        0xffffffff),
+
+                                                                    minimumSize:
+                                                                        Size(
+                                                                            double.infinity,
+                                                                            52),
+                                                                    shape:
+                                                                        new RoundedRectangleBorder(
+                                                                      borderRadius:
+                                                                          new BorderRadius.circular(
+                                                                              100.0),
+                                                                      // side: BorderSide(color: Color(0xffffffff)),
+                                                                    ),
+                                                                  ),
+                                                                  onPressed:
+                                                                      () {},
+                                                                ),
+                                                              ),
+                                                            ),
+                                                          ),
+                                                        if (isThirtyFourMatch)
+                                                          Expanded(
+                                                            child: Padding(
+                                                              padding:
+                                                                  const EdgeInsets
+                                                                      .all(8.0),
+                                                              child:
+                                                                  new ElevatedButton(
+                                                                child:
+                                                                    Container(
+                                                                  margin: EdgeInsets
+                                                                      .symmetric(
+                                                                          vertical:
+                                                                              20),
+                                                                  child:
+                                                                      new Text(
+                                                                    'Прага',
+                                                                    style:
+                                                                        TextStyle(
+                                                                      // color: Colors.transparent,
+                                                                      fontSize:
+                                                                          18,
+                                                                    ),
+                                                                  ),
+                                                                ),
+                                                                style: ElevatedButton
+                                                                    .styleFrom(
+                                                                  //primary: Color(0xff072e79),
+                                                                  primary: Colors
+                                                                      .green,
+
+                                                                  minimumSize: Size(
+                                                                      double
+                                                                          .infinity,
+                                                                      52),
+                                                                  shape:
+                                                                      new RoundedRectangleBorder(
+                                                                    borderRadius:
+                                                                        new BorderRadius.circular(
+                                                                            100.0),
+                                                                    // side: BorderSide(color: Color(0xffffffff)),
+                                                                  ),
+                                                                ),
+                                                                onPressed:
+                                                                    () {},
+                                                              ),
+                                                            ),
+                                                          ),
+                                                        if (isThirtyFourColorRed)
+                                                          Expanded(
+                                                            child: Padding(
+                                                              padding:
+                                                                  const EdgeInsets
+                                                                      .all(8.0),
+                                                              child:
+                                                                  new ElevatedButton(
+                                                                child:
+                                                                    Container(
+                                                                  margin: EdgeInsets
+                                                                      .symmetric(
+                                                                          vertical:
+                                                                              20),
+                                                                  child:
+                                                                      new Text(
+                                                                    'Прага',
+                                                                    style:
+                                                                        TextStyle(
+                                                                      // color: Colors.transparent,
+                                                                      fontSize:
+                                                                          18,
+                                                                    ),
+                                                                  ),
+                                                                ),
+                                                                style: ElevatedButton
+                                                                    .styleFrom(
+                                                                  //primary: Color(0xff072e79),
+                                                                  primary:
+                                                                      Colors
+                                                                          .red,
+
+                                                                  minimumSize: Size(
+                                                                      double
+                                                                          .infinity,
+                                                                      52),
+                                                                  shape:
+                                                                      new RoundedRectangleBorder(
+                                                                    borderRadius:
+                                                                        new BorderRadius.circular(
+                                                                            100.0),
+                                                                    // side: BorderSide(color: Color(0xffffffff)),
+                                                                  ),
+                                                                ),
+                                                                onPressed:
+                                                                    () {},
+                                                              ),
+                                                            ),
+                                                          ),
+                                                        if (!isThirtyTwoMatch &&
+                                                            !isThirtyTwoColorRed)
+                                                          Expanded(
+                                                            child: DragTarget(
+                                                              builder: (context,
+                                                                  List<Object?>
+                                                                      candidateData,
+                                                                  rejectedData) {
+                                                                return Padding(
+                                                                  padding:
+                                                                      const EdgeInsets
+                                                                              .all(
+                                                                          8.0),
+                                                                  child:
+                                                                      new ElevatedButton(
+                                                                    child:
+                                                                        Container(
+                                                                      margin: EdgeInsets.symmetric(
+                                                                          vertical:
+                                                                              20),
+                                                                      child:
+                                                                          new Text(
+                                                                        'Men',
+                                                                        style:
+                                                                            TextStyle(
+                                                                          color:
+                                                                              Color(0xff073ea6),
+                                                                          fontSize:
+                                                                              18,
+                                                                        ),
+                                                                      ),
+                                                                    ),
+                                                                    style: ElevatedButton
+                                                                        .styleFrom(
+                                                                      //primary: Color(0xff072e79),
+                                                                      primary:
+                                                                          Color(
+                                                                              0xffffffff),
+
+                                                                      minimumSize: Size(
+                                                                          double
+                                                                              .infinity,
+                                                                          52),
+                                                                      shape:
+                                                                          new RoundedRectangleBorder(
+                                                                        borderRadius:
+                                                                            new BorderRadius.circular(100.0),
+                                                                        // side: BorderSide(color: Color(0xffffffff)),
+                                                                      ),
+                                                                    ),
+                                                                    onPressed:
+                                                                        () {},
+                                                                  ),
+                                                                );
+                                                              },
+                                                              onWillAccept:
+                                                                  (data) {
+                                                                return true;
+                                                              },
+                                                              onAccept: (data) {
+                                                                print(
+                                                                    "data $data");
+                                                                setState(() {
+                                                                  if (data ==
+                                                                      "32") {
+                                                                    isThirtyTwoMatch =
+                                                                        true;
+                                                                    score += 10;
+                                                                    chances -=
+                                                                        1;
+                                                                    print(
+                                                                        "CHANCES $chances");
+                                                                  } else {
+                                                                    if (score >
+                                                                        0) {
+                                                                      score -=
+                                                                          5;
+                                                                    }
+                                                                    isThirtyTwoColorRed =
+                                                                        true;
+                                                                    chances -=
+                                                                        1;
+                                                                  }
+                                                                });
+                                                              },
+                                                            ),
+                                                          ),
+                                                        if (isThirtyTwoMatch)
+                                                          Expanded(
+                                                            child: Padding(
+                                                              padding:
+                                                                  const EdgeInsets
+                                                                      .all(8.0),
+                                                              child:
+                                                                  new ElevatedButton(
+                                                                child:
+                                                                    Container(
+                                                                  margin: EdgeInsets
+                                                                      .symmetric(
+                                                                          vertical:
+                                                                              20),
+                                                                  child:
+                                                                      new Text(
+                                                                    'Men',
+                                                                    style:
+                                                                        TextStyle(
+                                                                      // color: Colors.transparent,
+                                                                      fontSize:
+                                                                          18,
+                                                                    ),
+                                                                  ),
+                                                                ),
+                                                                style: ElevatedButton
+                                                                    .styleFrom(
+                                                                  //primary: Color(0xff072e79),
+                                                                  primary: Colors
+                                                                      .green,
+
+                                                                  minimumSize: Size(
+                                                                      double
+                                                                          .infinity,
+                                                                      52),
+                                                                  shape:
+                                                                      new RoundedRectangleBorder(
+                                                                    borderRadius:
+                                                                        new BorderRadius.circular(
+                                                                            100.0),
+                                                                    // side: BorderSide(color: Color(0xffffffff)),
+                                                                  ),
+                                                                ),
+                                                                onPressed:
+                                                                    () {},
+                                                              ),
+                                                            ),
+                                                          ),
+                                                        if (isThirtyTwoColorRed)
+                                                          Expanded(
+                                                            child: Padding(
+                                                              padding:
+                                                                  const EdgeInsets
+                                                                      .all(8.0),
+                                                              child:
+                                                                  new ElevatedButton(
+                                                                child:
+                                                                    Container(
+                                                                  margin: EdgeInsets
+                                                                      .symmetric(
+                                                                          vertical:
+                                                                              20),
+                                                                  child:
+                                                                      new Text(
+                                                                    'Men',
+                                                                    style:
+                                                                        TextStyle(
+                                                                      // color: Colors.transparent,
+                                                                      fontSize:
+                                                                          18,
+                                                                    ),
+                                                                  ),
+                                                                ),
+                                                                style: ElevatedButton
+                                                                    .styleFrom(
+                                                                  //primary: Color(0xff072e79),
+                                                                  primary:
+                                                                      Colors
+                                                                          .red,
+
+                                                                  minimumSize: Size(
+                                                                      double
+                                                                          .infinity,
+                                                                      52),
+                                                                  shape:
+                                                                      new RoundedRectangleBorder(
+                                                                    borderRadius:
+                                                                        new BorderRadius.circular(
+                                                                            100.0),
+                                                                    // side: BorderSide(color: Color(0xffffffff)),
+                                                                  ),
+                                                                ),
+                                                                onPressed:
+                                                                    () {},
+                                                              ),
+                                                            ),
+                                                          ),
+                                                      ],
+                                                    ),
+                                                  ),
+
+                                                  //5
+                                                  Container(
+                                                    margin: EdgeInsets.only(
+                                                        top: 10,
+                                                        left: 10,
+                                                        right: 10),
+                                                    child: Row(
+                                                      crossAxisAlignment:
+                                                          CrossAxisAlignment
+                                                              .center,
+                                                      children: [
+                                                        if (!isThirtyFiveMatch &&
+                                                            !isThirtyFiveColorRed)
+                                                          Expanded(
+                                                            child: Draggable(
+                                                              data: "35",
+                                                              feedback: Padding(
+                                                                padding:
+                                                                    const EdgeInsets
+                                                                            .all(
+                                                                        8.0),
+                                                                child:
+                                                                    new ElevatedButton(
+                                                                  child:
+                                                                      Container(
+                                                                    margin: EdgeInsets.symmetric(
+                                                                        vertical:
+                                                                            20),
+                                                                    child:
+                                                                        new Text(
+                                                                      'Гомель',
+                                                                      style:
+                                                                          TextStyle(
+                                                                        color: Color(
+                                                                            0xff073ea6),
+                                                                        fontSize:
+                                                                            18,
+                                                                      ),
+                                                                    ),
+                                                                  ),
+                                                                  style: ElevatedButton
+                                                                      .styleFrom(
+                                                                    //primary: Color(0xff072e79),
+                                                                    primary: Color(
+                                                                        0xffffffff),
+
+                                                                    minimumSize:
+                                                                        Size(
+                                                                            150,
+                                                                            52),
+                                                                    shape:
+                                                                        new RoundedRectangleBorder(
+                                                                      borderRadius:
+                                                                          new BorderRadius.circular(
+                                                                              100.0),
+                                                                      // side: BorderSide(color: Color(0xffffffff)),
+                                                                    ),
+                                                                  ),
+                                                                  onPressed:
+                                                                      () {},
+                                                                ),
+                                                              ),
+                                                              childWhenDragging:
+                                                                  Container(),
+                                                              child: Padding(
+                                                                padding:
+                                                                    const EdgeInsets
+                                                                            .all(
+                                                                        8.0),
+                                                                child:
+                                                                    new ElevatedButton(
+                                                                  child:
+                                                                      Container(
+                                                                    margin: EdgeInsets.symmetric(
+                                                                        vertical:
+                                                                            20),
+                                                                    child:
+                                                                        new Text(
+                                                                      'Гомель',
+                                                                      style:
+                                                                          TextStyle(
+                                                                        color: Color(
+                                                                            0xff073ea6),
+                                                                        fontSize:
+                                                                            18,
+                                                                      ),
+                                                                    ),
+                                                                  ),
+                                                                  style: ElevatedButton
+                                                                      .styleFrom(
+                                                                    //primary: Color(0xff072e79),
+                                                                    primary: Color(
+                                                                        0xffffffff),
+
+                                                                    minimumSize:
+                                                                        Size(
+                                                                            double.infinity,
+                                                                            52),
+                                                                    shape:
+                                                                        new RoundedRectangleBorder(
+                                                                      borderRadius:
+                                                                          new BorderRadius.circular(
+                                                                              100.0),
+                                                                      // side: BorderSide(color: Color(0xffffffff)),
+                                                                    ),
+                                                                  ),
+                                                                  onPressed:
+                                                                      () {},
+                                                                ),
+                                                              ),
+                                                            ),
+                                                          ),
+                                                        if (isThirtyFiveMatch)
+                                                          Expanded(
+                                                            child: Padding(
+                                                              padding:
+                                                                  const EdgeInsets
+                                                                      .all(8.0),
+                                                              child:
+                                                                  new ElevatedButton(
+                                                                child:
+                                                                    Container(
+                                                                  margin: EdgeInsets
+                                                                      .symmetric(
+                                                                          vertical:
+                                                                              20),
+                                                                  child:
+                                                                      new Text(
+                                                                    'Гомель',
+                                                                    style:
+                                                                        TextStyle(
+                                                                      // color: Colors.green,
+                                                                      fontSize:
+                                                                          18,
+                                                                    ),
+                                                                  ),
+                                                                ),
+                                                                style: ElevatedButton
+                                                                    .styleFrom(
+                                                                  //primary: Color(0xff072e79),
+                                                                  primary: Colors
+                                                                      .green,
+
+                                                                  minimumSize: Size(
+                                                                      double
+                                                                          .infinity,
+                                                                      52),
+                                                                  shape:
+                                                                      new RoundedRectangleBorder(
+                                                                    borderRadius:
+                                                                        new BorderRadius.circular(
+                                                                            100.0),
+                                                                    // side: BorderSide(color: Color(0xffffffff)),
+                                                                  ),
+                                                                ),
+                                                                onPressed:
+                                                                    () {},
+                                                              ),
+                                                            ),
+                                                          ),
+                                                        if (isThirtyFiveColorRed)
+                                                          Expanded(
+                                                            child: Padding(
+                                                              padding:
+                                                                  const EdgeInsets
+                                                                      .all(8.0),
+                                                              child:
+                                                                  new ElevatedButton(
+                                                                child:
+                                                                    Container(
+                                                                  margin: EdgeInsets
+                                                                      .symmetric(
+                                                                          vertical:
+                                                                              20),
+                                                                  child:
+                                                                      new Text(
+                                                                    'Гомель',
+                                                                    style:
+                                                                        TextStyle(
+                                                                      // color: Colors.green,
+                                                                      fontSize:
+                                                                          18,
+                                                                    ),
+                                                                  ),
+                                                                ),
+                                                                style: ElevatedButton
+                                                                    .styleFrom(
+                                                                  //primary: Color(0xff072e79),
+                                                                  primary:
+                                                                      Colors
+                                                                          .red,
+
+                                                                  minimumSize: Size(
+                                                                      double
+                                                                          .infinity,
+                                                                      52),
+                                                                  shape:
+                                                                      new RoundedRectangleBorder(
+                                                                    borderRadius:
+                                                                        new BorderRadius.circular(
+                                                                            100.0),
+                                                                    // side: BorderSide(color: Color(0xffffffff)),
+                                                                  ),
+                                                                ),
+                                                                onPressed:
+                                                                    () {},
+                                                              ),
+                                                            ),
+                                                          ),
+                                                        if (!isThirtyThreeMatch &&
+                                                            !isThirtyThreeColorRed)
+                                                          Expanded(
+                                                            child: DragTarget(
+                                                              builder: (context,
+                                                                  List<Object?>
+                                                                      candidateData,
+                                                                  rejectedData) {
+                                                                return Padding(
+                                                                  padding:
+                                                                      const EdgeInsets
+                                                                              .all(
+                                                                          8.0),
+                                                                  child:
+                                                                      new ElevatedButton(
+                                                                    child:
+                                                                        Container(
+                                                                      margin: EdgeInsets.symmetric(
+                                                                          vertical:
+                                                                              20),
+                                                                      child:
+                                                                          new Text(
+                                                                        'lane',
+                                                                        style:
+                                                                            TextStyle(
+                                                                          color:
+                                                                              Color(0xff073ea6),
+                                                                          fontSize:
+                                                                              18,
+                                                                        ),
+                                                                      ),
+                                                                    ),
+                                                                    style: ElevatedButton
+                                                                        .styleFrom(
+                                                                      //primary: Color(0xff072e79),
+                                                                      primary:
+                                                                          Color(
+                                                                              0xffffffff),
+
+                                                                      minimumSize: Size(
+                                                                          double
+                                                                              .infinity,
+                                                                          52),
+                                                                      shape:
+                                                                          new RoundedRectangleBorder(
+                                                                        borderRadius:
+                                                                            new BorderRadius.circular(100.0),
+                                                                        // side: BorderSide(color: Color(0xffffffff)),
+                                                                      ),
+                                                                    ),
+                                                                    onPressed:
+                                                                        () {},
+                                                                  ),
+                                                                );
+                                                              },
+                                                              onWillAccept:
+                                                                  (data) {
+                                                                return true;
+                                                              },
+                                                              onAccept: (data) {
+                                                                print(
+                                                                    "data $data");
+                                                                setState(() {
+                                                                  if (data ==
+                                                                      "33") {
+                                                                    isThirtyThreeMatch =
+                                                                        true;
+                                                                    score += 10;
+                                                                    chances -=
+                                                                        1;
+                                                                    print(
+                                                                        "CHANCES $chances");
+                                                                  } else {
+                                                                    if (score >
+                                                                        0) {
+                                                                      score -=
+                                                                          5;
+                                                                    }
+                                                                    isThirtyThreeColorRed =
+                                                                        true;
+                                                                    chances -=
+                                                                        1;
+                                                                  }
+                                                                });
+                                                              },
+                                                            ),
+                                                          ),
+                                                        if (isThirtyThreeMatch)
+                                                          Expanded(
+                                                            child: Padding(
+                                                              padding:
+                                                                  const EdgeInsets
+                                                                      .all(8.0),
+                                                              child:
+                                                                  new ElevatedButton(
+                                                                child:
+                                                                    Container(
+                                                                  margin: EdgeInsets
+                                                                      .symmetric(
+                                                                          vertical:
+                                                                              20),
+                                                                  child:
+                                                                      new Text(
+                                                                    'lane',
+                                                                    style:
+                                                                        TextStyle(
+                                                                      // color: Colors.transparent,
+                                                                      fontSize:
+                                                                          18,
+                                                                    ),
+                                                                  ),
+                                                                ),
+                                                                style: ElevatedButton
+                                                                    .styleFrom(
+                                                                  //primary: Color(0xff072e79),
+                                                                  primary: Colors
+                                                                      .green,
+
+                                                                  minimumSize: Size(
+                                                                      double
+                                                                          .infinity,
+                                                                      52),
+                                                                  shape:
+                                                                      new RoundedRectangleBorder(
+                                                                    borderRadius:
+                                                                        new BorderRadius.circular(
+                                                                            100.0),
+                                                                    // side: BorderSide(color: Color(0xffffffff)),
+                                                                  ),
+                                                                ),
+                                                                onPressed:
+                                                                    () {},
+                                                              ),
+                                                            ),
+                                                          ),
+                                                        if (isThirtyThreeColorRed)
+                                                          Expanded(
+                                                            child: Padding(
+                                                              padding:
+                                                                  const EdgeInsets
+                                                                      .all(8.0),
+                                                              child:
+                                                                  new ElevatedButton(
+                                                                child:
+                                                                    Container(
+                                                                  margin: EdgeInsets
+                                                                      .symmetric(
+                                                                          vertical:
+                                                                              20),
+                                                                  child:
+                                                                      new Text(
+                                                                    'lane',
+                                                                    style:
+                                                                        TextStyle(
+                                                                      // color: Colors.transparent,
+                                                                      fontSize:
+                                                                          18,
+                                                                    ),
+                                                                  ),
+                                                                ),
+                                                                style: ElevatedButton
+                                                                    .styleFrom(
+                                                                  //primary: Color(0xff072e79),
+                                                                  primary:
+                                                                      Colors
+                                                                          .red,
+
+                                                                  minimumSize: Size(
+                                                                      double
+                                                                          .infinity,
+                                                                      52),
+                                                                  shape:
+                                                                      new RoundedRectangleBorder(
+                                                                    borderRadius:
+                                                                        new BorderRadius.circular(
+                                                                            100.0),
+                                                                    // side: BorderSide(color: Color(0xffffffff)),
+                                                                  ),
+                                                                ),
+                                                                onPressed:
+                                                                    () {},
+                                                              ),
+                                                            ),
+                                                          ),
+                                                      ],
+                                                    ),
+                                                  ),
+                                                ])
+                                              : widget.stage == 8
+                                                  ? Column(children: [
+                                                      //1
+                                                      Container(
+                                                        margin: EdgeInsets.only(
+                                                            top: 10,
+                                                            left: 10,
+                                                            right: 10),
+                                                        child: Row(
+                                                          crossAxisAlignment:
+                                                              CrossAxisAlignment
+                                                                  .center,
+                                                          children: [
+                                                            if (!isThirtySixMatch &&
+                                                                !isThirtySixColorRed)
+                                                              Expanded(
+                                                                child:
+                                                                    Draggable(
+                                                                  data: "36",
+                                                                  feedback:
+                                                                      Padding(
+                                                                    padding:
+                                                                        const EdgeInsets.all(
+                                                                            8.0),
+                                                                    child:
+                                                                        new ElevatedButton(
+                                                                      child:
+                                                                          Container(
+                                                                        margin: EdgeInsets.symmetric(
+                                                                            vertical:
+                                                                                20),
+                                                                        child:
+                                                                            new Text(
+                                                                          'Киев',
+                                                                          style:
+                                                                              TextStyle(
+                                                                            color:
+                                                                                Color(0xff073ea6),
+                                                                            fontSize:
+                                                                                18,
+                                                                          ),
+                                                                        ),
+                                                                      ),
+                                                                      style: ElevatedButton
+                                                                          .styleFrom(
+                                                                        //primary: Color(0xff072e79),
+                                                                        primary:
+                                                                            Color(0xffffffff),
+
+                                                                        minimumSize: Size(
+                                                                            150,
+                                                                            52),
+                                                                        shape:
+                                                                            new RoundedRectangleBorder(
+                                                                          borderRadius:
+                                                                              new BorderRadius.circular(100.0),
+                                                                          // side: BorderSide(color: Color(0xffffffff)),
+                                                                        ),
+                                                                      ),
+                                                                      onPressed:
+                                                                          () {},
+                                                                    ),
+                                                                  ),
+                                                                  childWhenDragging:
+                                                                      Container(),
+                                                                  child:
+                                                                      Padding(
+                                                                    padding:
+                                                                        const EdgeInsets.all(
+                                                                            8.0),
+                                                                    child:
+                                                                        new ElevatedButton(
+                                                                      child:
+                                                                          Container(
+                                                                        margin: EdgeInsets.symmetric(
+                                                                            vertical:
+                                                                                20),
+                                                                        child:
+                                                                            new Text(
+                                                                          'Киев',
+                                                                          style:
+                                                                              TextStyle(
+                                                                            color:
+                                                                                Color(0xff073ea6),
+                                                                            fontSize:
+                                                                                18,
+                                                                          ),
+                                                                        ),
+                                                                      ),
+                                                                      style: ElevatedButton
+                                                                          .styleFrom(
+                                                                        //primary: Color(0xff072e79),
+                                                                        primary:
+                                                                            Color(0xffffffff),
+
+                                                                        minimumSize: Size(
+                                                                            double.infinity,
+                                                                            52),
+                                                                        shape:
+                                                                            new RoundedRectangleBorder(
+                                                                          borderRadius:
+                                                                              new BorderRadius.circular(100.0),
+                                                                          // side: BorderSide(color: Color(0xffffffff)),
+                                                                        ),
+                                                                      ),
+                                                                      onPressed:
+                                                                          () {},
+                                                                    ),
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                            if (isThirtySixMatch)
+                                                              Expanded(
+                                                                child: Padding(
+                                                                  padding:
+                                                                      const EdgeInsets
+                                                                              .all(
+                                                                          8.0),
+                                                                  child:
+                                                                      new ElevatedButton(
+                                                                    child:
+                                                                        Container(
+                                                                      margin: EdgeInsets.symmetric(
+                                                                          vertical:
+                                                                              20),
+                                                                      child:
+                                                                          new Text(
+                                                                        'Киев',
+                                                                        style:
+                                                                            TextStyle(
+                                                                          // color: Colors.transparent,
+                                                                          fontSize:
+                                                                              18,
+                                                                        ),
+                                                                      ),
+                                                                    ),
+                                                                    style: ElevatedButton
+                                                                        .styleFrom(
+                                                                      //primary: Color(0xff072e79),
+                                                                      primary:
+                                                                          Colors
+                                                                              .green,
+
+                                                                      minimumSize: Size(
+                                                                          double
+                                                                              .infinity,
+                                                                          52),
+                                                                      shape:
+                                                                          new RoundedRectangleBorder(
+                                                                        borderRadius:
+                                                                            new BorderRadius.circular(100.0),
+                                                                        // side: BorderSide(color: Color(0xffffffff)),
+                                                                      ),
+                                                                    ),
+                                                                    onPressed:
+                                                                        () {},
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                            if (isThirtySixColorRed)
+                                                              Expanded(
+                                                                child: Padding(
+                                                                  padding:
+                                                                      const EdgeInsets
+                                                                              .all(
+                                                                          8.0),
+                                                                  child:
+                                                                      new ElevatedButton(
+                                                                    child:
+                                                                        Container(
+                                                                      margin: EdgeInsets.symmetric(
+                                                                          vertical:
+                                                                              20),
+                                                                      child:
+                                                                          new Text(
+                                                                        'Киев',
+                                                                        style:
+                                                                            TextStyle(
+                                                                          // color: Colors.transparent,
+                                                                          fontSize:
+                                                                              18,
+                                                                        ),
+                                                                      ),
+                                                                    ),
+                                                                    style: ElevatedButton
+                                                                        .styleFrom(
+                                                                      //primary: Color(0xff072e79),
+                                                                      primary:
+                                                                          Colors
+                                                                              .red,
+
+                                                                      minimumSize: Size(
+                                                                          double
+                                                                              .infinity,
+                                                                          52),
+                                                                      shape:
+                                                                          new RoundedRectangleBorder(
+                                                                        borderRadius:
+                                                                            new BorderRadius.circular(100.0),
+                                                                        // side: BorderSide(color: Color(0xffffffff)),
+                                                                      ),
+                                                                    ),
+                                                                    onPressed:
+                                                                        () {},
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                            if (!isThirtyEightMatch &&
+                                                                !isThirtyEightColorRed)
+                                                              Expanded(
+                                                                child:
+                                                                    DragTarget(
+                                                                  builder: (context,
+                                                                      List<Object?>
+                                                                          candidateData,
+                                                                      rejectedData) {
+                                                                    return Padding(
+                                                                      padding:
+                                                                          const EdgeInsets.all(
+                                                                              8.0),
+                                                                      child:
+                                                                          new ElevatedButton(
+                                                                        child:
+                                                                            Container(
+                                                                          margin:
+                                                                              EdgeInsets.symmetric(vertical: 20),
+                                                                          child:
+                                                                              new Text(
+                                                                            'Three Hundred',
+                                                                            style:
+                                                                                TextStyle(
+                                                                              color: Color(0xff073ea6),
+                                                                              fontSize: 18,
+                                                                            ),
+                                                                          ),
+                                                                        ),
+                                                                        style: ElevatedButton
+                                                                            .styleFrom(
+                                                                          //primary: Color(0xff072e79),
+                                                                          primary:
+                                                                              Color(0xffffffff),
+
+                                                                          minimumSize: Size(
+                                                                              double.infinity,
+                                                                              52),
+                                                                          shape:
+                                                                              new RoundedRectangleBorder(
+                                                                            borderRadius:
+                                                                                new BorderRadius.circular(100.0),
+                                                                            // side: BorderSide(color: Color(0xffffffff)),
+                                                                          ),
+                                                                        ),
+                                                                        onPressed:
+                                                                            () {},
+                                                                      ),
+                                                                    );
+                                                                  },
+                                                                  onWillAccept:
+                                                                      (data) {
+                                                                    return true;
+                                                                  },
+                                                                  onAccept:
+                                                                      (data) {
+                                                                    print(
+                                                                        "data $data");
+                                                                    setState(
+                                                                        () {
+                                                                      if (data ==
+                                                                          "38") {
+                                                                        isThirtyEightMatch =
+                                                                            true;
+                                                                        score +=
+                                                                            10;
+                                                                        chances -=
+                                                                            1;
+
+                                                                        print(
+                                                                            "CHANCES $chances");
+                                                                      } else {
+                                                                        if (score >
+                                                                            0) {
+                                                                          score -=
+                                                                              5;
+                                                                        }
+                                                                        isThirtyEightColorRed =
+                                                                            true;
+                                                                        chances -=
+                                                                            1;
+                                                                      }
+                                                                    });
+                                                                  },
+                                                                ),
+                                                              ),
+                                                            if (isThirtyEightMatch)
+                                                              Expanded(
+                                                                child: Padding(
+                                                                  padding:
+                                                                      const EdgeInsets
+                                                                              .all(
+                                                                          8.0),
+                                                                  child:
+                                                                      new ElevatedButton(
+                                                                    child:
+                                                                        Container(
+                                                                      margin: EdgeInsets.symmetric(
+                                                                          vertical:
+                                                                              20),
+                                                                      child:
+                                                                          new Text(
+                                                                        'Three Hundred',
+                                                                        style:
+                                                                            TextStyle(
+                                                                          // color: Colors.transparent,
+                                                                          fontSize:
+                                                                              18,
+                                                                        ),
+                                                                      ),
+                                                                    ),
+                                                                    style: ElevatedButton
+                                                                        .styleFrom(
+                                                                      //primary: Color(0xff072e79),
+                                                                      primary:
+                                                                          Colors
+                                                                              .green,
+
+                                                                      minimumSize: Size(
+                                                                          double
+                                                                              .infinity,
+                                                                          52),
+                                                                      shape:
+                                                                          new RoundedRectangleBorder(
+                                                                        borderRadius:
+                                                                            new BorderRadius.circular(100.0),
+                                                                        // side: BorderSide(color: Color(0xffffffff)),
+                                                                      ),
+                                                                    ),
+                                                                    onPressed:
+                                                                        () {},
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                            if (isThirtyEightColorRed)
+                                                              Expanded(
+                                                                child: Padding(
+                                                                  padding:
+                                                                      const EdgeInsets
+                                                                              .all(
+                                                                          8.0),
+                                                                  child:
+                                                                      new ElevatedButton(
+                                                                    child:
+                                                                        Container(
+                                                                      margin: EdgeInsets.symmetric(
+                                                                          vertical:
+                                                                              20),
+                                                                      child:
+                                                                          new Text(
+                                                                        'Three Hundred',
+                                                                        style:
+                                                                            TextStyle(
+                                                                          // color: Colors.transparent,
+                                                                          fontSize:
+                                                                              18,
+                                                                        ),
+                                                                      ),
+                                                                    ),
+                                                                    style: ElevatedButton
+                                                                        .styleFrom(
+                                                                      //primary: Color(0xff072e79),
+                                                                      primary:
+                                                                          Colors
+                                                                              .red,
+
+                                                                      minimumSize: Size(
+                                                                          double
+                                                                              .infinity,
+                                                                          52),
+                                                                      shape:
+                                                                          new RoundedRectangleBorder(
+                                                                        borderRadius:
+                                                                            new BorderRadius.circular(100.0),
+                                                                        // side: BorderSide(color: Color(0xffffffff)),
+                                                                      ),
+                                                                    ),
+                                                                    onPressed:
+                                                                        () {},
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                          ],
+                                                        ),
+                                                      ),
+
+                                                      //2
+                                                      Container(
+                                                        margin: EdgeInsets.only(
+                                                            top: 10,
+                                                            left: 10,
+                                                            right: 10),
+                                                        child: Row(
+                                                          crossAxisAlignment:
+                                                              CrossAxisAlignment
+                                                                  .center,
+                                                          children: [
+                                                            if (!isThirtySevenMatch &&
+                                                                !isThirtySevenColorRed)
+                                                              Expanded(
+                                                                child:
+                                                                    Draggable(
+                                                                  data: "37",
+                                                                  feedback:
+                                                                      Padding(
+                                                                    padding:
+                                                                        const EdgeInsets.all(
+                                                                            8.0),
+                                                                    child:
+                                                                        new ElevatedButton(
+                                                                      child:
+                                                                          Container(
+                                                                        margin: EdgeInsets.symmetric(
+                                                                            vertical:
+                                                                                20),
+                                                                        child:
+                                                                            new Text(
+                                                                          'восемнадцать',
+                                                                          style:
+                                                                              TextStyle(
+                                                                            color:
+                                                                                Color(0xff073ea6),
+                                                                            fontSize:
+                                                                                18,
+                                                                          ),
+                                                                        ),
+                                                                      ),
+                                                                      style: ElevatedButton
+                                                                          .styleFrom(
+                                                                        //primary: Color(0xff072e79),
+                                                                        primary:
+                                                                            Color(0xffffffff),
+
+                                                                        minimumSize: Size(
+                                                                            150,
+                                                                            52),
+                                                                        shape:
+                                                                            new RoundedRectangleBorder(
+                                                                          borderRadius:
+                                                                              new BorderRadius.circular(100.0),
+                                                                          // side: BorderSide(color: Color(0xffffffff)),
+                                                                        ),
+                                                                      ),
+                                                                      onPressed:
+                                                                          () {},
+                                                                    ),
+                                                                  ),
+                                                                  childWhenDragging:
+                                                                      Container(),
+                                                                  child:
+                                                                      Padding(
+                                                                    padding:
+                                                                        const EdgeInsets.all(
+                                                                            8.0),
+                                                                    child:
+                                                                        new ElevatedButton(
+                                                                      child:
+                                                                          Container(
+                                                                        margin: EdgeInsets.symmetric(
+                                                                            vertical:
+                                                                                20),
+                                                                        child:
+                                                                            new Text(
+                                                                          'восемнадцать',
+                                                                          style:
+                                                                              TextStyle(
+                                                                            color:
+                                                                                Color(0xff073ea6),
+                                                                            fontSize:
+                                                                                18,
+                                                                          ),
+                                                                        ),
+                                                                      ),
+                                                                      style: ElevatedButton
+                                                                          .styleFrom(
+                                                                        //primary: Color(0xff072e79),
+                                                                        primary:
+                                                                            Color(0xffffffff),
+
+                                                                        minimumSize: Size(
+                                                                            double.infinity,
+                                                                            52),
+                                                                        shape:
+                                                                            new RoundedRectangleBorder(
+                                                                          borderRadius:
+                                                                              new BorderRadius.circular(100.0),
+                                                                          // side: BorderSide(color: Color(0xffffffff)),
+                                                                        ),
+                                                                      ),
+                                                                      onPressed:
+                                                                          () {},
+                                                                    ),
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                            if (isThirtySevenMatch)
+                                                              Expanded(
+                                                                child: Padding(
+                                                                  padding:
+                                                                      const EdgeInsets
+                                                                              .all(
+                                                                          8.0),
+                                                                  child:
+                                                                      new ElevatedButton(
+                                                                    child:
+                                                                        Container(
+                                                                      margin: EdgeInsets.symmetric(
+                                                                          vertical:
+                                                                              20),
+                                                                      child:
+                                                                          new Text(
+                                                                        "восемнадцать",
+                                                                        style:
+                                                                            TextStyle(
+                                                                          // color: Colors.transparent,
+                                                                          fontSize:
+                                                                              18,
+                                                                        ),
+                                                                      ),
+                                                                    ),
+                                                                    style: ElevatedButton
+                                                                        .styleFrom(
+                                                                      //primary: Color(0xff072e79),
+                                                                      primary:
+                                                                          Colors
+                                                                              .green,
+
+                                                                      minimumSize: Size(
+                                                                          double
+                                                                              .infinity,
+                                                                          52),
+                                                                      shape:
+                                                                          new RoundedRectangleBorder(
+                                                                        borderRadius:
+                                                                            new BorderRadius.circular(100.0),
+                                                                        // side: BorderSide(color: Color(0xffffffff)),
+                                                                      ),
+                                                                    ),
+                                                                    onPressed:
+                                                                        () {},
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                            if (isThirtySevenColorRed)
+                                                              Expanded(
+                                                                child: Padding(
+                                                                  padding:
+                                                                      const EdgeInsets
+                                                                              .all(
+                                                                          8.0),
+                                                                  child:
+                                                                      new ElevatedButton(
+                                                                    child:
+                                                                        Container(
+                                                                      margin: EdgeInsets.symmetric(
+                                                                          vertical:
+                                                                              20),
+                                                                      child:
+                                                                          new Text(
+                                                                        'восемнадцать',
+                                                                        style:
+                                                                            TextStyle(
+                                                                          // color: Colors.transparent,
+                                                                          fontSize:
+                                                                              18,
+                                                                        ),
+                                                                      ),
+                                                                    ),
+                                                                    style: ElevatedButton
+                                                                        .styleFrom(
+                                                                      //primary: Color(0xff072e79),
+                                                                      primary:
+                                                                          Colors
+                                                                              .red,
+
+                                                                      minimumSize: Size(
+                                                                          double
+                                                                              .infinity,
+                                                                          52),
+                                                                      shape:
+                                                                          new RoundedRectangleBorder(
+                                                                        borderRadius:
+                                                                            new BorderRadius.circular(100.0),
+                                                                        // side: BorderSide(color: Color(0xffffffff)),
+                                                                      ),
+                                                                    ),
+                                                                    onPressed:
+                                                                        () {},
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                            if (!isThirtySixMatch &&
+                                                                !isThirtySixColorRed)
+                                                              Expanded(
+                                                                child:
+                                                                    DragTarget(
+                                                                  builder: (context,
+                                                                      List<Object?>
+                                                                          candidateData,
+                                                                      rejectedData) {
+                                                                    return Padding(
+                                                                      padding:
+                                                                          const EdgeInsets.all(
+                                                                              8.0),
+                                                                      child:
+                                                                          new ElevatedButton(
+                                                                        child:
+                                                                            Container(
+                                                                          margin:
+                                                                              EdgeInsets.symmetric(vertical: 20),
+                                                                          child:
+                                                                              new Text(
+                                                                            'Kiev',
+                                                                            style:
+                                                                                TextStyle(
+                                                                              color: Color(0xff073ea6),
+                                                                              fontSize: 18,
+                                                                            ),
+                                                                          ),
+                                                                        ),
+                                                                        style: ElevatedButton
+                                                                            .styleFrom(
+                                                                          //primary: Color(0xff072e79),
+                                                                          primary:
+                                                                              Color(0xffffffff),
+
+                                                                          minimumSize: Size(
+                                                                              double.infinity,
+                                                                              52),
+                                                                          shape:
+                                                                              new RoundedRectangleBorder(
+                                                                            borderRadius:
+                                                                                new BorderRadius.circular(100.0),
+                                                                            // side: BorderSide(color: Color(0xffffffff)),
+                                                                          ),
+                                                                        ),
+                                                                        onPressed:
+                                                                            () {},
+                                                                      ),
+                                                                    );
+                                                                  },
+                                                                  onWillAccept:
+                                                                      (data) {
+                                                                    return true;
+                                                                  },
+                                                                  onAccept:
+                                                                      (data) {
+                                                                    print(
+                                                                        "data $data");
+                                                                    setState(
+                                                                        () {
+                                                                      if (data ==
+                                                                          "36") {
+                                                                        isThirtySixMatch =
+                                                                            true;
+                                                                        score +=
+                                                                            10;
+                                                                        chances -=
+                                                                            1;
+                                                                        print(
+                                                                            "CHANCES $chances");
+                                                                      } else {
+                                                                        if (score >
+                                                                            0) {
+                                                                          score -=
+                                                                              5;
+                                                                        }
+                                                                        isThirtySixColorRed =
+                                                                            true;
+                                                                        chances -=
+                                                                            1;
+                                                                      }
+                                                                    });
+                                                                  },
+                                                                ),
+                                                              ),
+                                                            if (isThirtySixMatch)
+                                                              Expanded(
+                                                                child: Padding(
+                                                                  padding:
+                                                                      const EdgeInsets
+                                                                              .all(
+                                                                          8.0),
+                                                                  child:
+                                                                      new ElevatedButton(
+                                                                    child:
+                                                                        Container(
+                                                                      margin: EdgeInsets.symmetric(
+                                                                          vertical:
+                                                                              20),
+                                                                      child:
+                                                                          new Text(
+                                                                        'Kiev',
+                                                                        style:
+                                                                            TextStyle(
+                                                                          // color: Colors.transparent,
+                                                                          fontSize:
+                                                                              18,
+                                                                        ),
+                                                                      ),
+                                                                    ),
+                                                                    style: ElevatedButton
+                                                                        .styleFrom(
+                                                                      //primary: Color(0xff072e79),
+                                                                      primary:
+                                                                          Colors
+                                                                              .green,
+
+                                                                      minimumSize: Size(
+                                                                          double
+                                                                              .infinity,
+                                                                          52),
+                                                                      shape:
+                                                                          new RoundedRectangleBorder(
+                                                                        borderRadius:
+                                                                            new BorderRadius.circular(100.0),
+                                                                        // side: BorderSide(color: Color(0xffffffff)),
+                                                                      ),
+                                                                    ),
+                                                                    onPressed:
+                                                                        () {},
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                            if (isThirtySixColorRed)
+                                                              Expanded(
+                                                                child: Padding(
+                                                                  padding:
+                                                                      const EdgeInsets
+                                                                              .all(
+                                                                          8.0),
+                                                                  child:
+                                                                      new ElevatedButton(
+                                                                    child:
+                                                                        Container(
+                                                                      margin: EdgeInsets.symmetric(
+                                                                          vertical:
+                                                                              20),
+                                                                      child:
+                                                                          new Text(
+                                                                        'Kiev',
+                                                                        style:
+                                                                            TextStyle(
+                                                                          // color: Colors.transparent,
+                                                                          fontSize:
+                                                                              18,
+                                                                        ),
+                                                                      ),
+                                                                    ),
+                                                                    style: ElevatedButton
+                                                                        .styleFrom(
+                                                                      //primary: Color(0xff072e79),
+                                                                      primary:
+                                                                          Colors
+                                                                              .red,
+
+                                                                      minimumSize: Size(
+                                                                          double
+                                                                              .infinity,
+                                                                          52),
+                                                                      shape:
+                                                                          new RoundedRectangleBorder(
+                                                                        borderRadius:
+                                                                            new BorderRadius.circular(100.0),
+                                                                        // side: BorderSide(color: Color(0xffffffff)),
+                                                                      ),
+                                                                    ),
+                                                                    onPressed:
+                                                                        () {},
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                          ],
+                                                        ),
+                                                      ),
+
+                                                      //3
+                                                      Container(
+                                                        margin: EdgeInsets.only(
+                                                            top: 10,
+                                                            left: 10,
+                                                            right: 10),
+                                                        child: Row(
+                                                          crossAxisAlignment:
+                                                              CrossAxisAlignment
+                                                                  .center,
+                                                          children: [
+                                                            if (!isThirtyEightMatch &&
+                                                                !isThirtyEightColorRed)
+                                                              Expanded(
+                                                                child:
+                                                                    Draggable(
+                                                                  data: "38",
+                                                                  feedback:
+                                                                      Padding(
+                                                                    padding:
+                                                                        const EdgeInsets.all(
+                                                                            8.0),
+                                                                    child:
+                                                                        new ElevatedButton(
+                                                                      child:
+                                                                          Container(
+                                                                        margin: EdgeInsets.symmetric(
+                                                                            vertical:
+                                                                                20),
+                                                                        child:
+                                                                            new Text(
+                                                                          'триста',
+                                                                          style:
+                                                                              TextStyle(
+                                                                            color:
+                                                                                Color(0xff073ea6),
+                                                                            fontSize:
+                                                                                18,
+                                                                          ),
+                                                                        ),
+                                                                      ),
+                                                                      style: ElevatedButton
+                                                                          .styleFrom(
+                                                                        //primary: Color(0xff072e79),
+                                                                        primary:
+                                                                            Color(0xffffffff),
+
+                                                                        minimumSize: Size(
+                                                                            150,
+                                                                            52),
+                                                                        shape:
+                                                                            new RoundedRectangleBorder(
+                                                                          borderRadius:
+                                                                              new BorderRadius.circular(100.0),
+                                                                          // side: BorderSide(color: Color(0xffffffff)),
+                                                                        ),
+                                                                      ),
+                                                                      onPressed:
+                                                                          () {},
+                                                                    ),
+                                                                  ),
+                                                                  childWhenDragging:
+                                                                      Container(),
+                                                                  child:
+                                                                      Padding(
+                                                                    padding:
+                                                                        const EdgeInsets.all(
+                                                                            8.0),
+                                                                    child:
+                                                                        new ElevatedButton(
+                                                                      child:
+                                                                          Container(
+                                                                        margin: EdgeInsets.symmetric(
+                                                                            vertical:
+                                                                                20),
+                                                                        child:
+                                                                            new Text(
+                                                                          'триста',
+                                                                          style:
+                                                                              TextStyle(
+                                                                            color:
+                                                                                Color(0xff073ea6),
+                                                                            fontSize:
+                                                                                18,
+                                                                          ),
+                                                                        ),
+                                                                      ),
+                                                                      style: ElevatedButton
+                                                                          .styleFrom(
+                                                                        //primary: Color(0xff072e79),
+                                                                        primary:
+                                                                            Color(0xffffffff),
+
+                                                                        minimumSize: Size(
+                                                                            double.infinity,
+                                                                            52),
+                                                                        shape:
+                                                                            new RoundedRectangleBorder(
+                                                                          borderRadius:
+                                                                              new BorderRadius.circular(100.0),
+                                                                          // side: BorderSide(color: Color(0xffffffff)),
+                                                                        ),
+                                                                      ),
+                                                                      onPressed:
+                                                                          () {},
+                                                                    ),
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                            if (isThirtyEightMatch)
+                                                              Expanded(
+                                                                child: Padding(
+                                                                  padding:
+                                                                      const EdgeInsets
+                                                                              .all(
+                                                                          8.0),
+                                                                  child:
+                                                                      new ElevatedButton(
+                                                                    child:
+                                                                        Container(
+                                                                      margin: EdgeInsets.symmetric(
+                                                                          vertical:
+                                                                              20),
+                                                                      child:
+                                                                          new Text(
+                                                                        'триста',
+                                                                        style:
+                                                                            TextStyle(
+                                                                          // color: Colors.transparent,
+                                                                          fontSize:
+                                                                              18,
+                                                                        ),
+                                                                      ),
+                                                                    ),
+                                                                    style: ElevatedButton
+                                                                        .styleFrom(
+                                                                      //primary: Color(0xff072e79),
+                                                                      primary:
+                                                                          Colors
+                                                                              .green,
+
+                                                                      minimumSize: Size(
+                                                                          double
+                                                                              .infinity,
+                                                                          52),
+                                                                      shape:
+                                                                          new RoundedRectangleBorder(
+                                                                        borderRadius:
+                                                                            new BorderRadius.circular(100.0),
+                                                                        // side: BorderSide(color: Color(0xffffffff)),
+                                                                      ),
+                                                                    ),
+                                                                    onPressed:
+                                                                        () {},
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                            if (isThirtyEightColorRed)
+                                                              Expanded(
+                                                                child: Padding(
+                                                                  padding:
+                                                                      const EdgeInsets
+                                                                              .all(
+                                                                          8.0),
+                                                                  child:
+                                                                      new ElevatedButton(
+                                                                    child:
+                                                                        Container(
+                                                                      margin: EdgeInsets.symmetric(
+                                                                          vertical:
+                                                                              20),
+                                                                      child:
+                                                                          new Text(
+                                                                        'триста',
+                                                                        style:
+                                                                            TextStyle(
+                                                                          // color: Colors.transparent,
+                                                                          fontSize:
+                                                                              18,
+                                                                        ),
+                                                                      ),
+                                                                    ),
+                                                                    style: ElevatedButton
+                                                                        .styleFrom(
+                                                                      //primary: Color(0xff072e79),
+                                                                      primary:
+                                                                          Colors
+                                                                              .red,
+
+                                                                      minimumSize: Size(
+                                                                          double
+                                                                              .infinity,
+                                                                          52),
+                                                                      shape:
+                                                                          new RoundedRectangleBorder(
+                                                                        borderRadius:
+                                                                            new BorderRadius.circular(100.0),
+                                                                        // side: BorderSide(color: Color(0xffffffff)),
+                                                                      ),
+                                                                    ),
+                                                                    onPressed:
+                                                                        () {},
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                            if (!isThirtyNineMatch &&
+                                                                !isThirtyNineColorRed)
+                                                              Expanded(
+                                                                child:
+                                                                    DragTarget(
+                                                                  builder: (context,
+                                                                      List<Object?>
+                                                                          candidateData,
+                                                                      rejectedData) {
+                                                                    return Padding(
+                                                                      padding:
+                                                                          const EdgeInsets.all(
+                                                                              8.0),
+                                                                      child:
+                                                                          new ElevatedButton(
+                                                                        child:
+                                                                            Container(
+                                                                          margin:
+                                                                              EdgeInsets.symmetric(vertical: 20),
+                                                                          child:
+                                                                              new Text(
+                                                                            'two thousand',
+                                                                            style:
+                                                                                TextStyle(
+                                                                              color: Color(0xff073ea6),
+                                                                              fontSize: 18,
+                                                                            ),
+                                                                          ),
+                                                                        ),
+                                                                        style: ElevatedButton
+                                                                            .styleFrom(
+                                                                          //primary: Color(0xff072e79),
+                                                                          primary:
+                                                                              Color(0xffffffff),
+
+                                                                          minimumSize: Size(
+                                                                              double.infinity,
+                                                                              52),
+                                                                          shape:
+                                                                              new RoundedRectangleBorder(
+                                                                            borderRadius:
+                                                                                new BorderRadius.circular(100.0),
+                                                                            // side: BorderSide(color: Color(0xffffffff)),
+                                                                          ),
+                                                                        ),
+                                                                        onPressed:
+                                                                            () {},
+                                                                      ),
+                                                                    );
+                                                                  },
+                                                                  onWillAccept:
+                                                                      (data) {
+                                                                    return true;
+                                                                  },
+                                                                  onAccept:
+                                                                      (data) {
+                                                                    print(
+                                                                        "data $data");
+                                                                    setState(
+                                                                        () {
+                                                                      if (data ==
+                                                                          "39") {
+                                                                        isThirtyNineMatch =
+                                                                            true;
+                                                                        score +=
+                                                                            10;
+                                                                        chances -=
+                                                                            1;
+                                                                        print(
+                                                                            "CHANCES $chances");
+                                                                      } else {
+                                                                        if (score >
+                                                                            0) {
+                                                                          score -=
+                                                                              5;
+                                                                        }
+                                                                        isThirtyNineColorRed =
+                                                                            true;
+                                                                        chances -=
+                                                                            1;
+                                                                      }
+                                                                    });
+                                                                  },
+                                                                ),
+                                                              ),
+                                                            if (isThirtyNineMatch)
+                                                              Expanded(
+                                                                child: Padding(
+                                                                  padding:
+                                                                      const EdgeInsets
+                                                                              .all(
+                                                                          8.0),
+                                                                  child:
+                                                                      new ElevatedButton(
+                                                                    child:
+                                                                        Container(
+                                                                      margin: EdgeInsets.symmetric(
+                                                                          vertical:
+                                                                              20),
+                                                                      child:
+                                                                          new Text(
+                                                                        'two thousand',
+                                                                        style:
+                                                                            TextStyle(
+                                                                          // color: Colors.transparent,
+                                                                          fontSize:
+                                                                              18,
+                                                                        ),
+                                                                      ),
+                                                                    ),
+                                                                    style: ElevatedButton
+                                                                        .styleFrom(
+                                                                      //primary: Color(0xff072e79),
+                                                                      primary:
+                                                                          Colors
+                                                                              .green,
+
+                                                                      minimumSize: Size(
+                                                                          double
+                                                                              .infinity,
+                                                                          52),
+                                                                      shape:
+                                                                          new RoundedRectangleBorder(
+                                                                        borderRadius:
+                                                                            new BorderRadius.circular(100.0),
+                                                                        // side: BorderSide(color: Color(0xffffffff)),
+                                                                      ),
+                                                                    ),
+                                                                    onPressed:
+                                                                        () {},
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                            if (isThirtyNineColorRed)
+                                                              Expanded(
+                                                                child: Padding(
+                                                                  padding:
+                                                                      const EdgeInsets
+                                                                              .all(
+                                                                          8.0),
+                                                                  child:
+                                                                      new ElevatedButton(
+                                                                    child:
+                                                                        Container(
+                                                                      margin: EdgeInsets.symmetric(
+                                                                          vertical:
+                                                                              20),
+                                                                      child:
+                                                                          new Text(
+                                                                        'two thousand',
+                                                                        style:
+                                                                            TextStyle(
+                                                                          // color: Colors.transparent,
+                                                                          fontSize:
+                                                                              18,
+                                                                        ),
+                                                                      ),
+                                                                    ),
+                                                                    style: ElevatedButton
+                                                                        .styleFrom(
+                                                                      //primary: Color(0xff072e79),
+                                                                      primary:
+                                                                          Colors
+                                                                              .red,
+
+                                                                      minimumSize: Size(
+                                                                          double
+                                                                              .infinity,
+                                                                          52),
+                                                                      shape:
+                                                                          new RoundedRectangleBorder(
+                                                                        borderRadius:
+                                                                            new BorderRadius.circular(100.0),
+                                                                        // side: BorderSide(color: Color(0xffffffff)),
+                                                                      ),
+                                                                    ),
+                                                                    onPressed:
+                                                                        () {},
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                          ],
+                                                        ),
+                                                      ),
+
+                                                      //4
+
+                                                      Container(
+                                                        margin: EdgeInsets.only(
+                                                            top: 10,
+                                                            left: 10,
+                                                            right: 10),
+                                                        child: Row(
+                                                          crossAxisAlignment:
+                                                              CrossAxisAlignment
+                                                                  .center,
+                                                          children: [
+                                                            if (!isThirtyNineMatch &&
+                                                                !isThirtyNineColorRed)
+                                                              Expanded(
+                                                                child:
+                                                                    Draggable(
+                                                                  data: "39",
+                                                                  feedback:
+                                                                      Padding(
+                                                                    padding:
+                                                                        const EdgeInsets.all(
+                                                                            8.0),
+                                                                    child:
+                                                                        new ElevatedButton(
+                                                                      child:
+                                                                          Container(
+                                                                        margin: EdgeInsets.symmetric(
+                                                                            vertical:
+                                                                                20),
+                                                                        child:
+                                                                            new Text(
+                                                                          'две тысячи',
+                                                                          style:
+                                                                              TextStyle(
+                                                                            color:
+                                                                                Color(0xff073ea6),
+                                                                            fontSize:
+                                                                                18,
+                                                                          ),
+                                                                        ),
+                                                                      ),
+                                                                      style: ElevatedButton
+                                                                          .styleFrom(
+                                                                        //primary: Color(0xff072e79),
+                                                                        primary:
+                                                                            Color(0xffffffff),
+
+                                                                        minimumSize: Size(
+                                                                            150,
+                                                                            52),
+                                                                        shape:
+                                                                            new RoundedRectangleBorder(
+                                                                          borderRadius:
+                                                                              new BorderRadius.circular(100.0),
+                                                                          // side: BorderSide(color: Color(0xffffffff)),
+                                                                        ),
+                                                                      ),
+                                                                      onPressed:
+                                                                          () {},
+                                                                    ),
+                                                                  ),
+                                                                  childWhenDragging:
+                                                                      Container(),
+                                                                  child:
+                                                                      Padding(
+                                                                    padding:
+                                                                        const EdgeInsets.all(
+                                                                            8.0),
+                                                                    child:
+                                                                        new ElevatedButton(
+                                                                      child:
+                                                                          Container(
+                                                                        margin: EdgeInsets.symmetric(
+                                                                            vertical:
+                                                                                20),
+                                                                        child:
+                                                                            new Text(
+                                                                          'две тысячи',
+                                                                          style:
+                                                                              TextStyle(
+                                                                            color:
+                                                                                Color(0xff073ea6),
+                                                                            fontSize:
+                                                                                18,
+                                                                          ),
+                                                                        ),
+                                                                      ),
+                                                                      style: ElevatedButton
+                                                                          .styleFrom(
+                                                                        //primary: Color(0xff072e79),
+                                                                        primary:
+                                                                            Color(0xffffffff),
+
+                                                                        minimumSize: Size(
+                                                                            double.infinity,
+                                                                            52),
+                                                                        shape:
+                                                                            new RoundedRectangleBorder(
+                                                                          borderRadius:
+                                                                              new BorderRadius.circular(100.0),
+                                                                          // side: BorderSide(color: Color(0xffffffff)),
+                                                                        ),
+                                                                      ),
+                                                                      onPressed:
+                                                                          () {},
+                                                                    ),
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                            if (isThirtyNineMatch)
+                                                              Expanded(
+                                                                child: Padding(
+                                                                  padding:
+                                                                      const EdgeInsets
+                                                                              .all(
+                                                                          8.0),
+                                                                  child:
+                                                                      new ElevatedButton(
+                                                                    child:
+                                                                        Container(
+                                                                      margin: EdgeInsets.symmetric(
+                                                                          vertical:
+                                                                              20),
+                                                                      child:
+                                                                          new Text(
+                                                                        'две тысячи',
+                                                                        style:
+                                                                            TextStyle(
+                                                                          // color: Colors.transparent,
+                                                                          fontSize:
+                                                                              18,
+                                                                        ),
+                                                                      ),
+                                                                    ),
+                                                                    style: ElevatedButton
+                                                                        .styleFrom(
+                                                                      //primary: Color(0xff072e79),
+                                                                      primary:
+                                                                          Colors
+                                                                              .green,
+
+                                                                      minimumSize: Size(
+                                                                          double
+                                                                              .infinity,
+                                                                          52),
+                                                                      shape:
+                                                                          new RoundedRectangleBorder(
+                                                                        borderRadius:
+                                                                            new BorderRadius.circular(100.0),
+                                                                        // side: BorderSide(color: Color(0xffffffff)),
+                                                                      ),
+                                                                    ),
+                                                                    onPressed:
+                                                                        () {},
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                            if (isThirtyNineColorRed)
+                                                              Expanded(
+                                                                child: Padding(
+                                                                  padding:
+                                                                      const EdgeInsets
+                                                                              .all(
+                                                                          8.0),
+                                                                  child:
+                                                                      new ElevatedButton(
+                                                                    child:
+                                                                        Container(
+                                                                      margin: EdgeInsets.symmetric(
+                                                                          vertical:
+                                                                              20),
+                                                                      child:
+                                                                          new Text(
+                                                                        'две тысячи',
+                                                                        style:
+                                                                            TextStyle(
+                                                                          // color: Colors.transparent,
+                                                                          fontSize:
+                                                                              18,
+                                                                        ),
+                                                                      ),
+                                                                    ),
+                                                                    style: ElevatedButton
+                                                                        .styleFrom(
+                                                                      //primary: Color(0xff072e79),
+                                                                      primary:
+                                                                          Colors
+                                                                              .red,
+
+                                                                      minimumSize: Size(
+                                                                          double
+                                                                              .infinity,
+                                                                          52),
+                                                                      shape:
+                                                                          new RoundedRectangleBorder(
+                                                                        borderRadius:
+                                                                            new BorderRadius.circular(100.0),
+                                                                        // side: BorderSide(color: Color(0xffffffff)),
+                                                                      ),
+                                                                    ),
+                                                                    onPressed:
+                                                                        () {},
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                            if (!isThirtySevenMatch &&
+                                                                !isThirtySevenColorRed)
+                                                              Expanded(
+                                                                child:
+                                                                    DragTarget(
+                                                                  builder: (context,
+                                                                      List<Object?>
+                                                                          candidateData,
+                                                                      rejectedData) {
+                                                                    return Padding(
+                                                                      padding:
+                                                                          const EdgeInsets.all(
+                                                                              8.0),
+                                                                      child:
+                                                                          new ElevatedButton(
+                                                                        child:
+                                                                            Container(
+                                                                          margin:
+                                                                              EdgeInsets.symmetric(vertical: 20),
+                                                                          child:
+                                                                              new Text(
+                                                                            'eighteen',
+                                                                            style:
+                                                                                TextStyle(
+                                                                              color: Color(0xff073ea6),
+                                                                              fontSize: 18,
+                                                                            ),
+                                                                          ),
+                                                                        ),
+                                                                        style: ElevatedButton
+                                                                            .styleFrom(
+                                                                          //primary: Color(0xff072e79),
+                                                                          primary:
+                                                                              Color(0xffffffff),
+
+                                                                          minimumSize: Size(
+                                                                              double.infinity,
+                                                                              52),
+                                                                          shape:
+                                                                              new RoundedRectangleBorder(
+                                                                            borderRadius:
+                                                                                new BorderRadius.circular(100.0),
+                                                                            // side: BorderSide(color: Color(0xffffffff)),
+                                                                          ),
+                                                                        ),
+                                                                        onPressed:
+                                                                            () {},
+                                                                      ),
+                                                                    );
+                                                                  },
+                                                                  onWillAccept:
+                                                                      (data) {
+                                                                    return true;
+                                                                  },
+                                                                  onAccept:
+                                                                      (data) {
+                                                                    print(
+                                                                        "data $data");
+                                                                    setState(
+                                                                        () {
+                                                                      if (data ==
+                                                                          "37") {
+                                                                        isThirtySevenMatch =
+                                                                            true;
+                                                                        score +=
+                                                                            10;
+                                                                        chances -=
+                                                                            1;
+                                                                        print(
+                                                                            "CHANCES $chances");
+                                                                      } else {
+                                                                        if (score >
+                                                                            0) {
+                                                                          score -=
+                                                                              5;
+                                                                        }
+                                                                        isThirtySevenColorRed =
+                                                                            true;
+                                                                        chances -=
+                                                                            1;
+                                                                      }
+                                                                    });
+                                                                  },
+                                                                ),
+                                                              ),
+                                                            if (isThirtySevenMatch)
+                                                              Expanded(
+                                                                child: Padding(
+                                                                  padding:
+                                                                      const EdgeInsets
+                                                                              .all(
+                                                                          8.0),
+                                                                  child:
+                                                                      new ElevatedButton(
+                                                                    child:
+                                                                        Container(
+                                                                      margin: EdgeInsets.symmetric(
+                                                                          vertical:
+                                                                              20),
+                                                                      child:
+                                                                          new Text(
+                                                                        'eighteen',
+                                                                        style:
+                                                                            TextStyle(
+                                                                          // color: Colors.transparent,
+                                                                          fontSize:
+                                                                              18,
+                                                                        ),
+                                                                      ),
+                                                                    ),
+                                                                    style: ElevatedButton
+                                                                        .styleFrom(
+                                                                      //primary: Color(0xff072e79),
+                                                                      primary:
+                                                                          Colors
+                                                                              .green,
+
+                                                                      minimumSize: Size(
+                                                                          double
+                                                                              .infinity,
+                                                                          52),
+                                                                      shape:
+                                                                          new RoundedRectangleBorder(
+                                                                        borderRadius:
+                                                                            new BorderRadius.circular(100.0),
+                                                                        // side: BorderSide(color: Color(0xffffffff)),
+                                                                      ),
+                                                                    ),
+                                                                    onPressed:
+                                                                        () {},
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                            if (isThirtySevenColorRed)
+                                                              Expanded(
+                                                                child: Padding(
+                                                                  padding:
+                                                                      const EdgeInsets
+                                                                              .all(
+                                                                          8.0),
+                                                                  child:
+                                                                      new ElevatedButton(
+                                                                    child:
+                                                                        Container(
+                                                                      margin: EdgeInsets.symmetric(
+                                                                          vertical:
+                                                                              20),
+                                                                      child:
+                                                                          new Text(
+                                                                        'eighteen',
+                                                                        style:
+                                                                            TextStyle(
+                                                                          // color: Colors.transparent,
+                                                                          fontSize:
+                                                                              18,
+                                                                        ),
+                                                                      ),
+                                                                    ),
+                                                                    style: ElevatedButton
+                                                                        .styleFrom(
+                                                                      //primary: Color(0xff072e79),
+                                                                      primary:
+                                                                          Colors
+                                                                              .red,
+
+                                                                      minimumSize: Size(
+                                                                          double
+                                                                              .infinity,
+                                                                          52),
+                                                                      shape:
+                                                                          new RoundedRectangleBorder(
+                                                                        borderRadius:
+                                                                            new BorderRadius.circular(100.0),
+                                                                        // side: BorderSide(color: Color(0xffffffff)),
+                                                                      ),
+                                                                    ),
+                                                                    onPressed:
+                                                                        () {},
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                          ],
+                                                        ),
+                                                      ),
+                                                    ])
+                                                  : Container(),
 
                   Container(
                     margin: EdgeInsets.only(top: 30, left: 20, right: 20),
