@@ -1,4 +1,4 @@
-package com.example.ugrussa
+package com.ugrussa.ugrussa
 
 import io.flutter.embedding.android.FlutterActivity
 

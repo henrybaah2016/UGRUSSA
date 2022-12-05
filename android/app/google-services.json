@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "383465667281",
+    "firebase_url": "https://ugrussa-43804-default-rtdb.firebaseio.com",
     "project_id": "ugrussa-43804",
     "storage_bucket": "ugrussa-43804.appspot.com"
   },
@@ -29,6 +30,49 @@
             {
               "client_id": "383465667281-0m7l5eu13ftjq2r2foi6jjgf8albeda5.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "383465667281-3nt1irkma7665f05v5t06u6e5430v7tf.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.ugrussa"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:383465667281:android:9740a48b60ee51c6a863f0",
+        "android_client_info": {
+          "package_name": "com.ugrussa.ugrussa"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "383465667281-0m7l5eu13ftjq2r2foi6jjgf8albeda5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBQEvycKbO4fMFrP6J-lyutmrgO8ULrJt4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "383465667281-0m7l5eu13ftjq2r2foi6jjgf8albeda5.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "383465667281-3nt1irkma7665f05v5t06u6e5430v7tf.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.ugrussa"
+              }
             }
           ]
         }

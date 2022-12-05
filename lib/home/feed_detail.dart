@@ -80,7 +80,6 @@ class _FeedDetailState extends State<FeedDetail> {
             ),
             //FlexibleSpaceBar
             expandedHeight: 200,
-            // backgroundColor: Theme.of(context).primaryColor,
             //IconButton
           ),
           SliverFixedExtentList(
