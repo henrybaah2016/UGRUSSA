@@ -27,28 +27,28 @@ class _GameScoreState extends State<GameScore> {
           backgroundColor: Colors.transparent,
           elevation: 0,
           actions: <Widget>[
-            PopupMenuButton(
-              onSelected: (result) async {
-                if (result == 0) {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => GamePlayer(),
-                    ),
-                  );
-                }
-              },
-              icon: Container(
-                margin: EdgeInsets.only(right: 20),
-                child: const Icon(
-                  Icons.close_rounded,
-                  color: Color(0xffffffff),
-                  size: 25.0,
-                ),
-              ),
-              offset: Offset(0, kToolbarHeight),
-              itemBuilder: (BuildContext context) => <PopupMenuEntry>[],
-            ),
+            // PopupMenuButton(
+            //   onSelected: (result) async {
+            //     if (result == 0) {
+            //       Navigator.push(
+            //         context,
+            //         MaterialPageRoute(
+            //           builder: (context) => GamePlayer(),
+            //         ),
+            //       );
+            //     }
+            //   },
+            //   icon: Container(
+            //     margin: EdgeInsets.only(right: 20),
+            //     child: const Icon(
+            //       Icons.close_rounded,
+            //       color: Color(0xffffffff),
+            //       size: 25.0,
+            //     ),
+            //   ),
+            //   offset: Offset(0, kToolbarHeight),
+            //   itemBuilder: (BuildContext context) => <PopupMenuEntry>[],
+            // ),
           ],
         ),
         body: SingleChildScrollView(
