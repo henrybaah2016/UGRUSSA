@@ -79,7 +79,7 @@ class _FeedDetailState extends State<FeedDetail> {
               ): Container(),
             ),
             //FlexibleSpaceBar
-            expandedHeight: 270,
+            expandedHeight: 200,
             // backgroundColor: Theme.of(context).primaryColor,
             //IconButton
           ),
