@@ -25,7 +25,7 @@ class _SplashState extends State<Splash> {
   }
 
   _navigateToHome() async {
-    Timer(const Duration(seconds: 3), () async {
+    Timer(const Duration(seconds: 3000000000), () async {
       final currentUser = await firebaseAuth.currentUser;
 
       if (currentUser != null) {
@@ -54,24 +54,34 @@ class _SplashState extends State<Splash> {
                 ],
               ),
             ),
-            const SizedBox(height: 25),
+            SizedBox(height: MediaQuery.of(context).size.height * 0.05),
+            Text("Introduced by the 2021/2022 "),
+            Text("UGRUSSA Executives "),
+            SizedBox(height: MediaQuery.of(context).size.height * 0.05),
             Text(
-              "Sponsor",
+              "Sponsored by :",
               style: TextStyle(
                 fontWeight: FontWeight.w700,
               ),
             ),
-            const SizedBox(height: 5),
-            Text("Firdaus Issaka Naana"),
-            const SizedBox(height: 10),
+            SizedBox(height: MediaQuery.of(context).size.height * 0.003),
+            Text("Firdaus Naana Issaka"),
+            SizedBox(height: MediaQuery.of(context).size.height * 0.001),
             Text(
-              "Developers",
+              "(President, 2021/2022)",
               style: TextStyle(
                 fontWeight: FontWeight.w700,
               ),
             ),
-            const SizedBox(height: 5),
-            Text("Intellisense Apps. Limited."),
+            SizedBox(height: MediaQuery.of(context).size.height * 0.07),
+            Text(
+              "Developers : ",
+              style: TextStyle(
+                fontWeight: FontWeight.w700,
+              ),
+            ),
+            SizedBox(height: MediaQuery.of(context).size.height * 0.001),
+            Text("Intellisense Apps Limited."),
           ],
         ),
       ),

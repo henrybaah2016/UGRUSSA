@@ -172,7 +172,7 @@ class _SignupPageState extends State<SignupPage> {
           return CustomAlertDialog(
             alertTitle: "Profile Picture Upload",
             alertMessage:
-                "Select a profile picture to continue with the sign up process",
+            "Select a profile picture to continue with the sign up process",
           );
         },
       );
@@ -180,11 +180,11 @@ class _SignupPageState extends State<SignupPage> {
 
     String fileName = path.basename(_imageFile!.path);
     Reference firebaseStorageRef =
-        FirebaseStorage.instance.ref().child('profile_photos/$fileName');
+    FirebaseStorage.instance.ref().child('profile_photos/$fileName');
     var uploadTask = firebaseStorageRef.putFile(File(_imageFile!.path));
     var taskSnapshot = await uploadTask.then((taskSnapshot) {
       taskSnapshot.ref.getDownloadURL().then(
-        (photoUrl) {
+            (photoUrl) {
           print("Done: $photoUrl");
           profilePhotoUrl = photoUrl;
           _signup(photoUrl: profilePhotoUrl);
@@ -312,11 +312,11 @@ class _SignupPageState extends State<SignupPage> {
     );
 
     final User? firebaseUser = (await firebaseAuth
-            .createUserWithEmailAndPassword(
+        .createUserWithEmailAndPassword(
       email: _emailController.text.trim(),
       password: _passwordController.text,
     )
-            .catchError((error) {
+        .catchError((error) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text(
@@ -445,17 +445,17 @@ class _SignupPageState extends State<SignupPage> {
                     borderRadius: BorderRadius.all(Radius.circular(100)),
                     child: _imageFile != null
                         ? Image.file(
-                            File(_imageFile!.path),
-                            width: 100,
-                            height: 100,
-                            fit: BoxFit.cover,
-                          )
+                      File(_imageFile!.path),
+                      width: 100,
+                      height: 100,
+                      fit: BoxFit.cover,
+                    )
                         : Image.asset(
-                            "assets/images/profile_avatar.png",
-                            width: 100,
-                            height: 100,
-                            fit: BoxFit.cover,
-                          ),
+                      "assets/images/profile_avatar.png",
+                      width: 100,
+                      height: 100,
+                      fit: BoxFit.cover,
+                    ),
                   ),
                 ),
               ),
@@ -856,7 +856,7 @@ class _SignupPageState extends State<SignupPage> {
                         ),
                         onPressed: () {
                           setState(
-                            () => this._showPassword = !this._showPassword,
+                                () => this._showPassword = !this._showPassword,
                           );
                         },
                       ),
