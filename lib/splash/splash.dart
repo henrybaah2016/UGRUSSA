@@ -25,7 +25,7 @@ class _SplashState extends State<Splash> {
   }
 
   _navigateToHome() async {
-    Timer(const Duration(seconds: 3000000000), () async {
+    Timer(const Duration(seconds: 3), () async {
       final currentUser = await firebaseAuth.currentUser;
 
       if (currentUser != null) {
